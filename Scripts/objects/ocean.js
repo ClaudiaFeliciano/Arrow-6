@@ -24,20 +24,20 @@ var objects;
         }
         // private methods
         Ocean.prototype._checkBounds = function () {
-            if (this.y >= 0) {
+            if (this.x >= 0) {
                 this.Reset();
             }
         };
         Ocean.prototype._move = function () {
-            this.y += this.verticalSpeed;
+            this.x += this.horizontalSpeed;
         };
         // public methods
         Ocean.prototype.Reset = function () {
-            this.y = -960;
+            this.x = -224; //1024-800 that is my width
         };
         Ocean.prototype.Start = function () {
             this.Reset();
-            this.verticalSpeed = 5; // 5 px per frame
+            this.horizontalSpeed = 5; // 5 px per frame
         };
         Ocean.prototype.Update = function () {
             this._move();
