@@ -75,8 +75,6 @@ module objects {
             this.y = y;
         }
 
-        // private methods
-
-        // public methods
+        
     }
 }

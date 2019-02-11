@@ -42,13 +42,13 @@ module scenes {
             this._island.Update();
 
             //check collision between arrow and island
-          //managers.Collision.Check(this._player, this._island);
+          managers.Collision.Check(this._player, this._island);
 
             // Update Each meteor in the Meteor Array
             for (const meteor of this._meteor) {
                 meteor.Update();
                 //check collision between arrow and meteor
-                //managers.Collision.Check(this._player, this._meteor);
+                managers.Collision.Check(this._player, meteor);
 
             }
 
