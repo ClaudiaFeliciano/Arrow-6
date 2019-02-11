@@ -5,6 +5,7 @@ module objects {
          private _height:number;
          private _halfWidth:number;
          private _halfHeight:number;
+         public isColliding : boolean;
  
          // public properties
          get Width():number {
@@ -56,6 +57,7 @@ module objects {
             this.HalfHeight = this.Height * 0.5; //focus my objects on the middle
             this.regX = this.HalfWidth;
             this.regY= this.HalfHeight;*/
+            this.isColliding= false;
          }
          
          // public methods

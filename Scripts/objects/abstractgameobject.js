@@ -73,6 +73,7 @@ var objects;
              this.HalfHeight = this.Height * 0.5; //focus my objects on the middle
              this.regX = this.HalfWidth;
              this.regY= this.HalfHeight;*/
+            this.isColliding = false;
         };
         return AbstractGameObject;
     }(createjs.Bitmap));
