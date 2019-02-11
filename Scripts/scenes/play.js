@@ -26,22 +26,27 @@ var scenes;
         // public methods
         Play.prototype.Start = function () {
             this._meteorNum = 3;
-            // Instantiates a new Array container of Type objects.Cloud
+            // Instantiates a new Array container of Type objects.meteor
             this._meteor = new Array();
-            // Fill the Cloud Array with Clouds
+            // Fill the meteor Array with meteors
             for (var count = 0; count < this._meteorNum; count++) {
                 this._meteor[count] = new objects.Meteor();
             }
             this.Main();
         };
+        //triggered every frame
         Play.prototype.Update = function () {
             this._space.Update();
             this._player.Update();
             this._island.Update();
-            // Update Each cloud in the Cloud Array
+            //check collision between arrow and island
+            //managers.Collision.Check(this._player, this._island);
+            // Update Each meteor in the Meteor Array
             for (var _i = 0, _a = this._meteor; _i < _a.length; _i++) {
-                var cloud = _a[_i];
-                cloud.Update();
+                var meteor = _a[_i];
+                meteor.Update();
+                //check collision between arrow and meteor
+                //managers.Collision.Check(this._player, this._meteor);
             }
         };
         Play.prototype.Destroy = function () {
@@ -50,6 +55,7 @@ var scenes;
         Play.prototype.Reset = function () {
         };
         Play.prototype.Main = function () {
+            var _this = this;
             // adds space to the scene
             this._space = new objects.Space();
             this.addChild(this._space);
@@ -59,11 +65,12 @@ var scenes;
             // adds player to the scene
             this._player = new objects.Player();
             this.addChild(this._player);
-            // adds Each Cloud in the Cloud Array to the Scene
-            for (var _i = 0, _a = this._meteor; _i < _a.length; _i++) {
-                var cloud = _a[_i];
-                this.addChild(cloud);
-            }
+            // adds Each meteor in the meteor Array to the Scene
+            /*for (const meteor of this._meteor) {
+                this.addChild(meteor);*/
+            this._meteor.forEach(function (meteor) {
+                _this.addChild(meteor);
+            });
         };
         return Play;
     }(objects.Scene));

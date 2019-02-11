@@ -14,8 +14,8 @@ module objects {
 
         // private methods
         private _move():void {
-            this.y += this._verticalSpeed; //i want my meteor to move not ony vertical but also horizontal
-            this.x += this._horizontalSpeed;
+            this.x += this._verticalSpeed; //i want my meteor to move not ony vertical but also horizontal
+            this.y += this._horizontalSpeed;
         }
 
         private _checkBounds():void {
@@ -27,9 +27,9 @@ module objects {
         // public methods
 
         public Reset(): void {
-            this._verticalSpeed = Math.floor((Math.random() * 5) + 5);
+            this._verticalSpeed = Math.floor((Math.random() * 5) + 5); //randomizing my speed as well
             this._horizontalSpeed = Math.floor((Math.random() * 4) - 2);
-            this.x = -this.Width; //de donde kiero que comience
+            this.x = -this.Width; //de donde kiero k comience
             this.y = Math.floor((Math.random() * (1024 - this.Height)) + this.HalfHeight);
         }        
         

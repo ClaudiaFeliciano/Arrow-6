@@ -24,20 +24,20 @@ var objects;
         }
         // private methods
         Meteor.prototype._move = function () {
-            this.y += this._verticalSpeed;
-            this.x += this._horizontalSpeed;
+            this.x += this._verticalSpeed; //i want my meteor to move not ony vertical but also horizontal
+            this.y += this._horizontalSpeed;
         };
         Meteor.prototype._checkBounds = function () {
-            if (this.y > 480 + this.Height) {
+            if (this.x > 1024 + this.Width) {
                 this.Reset();
             }
         };
         // public methods
         Meteor.prototype.Reset = function () {
-            this._verticalSpeed = Math.floor((Math.random() * 5) + 5);
+            this._verticalSpeed = Math.floor((Math.random() * 5) + 5); //randomizing my speed as well
             this._horizontalSpeed = Math.floor((Math.random() * 4) - 2);
-            this.y = -this.Height;
-            this.x = Math.floor((Math.random() * (640 - this.Width)) + this.HalfWidth);
+            this.x = -this.Width; //de donde kiero k comience
+            this.y = Math.floor((Math.random() * (1024 - this.Height)) + this.HalfHeight);
         };
         Meteor.prototype.Start = function () {
             this.Reset();
