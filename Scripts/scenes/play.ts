@@ -10,9 +10,8 @@ module scenes {
 
         private _scoreBoard: managers.ScoreBoard;
 
-        private _engineSound: createjs.AbstractSoundInstance;//keeeps track  of my sound as i make it if i want to stops it
+        private _engineSound: createjs.AbstractSoundInstance;//keeeps track  of my sound as i make it if i want to stops it or to modify the volumen
 
-        // public properties
 
         // constructor
         constructor() {
@@ -21,7 +20,6 @@ module scenes {
             this.Start();
         }
 
-        // private methods
 
         // public methods
 
@@ -40,7 +38,7 @@ module scenes {
             this._engineSound.volume = 0.2;
 
             this._scoreBoard = new managers.ScoreBoard();
-            managers.Game.scoreBoard=this._scoreBoard;
+            managers.Game.scoreBoard = this._scoreBoard;
             this.Main();
         }
 
@@ -56,14 +54,14 @@ module scenes {
             // Update Each meteor in the Meteor Array
             for (const meteor of this._meteor) {
                 meteor.Update();
-                //check collision between arrow and meteor
-                managers.Collision.Check(this._player, meteor);
+                console.log("Estoy en el update"); 
+                managers.Collision.Check(this._player, meteor);    //check collision between the arrow and the meteor
             }
 
             //if lives fall below zero switch scenes to the game over scene
-            if(this._scoreBoard.Lives<=0){
+            if (this._scoreBoard.Lives <= 0) {
                 this._engineSound.stop(); //sino me sigue sonando the app
-                managers.Game.currentState =config.Scene.OVER;
+                managers.Game.currentState = config.Scene.OVER;
             }
         }
 

@@ -5,7 +5,7 @@ module objects {
         private _height: number;
         private _halfWidth: number;
         private _halfHeight: number;
-        public isColliding: boolean;//dudas
+        public isColliding: boolean;// I can track my collision
 
         // public properties
         get Width(): number {

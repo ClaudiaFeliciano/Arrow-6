@@ -26,8 +26,8 @@ var scenes;
         // public methods
         Start.prototype.Start = function () {
             this._space = new objects.Space();
-            this._welcomeLabel = new objects.Label("ARROW 2", "60px", "Consolas", "#FF0000", 320, 240, true);
-            this._startButton = new objects.Button("startButton", 320, 360, true);
+            this._welcomeLabel = new objects.Label("ARROW 6", "60px", "Consolas", "#FF0000", 380, 240, true);
+            this._startButton = new objects.Button("startButton", 380, 360, true);
             this.Main();
         };
         Start.prototype.Update = function () {

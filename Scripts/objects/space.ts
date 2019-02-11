@@ -3,8 +3,6 @@ module objects {
         // private instance variables
         private horizontalSpeed:number;
 
-        // public properties
-
         // constructor
         constructor() {
             super("space");
