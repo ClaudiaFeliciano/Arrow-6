@@ -1,7 +1,7 @@
 module objects {
-    export class Island extends objects.GameObject {
+    export class Island extends objects.AbstractGameObject {
         // private instance variables
-        private _verticalSpeed:number;
+        private _horizontalSpeed:number;
 
         // public properties
 
@@ -14,11 +14,11 @@ module objects {
 
         // private methods
         private _move():void {
-            this.y += this._verticalSpeed;
+            this.x += this._horizontalSpeed;
         }
 
         private _checkBounds():void {
-            if(this.y > 480 + this.Height) {
+            if(this.x > 1024 + this.Width) {
                 this.Reset();
             }
         }
@@ -26,9 +26,9 @@ module objects {
         // public methods
 
         public Reset(): void {
-            this._verticalSpeed = 5;
-            this.y = -this.Height;
-            this.x = Math.floor((Math.random() * (640 - this.Width)) + this.HalfWidth);
+            this._horizontalSpeed = 5;
+            this.x = -this.Width;
+            this.y = Math.floor((Math.random() * (1024 - this.Height)) + this.HalfHeight);
         }        
         
         public Start(): void {

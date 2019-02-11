@@ -28,17 +28,18 @@ var objects;
         Player.prototype.Start = function () {
             this.regX = this.HalfWidth;
             this.regY = this.HalfHeight;
-            this.y = 435;
+            this.x = 635; //la posicion donde va a comenzar el avion como era de arriba hacia abajo 0 es arriba y 435 es pegado a abajo, menos la altura del avion
         };
         Player.prototype.Update = function () {
-            this.x = managers.Game.stage.mouseX;
-            // checks the right boundary
-            if (this.x > 640 - this.HalfWidth) {
-                this.x = 640 - this.HalfWidth;
+            this.y = managers.Game.stage.mouseY; //where the y-coordinate of my plane is gonna be on my x-coordinate.
+            //My plane is not allowed go right left with my mouse
+            // checking the bottom boundary
+            if (this.y > 904 - this.HalfWidth) { //it is not responsive.If I want to fo that i should add a configuration file
+                this.y = 904 - this.HalfWidth;
             }
-            // check the left boundary
-            if (this.x < this.HalfWidth) {
-                this.x = this.HalfWidth;
+            // checking the top boundary
+            if (this.y <= this.HalfWidth) {
+                this.y = this.HalfWidth;
             }
         };
         Player.prototype.Reset = function () {
@@ -46,7 +47,7 @@ var objects;
         Player.prototype.Destroy = function () {
         };
         return Player;
-    }(objects.GameObject));
+    }(objects.AbstractGameObject));
     objects.Player = Player;
 })(objects || (objects = {}));
 //# sourceMappingURL=player.js.map

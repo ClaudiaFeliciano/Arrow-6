@@ -35,7 +35,7 @@ var scenes;
             this.Main();
         };
         Play.prototype.Update = function () {
-            this._ocean.Update();
+            this._space.Update();
             this._player.Update();
             this._island.Update();
             // Update Each cloud in the Cloud Array
@@ -50,9 +50,9 @@ var scenes;
         Play.prototype.Reset = function () {
         };
         Play.prototype.Main = function () {
-            // adds ocean to the scene
-            this._ocean = new objects.Ocean();
-            this.addChild(this._ocean);
+            // adds space to the scene
+            this._space = new objects.Space();
+            this.addChild(this._space);
             // adds island to the scene
             this._island = new objects.Island();
             this.addChild(this._island);

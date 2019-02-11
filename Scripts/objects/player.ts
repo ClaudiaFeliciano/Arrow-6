@@ -1,5 +1,5 @@
 module objects {
-    export class Player extends objects.GameObject {
+    export class Player extends objects.AbstractGameObject {
         // private instance variables
         
         // public properties
@@ -18,20 +18,21 @@ module objects {
             this.regX = this.HalfWidth;
             this.regY = this.HalfHeight;
 
-            this.y = 435;
+            this.x = 635; //la posicion donde va a comenzar el avion como era de arriba hacia abajo 0 es arriba y 435 es pegado a abajo, menos la altura del avion
         }
 
         public Update():void {
-            this.x = managers.Game.stage.mouseX;
+            this.y = managers.Game.stage.mouseY;//where the y-coordinate of my plane is gonna be on my x-coordinate.
+            //My plane is not allowed go right left with my mouse
 
-            // checks the right boundary
-            if(this.x > 640 - this.HalfWidth) {
-                this.x = 640 - this.HalfWidth;
+            // checking the bottom boundary
+            if(this.y > 904 - this.HalfWidth) { //it is not responsive.If I want to fo that i should add a configuration file
+                this.y = 904 - this.HalfWidth;
             }
 
-            // check the left boundary
-            if(this.x < this.HalfWidth) {
-                this.x = this.HalfWidth;
+            // checking the top boundary
+            if(this.y <= this.HalfWidth) {
+                this.y = this.HalfWidth;
             }
         }
 

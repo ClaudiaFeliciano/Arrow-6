@@ -24,7 +24,7 @@ var objects;
         }
         // private methods
         Island.prototype._move = function () {
-            this.y += this._verticalSpeed;
+            this.y += this._horizontalSpeed;
         };
         Island.prototype._checkBounds = function () {
             if (this.y > 480 + this.Height) {
@@ -33,7 +33,7 @@ var objects;
         };
         // public methods
         Island.prototype.Reset = function () {
-            this._verticalSpeed = 5;
+            this._horizontalSpeed = 5;
             this.y = -this.Height;
             this.x = Math.floor((Math.random() * (640 - this.Width)) + this.HalfWidth);
         };
@@ -47,7 +47,7 @@ var objects;
         Island.prototype.Destroy = function () {
         };
         return Island;
-    }(objects.GameObject));
+    }(objects.AbstractGameObject));
     objects.Island = Island;
 })(objects || (objects = {}));
 //# sourceMappingURL=island.js.map

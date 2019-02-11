@@ -1,5 +1,5 @@
 module objects {
-    export abstract class GameObject extends createjs.Bitmap {
+    export abstract class AbstractGameObject extends createjs.Bitmap { //clase abstracta
          // private instance variables
          private _width:number;
          private _height:number;
@@ -44,14 +44,18 @@ module objects {
          // constructors
          constructor(imageString:string) {
              super(managers.Game.assetManager.getResult(imageString));
- 
-             this._initialize();
+            // this.name= imageString; //name come from the superclass Bitmap            
+            this._initialize();
          }
  
          // private methods
          private _initialize():void {
             this.Width = this.getBounds().width;
             this.Height = this.getBounds().height;
+           /* this.HalfWidth = this.Width * 0.5;
+            this.HalfHeight = this.Height * 0.5; //focus my objects on the middle
+            this.regX = this.HalfWidth;
+            this.regY= this.HalfHeight;*/
          }
          
          // public methods

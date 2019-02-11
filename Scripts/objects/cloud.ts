@@ -1,5 +1,5 @@
 module objects {
-    export class Cloud extends objects.GameObject {
+    export class Cloud extends objects.AbstractGameObject {
         // private instance variables
         private _verticalSpeed:number;
         private _horizontalSpeed:number;

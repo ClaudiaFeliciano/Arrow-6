@@ -12,7 +12,7 @@
         { id: "plane", src: "/Assets/images/plane.png" },
         { id: "cloud", src: "/Assets/images/cloud.png" },
         { id: "island", src: "/Assets/images/island.png" },
-        { id: "ocean", src: "/Assets/images/ocean.png" },
+        { id: "space", src: "/Assets/images/space.png" },
         { id: "engineSound", src: "/Assets/audio/engine.ogg" },
         { id: "thunderSound", src: "/Assets/audio/thunder.ogg" },
         { id: "yaySound", src: "/Assets/audio/yay.ogg" }
@@ -33,7 +33,7 @@
         createjs.Ticker.framerate = 60; // game will run at 60fps
         createjs.Ticker.on("tick", Update);
         currentState = config.Scene.START;
-        managers.Game.currentState = currentState;
+        managers.Game.currentState = currentState; //it makes a refrence to my stage and I hold it in my global object
         Main();
     }
     // this is the main game loop

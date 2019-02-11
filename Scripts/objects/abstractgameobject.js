@@ -13,15 +13,16 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var objects;
 (function (objects) {
-    var GameObject = /** @class */ (function (_super) {
-        __extends(GameObject, _super);
+    var AbstractGameObject = /** @class */ (function (_super) {
+        __extends(AbstractGameObject, _super);
         // constructors
-        function GameObject(imageString) {
+        function AbstractGameObject(imageString) {
             var _this = _super.call(this, managers.Game.assetManager.getResult(imageString)) || this;
+            // this.name= imageString; //name come from the superclass Bitmap            
             _this._initialize();
             return _this;
         }
-        Object.defineProperty(GameObject.prototype, "Width", {
+        Object.defineProperty(AbstractGameObject.prototype, "Width", {
             // public properties
             get: function () {
                 return this._width;
@@ -33,7 +34,7 @@ var objects;
             enumerable: true,
             configurable: true
         });
-        Object.defineProperty(GameObject.prototype, "Height", {
+        Object.defineProperty(AbstractGameObject.prototype, "Height", {
             get: function () {
                 return this._height;
             },
@@ -44,7 +45,7 @@ var objects;
             enumerable: true,
             configurable: true
         });
-        Object.defineProperty(GameObject.prototype, "HalfHeight", {
+        Object.defineProperty(AbstractGameObject.prototype, "HalfHeight", {
             get: function () {
                 return this._halfHeight;
             },
@@ -54,7 +55,7 @@ var objects;
             enumerable: true,
             configurable: true
         });
-        Object.defineProperty(GameObject.prototype, "HalfWidth", {
+        Object.defineProperty(AbstractGameObject.prototype, "HalfWidth", {
             get: function () {
                 return this._halfWidth;
             },
@@ -65,12 +66,16 @@ var objects;
             configurable: true
         });
         // private methods
-        GameObject.prototype._initialize = function () {
+        AbstractGameObject.prototype._initialize = function () {
             this.Width = this.getBounds().width;
             this.Height = this.getBounds().height;
+            /* this.HalfWidth = this.Width * 0.5;
+             this.HalfHeight = this.Height * 0.5; //focus my objects on the middle
+             this.regX = this.HalfWidth;
+             this.regY= this.HalfHeight;*/
         };
-        return GameObject;
+        return AbstractGameObject;
     }(createjs.Bitmap));
-    objects.GameObject = GameObject;
+    objects.AbstractGameObject = AbstractGameObject;
 })(objects || (objects = {}));
-//# sourceMappingURL=gameobject.js.map
+//# sourceMappingURL=abstractgameobject.js.map

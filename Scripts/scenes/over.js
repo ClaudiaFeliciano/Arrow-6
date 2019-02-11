@@ -25,13 +25,13 @@ var scenes;
         // private methods
         // public methods
         Over.prototype.Start = function () {
-            this._ocean = new objects.Ocean();
+            this._space = new objects.Space();
             this._gameOverLabel = new objects.Label("Game Over", "60px", "Consolas", "#FFFF00", 320, 240, true);
             this._restartButton = new objects.Button("restartButton", 320, 360, true);
             this.Main();
         };
         Over.prototype.Update = function () {
-            this._ocean.Update();
+            this._space.Update();
         };
         Over.prototype.Destroy = function () {
             this.removeAllChildren();
@@ -40,7 +40,7 @@ var scenes;
         };
         Over.prototype.Main = function () {
             // adds ocean to the stage
-            this.addChild(this._ocean);
+            this.addChild(this._space);
             this.addChild(this._gameOverLabel);
             this.addChild(this._restartButton);
             this._restartButton.on("click", function () {

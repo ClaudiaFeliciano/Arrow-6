@@ -49,7 +49,7 @@ var objects;
         Cloud.prototype.Destroy = function () {
         };
         return Cloud;
-    }(objects.GameObject));
+    }(objects.AbstractGameObject));
     objects.Cloud = Cloud;
 })(objects || (objects = {}));
 //# sourceMappingURL=cloud.js.map

@@ -2,7 +2,7 @@ module scenes {
     export class Start extends objects.Scene {
         // private instance variable
          private _welcomeLabel:objects.Label;
-         private _ocean:objects.Ocean;
+         private _ocean:objects.Space;
          private _startButton:objects.Button;
 
         // public properties
@@ -20,7 +20,7 @@ module scenes {
 
         public Start(): void {
 
-            this._ocean = new objects.Ocean();
+            this._ocean = new objects.Space();
             this._welcomeLabel = new objects.Label("Mail Pilot", "60px", "Consolas", "#FFFF00", 320, 240, true);
             this._startButton = new objects.Button("startButton", 320, 360, true);
 

@@ -2,7 +2,7 @@ module scenes {
     export class Play extends objects.Scene {
         // private instance variable
          private _player:objects.Player;
-         private _ocean:objects.Ocean;
+         private _space:objects.Space;
          private _island:objects.Island;
 
          private _cloudNum: number;
@@ -36,7 +36,7 @@ module scenes {
         }        
         
         public Update(): void {
-            this._ocean.Update();
+            this._space.Update();
             this._player.Update();
             this._island.Update();
 
@@ -56,9 +56,9 @@ module scenes {
         }
         
         public Main(): void {
-        // adds ocean to the scene
-        this._ocean = new objects.Ocean();
-        this.addChild(this._ocean);
+        // adds space to the scene
+        this._space = new objects.Space();
+        this.addChild(this._space);
 
         // adds island to the scene
         this._island = new objects.Island();
