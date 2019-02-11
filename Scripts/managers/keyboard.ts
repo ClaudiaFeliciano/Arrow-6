@@ -31,20 +31,13 @@ module managers {
                     this.moveForward = true;
                     break;
 
-                case config.Keys.A:
-                case config.Keys.LEFT_ARROW:
-                    this.moveLeft = true;
-                    break;
-
+                
                 case config.Keys.S:
                 case config.Keys.DOWN_ARROW:
                     this.moveBackward = true;
                     break;
 
-                case config.Keys.D:
-                case config.Keys.RIGHT_ARROW:
-                    this.moveRight = true;
-                    break;
+              
 
                 case config.Keys.D:
                 case config.Keys.space:
