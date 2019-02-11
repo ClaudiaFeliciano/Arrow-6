@@ -16,14 +16,12 @@ var math;
     var Vec2 = /** @class */ (function (_super) {
         __extends(Vec2, _super);
         //private instance variables
-        //public properties
         //cosntructors
         function Vec2(x, y) {
             if (x === void 0) { x = 0; }
             if (y === void 0) { y = 0; }
             return _super.call(this, x, y) || this;
         }
-        //private methids
         //public methods
         //Pythagorean distance between two objects
         Vec2.Distance = function (P1, P2) {

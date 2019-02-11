@@ -4,5 +4,6 @@ module managers {
         public static assetManager:createjs.LoadQueue; ;//access to all my access
         public static stage:createjs.Stage; //access to my global stage object
         public static currentState:config.Scene; ;// wich current scene is
+        public static scoreBoard:managers.ScoreBoard;
     }
 }

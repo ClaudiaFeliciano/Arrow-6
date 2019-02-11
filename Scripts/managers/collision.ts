@@ -11,9 +11,12 @@ module managers {
                     switch (object2.name) {
                         case "island":
                             createjs.Sound.play("yaySound");
+                            managers.Game.scoreBoard.Score+=100;
                             break;
                         case "meteor":
                             createjs.Sound.play("thunderSound");
+                            managers.Game.scoreBoard.Lives -=1;
+
                             break;
                     }
                 }

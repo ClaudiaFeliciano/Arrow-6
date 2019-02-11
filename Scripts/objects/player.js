@@ -16,7 +16,6 @@ var objects;
     var Player = /** @class */ (function (_super) {
         __extends(Player, _super);
         // private instance variables
-        // public properties
         // constructors
         function Player() {
             var _this = _super.call(this, "plane") || this;

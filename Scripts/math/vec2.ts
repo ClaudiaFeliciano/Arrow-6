@@ -8,9 +8,6 @@ module math {
             super(x, y); //position object
         }
 
-        //private methods
-
-
         //public methods
         //Pythagorean distance between two objects
         public static Distance(P1: Vec2, P2: Vec2): number {

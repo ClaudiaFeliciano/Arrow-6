@@ -8,6 +8,10 @@ module scenes {
         private _meteorNum: number;
         private _meteor: objects.Meteor[];
 
+        private _scoreBoard: managers.ScoreBoard;
+
+        private _engineSound: createjs.AbstractSoundInstance;//keeeps track  of my sound as i make it if i want to stops it
+
         // public properties
 
         // constructor
@@ -31,7 +35,12 @@ module scenes {
             for (let count = 0; count < this._meteorNum; count++) {
                 this._meteor[count] = new objects.Meteor();
             }
+            this._engineSound = createjs.Sound.play("engineSound");//lo pongo akip ara que comience en cuanto comience la scence
+            this._engineSound.loop = -1;//play forever
+            this._engineSound.volume = 0.2;
 
+            this._scoreBoard = new managers.ScoreBoard();
+            managers.Game.scoreBoard=this._scoreBoard;
             this.Main();
         }
 
@@ -42,16 +51,20 @@ module scenes {
             this._island.Update();
 
             //check collision between arrow and island
-          managers.Collision.Check(this._player, this._island);
+            managers.Collision.Check(this._player, this._island);
 
             // Update Each meteor in the Meteor Array
             for (const meteor of this._meteor) {
                 meteor.Update();
                 //check collision between arrow and meteor
                 managers.Collision.Check(this._player, meteor);
-
             }
 
+            //if lives fall below zero switch scenes to the game over scene
+            if(this._scoreBoard.Lives<=0){
+                this._engineSound.stop(); //sino me sigue sonando the app
+                managers.Game.currentState =config.Scene.OVER;
+            }
         }
 
         public Destroy(): void {
@@ -81,6 +94,13 @@ module scenes {
             this._meteor.forEach(meteor => {
                 this.addChild(meteor);
             });
+
+            //add scoreboard labels to the scene
+            this.addChild(this._scoreBoard.LivesLabel);
+            this.addChild(this._scoreBoard.ScoreLabel);
+            //this.addChild(this._scoreBoard.HighScoreLabel);
+
+
         }
     }
 }

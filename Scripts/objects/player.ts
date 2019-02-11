@@ -2,7 +2,6 @@ module objects {
     export class Player extends objects.AbstractGameObject {
         // private instance variables
         
-        // public properties
         
         // constructors
         constructor() {

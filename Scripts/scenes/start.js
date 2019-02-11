@@ -25,13 +25,13 @@ var scenes;
         // private methods
         // public methods
         Start.prototype.Start = function () {
-            this._ocean = new objects.Space();
-            this._welcomeLabel = new objects.Label("Mail Pilot", "60px", "Consolas", "#FFFF00", 320, 240, true);
+            this._space = new objects.Space();
+            this._welcomeLabel = new objects.Label("ARROW 2", "60px", "Consolas", "#FF0000", 320, 240, true);
             this._startButton = new objects.Button("startButton", 320, 360, true);
             this.Main();
         };
         Start.prototype.Update = function () {
-            this._ocean.Update();
+            this._space.Update();
         };
         Start.prototype.Destroy = function () {
             this.removeAllChildren();
@@ -39,8 +39,8 @@ var scenes;
         Start.prototype.Reset = function () {
         };
         Start.prototype.Main = function () {
-            // adds ocean to the stage
-            this.addChild(this._ocean);
+            // adds space to the stage
+            this.addChild(this._space);
             this.addChild(this._welcomeLabel);
             this.addChild(this._startButton);
             this._startButton.on("click", function () {
