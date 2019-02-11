@@ -5,8 +5,8 @@ module scenes {
          private _space:objects.Space;
          private _island:objects.Island;
 
-         private _cloudNum: number;
-         private _clouds:objects.Cloud[];
+         private _meteorNum: number;
+         private _meteor:objects.Meteor[];
 
         // public properties
 
@@ -22,14 +22,14 @@ module scenes {
         // public methods
 
         public Start(): void {
-            this._cloudNum = 3;
+            this._meteorNum = 3;
 
-            // Instantiates a new Array container of Type objects.Cloud
-            this._clouds = new Array<objects.Cloud>();
+            // Instantiates a new Array container of Type objects.meteor
+            this._meteor = new Array<objects.Meteor>();
 
-            // Fill the Cloud Array with Clouds
-            for (let count = 0; count < this._cloudNum; count++) {
-                this._clouds[count] = new objects.Cloud(); 
+            // Fill the meteor Array with meteors
+            for (let count = 0; count < this._meteorNum; count++) {
+                this._meteor[count] = new objects.Meteor(); 
             }
 
             this.Main();
@@ -40,9 +40,9 @@ module scenes {
             this._player.Update();
             this._island.Update();
 
-            // Update Each cloud in the Cloud Array
-            for (const cloud of this._clouds) {
-                cloud.Update();
+            // Update Each meteor in the Meteor Array
+            for (const meteor of this._meteor) {
+                meteor.Update();
             }
 
         }
@@ -68,9 +68,9 @@ module scenes {
         this._player = new objects.Player();
         this.addChild(this._player);
 
-        // adds Each Cloud in the Cloud Array to the Scene
-        for (const cloud of this._clouds) {
-            this.addChild(cloud);
+        // adds Each meteor in the meteor Array to the Scene
+        for (const meteor of this._meteor) {
+            this.addChild(meteor);
         }
     }
 }

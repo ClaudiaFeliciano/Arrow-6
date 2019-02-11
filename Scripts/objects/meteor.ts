@@ -1,5 +1,5 @@
 module objects {
-    export class Cloud extends objects.AbstractGameObject {
+    export class Meteor extends objects.AbstractGameObject {
         // private instance variables
         private _verticalSpeed:number;
         private _horizontalSpeed:number;
@@ -8,19 +8,18 @@ module objects {
 
         // constructor
         constructor() {
-            super("cloud");
-
+            super("meteor");
             this.Start();
         }
 
         // private methods
         private _move():void {
-            this.y += this._verticalSpeed;
+            this.y += this._verticalSpeed; //i want my meteor to move not ony vertical but also horizontal
             this.x += this._horizontalSpeed;
         }
 
         private _checkBounds():void {
-            if(this.y > 480 + this.Height) {
+            if(this.x > 1024 + this.Width) {
                 this.Reset();
             }
         }
@@ -30,8 +29,8 @@ module objects {
         public Reset(): void {
             this._verticalSpeed = Math.floor((Math.random() * 5) + 5);
             this._horizontalSpeed = Math.floor((Math.random() * 4) - 2);
-            this.y = -this.Height;
-            this.x = Math.floor((Math.random() * (640 - this.Width)) + this.HalfWidth);
+            this.x = -this.Width; //de donde kiero que comience
+            this.y = Math.floor((Math.random() * (1024 - this.Height)) + this.HalfHeight);
         }        
         
         public Start(): void {

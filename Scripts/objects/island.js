@@ -24,18 +24,18 @@ var objects;
         }
         // private methods
         Island.prototype._move = function () {
-            this.y += this._horizontalSpeed;
+            this.x += this._horizontalSpeed;
         };
         Island.prototype._checkBounds = function () {
-            if (this.y > 480 + this.Height) {
+            if (this.x > 1024 + this.Width) {
                 this.Reset();
             }
         };
         // public methods
         Island.prototype.Reset = function () {
             this._horizontalSpeed = 5;
-            this.y = -this.Height;
-            this.x = Math.floor((Math.random() * (640 - this.Width)) + this.HalfWidth);
+            this.x = -this.Width; //esto me da desde donde el objeto saldra
+            this.y = Math.floor((Math.random() * (1024 - this.Height)) + this.HalfHeight);
         };
         Island.prototype.Start = function () {
             this.Reset();

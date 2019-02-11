@@ -11,7 +11,7 @@
         {id: "startButton", src:"/Assets/images/startButton.png"}, //id le pongo el nombre k desee
         {id: "restartButton", src:"/Assets/images/restartButton.png"},
         {id: "plane", src:"/Assets/images/plane.png"},
-        {id: "cloud", src:"/Assets/images/cloud.png"},
+        {id: "meteor", src:"/Assets/images/meteor.png"},
         {id: "island", src:"/Assets/images/island.png"},
         {id: "space", src:"/Assets/images/space.png"},
         {id: "engineSound", src:"/Assets/audio/engine.ogg"},

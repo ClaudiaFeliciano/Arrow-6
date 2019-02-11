@@ -13,43 +13,43 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var objects;
 (function (objects) {
-    var Cloud = /** @class */ (function (_super) {
-        __extends(Cloud, _super);
+    var Meteor = /** @class */ (function (_super) {
+        __extends(Meteor, _super);
         // public properties
         // constructor
-        function Cloud() {
-            var _this = _super.call(this, "cloud") || this;
+        function Meteor() {
+            var _this = _super.call(this, "meteor") || this;
             _this.Start();
             return _this;
         }
         // private methods
-        Cloud.prototype._move = function () {
+        Meteor.prototype._move = function () {
             this.y += this._verticalSpeed;
             this.x += this._horizontalSpeed;
         };
-        Cloud.prototype._checkBounds = function () {
+        Meteor.prototype._checkBounds = function () {
             if (this.y > 480 + this.Height) {
                 this.Reset();
             }
         };
         // public methods
-        Cloud.prototype.Reset = function () {
+        Meteor.prototype.Reset = function () {
             this._verticalSpeed = Math.floor((Math.random() * 5) + 5);
             this._horizontalSpeed = Math.floor((Math.random() * 4) - 2);
             this.y = -this.Height;
             this.x = Math.floor((Math.random() * (640 - this.Width)) + this.HalfWidth);
         };
-        Cloud.prototype.Start = function () {
+        Meteor.prototype.Start = function () {
             this.Reset();
         };
-        Cloud.prototype.Update = function () {
+        Meteor.prototype.Update = function () {
             this._move();
             this._checkBounds();
         };
-        Cloud.prototype.Destroy = function () {
+        Meteor.prototype.Destroy = function () {
         };
-        return Cloud;
+        return Meteor;
     }(objects.AbstractGameObject));
-    objects.Cloud = Cloud;
+    objects.Meteor = Meteor;
 })(objects || (objects = {}));
-//# sourceMappingURL=cloud.js.map
+//# sourceMappingURL=meteor.js.map

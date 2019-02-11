@@ -1,6 +1,6 @@
 /// <reference path="../../Scripts/objects/button.ts" />
 /// <reference path="../../Scripts/objects/label.ts" />
-/// <reference path="../../Scripts/objects/cloud.ts" />
+/// <reference path="../../Scripts/objects/meteor.ts" />
 /// <reference path="../../Scripts/objects/island.ts" />
 /// <reference path="../../Scripts/objects/space.ts" />
 /// <reference path="../../Scripts/objects/player.ts" />

@@ -25,12 +25,12 @@ var scenes;
         // private methods
         // public methods
         Play.prototype.Start = function () {
-            this._cloudNum = 3;
+            this._meteorNum = 3;
             // Instantiates a new Array container of Type objects.Cloud
-            this._clouds = new Array();
+            this._meteor = new Array();
             // Fill the Cloud Array with Clouds
-            for (var count = 0; count < this._cloudNum; count++) {
-                this._clouds[count] = new objects.Cloud();
+            for (var count = 0; count < this._meteorNum; count++) {
+                this._meteor[count] = new objects.Meteor();
             }
             this.Main();
         };
@@ -39,7 +39,7 @@ var scenes;
             this._player.Update();
             this._island.Update();
             // Update Each cloud in the Cloud Array
-            for (var _i = 0, _a = this._clouds; _i < _a.length; _i++) {
+            for (var _i = 0, _a = this._meteor; _i < _a.length; _i++) {
                 var cloud = _a[_i];
                 cloud.Update();
             }
@@ -60,7 +60,7 @@ var scenes;
             this._player = new objects.Player();
             this.addChild(this._player);
             // adds Each Cloud in the Cloud Array to the Scene
-            for (var _i = 0, _a = this._clouds; _i < _a.length; _i++) {
+            for (var _i = 0, _a = this._meteor; _i < _a.length; _i++) {
                 var cloud = _a[_i];
                 this.addChild(cloud);
             }

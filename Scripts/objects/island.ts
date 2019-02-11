@@ -27,7 +27,7 @@ module objects {
 
         public Reset(): void {
             this._horizontalSpeed = 5;
-            this.x = -this.Width;
+            this.x = -this.Width;//esto me da desde donde el objeto saldra
             this.y = Math.floor((Math.random() * (1024 - this.Height)) + this.HalfHeight);
         }        
         
