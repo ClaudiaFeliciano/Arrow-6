@@ -54,8 +54,8 @@ module scenes {
             // Update Each meteor in the Meteor Array
             for (const meteor of this._meteor) {
                 meteor.Update();
-                console.log("Estoy en el update"); 
-                managers.Collision.Check(this._player, meteor);    //check collision between the arrow and the meteor
+               
+                managers.Collision.Check(this._player, meteor);   //check collision between the arrow and the meteor
             }
 
             //if lives fall below zero switch scenes to the game over scene
@@ -91,12 +91,13 @@ module scenes {
                 this.addChild(meteor);*/
             this._meteor.forEach(meteor => {
                 this.addChild(meteor);
+                
             });
 
             //add scoreboard labels to the scene
             this.addChild(this._scoreBoard.LivesLabel);
             this.addChild(this._scoreBoard.ScoreLabel);
-            //this.addChild(this._scoreBoard.HighScoreLabel);
+           
 
 
         }

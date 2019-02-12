@@ -2,7 +2,6 @@ module config {
     export class Keys {
         //arrow keys
         
-        
         public static UP_ARROW: number = 38;
         public static DOWN_ARROW: number = 40;
 
