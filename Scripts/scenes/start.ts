@@ -21,7 +21,7 @@ module scenes {
             this._space = new objects.Space();
             this._nameGame = new objects.Label("ARROW 6", "60px", "Consolas", "#FF0000", 380, 240, true);
             this._startButton = new objects.Button("startButton", 380, 360, true);
-            this._restartButton = new objects.Button("restartButton", 480, 460, true);
+            this._restartButton = new objects.Button("restartButton",380, 450, true);
 
             this.Main();
         }        
