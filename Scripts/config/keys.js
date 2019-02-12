@@ -4,8 +4,6 @@ var config;
         function Keys() {
         }
         //arrow keys
-        Keys.LEFT_ARROW = 37;
-        Keys.RIGHT_ARROW = 39;
         Keys.UP_ARROW = 38;
         Keys.DOWN_ARROW = 40;
         //WASD keys

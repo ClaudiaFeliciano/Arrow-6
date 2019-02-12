@@ -15,14 +15,12 @@ var scenes;
 (function (scenes) {
     var Play = /** @class */ (function (_super) {
         __extends(Play, _super);
-        // public properties
         // constructor
         function Play() {
             var _this = _super.call(this) || this;
             _this.Start();
             return _this;
         }
-        // private methods
         // public methods
         Play.prototype.Start = function () {
             this._meteorNum = 3;
@@ -50,8 +48,7 @@ var scenes;
             for (var _i = 0, _a = this._meteor; _i < _a.length; _i++) {
                 var meteor = _a[_i];
                 meteor.Update();
-                //check collision between arrow and meteor
-                managers.Collision.Check(this._player, meteor);
+                managers.Collision.Check(this._player, meteor); //check collision between the arrow and the meteor
             }
             //if lives fall below zero switch scenes to the game over scene
             if (this._scoreBoard.Lives <= 0) {
@@ -84,7 +81,6 @@ var scenes;
             //add scoreboard labels to the scene
             this.addChild(this._scoreBoard.LivesLabel);
             this.addChild(this._scoreBoard.ScoreLabel);
-            //this.addChild(this._scoreBoard.HighScoreLabel);
         };
         return Play;
     }(objects.Scene));

@@ -14,9 +14,8 @@
         { id: "island", src: "/Assets/images/island.png" },
         { id: "space", src: "/Assets/images/space.png" },
         { id: "engineSound", src: "/Assets/audio/engine.ogg" },
-        { id: "thunderSound", src: "/Assets/audio/thunder.ogg" },
-        { id: "yaySound", src: "/Assets/audio/yay.ogg" },
-        { id: "arrowsound", src: "/Assets/audio/arrowsound.mpeg" }
+        { id: "bulletSound", src: "/Assets/audio/bullet.mp3" }
+        // { id: "arrowsound", src: "/Assets/audio/arrowsound.mpeg" }
     ]; // Basycally an array struct. Placeholder
     function Init() {
         assetManager = new createjs.LoadQueue(); //create the asset manager

@@ -22,7 +22,6 @@ var objects;
             _this.Start();
             return _this;
         }
-        // private methods
         // public methods
         Player.prototype.Start = function () {
             this.regX = this.HalfWidth;

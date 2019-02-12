@@ -15,19 +15,18 @@ var scenes;
 (function (scenes) {
     var Start = /** @class */ (function (_super) {
         __extends(Start, _super);
-        // public properties
         // constructor
         function Start() {
             var _this = _super.call(this) || this;
             _this.Start();
             return _this;
         }
-        // private methods
         // public methods
         Start.prototype.Start = function () {
             this._space = new objects.Space();
-            this._welcomeLabel = new objects.Label("ARROW 6", "60px", "Consolas", "#FF0000", 380, 240, true);
+            this._nameGame = new objects.Label("ARROW 6", "60px", "Consolas", "#FF0000", 380, 240, true);
             this._startButton = new objects.Button("startButton", 380, 360, true);
+            this._restartButton = new objects.Button("restartButton", 480, 460, true);
             this.Main();
         };
         Start.prototype.Update = function () {
@@ -39,10 +38,10 @@ var scenes;
         Start.prototype.Reset = function () {
         };
         Start.prototype.Main = function () {
-            // adds space to the stage
             this.addChild(this._space);
-            this.addChild(this._welcomeLabel);
+            this.addChild(this._nameGame);
             this.addChild(this._startButton);
+            this.addChild(this._restartButton);
             this._startButton.on("click", function () {
                 managers.Game.currentState = config.Scene.PLAY;
             });

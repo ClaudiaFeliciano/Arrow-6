@@ -15,7 +15,6 @@ var objects;
 (function (objects) {
     var Space = /** @class */ (function (_super) {
         __extends(Space, _super);
-        // public properties
         // constructor
         function Space() {
             var _this = _super.call(this, "space") || this;
