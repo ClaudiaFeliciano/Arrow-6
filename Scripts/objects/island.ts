@@ -11,7 +11,7 @@ module objects {
 
             this.Start();
         }
-
+      
         // private methods
         private _move():void {
             this.x += this._horizontalSpeed;

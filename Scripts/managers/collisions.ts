@@ -7,7 +7,20 @@ module managers {
 
             if (math.Vec2.Distance(P1, P2) < (object1.HalfHeight + object2.HalfHeight)) {
                 if (!object2.isColliding) {
-                    console.log("Collisions with " +  object2.name);
+                    createjs.Sound.play("yay");
+                   
+                    console.log(object2.name);
+                    
+                    /*switch(object2.name){
+                        case "island":
+                        createjs.Sound.play("explosion");
+                        break;
+
+                        case "null":
+                        createjs.Sound.play("bullet");
+                        console.log("estoy aki");
+                        break;
+                    }*/
                     object2.isColliding = true;
                 }
             }
