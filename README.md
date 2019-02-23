@@ -24,4 +24,4 @@ Please make sure to update tests as appropriate.
 
 - Bijesh Shrestha
 - Carlos Zabaleta
-- Claudia Torrez
+- Claudia Torres
