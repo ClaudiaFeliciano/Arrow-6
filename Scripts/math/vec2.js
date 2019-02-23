@@ -15,17 +15,14 @@ var math;
 (function (math) {
     var Vec2 = /** @class */ (function (_super) {
         __extends(Vec2, _super);
-        //private instance variables
-        //cosntructors
         function Vec2(x, y) {
             if (x === void 0) { x = 0; }
             if (y === void 0) { y = 0; }
             return _super.call(this, x, y) || this;
         }
         //public methods
-        //Pythagorean distance between two objects
         Vec2.Distance = function (P1, P2) {
-            return Math.floor(Math.sqrt(Math.pow(P2.x - P1.x, 2) + Math.pow(P2.y - P1.y, 2))); // I am gonna reduce it to an even number
+            return Math.floor(Math.sqrt(Math.pow(P2.x - P1.x, 2) + Math.pow(P2.y - P1.y, 2)));
         };
         return Vec2;
     }(createjs.Point));
