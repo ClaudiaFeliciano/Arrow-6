@@ -49,13 +49,13 @@ module scenes {
             this._island.Update();
 
             //check collision between arrow and island
-            managers.Collisions.Check(this._player, this._island);
+            managers.Collision.Check(this._player, this._island);
 
             // Update Each meteor in the Meteor Array
             for (const meteor of this._meteor) {
                 meteor.Update();
             //check collision between arrow and meteor
-            managers.Collisions.Check(this._player, meteor);   //check collision between the arrow and the meteor
+            managers.Collision.Check(this._player, meteor);   //check collision between the arrow and the meteor
             }
 
             //if lives fall below zero switch scenes to the game over scene

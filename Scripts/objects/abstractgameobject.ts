@@ -5,6 +5,7 @@ module objects {
         private _height: number;
         private _halfWidth: number;
         private _halfHeight: number;
+    
        
         public isColliding: boolean;// I can track my collision
 
@@ -17,8 +18,8 @@ module objects {
             this._width = newValue;
             this.HalfWidth = this._width * 0.5;
         }
-        
-        
+
+       
         get Height(): number {
             return this._height;
         }
@@ -47,7 +48,7 @@ module objects {
         // constructors
         constructor(imageString: string) {
             super(managers.Game.assetManager.getResult(imageString));
-            // this.name= imageString; //name come from the superclass Bitmap            
+            this.name= imageString; //name come from the superclass Bitmap            
             this._initialize();
         }
 
@@ -55,10 +56,6 @@ module objects {
         private _initialize(): void {
             this.Width = this.getBounds().width;
             this.Height = this.getBounds().height;
-            /* this.HalfWidth = this.Width * 0.5;
-             this.HalfHeight = this.Height * 0.5; //focus my objects on the middle
-             this.regX = this.HalfWidth;
-             this.regY= this.HalfHeight;*/
             this.isColliding = false;
         }
 

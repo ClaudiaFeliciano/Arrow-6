@@ -32,7 +32,7 @@ var scenes;
             }
             this._engineSound = createjs.Sound.play("engineSound"); //lo pongo akip ara que comience en cuanto comience la scence
             this._engineSound.loop = -1; //play forever
-            this._engineSound.volume = 0.2;
+            this._engineSound.volume = 0.1;
             this._scoreBoard = new managers.ScoreBoard();
             managers.Game.scoreBoard = this._scoreBoard;
             this.Main();
@@ -43,13 +43,13 @@ var scenes;
             this._player.Update();
             this._island.Update();
             //check collision between arrow and island
-            managers.Collisions.Check(this._player, this._island);
+            managers.Collision.Check(this._player, this._island);
             // Update Each meteor in the Meteor Array
             for (var _i = 0, _a = this._meteor; _i < _a.length; _i++) {
                 var meteor = _a[_i];
                 meteor.Update();
                 //check collision between arrow and meteor
-                managers.Collisions.Check(this._player, meteor); //check collision between the arrow and the meteor
+                managers.Collision.Check(this._player, meteor); //check collision between the arrow and the meteor
             }
             //if lives fall below zero switch scenes to the game over scene
             if (this._scoreBoard.Lives <= 0) {
