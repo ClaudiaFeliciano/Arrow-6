@@ -36,7 +36,8 @@ module scenes {
             this._engineSound = createjs.Sound.play("engineSound");//lo pongo akip ara que comience en cuanto comience la scence
             this._engineSound.loop = -1;//play forever
             this._engineSound.volume = 0.1;
-
+             
+            //create the score board UI for the scene
             this._scoreBoard = new managers.ScoreBoard();
             managers.Game.scoreBoard = this._scoreBoard;
             this.Main();
