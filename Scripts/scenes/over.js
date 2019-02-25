@@ -23,10 +23,13 @@ var scenes;
             return _this;
         }
         // private methods
+        Over.prototype._restartButtonClick = function () {
+            managers.Game.currentState = config.Scene.PLAY;
+        };
         // public methods
         Over.prototype.Start = function () {
             this._space = new objects.Space();
-            this._gameOverLabel = new objects.Label("Game Over", "60px", "Consolas", "#FFFF00", 320, 240, true);
+            this._gameOverLabel = new objects.Label("Game Over", "60px", "Consolas", "#FF0000", 320, 240, true);
             this._restartButton = new objects.Button("restartButton", 320, 360, true);
             this.Main();
         };
@@ -39,13 +42,12 @@ var scenes;
         Over.prototype.Reset = function () {
         };
         Over.prototype.Main = function () {
-            // adds ocean to the stage
+            // adds ocean to the stage     
             this.addChild(this._space);
             this.addChild(this._gameOverLabel);
             this.addChild(this._restartButton);
-            this._restartButton.on("click", function () {
-                // start the play scene
-            });
+            this._restartButton.on("click", this._restartButtonClick);
+            // restart the play scene    
         };
         return Over;
     }(objects.Scene));

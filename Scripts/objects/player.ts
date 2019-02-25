@@ -30,21 +30,21 @@ module objects {
                 this.y = this.HalfWidth;
             }
         }
-        public Move(): void{
-           
+        public Move(): void {
+
             //mouse control
             //this.y = managers.Game.stage.mouseY;//where the y-coordinate of my plane is gonna be on my x-coordinate.
             //My plane is not allowed go right left with my mouse
-           
-            //keyboard control
-            if(managers.Game.keyboardManager.moveForward){
-                this.y -=5;
 
-            } 
-            if(managers.Game.keyboardManager.moveBackward){
-                this.y +=5;
-                
-            } 
+            //keyboard control
+            if (managers.Game.keyboardManager.moveForward) {
+                this.y -= 5;
+
+            }
+            if (managers.Game.keyboardManager.moveBackward) {
+                this.y += 5;
+
+            }
         }
 
         public Reset(): void {
