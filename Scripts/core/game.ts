@@ -6,6 +6,7 @@
   let assetManager: createjs.LoadQueue; //hold everything that i want to load ( load the array of the manifest)
   let currentScene: objects.Scene;
   let currentState: config.Scene;
+  let keyboardManager: managers.Keyboard;
 
   let assetManifest = [
     { id: "startButton", src: "/Assets/images/startButton.png" }, //id le pongo el nombre k desee
@@ -39,6 +40,9 @@
 
     currentState = config.Scene.START;
     managers.Game.currentState = currentState; //it makes a refrence to my stage and I hold it in my global object
+    
+    keyboardManager = new managers.Keyboard();
+    managers.Game.keyboardManager = keyboardManager;
     Main();
   }
 

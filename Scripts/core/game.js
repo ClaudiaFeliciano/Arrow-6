@@ -6,6 +6,7 @@
     var assetManager; //hold everything that i want to load ( load the array of the manifest)
     var currentScene;
     var currentState;
+    var keyboardManager;
     var assetManifest = [
         { id: "startButton", src: "/Assets/images/startButton.png" },
         { id: "restartButton", src: "/Assets/images/restartButton.png" },
@@ -34,6 +35,8 @@
         createjs.Ticker.on("tick", Update);
         currentState = config.Scene.START;
         managers.Game.currentState = currentState; //it makes a refrence to my stage and I hold it in my global object
+        keyboardManager = new managers.Keyboard();
+        managers.Game.keyboardManager = keyboardManager;
         Main();
     }
     // this is the main game loop

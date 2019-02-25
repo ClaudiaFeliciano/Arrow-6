@@ -5,11 +5,11 @@ module managers {
         //public instances variables
         public moveForward: boolean;
         public moveBackward: boolean;
-
         public moveLeft: boolean;
         public moveRight: boolean;
+
         public jump: boolean;
-        public enable: boolean;
+        public enable: boolean; //turn off my keyboard
         public paused: boolean;
 
         //cosntructor
@@ -31,22 +31,54 @@ module managers {
                     this.moveForward = true;
                     break;
 
-                
-                case config.Keys.S:
-                case config.Keys.DOWN_ARROW:
-                    this.moveBackward = true;
+                case config.Keys.A:
+                case config.Keys.LEFT_ARROW:
+                this.moveLeft = true;;
                     break;
 
-              
+                case config.Keys.S:
+                case config.Keys.DOWN_ARROW:
+                this.moveBackward = true;
+                    break;
 
                 case config.Keys.D:
-                case config.Keys.space:
+                case config.Keys.RIGHT_ARROW:
+                this.moveRight = true;
+                    break;
+
+                    case config.Keys.space:
+                    this.jump= true;
                     break;
             }
         }
 
-        public onKeyUp(event: KeyboardEvent): void{
-            
+        public onKeyUp(event: KeyboardEvent): void {
+            switch (event.keyCode) {
+               
+                case config.Keys.W: //up key
+                case config.Keys.UP_ARROW:
+                    this.moveForward = false;
+                    break;
+
+                case config.Keys.A:
+                case config.Keys.LEFT_ARROW:
+                this.moveLeft = false;;
+                    break;
+
+                case config.Keys.S:
+                case config.Keys.DOWN_ARROW:
+                this.moveBackward = false;
+                    break;
+
+                case config.Keys.D:
+                case config.Keys.RIGHT_ARROW:
+                this.moveRight = false;
+                    break;
+
+                    case config.Keys.space:
+                    this.jump= false;
+                    break;
+            }
         }
     }
 }
