@@ -29,8 +29,9 @@ var scenes;
         // public methods
         Over.prototype.Start = function () {
             this._space = new objects.Space();
-            this._gameOverLabel = new objects.Label("Game Over", "60px", "Consolas", "#FF0000", 320, 240, true);
-            this._restartButton = new objects.Button("restartButton", 320, 360, true);
+            this._gameOverLabel = new objects.Label("Game Over", "60px", "Consolas", "#FF0000", 345, 240, true);
+            this._restartButton = new objects.Button("restartButton", 360, 360, true);
+            this._scoreboard = new managers.ScoreBoard();
             this.Main();
         };
         Over.prototype.Update = function () {
@@ -46,6 +47,9 @@ var scenes;
             this.addChild(this._space);
             this.addChild(this._gameOverLabel);
             this.addChild(this._restartButton);
+            //add scoreboard to the scence
+            this.addChild(this._scoreboard.HighScoreLabel);
+            this._scoreboard.HighScore = managers.Game.highScore;
             this._restartButton.on("click", this._restartButtonClick);
             // restart the play scene    
         };

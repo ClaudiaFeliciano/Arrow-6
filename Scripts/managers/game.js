@@ -5,6 +5,7 @@ var managers;
         }
         ; //access to all my access
         ; // wich current scene is
+        Game.highScore = 0;
         return Game;
     }());
     managers.Game = Game;

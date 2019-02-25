@@ -13,6 +13,10 @@ var managers;
                         case "meteor":
                             createjs.Sound.play("yaySound");
                             managers.Game.scoreBoard.Score += 100;
+                            if (managers.Game.highScore <= managers.Game.scoreBoard.Score) {
+                                managers.Game.scoreBoard.HighScore = managers.Game.scoreBoard.Score;
+                                managers.Game.highScore = managers.Game.scoreBoard.HighScore;
+                            }
                             break;
                         case "island":
                             createjs.Sound.play("yaySound");

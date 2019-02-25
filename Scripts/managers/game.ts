@@ -6,5 +6,7 @@ module managers {
         public static currentState:config.Scene; ;// wich current scene is
         public static scoreBoard: managers.ScoreBoard;
         public static keyboardManager : managers.Keyboard;
+        public static highScore : number = 0;
+
     }
 }
