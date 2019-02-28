@@ -1,0 +1,41 @@
+{
+
+"images": [
+    "textureArrowData.png"
+],
+
+"framerate": 20,
+"frames": [
+    [2, 2, 400, 152, 0, 188.89, 66.71],
+    [404, 2, 80, 85, 0, 37.78, 37.31],
+    [2, 156, 80, 84, 0, 37.78, 36.87],
+    [84, 156, 150, 76, 0, 70.83, 33.36],
+    [236, 156, 67, 71, 0, 31.64, 31.16],
+    [305, 156, 151, 77, 0, 71.31, 33.79],
+    [2, 242, 70, 113, 0, 33.06, 49.59],
+    [74, 242, 70, 113, 0, 33.06, 49.59],
+    [146, 242, 151, 77, 0, 71.31, 33.79],
+    [299, 242, 151, 77, 0, 71.31, 33.79],
+    [2, 357, 151, 77, 0, 71.31, 33.79]
+],
+
+"animations": {
+    "arrow": { "frames": [0] },
+    "enemy": { "frames": [1] },
+    "enemy0": { "frames": [2] },
+    "exit": { "frames": [3] },
+    "meteor": { "frames": [4] },
+    "play": { "frames": [5] },
+    "player": { "frames": [6] },
+    "player0": { "frames": [7] },
+    "restart": { "frames": [8] },
+    "resume": { "frames": [9] },
+    "setting": { "frames": [10] }
+},
+
+"texturepacker": [
+        "SmartUpdateHash: $TexturePacker:SmartUpdate:49a675e8ba3627583028a475114f5c02:ddde32805c89fe9c0973aefeb85f88fd:a69ec72bbf7a12989a30ea16c5b79614$",
+        "Created with TexturePacker (https://www.codeandweb.com/texturepacker) for EaselJS"
+]
+
+}

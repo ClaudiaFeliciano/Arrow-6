@@ -7,6 +7,8 @@ module objects {
         // constructor
         constructor() {
             super();
+
+            
         }
 
         // private methods

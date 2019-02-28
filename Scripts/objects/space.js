@@ -17,7 +17,7 @@ var objects;
         __extends(Space, _super);
         // constructor
         function Space() {
-            var _this = _super.call(this, "space") || this;
+            var _this = _super.call(this, managers.Game.assetManager.getResult("space")) || this;
             _this.Start();
             return _this;
         }
@@ -46,7 +46,7 @@ var objects;
         Space.prototype.Destroy = function () {
         };
         return Space;
-    }(objects.AbstractGameObject));
+    }(createjs.Bitmap));
     objects.Space = Space;
 })(objects || (objects = {}));
 //# sourceMappingURL=space.js.map

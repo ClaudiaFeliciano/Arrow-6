@@ -42,9 +42,9 @@ var scenes;
         Play.prototype.Update = function () {
             this._space.Update();
             this._player.Update();
-            this._island.Update();
+            this._enemy.Update();
             //check collision between arrow and island
-            managers.Collision.Check(this._player, this._island);
+            managers.Collision.Check(this._player, this._enemy);
             // Update Each meteor in the Meteor Array
             for (var _i = 0, _a = this._meteor; _i < _a.length; _i++) {
                 var meteor = _a[_i];
@@ -68,9 +68,9 @@ var scenes;
             // adds space to the scene
             this._space = new objects.Space();
             this.addChild(this._space);
-            // adds island to the scene
-            this._island = new objects.Island();
-            this.addChild(this._island);
+            // adds enemy to the scene
+            this._enemy = new objects.Enemy();
+            this.addChild(this._enemy);
             // adds player to the scene
             this._player = new objects.Player();
             this.addChild(this._player);

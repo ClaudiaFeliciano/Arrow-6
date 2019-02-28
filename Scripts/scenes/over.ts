@@ -24,7 +24,7 @@ module scenes {
         public Start(): void {
             this._space = new objects.Space();
             this._gameOverLabel = new objects.Label("Game Over", "60px", "Consolas", "#FF0000", 345, 240, true);         
-            this._restartButton = new objects.Button("restartButton", 360, 360, true);
+            this._restartButton = new objects.Button("restart", 360, 360, true);
             this._scoreboard = new managers.ScoreBoard();
             this.Main();
         }

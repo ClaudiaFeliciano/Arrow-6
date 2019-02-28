@@ -19,7 +19,7 @@ module managers{
                         }
                         break;
 
-                        case "island":
+                        case "enemy":
                         createjs.Sound.play("yaySound");
                         managers.Game.scoreBoard.Lives -=1;
                         break;

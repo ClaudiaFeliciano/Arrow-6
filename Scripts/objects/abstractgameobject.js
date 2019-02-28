@@ -17,7 +17,7 @@ var objects;
         __extends(AbstractGameObject, _super);
         // constructors
         function AbstractGameObject(imageString) {
-            var _this = _super.call(this, managers.Game.assetManager.getResult(imageString)) || this;
+            var _this = _super.call(this, managers.Game.textureArrow, imageString) || this;
             _this.name = imageString; //name come from the superclass Bitmap            
             _this._initialize();
             return _this;
@@ -72,7 +72,7 @@ var objects;
             this.isColliding = false;
         };
         return AbstractGameObject;
-    }(createjs.Bitmap));
+    }(createjs.Sprite));
     objects.AbstractGameObject = AbstractGameObject;
 })(objects || (objects = {}));
 //# sourceMappingURL=abstractgameobject.js.map

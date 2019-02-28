@@ -1,11 +1,12 @@
 module objects {
-    export class Space extends objects.AbstractGameObject {
+    export class Space extends createjs.Bitmap{//objects.AbstractGameObject {
         // private instance variables
         private horizontalSpeed:number;
+        
 
         // constructor
         constructor() {
-            super("space");
+            super(managers.Game.assetManager.getResult("space"));
 
             this.Start();
         }

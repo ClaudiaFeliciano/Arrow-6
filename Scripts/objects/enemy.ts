@@ -1,5 +1,5 @@
 module objects {
-    export class Island extends objects.AbstractGameObject {
+    export class Enemy extends objects.AbstractGameObject {
         // private instance variables
         private _horizontalSpeed:number;
 
@@ -7,7 +7,7 @@ module objects {
 
         // constructor
         constructor() {
-            super("island");
+            super("enemy");
 
             this.Start();
         }

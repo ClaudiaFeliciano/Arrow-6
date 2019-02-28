@@ -13,41 +13,41 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var objects;
 (function (objects) {
-    var Island = /** @class */ (function (_super) {
-        __extends(Island, _super);
+    var Enemy = /** @class */ (function (_super) {
+        __extends(Enemy, _super);
         // public properties
         // constructor
-        function Island() {
-            var _this = _super.call(this, "island") || this;
+        function Enemy() {
+            var _this = _super.call(this, "enemy") || this;
             _this.Start();
             return _this;
         }
         // private methods
-        Island.prototype._move = function () {
+        Enemy.prototype._move = function () {
             this.x += this._horizontalSpeed;
         };
-        Island.prototype._checkBounds = function () {
+        Enemy.prototype._checkBounds = function () {
             if (this.x > 1024 + this.Width) {
                 this.Reset();
             }
         };
         // public methods
-        Island.prototype.Reset = function () {
+        Enemy.prototype.Reset = function () {
             this._horizontalSpeed = 5;
             this.x = -this.Width; //esto me da desde donde el objeto saldra
             this.y = Math.floor((Math.random() * (1024 - this.Height)) + this.HalfHeight);
         };
-        Island.prototype.Start = function () {
+        Enemy.prototype.Start = function () {
             this.Reset();
         };
-        Island.prototype.Update = function () {
+        Enemy.prototype.Update = function () {
             this._move();
             this._checkBounds();
         };
-        Island.prototype.Destroy = function () {
+        Enemy.prototype.Destroy = function () {
         };
-        return Island;
+        return Enemy;
     }(objects.AbstractGameObject));
-    objects.Island = Island;
+    objects.Enemy = Enemy;
 })(objects || (objects = {}));
-//# sourceMappingURL=island.js.map
+//# sourceMappingURL=enemy.js.map

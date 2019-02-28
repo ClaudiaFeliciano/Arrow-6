@@ -4,7 +4,7 @@ module objects {
 
         // constructors
         constructor() {
-            super("plane");
+            super("player");
             this.Start();
         }
 

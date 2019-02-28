@@ -18,7 +18,7 @@ var objects;
         // private instance variables
         // constructors
         function Player() {
-            var _this = _super.call(this, "plane") || this;
+            var _this = _super.call(this, "player") || this;
             _this.Start();
             return _this;
         }

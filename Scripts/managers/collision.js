@@ -18,7 +18,7 @@ var managers;
                                 managers.Game.highScore = managers.Game.scoreBoard.HighScore;
                             }
                             break;
-                        case "island":
+                        case "enemy":
                             createjs.Sound.play("yaySound");
                             managers.Game.scoreBoard.Lives -= 1;
                             break;

@@ -1,5 +1,5 @@
 module objects {
-    export abstract class AbstractGameObject extends createjs.Bitmap { //clase abstracta
+    export abstract class AbstractGameObject extends createjs.Sprite { //clase abstracta
         // private instance variables
         private _width: number;
         private _height: number;
@@ -47,7 +47,7 @@ module objects {
 
         // constructors
         constructor(imageString: string) {
-            super(managers.Game.assetManager.getResult(imageString));
+            super(managers.Game.textureArrow, imageString);
             this.name= imageString; //name come from the superclass Bitmap            
             this._initialize();
         }

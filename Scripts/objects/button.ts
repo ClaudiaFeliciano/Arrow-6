@@ -1,7 +1,7 @@
 module objects {
-    export class Button extends createjs.Bitmap {
+    export class Button extends objects.AbstractGameObject {
         // private instance variables
-        private _width:number;
+       /* private _width:number;
         private _height:number;
         private _halfWidth:number;
         private _halfHeight:number;
@@ -39,7 +39,7 @@ module objects {
 
         set HalfWidth(newValue:number) {
             this._halfWidth = newValue;
-        }
+        }*/
 
         // constructor
 
@@ -51,11 +51,9 @@ module objects {
          * @param {boolean} [isCentered=false]
          */
         constructor(imageString:string, x:number = 0, y:number = 0, isCentered:boolean = false) {
-            super(managers.Game.assetManager.getResult(imageString));
+            super(imageString);
 
-            this.Width = this.getBounds().width; ;//ahora puedo hacerlo aki pork el assetManager give me an object that i can measure, i can get bound
-            this.Height = this.getBounds().height;
-
+            
             if(isCentered) {
                 this.regX = this.HalfWidth;
                 this.regY = this.HalfHeight;
@@ -81,5 +79,20 @@ module objects {
         }
 
         // public methods
+        public Reset(): void {
+
+        }
+
+        public Start(): void {
+
+        }
+
+        public Update(): void {
+
+        }
+
+        public Destroy(): void {
+
+        }
     }
 }
