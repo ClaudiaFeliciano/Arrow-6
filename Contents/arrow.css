@@ -1,3 +1,47 @@
+/*@font-face {
+    font-family: 'Carrington';
+    src: url('./Assets/fonts/carrington.woff2') format('woff2'),
+         url('./Assets/fonts/carrington.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+*/
+@font-face {
+    font-family: 'Dobkinplain';
+    src: url('./Assets/fonts/dobkinplain.woff2') format('woff2'),
+         url('./Assets/fonts/dobkinplain.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+/*
+@font-face {
+    font-family: 'Berkshirewash';
+    src: url('./Assets/fonts/berkshireswash.woff2') format('woff2'),
+         url('./Assets/fonts/berkshireswash.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'Nanum';
+    src: url('./Assets/fonts/nanum.woff2') format('woff2'),
+         url('./Assets/fonts/nanum.woff') format('woff');
+    font-weight: normal;
+
+}
+@font-face {
+    font-family: 'Dock51';
+    src: url('./Assets/fonts/dock51.woff2') format('woff2'),
+         url('./Assets/fonts/dock51.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-style: normal;
+
+}*/
+
+
 #canvas{
-    border:2px black dotted
+    border:2px black 
 }
