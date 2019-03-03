@@ -1,7 +1,7 @@
 module scenes {
     export class Start extends objects.Scene {
         // private instance variable
-        private _nameGame: objects.Label;
+        private _nameGame: objects.Button;
         private _space: objects.Space;
         private _startButton: objects.Button;
         private _restartButton: objects.Button;
@@ -17,11 +17,12 @@ module scenes {
         // public methods
 
         public Start(): void {
-          
+
             this._space = new objects.Space();
-            this._nameGame = new objects.Label("ARROW 6", "60px", "Dobkinplain", "#ed8404", 380, 240, true);
-            this._startButton = new objects.Button("play", 380, 360, true);
-            this._restartButton = new objects.Button("restart", 380, 450, true);
+
+            this._nameGame = new objects.Button("ArrowGame", 380, 235, true);
+            this._startButton = new objects.Button("start", 380, 360, true);
+            this._restartButton = new objects.Button("exit", 380, 450, true);
             console.log(this._space);
 
             this.Main();
@@ -29,7 +30,7 @@ module scenes {
 
         public Update(): void {
             this._space.Update();
-            
+
         }
 
         public Destroy(): void {

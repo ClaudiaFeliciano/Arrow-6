@@ -29,8 +29,8 @@ var scenes;
         // public methods
         Over.prototype.Start = function () {
             this._space = new objects.Space();
-            this._gameOverLabel = new objects.Label("Game Over", "60px", "Consolas", "#FF0000", 345, 240, true);
-            this._restartButton = new objects.Button("restart", 360, 360, true);
+            this._gameOver = new objects.Button("gameOver", 380, 235, true);
+            this._restartButton = new objects.Button("replay", 370, 360, true);
             this._scoreboard = new managers.ScoreBoard();
             this.Main();
         };
@@ -45,7 +45,7 @@ var scenes;
         Over.prototype.Main = function () {
             // adds ocean to the stage     
             this.addChild(this._space);
-            this.addChild(this._gameOverLabel);
+            this.addChild(this._gameOver);
             this.addChild(this._restartButton);
             //add scoreboard to the scence
             this.addChild(this._scoreboard.HighScoreLabel);

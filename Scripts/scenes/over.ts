@@ -1,11 +1,11 @@
 module scenes {
     export class Over extends objects.Scene {
         // private instance variable
-        private _gameOverLabel: objects.Label;
+        private _gameOver: objects.Button;
         private _space: objects.Space;
         private _restartButton: objects.Button;
         private _scoreboard: managers.ScoreBoard;
-       
+
         // public properties
 
         // constructor
@@ -23,8 +23,8 @@ module scenes {
 
         public Start(): void {
             this._space = new objects.Space();
-            this._gameOverLabel = new objects.Label("Game Over", "60px", "Consolas", "#FF0000", 345, 240, true);         
-            this._restartButton = new objects.Button("restart", 360, 360, true);
+            this._gameOver = new objects.Button("gameOver", 380, 235, true);
+            this._restartButton = new objects.Button("replay", 370, 360, true);
             this._scoreboard = new managers.ScoreBoard();
             this.Main();
         }
@@ -44,14 +44,14 @@ module scenes {
         public Main(): void {
             // adds ocean to the stage     
             this.addChild(this._space);
-            this.addChild(this._gameOverLabel);
+            this.addChild(this._gameOver);
             this.addChild(this._restartButton);
 
             //add scoreboard to the scence
-            
+
             this.addChild(this._scoreboard.HighScoreLabel);
-            this._scoreboard.HighScore= managers.Game.highScore;
-            
+            this._scoreboard.HighScore = managers.Game.highScore;
+
 
             this._restartButton.on("click", this._restartButtonClick);
             // restart the play scene    
