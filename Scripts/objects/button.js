@@ -83,6 +83,7 @@ var objects;
         // event handlers
         Button.prototype._over = function (event) {
             this.alpha = 0.7; // 70% opacity
+            createjs.Sound.play("pep");
         };
         Button.prototype._out = function (event) {
             this.alpha = 1.0; // 100% opacity

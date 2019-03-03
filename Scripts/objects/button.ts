@@ -72,6 +72,7 @@ module objects {
         // event handlers
         private _over(event:createjs.MouseEvent):void {
             this.alpha = 0.7; // 70% opacity
+            createjs.Sound.play("pep");
         }
 
         private _out(event:createjs.MouseEvent):void {

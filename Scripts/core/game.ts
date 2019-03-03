@@ -73,7 +73,8 @@
       { id: "gamearrow", src: "/Assets/images/ArrowGame.png" },
       { id: "engineSound", src: "/Assets/audio/engine.ogg" },
       { id: "bulletSound", src: "/Assets/audio/bullet.mp3" },
-      { id: "yaySound", src: "/Assets/audio/yay.ogg" }
+      { id: "yaySound", src: "/Assets/audio/yay.ogg" },
+      { id: "pep", src: "/Assets/audio/pep.mp3" }
   
     ]; // Basycally an array struct. Placeholder
   
