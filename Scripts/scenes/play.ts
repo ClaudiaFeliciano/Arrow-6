@@ -33,7 +33,7 @@ module scenes {
             for (let count = 0; count < this._meteorNum; count++) {
                 this._meteor[count] = new objects.Meteor();
             }
-            this._engineSound = createjs.Sound.play("engineSound");//lo pongo akip ara que comience en cuanto comience la scence
+            this._engineSound = createjs.Sound.play("gameSound");//lo pongo akip ara que comience en cuanto comience la scence
             this._engineSound.loop = -1;//play forever
             this._engineSound.volume = 0.1;
              

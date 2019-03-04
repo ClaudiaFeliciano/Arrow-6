@@ -4,6 +4,7 @@ module managers {
         private _lives: number;
         private _score: number;
         private _highscores: number;
+        //private _livescoin: objects.Live;
 
         // public Instance variables
         public LivesLabel: objects.Label;
@@ -46,6 +47,7 @@ module managers {
             this.LivesLabel = new objects.Label("Lives: ", "20px", "Consolas", "#FFF000", 10, 10, false);
             this.ScoreLabel = new objects.Label("Score: 99999 ", "20px", "Consolas", "#FFF000", 640, 10, false);
             this.HighScoreLabel = new objects.Label("High Score: ", "20px", "Consolas", "#FFF000", 350, 295, true);
+           // this._livescoin = new objects.Live(); 
 
             this.Lives = 5;
             this.Score = 0;

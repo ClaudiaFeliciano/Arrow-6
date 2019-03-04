@@ -31,6 +31,7 @@ module objects {
             this._horizontalSpeed = Math.floor((Math.random() * 4) - 2);
             this.x = -this.Width; //de donde kiero k comience
             this.y = Math.floor((Math.random() * (1024 - this.Height)) + this.HalfHeight);
+            this.alpha = 1;
         }        
         
         public Start(): void {

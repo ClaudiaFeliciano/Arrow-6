@@ -11,15 +11,22 @@ var managers;
                     object2.isColliding = true;
                     switch (object2.name) {
                         case "meteor":
-                            createjs.Sound.play("yaySound");
-                            managers.Game.scoreBoard.Score += 100;
-                            if (managers.Game.highScore <= managers.Game.scoreBoard.Score) {
-                                managers.Game.scoreBoard.HighScore = managers.Game.scoreBoard.Score;
-                                managers.Game.highScore = managers.Game.scoreBoard.HighScore;
+                            if (object2.alpha != 0) {
+                                createjs.Sound.play("meteorSound");
+                                managers.Game.scoreBoard.Score += 100;
+                                if (managers.Game.scoreBoard.Score % 1000 == 0) {
+                                    managers.Game.scoreBoard.Lives += 1;
+                                    createjs.Sound.play("extralive");
+                                }
+                                if (managers.Game.highScore <= managers.Game.scoreBoard.Score) {
+                                    managers.Game.scoreBoard.HighScore = managers.Game.scoreBoard.Score;
+                                    managers.Game.highScore = managers.Game.scoreBoard.HighScore;
+                                    object2.alpha = 0;
+                                }
                             }
                             break;
                         case "enemy":
-                            createjs.Sound.play("yaySound");
+                            createjs.Sound.play("explosion");
                             managers.Game.scoreBoard.Lives -= 1;
                             break;
                     }

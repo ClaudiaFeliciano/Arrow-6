@@ -49,13 +49,17 @@
             "gameOver": { "frames": [4] },
             "info": { "frames": [5] },
             "infoActive": { "frames": [6] },
-            "Live": { "frames": [7, 8, 9, 10, 11, 12, 13, 14, 15, 16] },
+            "Live": { "frames": [7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+                "speed": 0.5 },
             "menu": { "frames": [17] },
             "menuActive": { "frames": [18] },
             "meteor": { "frames": [19] },
             "music": { "frames": [20] },
             "musicActive": { "frames": [21] },
-            "player": { "frames": [22, 23] },
+            "player": {
+                "frames": [22, 23],
+                "speed": 0.5
+            },
             "replay": { "frames": [24] },
             "replayActive": { "frames": [25] },
             "Settings": { "frames": [26] },
@@ -66,9 +70,11 @@
     var assetManifest = [
         { id: "space", src: "/Assets/images/space.png" },
         { id: "gamearrow", src: "/Assets/images/ArrowGame.png" },
-        { id: "engineSound", src: "/Assets/audio/engine.ogg" },
+        { id: "explosion", src: "/Assets/audio/explosion.mp3" },
         { id: "bulletSound", src: "/Assets/audio/bullet.mp3" },
-        { id: "yaySound", src: "/Assets/audio/yay.ogg" },
+        { id: "meteorSound", src: "/Assets/audio/meteorSound.mp3" },
+        { id: "gameSound", src: "/Assets/audio/space.mp3" },
+        { id: "extralive", src: "/Assets/audio/extralive.mp3" },
         { id: "pep", src: "/Assets/audio/pep.mp3" }
     ]; // Basycally an array struct. Placeholder
     function Init() {
