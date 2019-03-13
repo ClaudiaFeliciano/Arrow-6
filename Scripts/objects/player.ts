@@ -68,6 +68,7 @@ module objects {
                     let shoot = managers.Game.shootManager.Shoots[currentshot];
                     shoot.x = this.x + -10 ;// desde donde va a salir el shoot
                     shoot.y = this.y + 35;
+                    createjs.Sound.play("shootSound");
 
                     managers.Game.shootManager.CurrentShoot++;
                     if(managers.Game.shootManager.CurrentShoot >49){
