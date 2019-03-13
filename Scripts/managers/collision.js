@@ -32,6 +32,7 @@ var managers;
                             boom.x = object2.x - object2.Width;
                             boom.y = object2.y - object2.Height;
                             managers.Game.sceneObject.addChild(boom);
+                            object2.Reset();
                             break;
                     }
                 }

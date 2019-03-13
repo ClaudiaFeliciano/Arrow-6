@@ -55,6 +55,12 @@ var scenes;
                 //check collision between arrow and meteor
                 managers.Collision.Check(this._player, meteor); //check collision between the arrow and the meteor
             }
+            for (var _b = 0, _c = this._shotManager.Shoots; _b < _c.length; _b++) {
+                var shoot = _c[_b];
+                //  shoot.Update();
+                managers.Collision.Check(this._enemy, shoot);
+                //console.log("estoy aki");
+            }
             //if lives fall below zero switch scenes to the game over scene
             if (this._scoreBoard.Lives <= 0) {
                 this._engineSound.stop(); //sino me sigue sonando the app

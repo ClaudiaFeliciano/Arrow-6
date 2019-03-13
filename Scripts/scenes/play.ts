@@ -48,7 +48,7 @@ module scenes {
             this._space.Update();
             this._player.Update();
             this._enemy.Update();
-            this._shotManager.Update();
+           this._shotManager.Update(); 
 
             //check collision between arrow and island
             managers.Collision.Check(this._player, this._enemy);
@@ -58,6 +58,12 @@ module scenes {
                 meteor.Update();
             //check collision between arrow and meteor
             managers.Collision.Check(this._player, meteor);   //check collision between the arrow and the meteor
+            }
+        
+            for (const shoot of this._shotManager.Shoots) {
+              //  shoot.Update();
+            managers.Collision.Check(this._enemy, shoot);   
+            //console.log("estoy aki");
             }
 
             //if lives fall below zero switch scenes to the game over scene
