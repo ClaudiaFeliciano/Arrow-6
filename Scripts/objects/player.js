@@ -16,6 +16,7 @@ var objects;
     var Player = /** @class */ (function (_super) {
         __extends(Player, _super);
         // private instance variables
+        //private _shootOrigin: math.Vec2;
         // constructors
         function Player() {
             var _this = _super.call(this, "player") || this;
@@ -28,6 +29,7 @@ var objects;
             this.regY = this.HalfHeight;
             this.x = 680; //la posicion donde va a comenzar el avion como era de arriba hacia abajo 0 es arriba y 435 es pegado a abajo, menos la altura del avion
             this.y = 250; //kiero k el avion comienze en el medio de mi eje y
+            //this._shootOrigin = new math.Vec2();
         };
         Player.prototype.Update = function () {
             this.Move();
@@ -39,6 +41,7 @@ var objects;
             if (this.y <= this.HalfWidth) {
                 this.y = this.HalfWidth;
             }
+            this.ShootFire();
         };
         Player.prototype.Move = function () {
             //mouse control
@@ -55,6 +58,27 @@ var objects;
         Player.prototype.Reset = function () {
         };
         Player.prototype.Destroy = function () {
+        };
+        Player.prototype.ShootFire = function () {
+            if (this.alpha = 1) { //esto significa k estoy alive
+                var ticker = createjs.Ticker.getTicks();
+                if ((managers.Game.keyboardManager.shoot) && (ticker % 10 == 0)) //how many frames when i fire my ticker
+                 {
+                    //this._shootOrigin = new math.Vec2(this.x, this.y -this.Height-2)
+                    var currentshot = managers.Game.shootManager.CurrentShoot; //call a shoot into being
+                    var shoot = managers.Game.shootManager.Shoots[currentshot];
+                    shoot.x = this.x + -10; // desde donde va a salir el shoot
+                    shoot.y = this.y + 35;
+                    managers.Game.shootManager.CurrentShoot++;
+                    if (managers.Game.shootManager.CurrentShoot > 49) {
+                        managers.Game.shootManager.CurrentShoot = 0;
+                    }
+                }
+                /*let boom = new objects.Boom();
+                        boom.x = object2.x - object2.Width;
+                        boom.y = object2.y - object2.Height;
+                        managers.Game.sceneObject.addChild(boom);*/
+            }
         };
         return Player;
     }(objects.AbstractGameObject));

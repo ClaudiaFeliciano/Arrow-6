@@ -5,8 +5,6 @@ module objects {
         private _height: number;
         private _halfWidth: number;
         private _halfHeight: number;
-    
-       
         public isColliding: boolean;// I can track my collision
 
         // public properties
@@ -19,7 +17,7 @@ module objects {
             this.HalfWidth = this._width * 0.5;
         }
 
-       
+
         get Height(): number {
             return this._height;
         }
@@ -48,7 +46,7 @@ module objects {
         // constructors
         constructor(imageString: string) {
             super(managers.Game.textureArrow, imageString);
-            this.name= imageString; //name come from the superclass Bitmap            
+            this.name = imageString; //name come from the superclass Bitmap            
             this._initialize();
         }
 
@@ -61,11 +59,8 @@ module objects {
 
         // public methods
         public abstract Reset(): void;
-
         public abstract Start(): void;
-
         public abstract Update(): void;
-
         public abstract Destroy(): void;
     }
 }

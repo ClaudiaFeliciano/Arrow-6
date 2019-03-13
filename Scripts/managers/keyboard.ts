@@ -8,7 +8,7 @@ module managers {
         public moveLeft: boolean;
         public moveRight: boolean;
 
-        public jump: boolean;
+        public shoot: boolean;
         public enable: boolean; //turn off my keyboard
         public paused: boolean;
 
@@ -47,7 +47,7 @@ module managers {
                     break;
 
                     case config.Keys.space:
-                    this.jump= true;
+                    this.shoot= true;
                     break;
             }
         }
@@ -76,7 +76,7 @@ module managers {
                     break;
 
                     case config.Keys.space:
-                    this.jump= false;
+                    this.shoot= false;
                     break;
             }
         }

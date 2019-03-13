@@ -30,7 +30,7 @@ var managers;
                     this.moveRight = true;
                     break;
                 case config.Keys.space:
-                    this.jump = true;
+                    this.shoot = true;
                     break;
             }
         };
@@ -54,7 +54,7 @@ var managers;
                     this.moveRight = false;
                     break;
                 case config.Keys.space:
-                    this.jump = false;
+                    this.shoot = false;
                     break;
             }
         };

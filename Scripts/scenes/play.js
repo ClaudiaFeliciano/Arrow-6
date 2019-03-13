@@ -36,6 +36,8 @@ var scenes;
             //create the score board UI for the scene
             this._scoreBoard = new managers.ScoreBoard();
             managers.Game.scoreBoard = this._scoreBoard;
+            this._shotManager = new managers.Shoot();
+            managers.Game.shootManager = this._shotManager;
             this.Main();
         };
         //triggered every frame
@@ -43,6 +45,7 @@ var scenes;
             this._space.Update();
             this._player.Update();
             this._enemy.Update();
+            this._shotManager.Update();
             //check collision between arrow and island
             managers.Collision.Check(this._player, this._enemy);
             // Update Each meteor in the Meteor Array
@@ -74,6 +77,9 @@ var scenes;
             // adds player to the scene
             this._player = new objects.Player();
             this.addChild(this._player);
+            this._shotManager.Shoots.forEach(function (shoot) {
+                _this.addChild(shoot);
+            });
             // adds Each meteor in the meteor Array to the Scene
             /*for (const meteor of this._meteor) {
                 this.addChild(meteor);*/
