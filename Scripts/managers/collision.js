@@ -28,6 +28,10 @@ var managers;
                         case "enemy":
                             createjs.Sound.play("explosion");
                             managers.Game.scoreBoard.Lives -= 1;
+                            var boom = new objects.Boom();
+                            boom.x = object2.x - object2.Width;
+                            boom.y = object2.y - object2.Height;
+                            managers.Game.sceneObject.addChild(boom);
                             break;
                     }
                 }
