@@ -34,12 +34,21 @@ var objects;
         Player.prototype.Update = function () {
             this.Move();
             // checking the bottom boundary
-            if (this.y >= 650 - this.HalfWidth) { //it is not responsive.If I want to fo that i should add a configuration file
-                this.y = 650 - this.HalfWidth;
+            if (this.y >= 600 - this.HalfHeight) {
+                //it is not responsive.If I want to fo that i should add a configuration file
+                this.y = 600 - this.HalfHeight;
             }
             // checking the top boundary
-            if (this.y <= this.HalfWidth) {
-                this.y = this.HalfWidth;
+            if (this.y <= this.HalfHeight) {
+                this.y = this.HalfHeight;
+            }
+            // Check right boundary
+            if (this.x >= 800 - this.HalfWidth) {
+                this.x = 800 - this.HalfWidth;
+            }
+            // Check left boundary
+            if (this.x <= this.HalfWidth) {
+                this.x = this.HalfWidth;
             }
             this.ShootFire();
         };
@@ -49,21 +58,26 @@ var objects;
             //My plane is not allowed go right left with my mouse
             //keyboard control
             if (managers.Game.keyboardManager.moveForward) {
-                this.y -= 5;
+                this.y -= 3;
             }
             if (managers.Game.keyboardManager.moveBackward) {
-                this.y += 5;
+                this.y += 3;
+            }
+            if (managers.Game.keyboardManager.moveLeft) {
+                this.x -= 3;
+            }
+            if (managers.Game.keyboardManager.moveRight) {
+                this.x += 3;
             }
         };
-        Player.prototype.Reset = function () {
-        };
-        Player.prototype.Destroy = function () {
-        };
+        Player.prototype.Reset = function () { };
+        Player.prototype.Destroy = function () { };
         Player.prototype.ShootFire = function () {
-            if (this.alpha = 1) { //esto significa k estoy alive
+            if ((this.alpha = 1)) {
+                //esto significa k estoy alive
                 var ticker = createjs.Ticker.getTicks();
-                if ((managers.Game.keyboardManager.shoot) && (ticker % 10 == 0)) //how many frames when i fire my ticker
-                 {
+                if (managers.Game.keyboardManager.shoot && ticker % 10 == 0) {
+                    //how many frames when i fire my ticker
                     //this._shootOrigin = new math.Vec2(this.x, this.y -this.Height-2)
                     var currentshot = managers.Game.shootManager.CurrentShoot; //call a shoot into being
                     var shoot = managers.Game.shootManager.Shoots[currentshot];
@@ -76,9 +90,9 @@ var objects;
                     }
                 }
                 /*let boom = new objects.Boom();
-                        boom.x = object2.x - object2.Width;
-                        boom.y = object2.y - object2.Height;
-                        managers.Game.sceneObject.addChild(boom);*/
+                                boom.x = object2.x - object2.Width;
+                                boom.y = object2.y - object2.Height;
+                                managers.Game.sceneObject.addChild(boom);*/
             }
         };
         return Player;
