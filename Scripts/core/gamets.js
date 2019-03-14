@@ -150,6 +150,7 @@
         { id: "gameSound", src: "/Assets/audio/space.mp3" },
         { id: "shootSound", src: "/Assets/audio/bullet.mp3" },
         { id: "extralive", src: "/Assets/audio/extralive.mp3" },
+        { id: "startSound", src: "/Assets/audio/startSound.mp3" },
         { id: "pep", src: "/Assets/audio/pep.mp3" }
     ]; // Basycally an array struct. Placeholder
     function Init() {
