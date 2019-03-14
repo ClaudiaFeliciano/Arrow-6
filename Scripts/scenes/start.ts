@@ -7,6 +7,7 @@ module scenes {
         private _musicButton: objects.Button;
         private _settingButton: objects.Button;
         private _restartButton: objects.Button;
+        private _engineSound: createjs.AbstractSoundInstance;
 
 
         // constructor
@@ -27,7 +28,9 @@ module scenes {
             this._settingButton = new objects.Button("settings", 425.5, 446, true);
             this._musicButton = new objects.Button("music", 565.5, 446, true);
             this._restartButton = new objects.Button("exit", 497.5, 524, true);
-
+            this._engineSound = createjs.Sound.play("startSound");
+            this._engineSound.loop = -1; 
+            this._engineSound.volume = 1.0;
             this.Main();
         }
 
@@ -57,7 +60,23 @@ module scenes {
 
             this._startButton.on("click", () => {
                 managers.Game.currentState = config.Scene.PLAY;
+               this._engineSound.stop();
             });
+            this._musicButton.on("click", () => {
+                if(this._engineSound.volume != 0.0)
+                {
+                    this._engineSound.volume -= 0.2;
+                    console.log(this._engineSound.volume);
+                    
+                }
+                else                 
+                    if(this._engineSound.volume <= 0.0)
+                {
+                    this._engineSound.volume = 1.0;
+                
+                }                
+            });
+
 
         }
     }

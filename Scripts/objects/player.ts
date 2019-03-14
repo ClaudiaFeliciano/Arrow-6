@@ -49,11 +49,7 @@ module objects {
       this.ShootFire();
     }
     public Move(): void {
-      //mouse control
-      //this.y = managers.Game.stage.mouseY;//where the y-coordinate of my plane is gonna be on my x-coordinate.
-      //My plane is not allowed go right left with my mouse
-
-      //keyboard control
+    
       if (managers.Game.keyboardManager.moveForward) {
         this.y -= 4;
         this._leftGravity = false;
@@ -127,10 +123,8 @@ module objects {
             managers.Game.shootManager.CurrentShoot = 0;
           }
         }
-        /*let boom = new objects.Boom();
-                        boom.x = object2.x - object2.Width;
-                        boom.y = object2.y - object2.Height;
-                        managers.Game.sceneObject.addChild(boom);*/
+      
+       
       }
     }
   }
