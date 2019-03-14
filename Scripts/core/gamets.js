@@ -128,8 +128,7 @@
             "menuActive": { "frames": [62] },
             "meteor1": { "frames": [63] },
             "meteor": { "frames": [64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84] },
-            "music": { "frames": [85] },
-            "musicActive": { "frames": [86] },
+            "music": { "frames": [85, 86] },
             "player": {
                 "frames": [87, 88],
                 "speed": 0.5
@@ -137,8 +136,7 @@
             "replay": { "frames": [89] },
             "replayActive": { "frames": [90] },
             "rocket": { "frames": [91] },
-            "Settings": { "frames": [92] },
-            "settingsActive": { "frames": [93] },
+            "settings": { "frames": [92, 93] },
             "shot": { "frames": [94, 95] },
             "start": { "frames": [96] }
         }
