@@ -18,7 +18,7 @@ var objects;
         // constructors
         function AbstractGameObject(imageString) {
             var _this = _super.call(this, managers.Game.textureArrow, imageString) || this;
-            _this.name = imageString; //name come from the superclass Bitmap            
+            _this.name = imageString; //name come from the superclass Bitmap
             _this._initialize();
             return _this;
         }

@@ -70,8 +70,7 @@ var scenes;
         Play.prototype.Destroy = function () {
             this.removeAllChildren();
         };
-        Play.prototype.Reset = function () {
-        };
+        Play.prototype.Reset = function () { };
         Play.prototype.Main = function () {
             var _this = this;
             // adds space to the scene
@@ -83,12 +82,13 @@ var scenes;
             // adds player to the scene
             this._player = new objects.Player();
             this.addChild(this._player);
+            createjs.Tween.get(this._player, { loop: 0 }).to({ x: 800, y: 300 }, 1000);
             this._shotManager.Shoots.forEach(function (shoot) {
                 _this.addChild(shoot);
             });
             // adds Each meteor in the meteor Array to the Scene
             /*for (const meteor of this._meteor) {
-                this.addChild(meteor);*/
+                      this.addChild(meteor);*/
             this._meteor.forEach(function (meteor) {
                 _this.addChild(meteor);
             });
