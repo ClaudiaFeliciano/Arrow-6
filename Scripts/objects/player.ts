@@ -2,7 +2,10 @@ module objects {
   export class Player extends objects.AbstractGameObject {
     // private instance variables
     //private _shootOrigin: math.Vec2;
-
+    private _leftGravity: boolean = false;
+    private _rigtGravity: boolean = false;
+    private _upGravity: boolean = false;
+    private _downGravity: boolean = false;
     // constructors
     constructor() {
       super("player");
@@ -14,7 +17,7 @@ module objects {
       this.regX = this.HalfWidth;
       this.regY = this.HalfHeight;
 
-      this.x = 680; //la posicion donde va a comenzar el avion como era de arriba hacia abajo 0 es arriba y 435 es pegado a abajo, menos la altura del avion
+      this.x = 1024; //la posicion donde va a comenzar el avion como era de arriba hacia abajo 0 es arriba y 435 es pegado a abajo, menos la altura del avion
       this.y = 250; //kiero k el avion comienze en el medio de mi eje y
       //this._shootOrigin = new math.Vec2();
     }
@@ -34,14 +37,15 @@ module objects {
       }
 
       // Check right boundary
-      if (this.x >= 800 - this.HalfWidth) {
-        this.x = 800 - this.HalfWidth;
+      if (this.x >= 1024 - this.HalfWidth) {
+        this.x = 1024 - this.HalfWidth;
       }
 
       // Check left boundary
       if (this.x <= this.HalfWidth) {
         this.x = this.HalfWidth;
       }
+
       this.ShootFire();
     }
     public Move(): void {
@@ -51,16 +55,48 @@ module objects {
 
       //keyboard control
       if (managers.Game.keyboardManager.moveForward) {
-        this.y -= 3;
+        this.y -= 4;
+        this._leftGravity = false;
+        this._rigtGravity = false;
+        this._upGravity = true;
+        this._downGravity = false;
       }
       if (managers.Game.keyboardManager.moveBackward) {
-        this.y += 3;
+        this.y += 4;
+        this._leftGravity = false;
+        this._rigtGravity = false;
+        this._upGravity = false;
+        this._downGravity = true;
       }
       if (managers.Game.keyboardManager.moveLeft) {
-        this.x -= 3;
+        this.x -= 4;
+        this._leftGravity = true;
+        this._rigtGravity = false;
+        this._upGravity = false;
+        this._downGravity = false;
       }
       if (managers.Game.keyboardManager.moveRight) {
-        this.x += 3;
+        this.x += 4;
+        this._leftGravity = false;
+        this._rigtGravity = true;
+        this._upGravity = false;
+        this._downGravity = false;
+      }
+      this.Gravity();
+    }
+
+    public Gravity(): void {
+      if (this._leftGravity) {
+        this.x -= 2;
+      }
+      if (this._rigtGravity) {
+        this.x += 2;
+      }
+      if (this._upGravity) {
+        this.y -= 2;
+      }
+      if (this._downGravity) {
+        this.y += 2;
       }
     }
 

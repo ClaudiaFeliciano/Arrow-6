@@ -15,11 +15,15 @@ var objects;
 (function (objects) {
     var Player = /** @class */ (function (_super) {
         __extends(Player, _super);
-        // private instance variables
-        //private _shootOrigin: math.Vec2;
         // constructors
         function Player() {
             var _this = _super.call(this, "player") || this;
+            // private instance variables
+            //private _shootOrigin: math.Vec2;
+            _this._leftGravity = false;
+            _this._rigtGravity = false;
+            _this._upGravity = false;
+            _this._downGravity = false;
             _this.Start();
             return _this;
         }
@@ -27,7 +31,7 @@ var objects;
         Player.prototype.Start = function () {
             this.regX = this.HalfWidth;
             this.regY = this.HalfHeight;
-            this.x = 680; //la posicion donde va a comenzar el avion como era de arriba hacia abajo 0 es arriba y 435 es pegado a abajo, menos la altura del avion
+            this.x = 1024; //la posicion donde va a comenzar el avion como era de arriba hacia abajo 0 es arriba y 435 es pegado a abajo, menos la altura del avion
             this.y = 250; //kiero k el avion comienze en el medio de mi eje y
             //this._shootOrigin = new math.Vec2();
         };
@@ -43,8 +47,8 @@ var objects;
                 this.y = this.HalfHeight;
             }
             // Check right boundary
-            if (this.x >= 800 - this.HalfWidth) {
-                this.x = 800 - this.HalfWidth;
+            if (this.x >= 1024 - this.HalfWidth) {
+                this.x = 1024 - this.HalfWidth;
             }
             // Check left boundary
             if (this.x <= this.HalfWidth) {
@@ -58,16 +62,47 @@ var objects;
             //My plane is not allowed go right left with my mouse
             //keyboard control
             if (managers.Game.keyboardManager.moveForward) {
-                this.y -= 3;
+                this.y -= 4;
+                this._leftGravity = false;
+                this._rigtGravity = false;
+                this._upGravity = true;
+                this._downGravity = false;
             }
             if (managers.Game.keyboardManager.moveBackward) {
-                this.y += 3;
+                this.y += 4;
+                this._leftGravity = false;
+                this._rigtGravity = false;
+                this._upGravity = false;
+                this._downGravity = true;
             }
             if (managers.Game.keyboardManager.moveLeft) {
-                this.x -= 3;
+                this.x -= 4;
+                this._leftGravity = true;
+                this._rigtGravity = false;
+                this._upGravity = false;
+                this._downGravity = false;
             }
             if (managers.Game.keyboardManager.moveRight) {
-                this.x += 3;
+                this.x += 4;
+                this._leftGravity = false;
+                this._rigtGravity = true;
+                this._upGravity = false;
+                this._downGravity = false;
+            }
+            this.Gravity();
+        };
+        Player.prototype.Gravity = function () {
+            if (this._leftGravity) {
+                this.x -= 2;
+            }
+            if (this._rigtGravity) {
+                this.x += 2;
+            }
+            if (this._upGravity) {
+                this.y -= 2;
+            }
+            if (this._downGravity) {
+                this.y += 2;
             }
         };
         Player.prototype.Reset = function () { };
