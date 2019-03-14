@@ -2,10 +2,10 @@ module objects {
   export class Player extends objects.AbstractGameObject {
     // private instance variables
     //private _shootOrigin: math.Vec2;
-    private _leftGravity: boolean = false;
-    private _rigtGravity: boolean = false;
-    private _upGravity: boolean = false;
-    private _downGravity: boolean = false;
+    public _leftGravity: boolean = false;
+    public _rigtGravity: boolean = false;
+    public _upGravity: boolean = false;
+    public _downGravity: boolean = false;
     // constructors
     constructor() {
       super("player");

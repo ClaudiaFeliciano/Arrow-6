@@ -34,10 +34,10 @@ var objects;
         };
         // public methods
         Meteor.prototype.Reset = function () {
-            this._verticalSpeed = Math.floor((Math.random() * 5) + 5); //randomizing my speed as well
-            this._horizontalSpeed = Math.floor((Math.random() * 4) - 2);
+            this._verticalSpeed = Math.floor(Math.random() * 5 + 5); //randomizing my speed as well
+            this._horizontalSpeed = Math.floor(Math.random() * 4 - 2);
             this.x = -this.Width; //de donde kiero k comience
-            this.y = Math.floor((Math.random() * (1024 - this.Height)) + this.HalfHeight);
+            this.y = Math.floor(Math.random() * (1024 - this.Height) + this.HalfHeight);
             this.alpha = 1;
         };
         Meteor.prototype.Start = function () {
@@ -47,8 +47,7 @@ var objects;
             this._move();
             this._checkBounds();
         };
-        Meteor.prototype.Destroy = function () {
-        };
+        Meteor.prototype.Destroy = function () { };
         return Meteor;
     }(objects.AbstractGameObject));
     objects.Meteor = Meteor;

@@ -69,6 +69,22 @@ module scenes {
         this._engineSound.stop(); //sino me sigue sonando the app
         managers.Game.currentState = config.Scene.OVER;
       }
+      // right
+      if (this._player._rigtGravity) {
+        this._player.rotation = 180;
+      }
+      // left
+      if (this._player._leftGravity) {
+        this._player.rotation = 0;
+      }
+      // down
+      if (this._player._downGravity) {
+        this._player.rotation = 270;
+      }
+      // Up
+      if (this._player._upGravity) {
+        this._player.rotation = 90;
+      }
     }
 
     public Destroy(): void {
