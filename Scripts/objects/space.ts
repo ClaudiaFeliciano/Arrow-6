@@ -1,7 +1,7 @@
 module objects {
     export class Space extends createjs.Bitmap{//objects.AbstractGameObject {
         // private instance variables
-        private horizontalSpeed:number;
+       // private horizontalSpeed:number;
         
 
         // constructor
@@ -18,9 +18,9 @@ module objects {
             }
         }
 
-        private _move():void { //moving my object to the new location
+        /*private _move():void { //moving my object to the new location
             this.x += this.horizontalSpeed;//is gonna move right 5 px
-        }
+        }*/
 
         // public methods
         //Reset the object location to some value
@@ -29,12 +29,12 @@ module objects {
         }        
         
         public Start(): void { //Initialazing my variables an create the objects
-            this.horizontalSpeed = 5; // 5 px per frame
+            //this.horizontalSpeed = 5; // 5 px per frame
             this.Reset();
         }
 
         public Update(): void { //updates the game object every frame
-            this._move();
+            //this._move();
             this._checkBounds();
         }
 
