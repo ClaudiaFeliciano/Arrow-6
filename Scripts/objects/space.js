@@ -19,16 +19,15 @@ var objects;
         // private horizontalSpeed:number;
         // constructor
         function Space() {
-            var _this = _super.call(this, managers.Game.assetManager.getResult("space")) || this;
-            _this.Start();
-            return _this;
+            return _super.call(this, managers.Game.assetManager.getResult("space")) || this;
+            // this.Start();
         }
-        // private methods
-        Space.prototype._checkBounds = function () {
-            if (this.x >= 0) { //cuando la x es mayor que 0,es decir k ya tope la derecha de mi stage
-                this.Reset();
-            }
-        };
+        /*  // private methods
+          private _checkBounds():void {// ver if some boundery have benn passed
+              if(this.x >=0) { //cuando la x es mayor que 0,es decir k ya tope la derecha de mi stage
+                  this.Reset();
+              }
+          }*/
         /*private _move():void { //moving my object to the new location
             this.x += this.horizontalSpeed;//is gonna move right 5 px
         }*/
@@ -42,8 +41,6 @@ var objects;
             this.Reset();
         };
         Space.prototype.Update = function () {
-            //this._move();
-            this._checkBounds();
         };
         Space.prototype.Destroy = function () {
         };

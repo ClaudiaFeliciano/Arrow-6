@@ -8,15 +8,15 @@ module objects {
         constructor() {
             super(managers.Game.assetManager.getResult("space"));
 
-            this.Start();
+           // this.Start();
         }
 
-        // private methods
+      /*  // private methods
         private _checkBounds():void {// ver if some boundery have benn passed
             if(this.x >=0) { //cuando la x es mayor que 0,es decir k ya tope la derecha de mi stage
                 this.Reset();
             }
-        }
+        }*/
 
         /*private _move():void { //moving my object to the new location
             this.x += this.horizontalSpeed;//is gonna move right 5 px
@@ -34,8 +34,7 @@ module objects {
         }
 
         public Update(): void { //updates the game object every frame
-            //this._move();
-            this._checkBounds();
+           
         }
 
         public Destroy(): void {
