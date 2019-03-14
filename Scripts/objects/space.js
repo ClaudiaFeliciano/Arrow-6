@@ -15,6 +15,8 @@ var objects;
 (function (objects) {
     var Space = /** @class */ (function (_super) {
         __extends(Space, _super);
+        // private instance variables
+        // private horizontalSpeed:number;
         // constructor
         function Space() {
             var _this = _super.call(this, managers.Game.assetManager.getResult("space")) || this;
@@ -27,20 +29,20 @@ var objects;
                 this.Reset();
             }
         };
-        Space.prototype._move = function () {
-            this.x += this.horizontalSpeed; //is gonna move right 5 px
-        };
+        /*private _move():void { //moving my object to the new location
+            this.x += this.horizontalSpeed;//is gonna move right 5 px
+        }*/
         // public methods
         //Reset the object location to some value
         Space.prototype.Reset = function () {
             this.x = -224; //1024-800 that is my width
         };
         Space.prototype.Start = function () {
-            this.horizontalSpeed = 5; // 5 px per frame
+            //this.horizontalSpeed = 5; // 5 px per frame
             this.Reset();
         };
         Space.prototype.Update = function () {
-            this._move();
+            //this._move();
             this._checkBounds();
         };
         Space.prototype.Destroy = function () {

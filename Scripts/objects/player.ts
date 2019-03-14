@@ -76,8 +76,14 @@ module objects {
           //this._shootOrigin = new math.Vec2(this.x, this.y -this.Height-2)
           let currentshot = managers.Game.shootManager.CurrentShoot; //call a shoot into being
           let shoot = managers.Game.shootManager.Shoots[currentshot];
+          if (managers.Game.shootManager.swi == 0) {
+            shoot.y = this.y - 40;
+            managers.Game.shootManager.swi = 1;
+          } else {
+            shoot.y = this.y + 35;
+            managers.Game.shootManager.swi = 0;
+          }
           shoot.x = this.x + -10; // desde donde va a salir el shoot
-          shoot.y = this.y + 35;
           createjs.Sound.play("shootSound");
 
           managers.Game.shootManager.CurrentShoot++;

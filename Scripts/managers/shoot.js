@@ -2,6 +2,7 @@ var managers;
 (function (managers) {
     var Shoot = /** @class */ (function () {
         function Shoot() {
+            this.swi = 0;
             this.Start();
         }
         Shoot.prototype._buildShootPool = function () {
