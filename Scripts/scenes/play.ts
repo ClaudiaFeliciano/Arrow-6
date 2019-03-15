@@ -4,7 +4,7 @@ module scenes {
     private _player: objects.Player;
     private _space: objects.Space;
     private _enemy: objects.Enemy;
-    private _meteorNum: number;
+    private _numero: number;
     private _bigmeteorNum: number;
     private _meteor: objects.Meteor[];
     private _smallmeteor: objects.SmallMeteor[];
@@ -23,21 +23,22 @@ module scenes {
     // public methods
 
     public Start(): void {
-      this._meteorNum = 5;
+      this._numero = 5;
       this._bigmeteorNum = 3;
       this._bigmeteor = new Array<objects.BigMeteor>();
       for (let count = 0; count < this._bigmeteorNum; count++) {
         this._bigmeteor[count] = new objects.BigMeteor();
       }
       this._smallmeteor = new Array<objects.SmallMeteor>();
-      for (let count = 0; count < this._meteorNum; count++) {
+      for (let count = 0; count < this._numero; count++) {
         this._smallmeteor[count] = new objects.SmallMeteor();
-      } 
+      }
+      
 
       // Instantiates a new Array container of Type objects.meteor
       this._meteor = new Array<objects.Meteor>();
       // Fill the meteor Array with meteors
-      for (let count = 0; count < this._meteorNum; count++) {
+      for (let count = 0; count < this._numero; count++) {
         this._meteor[count] = new objects.Meteor();
       }
       this._engineSound = createjs.Sound.play("gameSound"); //lo pongo akip ara que comience en cuanto comience la scence
@@ -61,7 +62,6 @@ module scenes {
       this._redenemy.Update();
       this._shotManager.Update();
 
-      //check collision between arrow and island
       managers.Collision.Check(this._player, this._enemy);
 
       managers.Collision.Check(this._player, this._redenemy); //CARLOS SI KIERES COLLISIONAR AMBOS MANTEN ESTO AKI, SINO BORRALO, O SIKIERES HACERLO COLLISIONAR CON LAS BULLETS DEBES REPETIR ESTO Y CAMBIAR LAS VARIABLES
@@ -88,6 +88,7 @@ module scenes {
         //console.log("estoy aki");
       }
 
+
       //if lives fall below zero switch scenes to the game over scene
       if (this._scoreBoard.Lives <= 0) {
         this._engineSound.stop(); //sino me sigue sonando the app
@@ -95,7 +96,7 @@ module scenes {
       }
 
       if (this._scoreBoard.Score >= 1000) {
-        this._engineSound.stop(); 
+        this._engineSound.stop();
         managers.Game.currentState = config.Scene.STARTLEVEL2;
       }
       // right
@@ -120,7 +121,7 @@ module scenes {
       this.removeAllChildren();
     }
 
-    public Reset(): void {}
+    public Reset(): void { }
 
     public Main(): void {
       // adds space to the scene

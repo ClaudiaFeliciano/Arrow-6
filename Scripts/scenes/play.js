@@ -23,20 +23,20 @@ var scenes;
         }
         // public methods
         Play.prototype.Start = function () {
-            this._meteorNum = 5;
+            this._numero = 5;
             this._bigmeteorNum = 3;
             this._bigmeteor = new Array();
             for (var count = 0; count < this._bigmeteorNum; count++) {
                 this._bigmeteor[count] = new objects.BigMeteor();
             }
             this._smallmeteor = new Array();
-            for (var count = 0; count < this._meteorNum; count++) {
+            for (var count = 0; count < this._numero; count++) {
                 this._smallmeteor[count] = new objects.SmallMeteor();
             }
             // Instantiates a new Array container of Type objects.meteor
             this._meteor = new Array();
             // Fill the meteor Array with meteors
-            for (var count = 0; count < this._meteorNum; count++) {
+            for (var count = 0; count < this._numero; count++) {
                 this._meteor[count] = new objects.Meteor();
             }
             this._engineSound = createjs.Sound.play("gameSound"); //lo pongo akip ara que comience en cuanto comience la scence
@@ -56,7 +56,6 @@ var scenes;
             this._enemy.Update();
             this._redenemy.Update();
             this._shotManager.Update();
-            //check collision between arrow and island
             managers.Collision.Check(this._player, this._enemy);
             managers.Collision.Check(this._player, this._redenemy); //CARLOS SI KIERES COLLISIONAR AMBOS MANTEN ESTO AKI, SINO BORRALO, O SIKIERES HACERLO COLLISIONAR CON LAS BULLETS DEBES REPETIR ESTO Y CAMBIAR LAS VARIABLES
             for (var _i = 0, _a = this._bigmeteor; _i < _a.length; _i++) {

@@ -8,6 +8,8 @@ module scenes {
         private _settingButton: objects.Button;
         private _restartButton: objects.Button;
         //private _window: createjs.Bitmap;
+       // private _explosion: objects.ExplosionStart[];
+       // private _explosionNum: number;
         private _engineSound: createjs.AbstractSoundInstance;
 
 
@@ -26,6 +28,11 @@ module scenes {
             /*this._window = new createjs.Bitmap("window");
             this._window.x= 400;
             this._window.y= 220;*/
+            /*this._explosionNum = 5;
+            this._explosion = new Array<objects.ExplosionStart>();
+            for (let count = 0; count < this._explosionNum; count++) {
+              this._explosion[count] = new objects.ExplosionStart();
+            }*/
             this._nameGame = new objects.Button("ArrowGame", 497.5, 200, true);
             this._startButton = new objects.Button("start", 497.5, 360, true);
             this._settingButton = new objects.Button("settings", 425.5, 446, true);
@@ -39,6 +46,10 @@ module scenes {
 
         public Update(): void {
             this._space.Update();
+            /*for (const explosion of this._explosion) {
+                explosion.Update();
+              
+              }*/
             
         }
 
@@ -59,7 +70,10 @@ module scenes {
             this.addChild(this._restartButton);
             this.addChild(this._musicButton);
             this.addChild(this._settingButton);
-
+            /*for (const explosion of this._explosion) {
+                this.addChild(explosion);
+              }
+*/
             this._startButton.on("click", () => {
                 managers.Game.currentState = config.Scene.PLAY;
                this._engineSound.stop();
