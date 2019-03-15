@@ -18,7 +18,7 @@ var objects;
         // public properties
         // constructor
         function BigMeteor() {
-            var _this = _super.call(this, "asteroid") || this;
+            var _this = _super.call(this, "a10000") || this;
             _this.Start();
             return _this;
         }
@@ -34,9 +34,9 @@ var objects;
         };
         // public methods
         BigMeteor.prototype.Reset = function () {
-            this._verticalSpeed = Math.floor(Math.random() * 5 + 5); //randomizing my speed as well
-            this._horizontalSpeed = Math.floor(Math.random() * 4 - 2);
-            this.x = -this.Width; //de donde kiero k comience
+            this._verticalSpeed = 1;
+            this._horizontalSpeed = 1;
+            this.x = this.Width; //de donde kiero k comience
             this.y = Math.floor(Math.random() * (1024 - this.Height) + this.HalfHeight);
             this.alpha = 1;
         };

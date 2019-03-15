@@ -4,7 +4,7 @@ module objects {
 
         // constructors
         constructor() {
-            super("Live");
+            super("live");
             this.Start();
         }
 

@@ -45,7 +45,7 @@ module managers {
         //private methods
         private _initialize(): void {
             this.LivesLabel = new objects.Label("Lives: ", "20px", "Consolas", "#FFF000", 10, 10, false);
-            this.ScoreLabel = new objects.Label("Score: 99999 ", "20px", "Consolas", "#FFF000", 740, 10, false);
+            this.ScoreLabel = new objects.Label("Score: 99999 ", "20px", "Consolas", "#FFF000", 940, 10, false);
             this.HighScoreLabel = new objects.Label("High Score: ", "30px", "Consolas", "#FFF000", 477.5, 260, true);
            // this._livescoin = new objects.Live(); 
 
