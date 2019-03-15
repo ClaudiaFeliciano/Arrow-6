@@ -15,15 +15,11 @@ var objects;
 (function (objects) {
     var Player = /** @class */ (function (_super) {
         __extends(Player, _super);
+        // private instance variables
+        //private _shootOrigin: math.Vec2;
         // constructors
         function Player() {
             var _this = _super.call(this, "player") || this;
-            // private instance variables
-            //private _shootOrigin: math.Vec2;
-            _this._leftGravity = false;
-            _this._rigtGravity = false;
-            _this._upGravity = false;
-            _this._downGravity = false;
             _this.Start();
             return _this;
         }
@@ -59,45 +55,45 @@ var objects;
         Player.prototype.Move = function () {
             if (managers.Game.keyboardManager.moveForward) {
                 this.y -= 4;
-                this._leftGravity = false;
-                this._rigtGravity = false;
-                this._upGravity = true;
-                this._downGravity = false;
+                managers.Game.goingLeft = false;
+                managers.Game.goingRigth = false;
+                managers.Game.goingUp = true;
+                managers.Game.goingDown = false;
             }
             if (managers.Game.keyboardManager.moveBackward) {
                 this.y += 4;
-                this._leftGravity = false;
-                this._rigtGravity = false;
-                this._upGravity = false;
-                this._downGravity = true;
+                managers.Game.goingLeft = false;
+                managers.Game.goingRigth = false;
+                managers.Game.goingUp = false;
+                managers.Game.goingDown = true;
             }
             if (managers.Game.keyboardManager.moveLeft) {
                 this.x -= 4;
-                this._leftGravity = true;
-                this._rigtGravity = false;
-                this._upGravity = false;
-                this._downGravity = false;
+                managers.Game.goingLeft = true;
+                managers.Game.goingRigth = false;
+                managers.Game.goingUp = false;
+                managers.Game.goingDown = false;
             }
             if (managers.Game.keyboardManager.moveRight) {
                 this.x += 4;
-                this._leftGravity = false;
-                this._rigtGravity = true;
-                this._upGravity = false;
-                this._downGravity = false;
+                managers.Game.goingLeft = false;
+                managers.Game.goingRigth = true;
+                managers.Game.goingUp = false;
+                managers.Game.goingDown = false;
             }
             this.Gravity();
         };
         Player.prototype.Gravity = function () {
-            if (this._leftGravity) {
+            if (managers.Game.goingLeft) {
                 this.x -= 2;
             }
-            if (this._rigtGravity) {
+            if (managers.Game.goingRigth) {
                 this.x += 2;
             }
-            if (this._upGravity) {
+            if (managers.Game.goingUp) {
                 this.y -= 2;
             }
-            if (this._downGravity) {
+            if (managers.Game.goingDown) {
                 this.y += 2;
             }
         };
@@ -112,15 +108,50 @@ var objects;
                     //this._shootOrigin = new math.Vec2(this.x, this.y -this.Height-2)
                     var currentshot = managers.Game.shootManager.CurrentShoot; //call a shoot into being
                     var shoot = managers.Game.shootManager.Shoots[currentshot];
-                    if (managers.Game.shootManager.swi == 0) {
-                        shoot.y = this.y - 40;
-                        managers.Game.shootManager.swi = 1;
+                    if (managers.Game.goingLeft) {
+                        if (managers.Game.shootManager.swi == 0) {
+                            shoot.y = this.y - 40;
+                            managers.Game.shootManager.swi = 1;
+                        }
+                        else {
+                            shoot.y = this.y + 35;
+                            managers.Game.shootManager.swi = 0;
+                        }
+                        shoot.x = this.x - 10;
                     }
-                    else {
-                        shoot.y = this.y + 35;
-                        managers.Game.shootManager.swi = 0;
+                    if (managers.Game.goingRigth) {
+                        if (managers.Game.shootManager.swi == 0) {
+                            shoot.y = this.y - 40;
+                            managers.Game.shootManager.swi = 1;
+                        }
+                        else {
+                            shoot.y = this.y + 35;
+                            managers.Game.shootManager.swi = 0;
+                        }
+                        shoot.x = this.x + 10;
                     }
-                    shoot.x = this.x + -10; // desde donde va a salir el shoot
+                    if (managers.Game.goingDown) {
+                        if (managers.Game.shootManager.swi == 0) {
+                            shoot.x = this.x - 35;
+                            managers.Game.shootManager.swi = 1;
+                        }
+                        else {
+                            shoot.x = this.x + 35;
+                            managers.Game.shootManager.swi = 0;
+                        }
+                        shoot.y = this.y - 10;
+                    }
+                    if (managers.Game.goingUp) {
+                        if (managers.Game.shootManager.swi == 0) {
+                            shoot.x = this.x - 35;
+                            managers.Game.shootManager.swi = 1;
+                        }
+                        else {
+                            shoot.x = this.x + 35;
+                            managers.Game.shootManager.swi = 0;
+                        }
+                        shoot.y = this.y - 10;
+                    }
                     createjs.Sound.play("shootSound");
                     managers.Game.shootManager.CurrentShoot++;
                     if (managers.Game.shootManager.CurrentShoot > 49) {

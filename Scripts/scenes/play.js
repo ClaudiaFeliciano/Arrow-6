@@ -77,19 +77,19 @@ var scenes;
                 managers.Game.currentState = config.Scene.OVER;
             }
             // right
-            if (this._player._rigtGravity) {
+            if (managers.Game.goingRigth) {
                 this._player.rotation = 180;
             }
             // left
-            if (this._player._leftGravity) {
+            if (managers.Game.goingLeft) {
                 this._player.rotation = 0;
             }
             // down
-            if (this._player._downGravity) {
+            if (managers.Game.goingDown) {
                 this._player.rotation = 270;
             }
             // Up
-            if (this._player._upGravity) {
+            if (managers.Game.goingUp) {
                 this._player.rotation = 90;
             }
         };
