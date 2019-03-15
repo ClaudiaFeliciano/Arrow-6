@@ -24,28 +24,28 @@ var objects;
         }
         // private methods
         RedEnemy.prototype._move = function () {
-            this.x += this._horizontalSpeed;
+            this.y += this._vSpeed;
         };
         RedEnemy.prototype._checkBounds = function () {
-            if (this.x > 1024 + this.Width) {
-                this.Reset();
+            if (this.y > 560 - this.Height) {
+                this._vSpeed = -2;
+            }
+            if (this.y < 180 - this.Height) {
+                this._vSpeed = 2;
             }
         };
         // public methods
-        RedEnemy.prototype.Reset = function () {
-            this._horizontalSpeed = 2;
-            this.x = -this.Width; //esto me da desde donde el objeto saldra
-            this.y = Math.floor((Math.random() * (1024 - this.Height)) + this.HalfHeight);
-        };
         RedEnemy.prototype.Start = function () {
-            this.Reset();
+            this._vSpeed = 2;
+            this.x = -this.HalfWidth;
+            this.y = Math.floor(Math.random() * (500 - this.Height) + this.HalfHeight);
+            // this.Reset();
         };
         RedEnemy.prototype.Update = function () {
             this._move();
             this._checkBounds();
         };
-        RedEnemy.prototype.Destroy = function () {
-        };
+        RedEnemy.prototype.Destroy = function () { };
         return RedEnemy;
     }(objects.AbstractGameObject));
     objects.RedEnemy = RedEnemy;
