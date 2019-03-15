@@ -13,6 +13,7 @@ module scenes {
     private _engineSound: createjs.AbstractSoundInstance; //keeeps track  of my sound as i make it if i want to stops it or to modify the volumen
     private _shotManager: managers.Shoot;
     private _redenemy: objects.RedEnemy;
+    private _sonEnemy: objects.SonEnemy;
 
     // constructor
     constructor() {
@@ -33,7 +34,6 @@ module scenes {
       for (let count = 0; count < this._numero; count++) {
         this._smallmeteor[count] = new objects.SmallMeteor();
       }
-      
 
       // Instantiates a new Array container of Type objects.meteor
       this._meteor = new Array<objects.Meteor>();
@@ -61,10 +61,13 @@ module scenes {
       this._enemy.Update();
       this._redenemy.Update();
       this._shotManager.Update();
+      this._sonEnemy.Update();
 
       managers.Collision.Check(this._player, this._enemy);
 
-      managers.Collision.Check(this._player, this._redenemy); //CARLOS SI KIERES COLLISIONAR AMBOS MANTEN ESTO AKI, SINO BORRALO, O SIKIERES HACERLO COLLISIONAR CON LAS BULLETS DEBES REPETIR ESTO Y CAMBIAR LAS VARIABLES
+      managers.Collision.Check(this._player, this._redenemy);
+
+      managers.Collision.Check(this._player, this._sonEnemy);
 
       for (const bigmeteor of this._bigmeteor) {
         bigmeteor.Update();
@@ -134,6 +137,9 @@ module scenes {
 
       this._redenemy = new objects.RedEnemy();
       this.addChild(this._redenemy);
+
+      this._sonEnemy = new objects.SonEnemy();
+      this.addChild(this._sonEnemy);
 
       // adds player to the scene
       this._player = new objects.Player();

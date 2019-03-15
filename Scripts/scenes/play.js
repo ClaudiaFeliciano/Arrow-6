@@ -56,8 +56,10 @@ var scenes;
             this._enemy.Update();
             this._redenemy.Update();
             this._shotManager.Update();
+            this._sonEnemy.Update();
             managers.Collision.Check(this._player, this._enemy);
-            managers.Collision.Check(this._player, this._redenemy); //CARLOS SI KIERES COLLISIONAR AMBOS MANTEN ESTO AKI, SINO BORRALO, O SIKIERES HACERLO COLLISIONAR CON LAS BULLETS DEBES REPETIR ESTO Y CAMBIAR LAS VARIABLES
+            managers.Collision.Check(this._player, this._redenemy);
+            managers.Collision.Check(this._player, this._sonEnemy);
             for (var _i = 0, _a = this._bigmeteor; _i < _a.length; _i++) {
                 var bigmeteor = _a[_i];
                 bigmeteor.Update();
@@ -121,6 +123,8 @@ var scenes;
             this.addChild(this._enemy);
             this._redenemy = new objects.RedEnemy();
             this.addChild(this._redenemy);
+            this._sonEnemy = new objects.SonEnemy();
+            this.addChild(this._sonEnemy);
             // adds player to the scene
             this._player = new objects.Player();
             this.addChild(this._player);

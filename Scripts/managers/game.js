@@ -9,6 +9,8 @@ var managers;
         Game.goingRigth = false;
         Game.goingUp = false;
         Game.goingDown = false;
+        Game.xPlayer = 0;
+        Game.yPlayer = 0;
         return Game;
     }());
     managers.Game = Game;
