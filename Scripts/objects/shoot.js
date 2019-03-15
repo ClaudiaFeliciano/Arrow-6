@@ -35,10 +35,20 @@ var objects;
             this.Move();
             this.CheckBounds();
         };
-        Shoot.prototype.Destroy = function () {
-        };
+        Shoot.prototype.Destroy = function () { };
         Shoot.prototype.Move = function () {
-            this.x += this.HalfHeight;
+            if (managers.Game.goingLeft) {
+                this.x += this.HalfHeight;
+            }
+            if (managers.Game.goingRigth) {
+                this.x -= this.HalfHeight;
+            }
+            if (managers.Game.goingUp) {
+                this.y += this.HalfHeight;
+            }
+            if (managers.Game.goingDown) {
+                this.y -= this.HalfHeight;
+            }
         };
         Shoot.prototype.CheckBounds = function () {
             if (this.x <= -this.Height) {
