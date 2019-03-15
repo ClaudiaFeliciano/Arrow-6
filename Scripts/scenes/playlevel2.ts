@@ -1,5 +1,5 @@
 module scenes {
-    export class PlayLevel2 extends objects.Scene {
+  export class PlayLevel2 extends objects.Scene {
     // private instance variable
     private _player: objects.Player;
     private _space: objects.Space;
@@ -68,11 +68,9 @@ module scenes {
         managers.Collision.Check(this._player, meteor); //check collision between the arrow and the meteor
       }
 
-
       for (const shoot of this._shotManager.Shoots) {
         //  shoot.Update();
         managers.Collision.Check(this._enemy, shoot);
-      
       }
 
       //if lives fall below zero switch scenes to the game over scene
@@ -81,19 +79,19 @@ module scenes {
         managers.Game.currentState = config.Scene.OVER;
       }
       // right
-      if (this._player._rigtGravity) {
+      if (managers.Game.goingRigth) {
         this._player.rotation = 180;
       }
       // left
-      if (this._player._leftGravity) {
+      if (managers.Game.goingLeft) {
         this._player.rotation = 0;
       }
       // down
-      if (this._player._downGravity) {
+      if (managers.Game.goingDown) {
         this._player.rotation = 270;
       }
       // Up
-      if (this._player._upGravity) {
+      if (managers.Game.goingUp) {
         this._player.rotation = 90;
       }
     }
@@ -102,7 +100,7 @@ module scenes {
       this.removeAllChildren();
     }
 
-    public Reset(): void { }
+    public Reset(): void {}
 
     public Main(): void {
       // adds space to the scene
@@ -127,7 +125,7 @@ module scenes {
       });
 
       for (const bigmeteor of this._bigmeteor) {
-                this.addChild(bigmeteor);
+        this.addChild(bigmeteor);
       }
       this._meteor.forEach(meteor => {
         this.addChild(meteor);
