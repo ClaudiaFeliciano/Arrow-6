@@ -15,10 +15,11 @@ var objects;
 (function (objects) {
     var RedEnemy = /** @class */ (function (_super) {
         __extends(RedEnemy, _super);
-        // public properties
         // constructor
         function RedEnemy() {
             var _this = _super.call(this, "redEnemy") || this;
+            // public properties
+            _this.yRed = 0;
             _this.Start();
             return _this;
         }
@@ -35,13 +36,16 @@ var objects;
             }
         };
         // public methods
+        RedEnemy.prototype.Reset = function () { };
         RedEnemy.prototype.Start = function () {
             this._vSpeed = 2;
             this.x = -this.HalfWidth;
             this.y = Math.floor(Math.random() * (500 - this.Height) + this.HalfHeight);
-            // this.Reset();
+            this.yRed = this.y;
         };
         RedEnemy.prototype.Update = function () {
+            this.yRed = this.y;
+            managers.Game.yRedEnemy = this.yRed;
             this._move();
             this._checkBounds();
         };

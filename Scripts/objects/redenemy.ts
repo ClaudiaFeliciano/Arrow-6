@@ -4,6 +4,7 @@ module objects {
     private _vSpeed: number;
 
     // public properties
+    public yRed: number = 0;
 
     // constructor
     constructor() {
@@ -26,16 +27,21 @@ module objects {
     }
 
     // public methods
+    public Reset(): void {}
+
     public Start(): void {
       this._vSpeed = 2;
       this.x = -this.HalfWidth;
       this.y = Math.floor(
         Math.random() * (500 - this.Height) + this.HalfHeight
       );
-      // this.Reset();
+      this.yRed = this.y;
     }
 
     public Update(): void {
+      this.yRed = this.y;
+      managers.Game.yRedEnemy = this.yRed;
+
       this._move();
       this._checkBounds();
     }

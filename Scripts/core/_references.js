@@ -17,6 +17,7 @@
 /// <reference path="../../Scripts/objects/space.ts" />
 /// <reference path="../../Scripts/objects/player.ts" />
 /// <reference path="../../Scripts/objects/lives.ts" />
+/// <reference path="../../Scripts/objects/sonEnemy.ts" />
 /// <reference path="../../Scripts/scenes/over.ts" />
 /// <reference path="../../Scripts/scenes/play.ts" />
 /// <reference path="../../Scripts/scenes/start.ts" />

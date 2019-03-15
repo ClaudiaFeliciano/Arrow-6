@@ -13,6 +13,7 @@ module scenes {
     private _engineSound: createjs.AbstractSoundInstance; //keeeps track  of my sound as i make it if i want to stops it or to modify the volumen
     private _shotManager: managers.Shoot;
     private _redenemy: objects.RedEnemy;
+    private _sonEnemy: objects.SonEnemy;
 
     // constructor
     constructor() {
@@ -32,7 +33,7 @@ module scenes {
       this._smallmeteor = new Array<objects.SmallMeteor>();
       for (let count = 0; count < this._meteorNum; count++) {
         this._smallmeteor[count] = new objects.SmallMeteor();
-      } 
+      }
 
       // Instantiates a new Array container of Type objects.meteor
       this._meteor = new Array<objects.Meteor>();
@@ -60,11 +61,14 @@ module scenes {
       this._enemy.Update();
       this._redenemy.Update();
       this._shotManager.Update();
+      this._sonEnemy.Update();
 
       //check collision between arrow and island
       managers.Collision.Check(this._player, this._enemy);
 
-      managers.Collision.Check(this._player, this._redenemy); //CARLOS SI KIERES COLLISIONAR AMBOS MANTEN ESTO AKI, SINO BORRALO, O SIKIERES HACERLO COLLISIONAR CON LAS BULLETS DEBES REPETIR ESTO Y CAMBIAR LAS VARIABLES
+      managers.Collision.Check(this._player, this._redenemy);
+
+      managers.Collision.Check(this._player, this._sonEnemy);
 
       for (const bigmeteor of this._bigmeteor) {
         bigmeteor.Update();
@@ -95,7 +99,7 @@ module scenes {
       }
 
       if (this._scoreBoard.Score >= 1000) {
-        this._engineSound.stop(); 
+        this._engineSound.stop();
         managers.Game.currentState = config.Scene.STARTLEVEL2;
       }
       // right
@@ -130,6 +134,9 @@ module scenes {
       // adds enemy to the scene
       this._enemy = new objects.Enemy();
       this.addChild(this._enemy);
+
+      this._sonEnemy = new objects.SonEnemy();
+      this.addChild(this._sonEnemy);
 
       this._redenemy = new objects.RedEnemy();
       this.addChild(this._redenemy);
