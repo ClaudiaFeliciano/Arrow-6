@@ -23,7 +23,12 @@ var scenes;
         }
         // public methods
         Play.prototype.Start = function () {
-            this._meteorNum = 3;
+            this._meteorNum = 5;
+            this._bigmeteorNum = 2;
+            this._bigmeteor = new Array();
+            for (var count = 0; count < this._bigmeteorNum; count++) {
+                this._bigmeteor[count] = new objects.BigMeteor();
+            }
             // Instantiates a new Array container of Type objects.meteor
             this._meteor = new Array();
             // Fill the meteor Array with meteors
@@ -48,15 +53,20 @@ var scenes;
             this._shotManager.Update();
             //check collision between arrow and island
             managers.Collision.Check(this._player, this._enemy);
+            for (var _i = 0, _a = this._bigmeteor; _i < _a.length; _i++) {
+                var bigmeteor = _a[_i];
+                bigmeteor.Update();
+                managers.Collision.Check(this._player, bigmeteor);
+            }
             // Update Each meteor in the Meteor Array
-            for (var _i = 0, _a = this._meteor; _i < _a.length; _i++) {
-                var meteor = _a[_i];
+            for (var _b = 0, _c = this._meteor; _b < _c.length; _b++) {
+                var meteor = _c[_b];
                 meteor.Update();
                 //check collision between arrow and meteor
                 managers.Collision.Check(this._player, meteor); //check collision between the arrow and the meteor
             }
-            for (var _b = 0, _c = this._shotManager.Shoots; _b < _c.length; _b++) {
-                var shoot = _c[_b];
+            for (var _d = 0, _e = this._shotManager.Shoots; _d < _e.length; _d++) {
+                var shoot = _e[_d];
                 //  shoot.Update();
                 managers.Collision.Check(this._enemy, shoot);
                 //console.log("estoy aki");
@@ -102,9 +112,10 @@ var scenes;
             this._shotManager.Shoots.forEach(function (shoot) {
                 _this.addChild(shoot);
             });
-            // adds Each meteor in the meteor Array to the Scene
-            /*for (const meteor of this._meteor) {
-                      this.addChild(meteor);*/
+            for (var _i = 0, _a = this._bigmeteor; _i < _a.length; _i++) {
+                var bigmeteor = _a[_i];
+                this.addChild(bigmeteor);
+            }
             this._meteor.forEach(function (meteor) {
                 _this.addChild(meteor);
             });

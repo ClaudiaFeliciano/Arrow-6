@@ -5,7 +5,9 @@ module scenes {
     private _space: objects.Space;
     private _enemy: objects.Enemy;
     private _meteorNum: number;
+    private _bigmeteorNum: number;
     private _meteor: objects.Meteor[];
+    private _bigmeteor: objects.BigMeteor[];
     private _scoreBoard: managers.ScoreBoard;
     private _engineSound: createjs.AbstractSoundInstance; //keeeps track  of my sound as i make it if i want to stops it or to modify the volumen
     private _shotManager: managers.Shoot;
@@ -19,11 +21,15 @@ module scenes {
     // public methods
 
     public Start(): void {
-      this._meteorNum = 3;
+      this._meteorNum = 5;
+      this._bigmeteorNum = 2;
+      this._bigmeteor = new Array<objects.BigMeteor>();
+      for (let count = 0; count < this._bigmeteorNum; count++) {
+        this._bigmeteor[count] = new objects.BigMeteor();
+      }
 
       // Instantiates a new Array container of Type objects.meteor
       this._meteor = new Array<objects.Meteor>();
-
       // Fill the meteor Array with meteors
       for (let count = 0; count < this._meteorNum; count++) {
         this._meteor[count] = new objects.Meteor();
@@ -51,12 +57,17 @@ module scenes {
       //check collision between arrow and island
       managers.Collision.Check(this._player, this._enemy);
 
+      for (const bigmeteor of this._bigmeteor) {
+        bigmeteor.Update();
+        managers.Collision.Check(this._player, bigmeteor);
+      }
       // Update Each meteor in the Meteor Array
       for (const meteor of this._meteor) {
         meteor.Update();
         //check collision between arrow and meteor
         managers.Collision.Check(this._player, meteor); //check collision between the arrow and the meteor
       }
+
 
       for (const shoot of this._shotManager.Shoots) {
         //  shoot.Update();
@@ -91,7 +102,7 @@ module scenes {
       this.removeAllChildren();
     }
 
-    public Reset(): void {}
+    public Reset(): void { }
 
     public Main(): void {
       // adds space to the scene
@@ -115,9 +126,9 @@ module scenes {
         this.addChild(shoot);
       });
 
-      // adds Each meteor in the meteor Array to the Scene
-      /*for (const meteor of this._meteor) {
-                this.addChild(meteor);*/
+      for (const bigmeteor of this._bigmeteor) {
+                this.addChild(bigmeteor);
+      }
       this._meteor.forEach(meteor => {
         this.addChild(meteor);
       });

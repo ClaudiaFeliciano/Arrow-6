@@ -50,9 +50,7 @@ module scenes {
         public Main(): void {
 
             this.addChild(this._space);
-
             this.addChild(this._nameGame);
-
             this.addChild(this._startButton);
             this.addChild(this._restartButton);
             this.addChild(this._musicButton);
@@ -65,9 +63,7 @@ module scenes {
             this._musicButton.on("click", () => {
                 if(this._engineSound.volume != 0.0)
                 {
-                    this._engineSound.volume -= 0.2;
-                    console.log(this._engineSound.volume);
-                    
+                    this._engineSound.volume -= 0.2;   
                 }
                 else                 
                     if(this._engineSound.volume <= 0.0)

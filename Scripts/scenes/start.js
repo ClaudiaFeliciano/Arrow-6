@@ -57,7 +57,6 @@ var scenes;
             this._musicButton.on("click", function () {
                 if (_this._engineSound.volume != 0.0) {
                     _this._engineSound.volume -= 0.2;
-                    console.log(_this._engineSound.volume);
                 }
                 else if (_this._engineSound.volume <= 0.0) {
                     _this._engineSound.volume = 1.0;
