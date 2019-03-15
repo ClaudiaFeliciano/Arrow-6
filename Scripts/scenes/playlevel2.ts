@@ -1,5 +1,5 @@
 module scenes {
-  export class Play extends objects.Scene {
+    export class PlayLevel2 extends objects.Scene {
     // private instance variable
     private _player: objects.Player;
     private _space: objects.Space;
@@ -11,7 +11,6 @@ module scenes {
     private _scoreBoard: managers.ScoreBoard;
     private _engineSound: createjs.AbstractSoundInstance; //keeeps track  of my sound as i make it if i want to stops it or to modify the volumen
     private _shotManager: managers.Shoot;
-    private _redenemy: objects.RedEnemy;
 
     // constructor
     constructor() {
@@ -53,13 +52,10 @@ module scenes {
       this._space.Update();
       this._player.Update();
       this._enemy.Update();
-      this._redenemy.Update();
       this._shotManager.Update();
 
       //check collision between arrow and island
       managers.Collision.Check(this._player, this._enemy);
-
-      managers.Collision.Check(this._player, this._redenemy); //CARLOS SI KIERES COLLISIONAR AMBOS MANTEN ESTO AKI, SINO BORRALO, O SIKIERES HACERLO COLLISIONAR CON LAS BULLETS DEBES REPETIR ESTO Y CAMBIAR LAS VARIABLES
 
       for (const bigmeteor of this._bigmeteor) {
         bigmeteor.Update();
@@ -72,10 +68,11 @@ module scenes {
         managers.Collision.Check(this._player, meteor); //check collision between the arrow and the meteor
       }
 
+
       for (const shoot of this._shotManager.Shoots) {
         //  shoot.Update();
         managers.Collision.Check(this._enemy, shoot);
-        //console.log("estoy aki");
+      
       }
 
       //if lives fall below zero switch scenes to the game over scene
@@ -83,21 +80,20 @@ module scenes {
         this._engineSound.stop(); //sino me sigue sonando the app
         managers.Game.currentState = config.Scene.OVER;
       }
-
       // right
-      if (managers.Game.goingRigth) {
+      if (this._player._rigtGravity) {
         this._player.rotation = 180;
       }
       // left
-      if (managers.Game.goingLeft) {
+      if (this._player._leftGravity) {
         this._player.rotation = 0;
       }
       // down
-      if (managers.Game.goingDown) {
+      if (this._player._downGravity) {
         this._player.rotation = 270;
       }
       // Up
-      if (managers.Game.goingUp) {
+      if (this._player._upGravity) {
         this._player.rotation = 90;
       }
     }
@@ -106,7 +102,7 @@ module scenes {
       this.removeAllChildren();
     }
 
-    public Reset(): void {}
+    public Reset(): void { }
 
     public Main(): void {
       // adds space to the scene
@@ -116,9 +112,6 @@ module scenes {
       // adds enemy to the scene
       this._enemy = new objects.Enemy();
       this.addChild(this._enemy);
-
-      this._redenemy = new objects.RedEnemy();
-      this.addChild(this._redenemy);
 
       // adds player to the scene
       this._player = new objects.Player();
@@ -134,7 +127,7 @@ module scenes {
       });
 
       for (const bigmeteor of this._bigmeteor) {
-        this.addChild(bigmeteor);
+                this.addChild(bigmeteor);
       }
       this._meteor.forEach(meteor => {
         this.addChild(meteor);

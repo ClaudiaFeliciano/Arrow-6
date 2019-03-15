@@ -18,7 +18,7 @@ var objects;
         // public properties
         // constructor
         function RedEnemy() {
-            var _this = _super.call(this, "redenemy") || this;
+            var _this = _super.call(this, "redEnemy") || this;
             _this.Start();
             return _this;
         }
@@ -33,7 +33,7 @@ var objects;
         };
         // public methods
         RedEnemy.prototype.Reset = function () {
-            this._horizontalSpeed = 5;
+            this._horizontalSpeed = 2;
             this.x = -this.Width; //esto me da desde donde el objeto saldra
             this.y = Math.floor((Math.random() * (1024 - this.Height)) + this.HalfHeight);
         };

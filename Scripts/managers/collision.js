@@ -25,6 +25,17 @@ var managers;
                                 }
                             }
                             break;
+                        case "asteroid":
+                            if (object1.alpha != 0) {
+                                createjs.Sound.play("explosion");
+                                managers.Game.scoreBoard.Lives -= 2;
+                                var boom1 = new objects.Boom();
+                                boom1.x = object2.x;
+                                boom1.y = object2.y;
+                                managers.Game.sceneObject.addChild(boom1);
+                                //object2.Reset();
+                            }
+                            break;
                         case "enemy":
                             createjs.Sound.play("explosion");
                             managers.Game.scoreBoard.Lives -= 1;

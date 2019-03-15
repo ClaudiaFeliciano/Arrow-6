@@ -13,16 +13,16 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var scenes;
 (function (scenes) {
-    var Start = /** @class */ (function (_super) {
-        __extends(Start, _super);
+    var StartLevel2 = /** @class */ (function (_super) {
+        __extends(StartLevel2, _super);
         // constructor
-        function Start() {
+        function StartLevel2() {
             var _this = _super.call(this) || this;
             _this.Start();
             return _this;
         }
         // public methods
-        Start.prototype.Start = function () {
+        StartLevel2.prototype.Start = function () {
             this._space = new objects.Space();
             this._nameGame = new objects.Button("ArrowGame", 497.5, 200, true);
             this._startButton = new objects.Button("start", 497.5, 360, true);
@@ -31,18 +31,18 @@ var scenes;
             this._restartButton = new objects.Button("exit", 497.5, 524, true);
             this._engineSound = createjs.Sound.play("startSound");
             this._engineSound.loop = -1;
-            this._engineSound.volume = 0.0;
+            this._engineSound.volume = 1.0;
             this.Main();
         };
-        Start.prototype.Update = function () {
+        StartLevel2.prototype.Update = function () {
             this._space.Update();
         };
-        Start.prototype.Destroy = function () {
+        StartLevel2.prototype.Destroy = function () {
             this.removeAllChildren();
         };
-        Start.prototype.Reset = function () {
+        StartLevel2.prototype.Reset = function () {
         };
-        Start.prototype.Main = function () {
+        StartLevel2.prototype.Main = function () {
             var _this = this;
             this.addChild(this._space);
             this.addChild(this._nameGame);
@@ -63,8 +63,8 @@ var scenes;
                 }
             });
         };
-        return Start;
+        return StartLevel2;
     }(objects.Scene));
-    scenes.Start = Start;
+    scenes.StartLevel2 = StartLevel2;
 })(scenes || (scenes = {}));
-//# sourceMappingURL=start.js.map
+//# sourceMappingURL=startlevel2.js.map

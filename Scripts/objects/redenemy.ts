@@ -7,7 +7,7 @@ module objects {
 
         // constructor
         constructor() {
-            super("redenemy"); //ponle al archivo asi en el gamte.ys, agrega esto en el html
+            super("redEnemy"); 
 
             this.Start();
         }
@@ -26,7 +26,7 @@ module objects {
         // public methods
 
         public Reset(): void {
-            this._horizontalSpeed = 5;
+            this._horizontalSpeed = 2;
             this.x = -this.Width;//esto me da desde donde el objeto saldra
             this.y = Math.floor((Math.random() * (1024 - this.Height)) + this.HalfHeight);
         }        

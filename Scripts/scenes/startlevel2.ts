@@ -1,5 +1,5 @@
 module scenes {
-    export class Start extends objects.Scene {
+    export class StartLevel2 extends objects.Scene {
         // private instance variable
         private _nameGame: objects.Button;
         private _space: objects.Space;
@@ -30,7 +30,7 @@ module scenes {
             this._restartButton = new objects.Button("exit", 497.5, 524, true);
             this._engineSound = createjs.Sound.play("startSound");
             this._engineSound.loop = -1; 
-            this._engineSound.volume = 0.0;
+            this._engineSound.volume = 1.0;
             this.Main();
         }
 

@@ -18,7 +18,7 @@ var objects;
         // private instance variables
         // constructors
         function Live() {
-            var _this = _super.call(this, "Live") || this;
+            var _this = _super.call(this, "live") || this;
             _this.Start();
             return _this;
         }

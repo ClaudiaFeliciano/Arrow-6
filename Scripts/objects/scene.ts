@@ -11,11 +11,8 @@ module objects {
             
         }
 
-        // private methods
 
-        // public methods
-
-        public abstract Start():void;
+       public abstract Start():void;
 
         public abstract Update():void;
 
