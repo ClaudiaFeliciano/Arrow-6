@@ -13,16 +13,16 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var scenes;
 (function (scenes) {
-    var Play = /** @class */ (function (_super) {
-        __extends(Play, _super);
+    var PlayLevel2 = /** @class */ (function (_super) {
+        __extends(PlayLevel2, _super);
         // constructor
-        function Play() {
+        function PlayLevel2() {
             var _this = _super.call(this) || this;
             _this.Start();
             return _this;
         }
         // public methods
-        Play.prototype.Start = function () {
+        PlayLevel2.prototype.Start = function () {
             this._meteorNum = 5;
             this._bigmeteorNum = 2;
             this._bigmeteor = new Array();
@@ -46,15 +46,13 @@ var scenes;
             this.Main();
         };
         //triggered every frame
-        Play.prototype.Update = function () {
+        PlayLevel2.prototype.Update = function () {
             this._space.Update();
             this._player.Update();
             this._enemy.Update();
-            this._redenemy.Update();
             this._shotManager.Update();
             //check collision between arrow and island
             managers.Collision.Check(this._player, this._enemy);
-            managers.Collision.Check(this._player, this._redenemy); //CARLOS SI KIERES COLLISIONAR AMBOS MANTEN ESTO AKI, SINO BORRALO, O SIKIERES HACERLO COLLISIONAR CON LAS BULLETS DEBES REPETIR ESTO Y CAMBIAR LAS VARIABLES
             for (var _i = 0, _a = this._bigmeteor; _i < _a.length; _i++) {
                 var bigmeteor = _a[_i];
                 bigmeteor.Update();
@@ -71,7 +69,6 @@ var scenes;
                 var shoot = _e[_d];
                 //  shoot.Update();
                 managers.Collision.Check(this._enemy, shoot);
-                //console.log("estoy aki");
             }
             //if lives fall below zero switch scenes to the game over scene
             if (this._scoreBoard.Lives <= 0) {
@@ -95,11 +92,11 @@ var scenes;
                 this._player.rotation = 90;
             }
         };
-        Play.prototype.Destroy = function () {
+        PlayLevel2.prototype.Destroy = function () {
             this.removeAllChildren();
         };
-        Play.prototype.Reset = function () { };
-        Play.prototype.Main = function () {
+        PlayLevel2.prototype.Reset = function () { };
+        PlayLevel2.prototype.Main = function () {
             var _this = this;
             // adds space to the scene
             this._space = new objects.Space();
@@ -107,8 +104,6 @@ var scenes;
             // adds enemy to the scene
             this._enemy = new objects.Enemy();
             this.addChild(this._enemy);
-            this._redenemy = new objects.RedEnemy();
-            this.addChild(this._redenemy);
             // adds player to the scene
             this._player = new objects.Player();
             this.addChild(this._player);
@@ -127,8 +122,8 @@ var scenes;
             this.addChild(this._scoreBoard.LivesLabel);
             this.addChild(this._scoreBoard.ScoreLabel);
         };
-        return Play;
+        return PlayLevel2;
     }(objects.Scene));
-    scenes.Play = Play;
+    scenes.PlayLevel2 = PlayLevel2;
 })(scenes || (scenes = {}));
-//# sourceMappingURL=play.js.map
+//# sourceMappingURL=playlevel2.js.map

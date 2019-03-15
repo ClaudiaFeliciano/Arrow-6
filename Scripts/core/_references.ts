@@ -17,6 +17,7 @@
 /// <reference path="../../Scripts/objects/shoot.ts" />
 /// <reference path="../../Scripts/objects/meteor.ts" />
 /// <reference path="../../Scripts/objects/enemy.ts" />
+/// <reference path="../../Scripts/objects/redenemy.ts" />
 /// <reference path="../../Scripts/objects/space.ts" />
 /// <reference path="../../Scripts/objects/player.ts" />
 /// <reference path="../../Scripts/objects/lives.ts" />

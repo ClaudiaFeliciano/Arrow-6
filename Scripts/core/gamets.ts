@@ -116,7 +116,7 @@
     animations: {
       afterCollision: { frames: [0, 1, 2, 3, 4] },
       ArrowGame: { frames: [5] },
-      asteroid_render: { frames: [6, 7, 8, 9] },
+      asteroid: { frames: [6, 7, 8, 9] },
       boom: {
         frames: [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
         speed: 0.2
@@ -134,29 +134,7 @@
       menuActive: { frames: [62] },
       meteor1: { frames: [63] },
       meteor: {
-        frames: [
-          64,
-          65,
-          66,
-          67,
-          68,
-          69,
-          70,
-          71,
-          72,
-          73,
-          74,
-          75,
-          76,
-          77,
-          78,
-          79,
-          80,
-          81,
-          82,
-          83,
-          84
-        ]
+        frames: [64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84]
       },
       music: { frames: [85, 86] },
       player: {
@@ -178,10 +156,11 @@
     { id: "explosion", src: "/Assets/audio/explosion.mp3" },
     { id: "bulletSound", src: "/Assets/audio/bullet.mp3" },
     { id: "meteorSound", src: "/Assets/audio/meteorSound.mp3" },
-    { id: "redenemy", src: "/Assets/images/Menu_BTN.png" },//este es el que agregue Carlos, borralo cuando termines
+    { id: "redenemy", src: "/Assets/images/redEnemy.png" },//este es el que agregue Carlos, borralo cuando termines
     { id: "gameSound", src: "/Assets/audio/space.mp3" },
     { id: "shootSound", src: "/Assets/audio/bullet.mp3" },
     { id: "extralive", src: "/Assets/audio/extralive.mp3" },
+    { id: "startSound", src: "/Assets/audio/startSound.mp3" },
     { id: "pep", src: "/Assets/audio/pep.mp3" }
   ]; // Basycally an array struct. Placeholder
 
@@ -200,7 +179,7 @@
     stage = new createjs.Stage(canvas);
     managers.Game.stage = stage; // passing a reference to the stage globally
     stage.enableMouseOver(20);
-    createjs.Ticker.framerate = 60; // game will run at 60fps
+    createjs.Ticker.framerate = 60; 
     createjs.Ticker.on("tick", Update);
 
     currentState = config.Scene.START;
@@ -245,6 +224,14 @@
       case config.Scene.OVER:
         //instattiate a new scene object
         currentScene = new scenes.Over();
+        break;
+        case config.Scene.STARTLEVEL2:
+        //instattiate a new scene object
+        currentScene = new scenes.StartLevel2();
+        break;
+        case config.Scene.PLAYLEVEL2:
+        //instattiate a new scene object
+        currentScene = new scenes.PlayLevel2();
         break;
     }
     managers.Game.sceneObject = currentScene;

@@ -18,7 +18,7 @@ var objects;
         // public properties
         // constructor
         function BigMeteor() {
-            var _this = _super.call(this, "asteroid_render") || this;
+            var _this = _super.call(this, "asteroid") || this;
             _this.Start();
             return _this;
         }

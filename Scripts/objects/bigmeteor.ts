@@ -8,7 +8,7 @@ module objects {
   
       // constructor
       constructor() {
-        super("asteroid_render");
+        super("asteroid");
         this.Start();
       }
   
