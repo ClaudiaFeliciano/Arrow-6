@@ -21,12 +21,12 @@ module scenes {
         public Start(): void {
 
             this._space = new objects.Space(); 
-            this._level2 = new objects.Button("level2start", 497.5, 200, true);        
+            this._level2 = new objects.Button("level2", 497.5, 200, true);        
             this._startButton = new objects.Button("start", 497.5, 360, true);     
             this._restartButton = new objects.Button("replay", 497.5, 424, true);
             this._engineSound = createjs.Sound.play("startSound");
             this._engineSound.loop = -1; 
-            this._engineSound.volume = 1.0;
+            this._engineSound.volume = 0.8;
             this.Main();
         }
 

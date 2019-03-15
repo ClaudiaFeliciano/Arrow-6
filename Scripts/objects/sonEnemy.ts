@@ -8,7 +8,7 @@ module objects {
 
     // constructor
     constructor() {
-      super("player");
+      super("sonenemy");
       this.Start();
     }
 
