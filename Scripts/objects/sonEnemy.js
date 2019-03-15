@@ -30,10 +30,11 @@ var objects;
             if (this.x > 1024 + this.Width) {
                 this.Reset();
             }
+            // console.log("TCL: SonEnemy -> this.x", managers.Game.xPlayer);
         };
         // public methods
         SonEnemy.prototype.Reset = function () {
-            this.x = -this.Width; //esto me da desde donde el objeto saldra
+            this.x = this.Width;
             this.y = managers.Game.yRedEnemy;
         };
         SonEnemy.prototype.Start = function () {

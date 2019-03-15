@@ -28,6 +28,8 @@ var objects;
             this.y += this._vSpeed;
         };
         RedEnemy.prototype._checkBounds = function () {
+            this.yRed = this.y;
+            managers.Game.yRedEnemy = this.yRed;
             if (this.y > 560 - this.Height) {
                 this._vSpeed = -2;
             }
@@ -36,16 +38,14 @@ var objects;
             }
         };
         // public methods
-        RedEnemy.prototype.Reset = function () { };
         RedEnemy.prototype.Start = function () {
             this._vSpeed = 2;
             this.x = -this.HalfWidth;
             this.y = Math.floor(Math.random() * (500 - this.Height) + this.HalfHeight);
             this.yRed = this.y;
+            managers.Game.yRedEnemy = this.yRed;
         };
         RedEnemy.prototype.Update = function () {
-            this.yRed = this.y;
-            managers.Game.yRedEnemy = this.yRed;
             this._move();
             this._checkBounds();
         };

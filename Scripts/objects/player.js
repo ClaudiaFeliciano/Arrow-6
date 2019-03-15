@@ -50,6 +50,7 @@ var objects;
             if (this.x <= this.HalfWidth) {
                 this.x = this.HalfWidth;
             }
+            managers.Game.xPlayer = this.x;
             this.ShootFire();
         };
         Player.prototype.Move = function () {

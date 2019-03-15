@@ -135,11 +135,11 @@ module scenes {
       this._enemy = new objects.Enemy();
       this.addChild(this._enemy);
 
-      this._sonEnemy = new objects.SonEnemy();
-      this.addChild(this._sonEnemy);
-
       this._redenemy = new objects.RedEnemy();
       this.addChild(this._redenemy);
+
+      this._sonEnemy = new objects.SonEnemy();
+      this.addChild(this._sonEnemy);
 
       // adds player to the scene
       this._player = new objects.Player();
