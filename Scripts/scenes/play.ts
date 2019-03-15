@@ -84,6 +84,10 @@ module scenes {
         managers.Game.currentState = config.Scene.OVER;
       }
 
+      if (this._scoreBoard.Score >= 1000) {
+        this._engineSound.stop(); 
+        managers.Game.currentState = config.Scene.STARTLEVEL2;
+      }
       // right
       if (managers.Game.goingRigth) {
         this._player.rotation = 180;

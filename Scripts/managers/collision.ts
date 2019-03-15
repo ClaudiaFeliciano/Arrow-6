@@ -36,7 +36,6 @@ module managers {
                                 boom1.x = object2.x;
                                 boom1.y = object2.y;
                                 managers.Game.sceneObject.addChild(boom1);
-
                                 //object2.Reset();
                             }
                             break;
