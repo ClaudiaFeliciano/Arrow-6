@@ -14,7 +14,7 @@ module objects {
   
       // private methods
       private _move(): void {
-       this.x += this._verticalSpeed; //i want my meteor to move not ony vertical but also horizontal
+       //this.x += this._verticalSpeed; //i want my meteor to move not ony vertical but also horizontal
         this.y += this._horizontalSpeed;
       }
   

@@ -24,7 +24,7 @@ var objects;
         }
         // private methods
         SmallMeteor.prototype._move = function () {
-            this.x += this._verticalSpeed; //i want my meteor to move not ony vertical but also horizontal
+            //this.x += this._verticalSpeed; //i want my meteor to move not ony vertical but also horizontal
             this.y += this._horizontalSpeed;
         };
         SmallMeteor.prototype._checkBounds = function () {
