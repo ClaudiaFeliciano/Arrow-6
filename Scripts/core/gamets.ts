@@ -178,6 +178,7 @@
     { id: "explosion", src: "/Assets/audio/explosion.mp3" },
     { id: "bulletSound", src: "/Assets/audio/bullet.mp3" },
     { id: "meteorSound", src: "/Assets/audio/meteorSound.mp3" },
+    { id: "redenemy", src: "/Assets/images/Menu_BTN.png" },//este es el que agregue Carlos, borralo cuando termines
     { id: "gameSound", src: "/Assets/audio/space.mp3" },
     { id: "shootSound", src: "/Assets/audio/bullet.mp3" },
     { id: "extralive", src: "/Assets/audio/extralive.mp3" },
