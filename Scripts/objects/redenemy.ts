@@ -41,5 +41,6 @@ module objects {
     }
 
     public Destroy(): void {}
+    public Reset(): void {}
   }
 }

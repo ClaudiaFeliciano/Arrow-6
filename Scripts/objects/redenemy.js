@@ -46,6 +46,7 @@ var objects;
             this._checkBounds();
         };
         RedEnemy.prototype.Destroy = function () { };
+        RedEnemy.prototype.Reset = function () { };
         return RedEnemy;
     }(objects.AbstractGameObject));
     objects.RedEnemy = RedEnemy;

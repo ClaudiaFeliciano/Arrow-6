@@ -24,10 +24,14 @@ var scenes;
         // public methods
         Play.prototype.Start = function () {
             this._meteorNum = 5;
-            this._bigmeteorNum = 2;
+            this._bigmeteorNum = 3;
             this._bigmeteor = new Array();
             for (var count = 0; count < this._bigmeteorNum; count++) {
                 this._bigmeteor[count] = new objects.BigMeteor();
+            }
+            this._smallmeteor = new Array();
+            for (var count = 0; count < this._meteorNum; count++) {
+                this._smallmeteor[count] = new objects.SmallMeteor();
             }
             // Instantiates a new Array container of Type objects.meteor
             this._meteor = new Array();
@@ -60,15 +64,20 @@ var scenes;
                 bigmeteor.Update();
                 managers.Collision.Check(this._player, bigmeteor);
             }
+            for (var _b = 0, _c = this._smallmeteor; _b < _c.length; _b++) {
+                var smallmeteor = _c[_b];
+                smallmeteor.Update();
+                //managers.Collision.Check(this._player, smallmeteor);
+            }
             // Update Each meteor in the Meteor Array
-            for (var _b = 0, _c = this._meteor; _b < _c.length; _b++) {
-                var meteor = _c[_b];
+            for (var _d = 0, _e = this._meteor; _d < _e.length; _d++) {
+                var meteor = _e[_d];
                 meteor.Update();
                 //check collision between arrow and meteor
                 managers.Collision.Check(this._player, meteor); //check collision between the arrow and the meteor
             }
-            for (var _d = 0, _e = this._shotManager.Shoots; _d < _e.length; _d++) {
-                var shoot = _e[_d];
+            for (var _f = 0, _g = this._shotManager.Shoots; _f < _g.length; _f++) {
+                var shoot = _g[_f];
                 //  shoot.Update();
                 managers.Collision.Check(this._enemy, shoot);
                 //console.log("estoy aki");
@@ -123,6 +132,10 @@ var scenes;
             for (var _i = 0, _a = this._bigmeteor; _i < _a.length; _i++) {
                 var bigmeteor = _a[_i];
                 this.addChild(bigmeteor);
+            }
+            for (var _b = 0, _c = this._smallmeteor; _b < _c.length; _b++) {
+                var smallmeteor = _c[_b];
+                this.addChild(smallmeteor);
             }
             this._meteor.forEach(function (meteor) {
                 _this.addChild(meteor);

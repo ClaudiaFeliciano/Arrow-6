@@ -7,6 +7,7 @@ module scenes {
     private _meteorNum: number;
     private _bigmeteorNum: number;
     private _meteor: objects.Meteor[];
+    private _smallmeteor: objects.SmallMeteor[];
     private _bigmeteor: objects.BigMeteor[];
     private _scoreBoard: managers.ScoreBoard;
     private _engineSound: createjs.AbstractSoundInstance; //keeeps track  of my sound as i make it if i want to stops it or to modify the volumen
@@ -23,11 +24,15 @@ module scenes {
 
     public Start(): void {
       this._meteorNum = 5;
-      this._bigmeteorNum = 2;
+      this._bigmeteorNum = 3;
       this._bigmeteor = new Array<objects.BigMeteor>();
       for (let count = 0; count < this._bigmeteorNum; count++) {
         this._bigmeteor[count] = new objects.BigMeteor();
       }
+      this._smallmeteor = new Array<objects.SmallMeteor>();
+      for (let count = 0; count < this._meteorNum; count++) {
+        this._smallmeteor[count] = new objects.SmallMeteor();
+      } 
 
       // Instantiates a new Array container of Type objects.meteor
       this._meteor = new Array<objects.Meteor>();
@@ -64,6 +69,11 @@ module scenes {
       for (const bigmeteor of this._bigmeteor) {
         bigmeteor.Update();
         managers.Collision.Check(this._player, bigmeteor);
+      }
+
+      for (const smallmeteor of this._smallmeteor) {
+        smallmeteor.Update();
+        //managers.Collision.Check(this._player, smallmeteor);
       }
       // Update Each meteor in the Meteor Array
       for (const meteor of this._meteor) {
@@ -139,6 +149,9 @@ module scenes {
 
       for (const bigmeteor of this._bigmeteor) {
         this.addChild(bigmeteor);
+      }
+      for (const smallmeteor of this._smallmeteor) {
+        this.addChild(smallmeteor);
       }
       this._meteor.forEach(meteor => {
         this.addChild(meteor);
