@@ -24,6 +24,9 @@ var scenes;
         // public methods
         Start.prototype.Start = function () {
             this._space = new objects.Space();
+            /*this._window = new createjs.Bitmap("window");
+            this._window.x= 400;
+            this._window.y= 220;*/
             this._nameGame = new objects.Button("ArrowGame", 497.5, 200, true);
             this._startButton = new objects.Button("start", 497.5, 360, true);
             this._settingButton = new objects.Button("settings", 425.5, 446, true);
@@ -45,6 +48,7 @@ var scenes;
         Start.prototype.Main = function () {
             var _this = this;
             this.addChild(this._space);
+            //this.addChild(this._window);
             this.addChild(this._nameGame);
             this.addChild(this._startButton);
             this.addChild(this._restartButton);

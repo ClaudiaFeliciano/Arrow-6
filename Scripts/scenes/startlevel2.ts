@@ -3,9 +3,8 @@ module scenes {
         // private instance variable
         
         private _space: objects.Space;
-        private _startButton: objects.Button;
-       
-       
+        private _level2: objects.Button;
+        private _startButton: objects.Button;    
         private _restartButton: objects.Button;
         private _engineSound: createjs.AbstractSoundInstance;
 
@@ -21,11 +20,10 @@ module scenes {
 
         public Start(): void {
 
-            this._space = new objects.Space();
-
-           
+            this._space = new objects.Space(); 
+            this._level2 = new objects.Button("level2start", 497.5, 200, true);        
             this._startButton = new objects.Button("start", 497.5, 360, true);     
-            this._restartButton = new objects.Button("exit", 497.5, 524, true);
+            this._restartButton = new objects.Button("replay", 497.5, 424, true);
             this._engineSound = createjs.Sound.play("startSound");
             this._engineSound.loop = -1; 
             this._engineSound.volume = 1.0;
@@ -48,6 +46,7 @@ module scenes {
         public Main(): void {
 
             this.addChild(this._space);
+            this.addChild(this._level2);
             this.addChild(this._startButton);
             this.addChild(this._restartButton);
 

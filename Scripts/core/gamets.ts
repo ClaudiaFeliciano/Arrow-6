@@ -312,7 +312,9 @@
 
   let assetManifest = [
     { id: "space", src: "/Assets/images/space.png" },
-    { id: "gamearrow", src: "/Assets/images/ArrowGame.png" },
+    { id: "menu", src: "/Assets/images/ArrowGame.png" },
+    { id: "level2start", src: "/Assets/images/level2Start.png" },
+    { id: "gamearrow", src: "/Assets/images/Window.png" },
     { id: "explosion", src: "/Assets/audio/explosion.mp3" },
     { id: "bulletSound", src: "/Assets/audio/bullet.mp3" },
     { id: "meteorSound", src: "/Assets/audio/meteorSound.mp3" },

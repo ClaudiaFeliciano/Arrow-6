@@ -7,6 +7,7 @@ module scenes {
         private _musicButton: objects.Button;
         private _settingButton: objects.Button;
         private _restartButton: objects.Button;
+        //private _window: createjs.Bitmap;
         private _engineSound: createjs.AbstractSoundInstance;
 
 
@@ -22,7 +23,9 @@ module scenes {
         public Start(): void {
 
             this._space = new objects.Space();
-
+            /*this._window = new createjs.Bitmap("window");
+            this._window.x= 400;
+            this._window.y= 220;*/
             this._nameGame = new objects.Button("ArrowGame", 497.5, 200, true);
             this._startButton = new objects.Button("start", 497.5, 360, true);
             this._settingButton = new objects.Button("settings", 425.5, 446, true);
@@ -36,7 +39,7 @@ module scenes {
 
         public Update(): void {
             this._space.Update();
-
+            
         }
 
         public Destroy(): void {
@@ -50,6 +53,7 @@ module scenes {
         public Main(): void {
 
             this.addChild(this._space);
+            //this.addChild(this._window);
             this.addChild(this._nameGame);
             this.addChild(this._startButton);
             this.addChild(this._restartButton);

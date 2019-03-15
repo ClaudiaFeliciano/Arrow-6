@@ -24,8 +24,9 @@ var scenes;
         // public methods
         StartLevel2.prototype.Start = function () {
             this._space = new objects.Space();
+            this._level2 = new objects.Button("level2start", 497.5, 200, true);
             this._startButton = new objects.Button("start", 497.5, 360, true);
-            this._restartButton = new objects.Button("exit", 497.5, 524, true);
+            this._restartButton = new objects.Button("replay", 497.5, 424, true);
             this._engineSound = createjs.Sound.play("startSound");
             this._engineSound.loop = -1;
             this._engineSound.volume = 1.0;
@@ -42,6 +43,7 @@ var scenes;
         StartLevel2.prototype.Main = function () {
             var _this = this;
             this.addChild(this._space);
+            this.addChild(this._level2);
             this.addChild(this._startButton);
             this.addChild(this._restartButton);
             this._startButton.on("click", function () {
