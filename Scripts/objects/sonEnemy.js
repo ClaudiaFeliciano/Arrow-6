@@ -27,6 +27,12 @@ var objects;
             this.x += 10;
         };
         SonEnemy.prototype._checkBounds = function () {
+            if (this.y >= managers.Game.yPlayer) {
+                this.y -= 2;
+            }
+            else {
+                this.y += 2;
+            }
             if (this.x > 1024 + this.Width) {
                 this.Reset();
             }

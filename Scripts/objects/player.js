@@ -51,6 +51,7 @@ var objects;
                 this.x = this.HalfWidth;
             }
             managers.Game.xPlayer = this.x;
+            managers.Game.yPlayer = this.y;
             this.ShootFire();
         };
         Player.prototype.Move = function () {
