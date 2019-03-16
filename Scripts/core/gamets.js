@@ -313,6 +313,7 @@
         { id: "shootSound", src: "/Assets/audio/bullet.mp3" },
         { id: "extralive", src: "/Assets/audio/extralive.mp3" },
         { id: "startSound", src: "/Assets/audio/startSound.mp3" },
+        { id: "laser", src: "/Assets/audio/laser5.mp3" },
         { id: "pep", src: "/Assets/audio/pep.mp3" }
     ];
     function Init() {

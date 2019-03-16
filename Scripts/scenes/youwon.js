@@ -51,7 +51,7 @@ var scenes;
             this.addChild(this._scoreboard.HighScoreLabel);
             this._scoreboard.HighScore = managers.Game.highScore;
             this._restartButton.on("click", this._restartButtonClick);
-            // restart the play scene    
+            managers.Game.currentState = config.Scene.PLAY;
         };
         return YouWon;
     }(objects.Scene));

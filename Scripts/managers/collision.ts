@@ -26,6 +26,13 @@ module managers {
                             }
                             break;
 
+                            case "sonenemy":
+                            createjs.Sound.play("laser");
+                            if (object1.alpha != 0) {
+                                managers.Game.scoreBoard.Lives -= 1;
+                            }
+                            break;
+
                         case "asteroid":
                             if (object1.alpha != 0) {
 

@@ -55,7 +55,7 @@ module scenes {
 
 
             this._restartButton.on("click", this._restartButtonClick);
-            // restart the play scene    
+            managers.Game.currentState = config.Scene.PLAY;  
         }
     }
 }
