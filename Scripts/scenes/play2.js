@@ -87,9 +87,9 @@ var scenes;
                 this._engineSound.stop();
                 managers.Game.currentState = config.Scene.OVER;
             }
-            if (this._scoreBoard.Score >= 500 && this._scoreBoard.Lives >= 0) {
+            if (this._scoreBoard.Score >= 300 && this._scoreBoard.Lives >= 0) {
                 this._engineSound.stop();
-                managers.Game.currentState = config.Scene.START1;
+                managers.Game.currentState = config.Scene.START3;
             }
             // right
             if (managers.Game.goingRigth) {

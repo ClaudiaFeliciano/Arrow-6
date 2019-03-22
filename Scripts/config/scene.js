@@ -10,6 +10,7 @@ var config;
         Scene[Scene["PLAY3"] = 5] = "PLAY3";
         Scene[Scene["SCENE_COUNT"] = 6] = "SCENE_COUNT";
         Scene[Scene["OVER"] = 7] = "OVER";
+        Scene[Scene["WIN"] = 8] = "WIN";
     })(Scene = config.Scene || (config.Scene = {}));
 })(config || (config = {}));
 //# sourceMappingURL=scene.js.map

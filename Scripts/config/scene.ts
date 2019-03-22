@@ -7,6 +7,7 @@ module config {
     START3,
     PLAY3,
     SCENE_COUNT,
-    OVER
+    OVER,
+    WIN
   }
 }

@@ -34,7 +34,7 @@ var managers;
             },
             set: function (newHighScore) {
                 this._highscores = newHighScore;
-                this.HighScoreLabel.text = "High scores: " + this._highscores;
+                this.HighScoreLabel.text = "High score: " + this._highscores;
             },
             enumerable: true,
             configurable: true

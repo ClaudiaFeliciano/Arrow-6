@@ -1,5 +1,5 @@
 module scenes {
-  export class Start2 extends objects.Scene {
+  export class Start3 extends objects.Scene {
     // private instance variable
 
     private _space: objects.Space;
@@ -19,7 +19,7 @@ module scenes {
 
     public Start(): void {
       this._space = new objects.Space();
-      this._level2 = new objects.Button("level2", 497.5, 200, true);
+      this._level2 = new objects.Button("level3", 497.5, 200, true);
       this._startButton = new objects.Button("start", 487.5, 360, true);
       this._restartButton = new objects.Button("replay", 487.5, 424, true);
       this._engineSound = createjs.Sound.play("startSound");
@@ -45,7 +45,7 @@ module scenes {
       this.addChild(this._restartButton);
 
       this._startButton.on("click", () => {
-        managers.Game.currentState = config.Scene.PLAY2;
+        managers.Game.currentState = config.Scene.PLAY3;
         this._engineSound.stop();
       });
     }

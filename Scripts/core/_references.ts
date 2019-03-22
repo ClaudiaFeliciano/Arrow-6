@@ -27,3 +27,7 @@
 /// <reference path="../scenes/play1.ts"/>
 /// <reference path="../scenes/start2.ts"/>
 /// <reference path="../scenes/play2.ts" />
+/// <reference path="../scenes/start3.ts"/>
+/// <reference path="../scenes/play3.ts" />
+/// <reference path="../scenes/over.ts" />
+/// <reference path="../scenes/win.ts" />

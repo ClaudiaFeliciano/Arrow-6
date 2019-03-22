@@ -1,5 +1,5 @@
 module scenes {
-  export class Play2 extends objects.Scene {
+  export class Play3 extends objects.Scene {
     // private instance variable
     private _player: objects.Player;
     private _space: objects.Space;
@@ -100,7 +100,7 @@ module scenes {
 
       if (this._scoreBoard.Score >= 300 && this._scoreBoard.Lives >= 0) {
         this._engineSound.stop();
-        managers.Game.currentState = config.Scene.START3;
+        managers.Game.currentState = config.Scene.WIN;
       }
       // right
       if (managers.Game.goingRigth) {

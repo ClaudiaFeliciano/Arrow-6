@@ -1,5 +1,5 @@
 module scenes {
-  export class YouWon extends objects.Scene {
+  export class Win extends objects.Scene {
     // private instance variable
     private _youwon: objects.Button;
     private _space: objects.Space;
@@ -15,9 +15,6 @@ module scenes {
     }
 
     // private methods
-    private _restartButtonClick(): void {
-      managers.Game.currentState = config.Scene.PLAY1;
-    }
 
     // public methods
 
@@ -50,8 +47,9 @@ module scenes {
       this.addChild(this._scoreboard.HighScoreLabel);
       this._scoreboard.HighScore = managers.Game.highScore;
 
-      this._restartButton.on("click", this._restartButtonClick);
-      managers.Game.currentState = config.Scene.PLAY1;
+      this._restartButton.on("click", () => {
+        managers.Game.currentState = config.Scene.PLAY1;
+      });
     }
   }
 }

@@ -365,9 +365,6 @@
       case config.Scene.PLAY1:
         currentScene = new scenes.Play1();
         break;
-      case config.Scene.OVER:
-        currentScene = new scenes.Over();
-        break;
       case config.Scene.START2:
         currentScene = new scenes.Start2();
         break;
@@ -375,10 +372,16 @@
         currentScene = new scenes.Play2();
         break;
       case config.Scene.START3:
-        currentScene = new scenes.Start2();
+        currentScene = new scenes.Start3();
         break;
       case config.Scene.PLAY3:
-        currentScene = new scenes.Play2();
+        currentScene = new scenes.Play3();
+        break;
+      case config.Scene.WIN:
+        currentScene = new scenes.Win();
+        break;
+      case config.Scene.OVER:
+        currentScene = new scenes.Over();
         break;
     }
     managers.Game.sceneObject = currentScene;

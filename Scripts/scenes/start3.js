@@ -13,18 +13,18 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var scenes;
 (function (scenes) {
-    var Start2 = /** @class */ (function (_super) {
-        __extends(Start2, _super);
+    var Start3 = /** @class */ (function (_super) {
+        __extends(Start3, _super);
         // constructor
-        function Start2() {
+        function Start3() {
             var _this = _super.call(this) || this;
             _this.Start();
             return _this;
         }
         // public methods
-        Start2.prototype.Start = function () {
+        Start3.prototype.Start = function () {
             this._space = new objects.Space();
-            this._level2 = new objects.Button("level2", 497.5, 200, true);
+            this._level2 = new objects.Button("level3", 497.5, 200, true);
             this._startButton = new objects.Button("start", 487.5, 360, true);
             this._restartButton = new objects.Button("replay", 487.5, 424, true);
             this._engineSound = createjs.Sound.play("startSound");
@@ -32,26 +32,26 @@ var scenes;
             this._engineSound.volume = 0.8;
             this.Main();
         };
-        Start2.prototype.Update = function () {
+        Start3.prototype.Update = function () {
             this._space.Update();
         };
-        Start2.prototype.Destroy = function () {
+        Start3.prototype.Destroy = function () {
             this.removeAllChildren();
         };
-        Start2.prototype.Reset = function () { };
-        Start2.prototype.Main = function () {
+        Start3.prototype.Reset = function () { };
+        Start3.prototype.Main = function () {
             var _this = this;
             this.addChild(this._space);
             this.addChild(this._level2);
             this.addChild(this._startButton);
             this.addChild(this._restartButton);
             this._startButton.on("click", function () {
-                managers.Game.currentState = config.Scene.PLAY2;
+                managers.Game.currentState = config.Scene.PLAY3;
                 _this._engineSound.stop();
             });
         };
-        return Start2;
+        return Start3;
     }(objects.Scene));
-    scenes.Start2 = Start2;
+    scenes.Start3 = Start3;
 })(scenes || (scenes = {}));
-//# sourceMappingURL=start2.js.map
+//# sourceMappingURL=start3.js.map
