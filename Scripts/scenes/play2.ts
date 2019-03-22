@@ -12,8 +12,6 @@ module scenes {
     private _scoreBoard: managers.ScoreBoard;
     private _engineSound: createjs.AbstractSoundInstance;
     private _shotManager: managers.Shoot;
-    private _redenemy: objects.RedEnemy;
-    private _sonEnemy: objects.SonEnemy;
 
     // constructor
     constructor() {
@@ -61,16 +59,9 @@ module scenes {
       this._space.Update();
       this._player.Update();
       this._enemy.Update();
-      this._redenemy.Update();
       this._shotManager.Update();
-      this._sonEnemy.Update();
 
       managers.Collision.Check(this._player, this._enemy);
-
-      // Is not working
-      managers.Collision.Check(this._player, this._redenemy);
-
-      managers.Collision.Check(this._player, this._sonEnemy);
 
       for (const bigmeteor of this._bigmeteor) {
         bigmeteor.Update();
@@ -134,12 +125,6 @@ module scenes {
       // adds enemy to the scene
       this._enemy = new objects.Enemy();
       this.addChild(this._enemy);
-
-      this._redenemy = new objects.RedEnemy();
-      this.addChild(this._redenemy);
-
-      this._sonEnemy = new objects.SonEnemy();
-      this.addChild(this._sonEnemy);
 
       // adds player to the scene
       this._player = new objects.Player();

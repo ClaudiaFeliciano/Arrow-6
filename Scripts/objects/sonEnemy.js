@@ -19,24 +19,35 @@ var objects;
         // constructor
         function SonEnemy() {
             var _this = _super.call(this, "sonenemy") || this;
+            _this._GoReverse = false;
             _this.Start();
             return _this;
         }
         // private methods
         SonEnemy.prototype._move = function () {
-            this.x += 10;
+            if (!this._GoReverse) {
+                this.x += 3;
+            }
+            else {
+                this.x -= 3;
+            }
         };
         SonEnemy.prototype._checkBounds = function () {
             if (this.y >= managers.Game.yPlayer) {
-                this.y -= 2;
+                this.y -= 3;
             }
             else {
-                this.y += 2;
+                this.y += 3;
+            }
+            if (this.x >= managers.Game.xPlayer) {
+                this._GoReverse = true;
+            }
+            else {
+                this._GoReverse = false;
             }
             if (this.x > 1024 + this.Width) {
                 this.Reset();
             }
-            // console.log("TCL: SonEnemy -> this.x", managers.Game.xPlayer);
         };
         // public methods
         SonEnemy.prototype.Reset = function () {
@@ -44,7 +55,7 @@ var objects;
             this.y = managers.Game.yRedEnemy;
         };
         SonEnemy.prototype.Start = function () {
-            this._horizontalSpeed = 5;
+            this._horizontalSpeed = 4;
             this.Reset();
         };
         SonEnemy.prototype.Update = function () {

@@ -4,11 +4,8 @@ module scenes {
     private _player: objects.Player;
     private _space: objects.Space;
     private _enemy: objects.Enemy;
-    private _numero: number;
-    private _bigmeteorNum: number;
-    private _meteor: objects.Meteor[];
-    private _smallmeteor: objects.SmallMeteor[];
-    private _bigmeteor: objects.BigMeteor[];
+    private _numMeteors: number;
+    private _meteorArray: objects.Meteor[];
     private _scoreBoard: managers.ScoreBoard;
     private _engineSound: createjs.AbstractSoundInstance;
     private _shotManager: managers.Shoot;
@@ -24,27 +21,15 @@ module scenes {
     // public methods
 
     public Start(): void {
-      this._bigmeteorNum = 3;
-      this._bigmeteor = new Array<objects.BigMeteor>();
-      for (let count = 0; count < this._bigmeteorNum; count++) {
-        this._bigmeteor[count] = new objects.BigMeteor();
-      }
-
-      this._numero = 5;
-      this._smallmeteor = new Array<objects.SmallMeteor>();
-      for (let count = 0; count < this._numero; count++) {
-        this._smallmeteor[count] = new objects.SmallMeteor();
-      }
-
-      // Instantiates a new Array container of Type objects.meteor
-      this._meteor = new Array<objects.Meteor>();
+      this._numMeteors = 0;
+      this._meteorArray = new Array<objects.Meteor>();
       // Fill the meteor Array with meteors
-      for (let count = 0; count < this._numero; count++) {
-        this._meteor[count] = new objects.Meteor();
+      for (let count = 0; count < this._numMeteors; count++) {
+        this._meteorArray[count] = new objects.Meteor();
       }
 
       this._engineSound = createjs.Sound.play("gameSound");
-      this._engineSound.loop = -1; //play forever
+      this._engineSound.loop = -1;
       this._engineSound.volume = 0.1;
 
       //create the score board UI for the scene
@@ -65,31 +50,20 @@ module scenes {
       this._shotManager.Update();
       this._sonEnemy.Update();
 
-      managers.Collision.Check(this._player, this._enemy);
+      // managers.Collision.Check(this._player, this._enemy);
 
       // Is not working
       managers.Collision.Check(this._player, this._redenemy);
 
       managers.Collision.Check(this._player, this._sonEnemy);
 
-      for (const bigmeteor of this._bigmeteor) {
-        bigmeteor.Update();
-        managers.Collision.Check(this._player, bigmeteor);
-      }
-
-      for (const smallmeteor of this._smallmeteor) {
-        smallmeteor.Update();
-        //managers.Collision.Check(this._player, smallmeteor);
-      }
       // Update Each meteor in the Meteor Array
-      for (const meteor of this._meteor) {
+      for (let meteor of this._meteorArray) {
         meteor.Update();
-        //check collision between arrow and meteor
         managers.Collision.Check(this._player, meteor);
       }
 
-      for (const shoot of this._shotManager.Shoots) {
-        //  shoot.Update();
+      for (let shoot of this._shotManager.Shoots) {
         managers.Collision.Check(this._enemy, shoot);
       }
 
@@ -131,7 +105,6 @@ module scenes {
       this._space = new objects.Space();
       this.addChild(this._space);
 
-      // adds enemy to the scene
       this._enemy = new objects.Enemy();
       this.addChild(this._enemy);
 
@@ -154,13 +127,7 @@ module scenes {
         this.addChild(shoot);
       });
 
-      for (const bigmeteor of this._bigmeteor) {
-        this.addChild(bigmeteor);
-      }
-      for (const smallmeteor of this._smallmeteor) {
-        this.addChild(smallmeteor);
-      }
-      this._meteor.forEach(meteor => {
+      this._meteorArray.forEach(meteor => {
         this.addChild(meteor);
       });
 
