@@ -23,19 +23,23 @@ var scenes;
         }
         // public methods
         Play2.prototype.Start = function () {
-            this._meteorNum = 5;
-            this._bigmeteorNum = 2;
+            this._bigmeteorNum = 3;
             this._bigmeteor = new Array();
             for (var count = 0; count < this._bigmeteorNum; count++) {
                 this._bigmeteor[count] = new objects.BigMeteor();
             }
+            this._numero = 5;
+            this._smallmeteor = new Array();
+            for (var count = 0; count < this._numero; count++) {
+                this._smallmeteor[count] = new objects.SmallMeteor();
+            }
             // Instantiates a new Array container of Type objects.meteor
             this._meteor = new Array();
             // Fill the meteor Array with meteors
-            for (var count = 0; count < this._meteorNum; count++) {
+            for (var count = 0; count < this._numero; count++) {
                 this._meteor[count] = new objects.Meteor();
             }
-            this._engineSound = createjs.Sound.play("gameSound"); //lo pongo akip ara que comience en cuanto comience la scence
+            this._engineSound = createjs.Sound.play("gameSound");
             this._engineSound.loop = -1; //play forever
             this._engineSound.volume = 0.1;
             //create the score board UI for the scene
@@ -50,30 +54,42 @@ var scenes;
             this._space.Update();
             this._player.Update();
             this._enemy.Update();
+            this._redenemy.Update();
             this._shotManager.Update();
-            //check collision between arrow and island
+            this._sonEnemy.Update();
             managers.Collision.Check(this._player, this._enemy);
+            // Is not working
+            managers.Collision.Check(this._player, this._redenemy);
+            managers.Collision.Check(this._player, this._sonEnemy);
             for (var _i = 0, _a = this._bigmeteor; _i < _a.length; _i++) {
                 var bigmeteor = _a[_i];
                 bigmeteor.Update();
                 managers.Collision.Check(this._player, bigmeteor);
             }
+            for (var _b = 0, _c = this._smallmeteor; _b < _c.length; _b++) {
+                var smallmeteor = _c[_b];
+                smallmeteor.Update();
+                //managers.Collision.Check(this._player, smallmeteor);
+            }
             // Update Each meteor in the Meteor Array
-            for (var _b = 0, _c = this._meteor; _b < _c.length; _b++) {
-                var meteor = _c[_b];
+            for (var _d = 0, _e = this._meteor; _d < _e.length; _d++) {
+                var meteor = _e[_d];
                 meteor.Update();
                 //check collision between arrow and meteor
-                managers.Collision.Check(this._player, meteor); //check collision between the arrow and the meteor
+                managers.Collision.Check(this._player, meteor);
             }
-            for (var _d = 0, _e = this._shotManager.Shoots; _d < _e.length; _d++) {
-                var shoot = _e[_d];
+            for (var _f = 0, _g = this._shotManager.Shoots; _f < _g.length; _f++) {
+                var shoot = _g[_f];
                 //  shoot.Update();
                 managers.Collision.Check(this._enemy, shoot);
             }
-            //if lives fall below zero switch scenes to the game over scene
             if (this._scoreBoard.Lives <= 0) {
-                this._engineSound.stop(); //sino me sigue sonando the app
+                this._engineSound.stop();
                 managers.Game.currentState = config.Scene.OVER;
+            }
+            if (this._scoreBoard.Score >= 500 && this._scoreBoard.Lives >= 0) {
+                this._engineSound.stop();
+                managers.Game.currentState = config.Scene.START1;
             }
             // right
             if (managers.Game.goingRigth) {
@@ -104,6 +120,10 @@ var scenes;
             // adds enemy to the scene
             this._enemy = new objects.Enemy();
             this.addChild(this._enemy);
+            this._redenemy = new objects.RedEnemy();
+            this.addChild(this._redenemy);
+            this._sonEnemy = new objects.SonEnemy();
+            this.addChild(this._sonEnemy);
             // adds player to the scene
             this._player = new objects.Player();
             this.addChild(this._player);
@@ -115,10 +135,13 @@ var scenes;
                 var bigmeteor = _a[_i];
                 this.addChild(bigmeteor);
             }
+            for (var _b = 0, _c = this._smallmeteor; _b < _c.length; _b++) {
+                var smallmeteor = _c[_b];
+                this.addChild(smallmeteor);
+            }
             this._meteor.forEach(function (meteor) {
                 _this.addChild(meteor);
             });
-            //add scoreboard labels to the scene
             this.addChild(this._scoreBoard.LivesLabel);
             this.addChild(this._scoreBoard.ScoreLabel);
         };

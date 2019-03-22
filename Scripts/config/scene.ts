@@ -1,6 +1,6 @@
 module config {
   export enum Scene {
-    START,
+    START1,
     PLAY1,
     START2,
     PLAY2,

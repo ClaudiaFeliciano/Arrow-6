@@ -328,7 +328,7 @@
     createjs.Ticker.framerate = 60;
     createjs.Ticker.on("tick", Update);
 
-    currentState = config.Scene.START;
+    currentState = config.Scene.START1;
     managers.Game.currentState = currentState; //it makes a refrence to my stage and I hold it in my global object
 
     keyboardManager = new managers.Keyboard();
@@ -359,11 +359,11 @@
     }
 
     switch (currentState) {
-      case config.Scene.START:
-        currentScene = new scenes.Start();
+      case config.Scene.START1:
+        currentScene = new scenes.Start1();
         break;
       case config.Scene.PLAY1:
-        currentScene = new scenes.Play();
+        currentScene = new scenes.Play1();
         break;
       case config.Scene.OVER:
         currentScene = new scenes.Over();

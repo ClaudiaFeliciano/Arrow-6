@@ -23,6 +23,7 @@
 /// <reference path="../../Scripts/objects/lives.ts" />
 /// <reference path="../../Scripts/objects/sonEnemy.ts" />
 
-/// <reference path="../../Scripts/scenes/over.ts" />
-/// <reference path="../scenes/play1.ts" />
-/// <reference path="../../Scripts/scenes/start.ts" />
+/// <reference path="../scenes/start1.ts" />
+/// <reference path="../scenes/play1.ts"/>
+/// <reference path="../scenes/start2.ts"/>
+/// <reference path="../scenes/play2.ts" />

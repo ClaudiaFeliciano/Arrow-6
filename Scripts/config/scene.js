@@ -2,7 +2,7 @@ var config;
 (function (config) {
     var Scene;
     (function (Scene) {
-        Scene[Scene["START"] = 0] = "START";
+        Scene[Scene["START1"] = 0] = "START1";
         Scene[Scene["PLAY1"] = 1] = "PLAY1";
         Scene[Scene["START2"] = 2] = "START2";
         Scene[Scene["PLAY2"] = 3] = "PLAY2";

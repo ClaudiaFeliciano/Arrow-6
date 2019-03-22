@@ -1,5 +1,5 @@
 module scenes {
-  export class Start extends objects.Scene {
+  export class Start1 extends objects.Scene {
     // private instance variable
     private _nameGame: objects.Button;
     private _space: objects.Space;

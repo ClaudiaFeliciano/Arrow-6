@@ -13,16 +13,16 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var scenes;
 (function (scenes) {
-    var Start = /** @class */ (function (_super) {
-        __extends(Start, _super);
+    var Start1 = /** @class */ (function (_super) {
+        __extends(Start1, _super);
         // constructor
-        function Start() {
+        function Start1() {
             var _this = _super.call(this) || this;
             _this.Start();
             return _this;
         }
         // public methods
-        Start.prototype.Start = function () {
+        Start1.prototype.Start = function () {
             this._space = new objects.Space();
             /*this._window = new createjs.Bitmap("window");
                   this._window.x= 400;
@@ -42,18 +42,18 @@ var scenes;
             this._engineSound.volume = 0.8;
             this.Main();
         };
-        Start.prototype.Update = function () {
+        Start1.prototype.Update = function () {
             this._space.Update();
             /*for (const explosion of this._explosion) {
                       explosion.Update();
       
                     }*/
         };
-        Start.prototype.Destroy = function () {
+        Start1.prototype.Destroy = function () {
             this.removeAllChildren();
         };
-        Start.prototype.Reset = function () { };
-        Start.prototype.Main = function () {
+        Start1.prototype.Reset = function () { };
+        Start1.prototype.Main = function () {
             var _this = this;
             this.addChild(this._space);
             //this.addChild(this._window);
@@ -79,8 +79,8 @@ var scenes;
                 }
             });
         };
-        return Start;
+        return Start1;
     }(objects.Scene));
-    scenes.Start = Start;
+    scenes.Start1 = Start1;
 })(scenes || (scenes = {}));
-//# sourceMappingURL=start.js.map
+//# sourceMappingURL=start1.js.map
