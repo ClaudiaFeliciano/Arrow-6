@@ -31,7 +31,7 @@ var scenes;
             this._restartButton = new objects.Button("exit", 497.5, 524, true);
             this._engineSound = createjs.Sound.play("startSound");
             this._engineSound.loop = -1;
-            this._engineSound.volume = 0.8;
+            this._engineSound.volume = 0.4;
             this.Main();
         };
         Start1.prototype.Update = function () {
@@ -55,11 +55,11 @@ var scenes;
                 _this._engineSound.stop();
             });
             this._musicButton.on("click", function () {
-                if (_this._engineSound.volume != 0.0) {
-                    _this._engineSound.volume -= 0.2;
+                if (_this._engineSound.volume == 0.4) {
+                    _this._engineSound.volume = 0.0;
                 }
-                else if (_this._engineSound.volume <= 0.0) {
-                    _this._engineSound.volume = 1.0;
+                else {
+                    _this._engineSound.volume = 0.4;
                 }
             });
         };

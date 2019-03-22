@@ -30,7 +30,7 @@ module scenes {
       this._restartButton = new objects.Button("exit", 497.5, 524, true);
       this._engineSound = createjs.Sound.play("startSound");
       this._engineSound.loop = -1;
-      this._engineSound.volume = 0.8;
+      this._engineSound.volume = 0.4;
       this.Main();
     }
 
@@ -58,10 +58,10 @@ module scenes {
         this._engineSound.stop();
       });
       this._musicButton.on("click", () => {
-        if (this._engineSound.volume != 0.0) {
-          this._engineSound.volume -= 0.2;
-        } else if (this._engineSound.volume <= 0.0) {
-          this._engineSound.volume = 1.0;
+        if (this._engineSound.volume == 0.4) {
+          this._engineSound.volume = 0.0;
+        } else {
+          this._engineSound.volume = 0.4;
         }
       });
     }

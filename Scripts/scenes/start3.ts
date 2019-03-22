@@ -24,7 +24,7 @@ module scenes {
       this._restartButton = new objects.Button("replay", 487.5, 424, true);
       this._engineSound = createjs.Sound.play("startSound");
       this._engineSound.loop = -1;
-      this._engineSound.volume = 0.8;
+      this._engineSound.volume = 0.4;
       this.Main();
     }
 
