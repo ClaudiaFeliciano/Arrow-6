@@ -50,7 +50,7 @@ module scenes {
       this._shotManager.Update();
       this._sonEnemy.Update();
 
-      // managers.Collision.Check(this._player, this._enemy);
+      managers.Collision.Check(this._player, this._enemy);
 
       // Is not working
       managers.Collision.Check(this._player, this._redenemy);
