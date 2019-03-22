@@ -4,8 +4,8 @@ var managers;
         //cosntructor
         function Keyboard() {
             this.enable = true;
-            document.addEventListener('keydown', this.onKeyDown.bind(this), false);
-            document.addEventListener('keyup', this.onKeyUp.bind(this), false);
+            document.addEventListener("keydown", this.onKeyDown.bind(this), false);
+            document.addEventListener("keyup", this.onKeyUp.bind(this), false);
         }
         //private methods
         //public methods
@@ -19,7 +19,6 @@ var managers;
                 case config.Keys.A:
                 case config.Keys.LEFT_ARROW:
                     this.moveLeft = true;
-                    ;
                     break;
                 case config.Keys.S:
                 case config.Keys.DOWN_ARROW:
@@ -32,6 +31,9 @@ var managers;
                 case config.Keys.space:
                     this.shoot = true;
                     break;
+                case config.Keys.C:
+                    this.hack = true;
+                    break;
             }
         };
         Keyboard.prototype.onKeyUp = function (event) {
@@ -43,7 +45,6 @@ var managers;
                 case config.Keys.A:
                 case config.Keys.LEFT_ARROW:
                     this.moveLeft = false;
-                    ;
                     break;
                 case config.Keys.S:
                 case config.Keys.DOWN_ARROW:

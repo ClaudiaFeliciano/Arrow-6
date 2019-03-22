@@ -13,16 +13,16 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var scenes;
 (function (scenes) {
-    var PlayLevel2 = /** @class */ (function (_super) {
-        __extends(PlayLevel2, _super);
+    var Play2 = /** @class */ (function (_super) {
+        __extends(Play2, _super);
         // constructor
-        function PlayLevel2() {
+        function Play2() {
             var _this = _super.call(this) || this;
             _this.Start();
             return _this;
         }
         // public methods
-        PlayLevel2.prototype.Start = function () {
+        Play2.prototype.Start = function () {
             this._meteorNum = 5;
             this._bigmeteorNum = 2;
             this._bigmeteor = new Array();
@@ -46,7 +46,7 @@ var scenes;
             this.Main();
         };
         //triggered every frame
-        PlayLevel2.prototype.Update = function () {
+        Play2.prototype.Update = function () {
             this._space.Update();
             this._player.Update();
             this._enemy.Update();
@@ -92,11 +92,11 @@ var scenes;
                 this._player.rotation = 90;
             }
         };
-        PlayLevel2.prototype.Destroy = function () {
+        Play2.prototype.Destroy = function () {
             this.removeAllChildren();
         };
-        PlayLevel2.prototype.Reset = function () { };
-        PlayLevel2.prototype.Main = function () {
+        Play2.prototype.Reset = function () { };
+        Play2.prototype.Main = function () {
             var _this = this;
             // adds space to the scene
             this._space = new objects.Space();
@@ -122,8 +122,8 @@ var scenes;
             this.addChild(this._scoreBoard.LivesLabel);
             this.addChild(this._scoreBoard.ScoreLabel);
         };
-        return PlayLevel2;
+        return Play2;
     }(objects.Scene));
-    scenes.PlayLevel2 = PlayLevel2;
+    scenes.Play2 = Play2;
 })(scenes || (scenes = {}));
-//# sourceMappingURL=playlevel2.js.map
+//# sourceMappingURL=play2.js.map

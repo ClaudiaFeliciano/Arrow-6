@@ -25,13 +25,13 @@ var scenes;
         Start.prototype.Start = function () {
             this._space = new objects.Space();
             /*this._window = new createjs.Bitmap("window");
-            this._window.x= 400;
-            this._window.y= 220;*/
+                  this._window.x= 400;
+                  this._window.y= 220;*/
             /*this._explosionNum = 5;
-            this._explosion = new Array<objects.ExplosionStart>();
-            for (let count = 0; count < this._explosionNum; count++) {
-              this._explosion[count] = new objects.ExplosionStart();
-            }*/
+                  this._explosion = new Array<objects.ExplosionStart>();
+                  for (let count = 0; count < this._explosionNum; count++) {
+                    this._explosion[count] = new objects.ExplosionStart();
+                  }*/
             this._nameGame = new objects.Button("ArrowGame", 497.5, 200, true);
             this._startButton = new objects.Button("start", 497.5, 360, true);
             this._settingButton = new objects.Button("settings", 425.5, 446, true);
@@ -45,15 +45,14 @@ var scenes;
         Start.prototype.Update = function () {
             this._space.Update();
             /*for (const explosion of this._explosion) {
-                explosion.Update();
-              
-              }*/
+                      explosion.Update();
+      
+                    }*/
         };
         Start.prototype.Destroy = function () {
             this.removeAllChildren();
         };
-        Start.prototype.Reset = function () {
-        };
+        Start.prototype.Reset = function () { };
         Start.prototype.Main = function () {
             var _this = this;
             this.addChild(this._space);
@@ -64,11 +63,11 @@ var scenes;
             this.addChild(this._musicButton);
             this.addChild(this._settingButton);
             /*for (const explosion of this._explosion) {
-                this.addChild(explosion);
-              }
-*/
+                      this.addChild(explosion);
+                    }
+      */
             this._startButton.on("click", function () {
-                managers.Game.currentState = config.Scene.PLAY;
+                managers.Game.currentState = config.Scene.PLAY1;
                 _this._engineSound.stop();
             });
             this._musicButton.on("click", function () {

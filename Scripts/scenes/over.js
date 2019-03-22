@@ -24,7 +24,7 @@ var scenes;
         }
         // private methods
         Over.prototype._restartButtonClick = function () {
-            managers.Game.currentState = config.Scene.PLAY;
+            managers.Game.currentState = config.Scene.PLAY1;
         };
         // public methods
         Over.prototype.Start = function () {
@@ -40,18 +40,14 @@ var scenes;
         Over.prototype.Destroy = function () {
             this.removeAllChildren();
         };
-        Over.prototype.Reset = function () {
-        };
+        Over.prototype.Reset = function () { };
         Over.prototype.Main = function () {
-            // adds ocean to the stage     
             this.addChild(this._space);
             this.addChild(this._gameOver);
             this.addChild(this._restartButton);
-            //add scoreboard to the scence
             this.addChild(this._scoreboard.HighScoreLabel);
             this._scoreboard.HighScore = managers.Game.highScore;
             this._restartButton.on("click", this._restartButtonClick);
-            // restart the play scene    
         };
         return Over;
     }(objects.Scene));

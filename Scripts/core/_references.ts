@@ -24,5 +24,5 @@
 /// <reference path="../../Scripts/objects/sonEnemy.ts" />
 
 /// <reference path="../../Scripts/scenes/over.ts" />
-/// <reference path="../../Scripts/scenes/play.ts" />
+/// <reference path="../scenes/play1.ts" />
 /// <reference path="../../Scripts/scenes/start.ts" />

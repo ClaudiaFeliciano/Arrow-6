@@ -228,12 +228,15 @@
             [698, 1640, 37, 103, 0, 0, 0],
             [2, 1745, 315, 56, 0, 0, 0],
             [319, 1745, 313, 56, 0, 0, 0],
-            [2, 1803, 475, 74, 0, 0, 0],
+            [2, 1803, 475, 74, 0, 0, 0]
         ],
+        // prettier-ignore
         animations: {
             "a10000": { "frames": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] },
-            "a30000": { "frames": [16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
-                "speed": 0.2 },
+            "a30000": {
+                "frames": [16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
+                "speed": 0.2
+            },
             "a40000": { "frames": [32] },
             "a40001": { "frames": [33] },
             "a40002": { "frames": [34] },
@@ -253,27 +256,14 @@
             "afterCollision": { "frames": [48, 49, 50, 51, 52] },
             "ArrowGame": { "frames": [53] },
             "asteroid": { "frames": [54, 55, 56, 57] },
-            "boom": { "frames": [58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68],
-                "speed": 0.2 },
+            "boom": {
+                "frames": [58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68],
+                "speed": 0.2
+            },
             "Boss_Name_Table": { "frames": [69] },
-            "c30000": { "frames": [70] },
-            "c30001": { "frames": [71] },
-            "c30002": { "frames": [72] },
-            "c30003": { "frames": [73] },
-            "c30004": { "frames": [74] },
-            "c30005": { "frames": [75] },
-            "c30006": { "frames": [76] },
-            "c30007": { "frames": [77] },
-            "c30008": { "frames": [78] },
-            "c30009": { "frames": [79] },
-            "c30010": { "frames": [80] },
-            "c30011": { "frames": [81] },
-            "c30012": { "frames": [82] },
-            "c30013": { "frames": [83] },
-            "c30014": { "frames": [84] },
-            "c30015": { "frames": [85] },
-            "enemy": { "frames": [86] },
-            "enemy0": { "frames": [87] },
+            "asteroideFare": { "frames": [70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85],
+                "speed": 0.2 },
+            "enemy": { "frames": [86, 87] },
             "exit": { "frames": [88] },
             "expl": { "frames": [89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112] },
             "gameOver": { "frames": [113] },
@@ -317,7 +307,7 @@
         { id: "pep", src: "/Assets/audio/pep.mp3" }
     ];
     function Init() {
-        console.log("%c Game Started...", "font-size: 20px;");
+        console.log("%c Game Started...", "font-size: 14px;");
         textureArrow = new createjs.SpriteSheet(textureArrowData);
         assetManager = new createjs.LoadQueue(); //create the asset manager
         managers.Game.assetManager = assetManager; // creates a reference to the global assetManager
@@ -359,24 +349,25 @@
         }
         switch (currentState) {
             case config.Scene.START:
-                //instattiate a new scene object
                 currentScene = new scenes.Start();
                 break;
-            case config.Scene.PLAY:
-                //instattiate a new scene object
+            case config.Scene.PLAY1:
                 currentScene = new scenes.Play();
                 break;
             case config.Scene.OVER:
-                //instattiate a new scene object
                 currentScene = new scenes.Over();
                 break;
-            case config.Scene.STARTLEVEL2:
-                //instattiate a new scene object
-                currentScene = new scenes.StartLevel2();
+            case config.Scene.START2:
+                currentScene = new scenes.Start2();
                 break;
-            case config.Scene.PLAYLEVEL2:
-                //instattiate a new scene object
-                currentScene = new scenes.PlayLevel2();
+            case config.Scene.PLAY2:
+                currentScene = new scenes.Play2();
+                break;
+            case config.Scene.START3:
+                currentScene = new scenes.Start2();
+                break;
+            case config.Scene.PLAY3:
+                currentScene = new scenes.Play2();
                 break;
         }
         managers.Game.sceneObject = currentScene;

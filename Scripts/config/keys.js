@@ -13,6 +13,8 @@ var config;
         Keys.A = 65;
         Keys.S = 83;
         Keys.D = 65;
+        // A hack
+        Keys.C = 67;
         //space bar
         Keys.space = 32;
         return Keys;

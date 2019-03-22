@@ -23,12 +23,12 @@ var scenes;
         }
         // public methods
         Play.prototype.Start = function () {
-            this._numero = 5;
             this._bigmeteorNum = 3;
             this._bigmeteor = new Array();
             for (var count = 0; count < this._bigmeteorNum; count++) {
                 this._bigmeteor[count] = new objects.BigMeteor();
             }
+            this._numero = 5;
             this._smallmeteor = new Array();
             for (var count = 0; count < this._numero; count++) {
                 this._smallmeteor[count] = new objects.SmallMeteor();
@@ -39,7 +39,7 @@ var scenes;
             for (var count = 0; count < this._numero; count++) {
                 this._meteor[count] = new objects.Meteor();
             }
-            this._engineSound = createjs.Sound.play("gameSound"); //lo pongo akip ara que comience en cuanto comience la scence
+            this._engineSound = createjs.Sound.play("gameSound");
             this._engineSound.loop = -1; //play forever
             this._engineSound.volume = 0.1;
             //create the score board UI for the scene
@@ -58,6 +58,7 @@ var scenes;
             this._shotManager.Update();
             this._sonEnemy.Update();
             managers.Collision.Check(this._player, this._enemy);
+            // Is not working
             managers.Collision.Check(this._player, this._redenemy);
             managers.Collision.Check(this._player, this._sonEnemy);
             for (var _i = 0, _a = this._bigmeteor; _i < _a.length; _i++) {
@@ -75,22 +76,21 @@ var scenes;
                 var meteor = _e[_d];
                 meteor.Update();
                 //check collision between arrow and meteor
-                managers.Collision.Check(this._player, meteor); //check collision between the arrow and the meteor
+                managers.Collision.Check(this._player, meteor);
             }
             for (var _f = 0, _g = this._shotManager.Shoots; _f < _g.length; _f++) {
                 var shoot = _g[_f];
                 //  shoot.Update();
                 managers.Collision.Check(this._enemy, shoot);
-                //console.log("estoy aki");
             }
             //if lives fall below zero switch scenes to the game over scene
             if (this._scoreBoard.Lives <= 0) {
-                this._engineSound.stop(); //sino me sigue sonando the app
+                this._engineSound.stop();
                 managers.Game.currentState = config.Scene.OVER;
             }
-            if ((this._scoreBoard.Score >= 1000) && (this._scoreBoard.Lives >= 0)) {
+            if (this._scoreBoard.Score >= 200 && this._scoreBoard.Lives >= 0) {
                 this._engineSound.stop();
-                managers.Game.currentState = config.Scene.STARTLEVEL2;
+                managers.Game.currentState = config.Scene.PLAY2;
             }
             // right
             if (managers.Game.goingRigth) {
@@ -143,7 +143,6 @@ var scenes;
             this._meteor.forEach(function (meteor) {
                 _this.addChild(meteor);
             });
-            //add scoreboard labels to the scene
             this.addChild(this._scoreBoard.LivesLabel);
             this.addChild(this._scoreBoard.ScoreLabel);
         };
@@ -151,4 +150,4 @@ var scenes;
     }(objects.Scene));
     scenes.Play = Play;
 })(scenes || (scenes = {}));
-//# sourceMappingURL=play.js.map
+//# sourceMappingURL=play1.js.map

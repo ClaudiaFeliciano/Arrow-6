@@ -24,7 +24,7 @@ var scenes;
         }
         // private methods
         YouWon.prototype._restartButtonClick = function () {
-            managers.Game.currentState = config.Scene.PLAY;
+            managers.Game.currentState = config.Scene.PLAY1;
         };
         // public methods
         YouWon.prototype.Start = function () {
@@ -40,10 +40,9 @@ var scenes;
         YouWon.prototype.Destroy = function () {
             this.removeAllChildren();
         };
-        YouWon.prototype.Reset = function () {
-        };
+        YouWon.prototype.Reset = function () { };
         YouWon.prototype.Main = function () {
-            // adds ocean to the stage     
+            // adds ocean to the stage
             this.addChild(this._space);
             this.addChild(this._youwon);
             this.addChild(this._restartButton);
@@ -51,7 +50,7 @@ var scenes;
             this.addChild(this._scoreboard.HighScoreLabel);
             this._scoreboard.HighScore = managers.Game.highScore;
             this._restartButton.on("click", this._restartButtonClick);
-            managers.Game.currentState = config.Scene.PLAY;
+            managers.Game.currentState = config.Scene.PLAY1;
         };
         return YouWon;
     }(objects.Scene));

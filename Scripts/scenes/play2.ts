@@ -1,5 +1,5 @@
 module scenes {
-  export class PlayLevel2 extends objects.Scene {
+  export class Play2 extends objects.Scene {
     // private instance variable
     private _player: objects.Player;
     private _space: objects.Space;

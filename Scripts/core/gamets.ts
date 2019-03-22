@@ -1,5 +1,5 @@
 //IIFE - Immediately Invoked Function Expression
-(function () {
+(function() {
   // game variables
   let canvas: HTMLCanvasElement;
   let stage: createjs.Stage;
@@ -230,10 +230,9 @@
       [698, 1640, 37, 103, 0, 0, 0],
       [2, 1745, 315, 56, 0, 0, 0],
       [319, 1745, 313, 56, 0, 0, 0],
-      [2, 1803, 475, 74, 0, 0, 0],
-
+      [2, 1803, 475, 74, 0, 0, 0]
     ],
-
+    // prettier-ignore
     animations: {
       "a10000": { "frames": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] },
       "a30000": {
@@ -264,7 +263,7 @@
         "speed": 0.2
       },
       "Boss_Name_Table": { "frames": [69] },
-      "asteroideFare": { "frames": [70, 71,72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85], 
+      "asteroideFare": { "frames": [70, 71,72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85],
     "speed": 0.2 },
       "enemy": { "frames": [86, 87] },
       "exit": { "frames": [88] },
@@ -312,7 +311,7 @@
   ];
 
   function Init(): void {
-    console.log(`%c Game Started...`, "font-size: 20px;");
+    console.log(`%c Game Started...`, "font-size: 14px;");
     textureArrow = new createjs.SpriteSheet(textureArrowData);
     assetManager = new createjs.LoadQueue(); //create the asset manager
     managers.Game.assetManager = assetManager; // creates a reference to the global assetManager
@@ -361,24 +360,25 @@
 
     switch (currentState) {
       case config.Scene.START:
-        //instattiate a new scene object
         currentScene = new scenes.Start();
         break;
-      case config.Scene.PLAY:
-        //instattiate a new scene object
+      case config.Scene.PLAY1:
         currentScene = new scenes.Play();
         break;
       case config.Scene.OVER:
-        //instattiate a new scene object
         currentScene = new scenes.Over();
         break;
-      case config.Scene.STARTLEVEL2:
-        //instattiate a new scene object
-        currentScene = new scenes.StartLevel2();
+      case config.Scene.START2:
+        currentScene = new scenes.Start2();
         break;
-      case config.Scene.PLAYLEVEL2:
-        //instattiate a new scene object
-        currentScene = new scenes.PlayLevel2();
+      case config.Scene.PLAY2:
+        currentScene = new scenes.Play2();
+        break;
+      case config.Scene.START3:
+        currentScene = new scenes.Start2();
+        break;
+      case config.Scene.PLAY3:
+        currentScene = new scenes.Play2();
         break;
     }
     managers.Game.sceneObject = currentScene;
