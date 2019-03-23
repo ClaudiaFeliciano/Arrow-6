@@ -30,6 +30,7 @@ module managers {
                 }
               }
               break;
+              
             case "sonenemy":
               createjs.Sound.play("laser");
               if (object1.alpha != 0) {

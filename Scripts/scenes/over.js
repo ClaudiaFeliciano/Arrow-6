@@ -27,7 +27,7 @@ var scenes;
         Over.prototype.Start = function () {
             this._space = new objects.Space();
             this._gameOver = new objects.Button("gameOver", 497.5, 200, true);
-            this._restartButton = new objects.Button("replay", 500.5, 445, true);
+            this._restartButton = new objects.Button("replay", 500.5, 355, true);
             this._scoreboard = new managers.ScoreBoard();
             this._engineSound = createjs.Sound.play("overSound");
             this._engineSound.loop = -1;
