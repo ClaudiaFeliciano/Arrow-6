@@ -23,12 +23,18 @@ var objects;
         }
         // public methods
         Shoot.prototype.Reset = function () {
-            this.x = -5000;
-            this.y = -5000;
+            this.x = -2000;
+            this.y = -2000;
+        };
+        Shoot.prototype._animationEnded = function () {
+            this.alpha = 1;
+            this.off("animationend", this._animationEnded.bind(this), false); //remove my event listener
         };
         Shoot.prototype.Start = function () {
+            this.alpha = 1;
             this.HalfWidth = 0; // duda
-            this.HalfHeight = -10;
+            this.HalfHeight = -10; // duda
+            this.on("animationend", this._animationEnded.bind(this), false);
             this.Reset();
         };
         Shoot.prototype.Update = function () {
@@ -51,7 +57,12 @@ var objects;
             }
         };
         Shoot.prototype.CheckBounds = function () {
-            if (this.x <= -this.Height) {
+            /*  if (this.x <= -this.Height) {
+                this.Reset();*/
+            if (this.y <= -this.Height) {
+                this.Reset();
+            }
+            if (this.x <= -this.Width) {
                 this.Reset();
             }
         };

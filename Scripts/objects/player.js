@@ -15,27 +15,30 @@ var objects;
 (function (objects) {
     var Player = /** @class */ (function (_super) {
         __extends(Player, _super);
-        // private instance variables
-        //private _shootOrigin: math.Vec2;
         // constructors
         function Player() {
             var _this = _super.call(this, "player") || this;
             _this.Start();
             return _this;
         }
-        // public methods
+        Player.prototype._animationEnd = function () {
+            this.alpha = 1;
+            this.planeflash.alpha = 0;
+        };
         Player.prototype.Start = function () {
+            this.planeflash = new objects.PlaneAfterCrash(); //1
+            this.planeflash.alpha = 0; //1
+            this.planeflash.on("animationend", this._animationEnd.bind(this), false); //1
             this.regX = this.HalfWidth;
             this.regY = this.HalfHeight;
             this.x = 1024; //la posicion donde va a comenzar el avion como era de arriba hacia abajo 0 es arriba y 435 es pegado a abajo, menos la altura del avion
             this.y = 250; //kiero k el avion comienze en el medio de mi eje y
-            //this._shootOrigin = new math.Vec2();
+            this._shootOrigin = new math.Vec2();
         };
         Player.prototype.Update = function () {
             this.Move();
             // checking the bottom boundary
             if (this.y >= 600 - this.HalfHeight) {
-                //it is not responsive.If I want to fo that i should add a configuration file
                 this.y = 600 - this.HalfHeight;
             }
             // checking the top boundary
@@ -84,6 +87,10 @@ var objects;
                 managers.Game.goingDown = false;
             }
             this.Gravity();
+            this.planeflash.x = this.x;
+            this.planeflash.y = this.y;
+            this.planeflash.regX = this.regX;
+            this.planeflash.regY = this.regY;
         };
         Player.prototype.Gravity = function () {
             if (managers.Game.goingLeft) {
@@ -100,16 +107,23 @@ var objects;
             }
         };
         Player.prototype.Reset = function () { };
-        Player.prototype.Destroy = function () { };
+        Player.prototype.Destroy = function () {
+        };
         Player.prototype.ShootFire = function () {
             if ((this.alpha = 1)) {
-                //esto significa k estoy alive
+                //esto significa k estoy viva
                 var ticker = createjs.Ticker.getTicks();
                 if (managers.Game.keyboardManager.shoot && ticker % 10 == 0) {
                     //how many frames when i fire my ticker
-                    //this._shootOrigin = new math.Vec2(this.x, this.y -this.Height-2)
-                    var currentshot = managers.Game.shootManager.CurrentShoot; //call a shoot into being
+                    this._shootOrigin = new math.Vec2(this.x, this.y - this.HalfHeight);
+                    var currentshot = managers.Game.shootManager.CurrentShoot;
                     var shoot = managers.Game.shootManager.Shoots[currentshot];
+                    shoot.x = this._shootOrigin.x;
+                    shoot.y = this._shootOrigin.y;
+                    managers.Game.shootManager.CurrentShoot++;
+                    if (managers.Game.shootManager.CurrentShoot > 29) {
+                        managers.Game.shootManager.CurrentShoot = 0;
+                    }
                     if (managers.Game.goingLeft) {
                         if (managers.Game.shootManager.swi == 0) {
                             shoot.y = this.y - 40;
@@ -155,10 +169,6 @@ var objects;
                         shoot.y = this.y - 10;
                     }
                     createjs.Sound.play("shootSound");
-                    managers.Game.shootManager.CurrentShoot++;
-                    if (managers.Game.shootManager.CurrentShoot > 49) {
-                        managers.Game.shootManager.CurrentShoot = 0;
-                    }
                 }
             }
         };
