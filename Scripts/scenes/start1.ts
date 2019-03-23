@@ -28,10 +28,10 @@ module scenes {
           this._informationButton = new objects.Button("info", 980.5, 496, true);
           this._musicButton = new objects.Button("music", 980.5, 566, true);       
          // this._restartButton = new objects.Button("exit", 765.5, 300, true);
-
+        
           this._engineSound = createjs.Sound.play("startSound");
           this._engineSound.loop = -1; 
-          this._engineSound.volume = 0.0;
+          this._engineSound.volume = 0.8;
           this.Main();
       }
 

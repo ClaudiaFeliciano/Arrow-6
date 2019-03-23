@@ -10,6 +10,7 @@ module managers {
     //public static currentSceneObject: objects.Scene;
     public static keyboardManager: managers.Keyboard;
     public static highScore: number = 0;
+   
     public static textureArrow: createjs.SpriteSheet;
     public static sceneObject: objects.Scene;
     public static player: objects.Player;

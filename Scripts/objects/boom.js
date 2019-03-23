@@ -16,8 +16,8 @@ var objects;
     var Boom = /** @class */ (function (_super) {
         __extends(Boom, _super);
         // constructor
-        function Boom() {
-            var _this = _super.call(this, "boom") || this;
+        function Boom(spriteString) {
+            var _this = _super.call(this, spriteString) || this;
             _this.Start();
             return _this;
         }

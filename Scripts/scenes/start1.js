@@ -31,7 +31,7 @@ var scenes;
             // this._restartButton = new objects.Button("exit", 765.5, 300, true);
             this._engineSound = createjs.Sound.play("startSound");
             this._engineSound.loop = -1;
-            this._engineSound.volume = 0.0;
+            this._engineSound.volume = 0.8;
             this.Main();
         };
         Start1.prototype.Update = function () {

@@ -254,7 +254,7 @@
       "asteroid": { "frames": [54, 55, 56, 57] },
       "boom": {
         "frames": [58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68],
-        "speed": 0.2
+        "speed": 0.4
       },
       "table": { "frames": [69] },
       "asteroideFare": {
@@ -272,7 +272,8 @@
       "meteor": { "frames": [129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149] },
       "music": { "frames": [150, 151] },
       "player": { "frames": [152, 153] },
-      "explosionsmoke": { "frames": [154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185] },
+      "explosionsmoke": { "frames": [154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185],
+    "speed": 0.3 },
       "redEnemy": { "frames": [186, 187] },
       "replay": { "frames": [188] },
       "replayActive": { "frames": [189] },
@@ -309,6 +310,7 @@
     { id: "winSound", src: "/Assets/audio/winSound.ogg" },
     { id: "play3Sound", src: "/Assets/audio/play3Sound.ogg" },
     { id: "laser", src: "/Assets/audio/laser5.mp3" },
+    { id: "nolive", src: "/Assets/audio/gameover.wav" },
     { id: "pep", src: "/Assets/audio/pep.mp3" }
   ];
 
@@ -335,6 +337,10 @@
 
     keyboardManager = new managers.Keyboard();
     managers.Game.keyboardManager = keyboardManager;
+
+   /* scoreBoard = new managers.ScoreBoard();
+    managers.Game.scoreBoard = scoreBoard;*/
+
     managers.Game.assetManager = assetManager;
     managers.Game.textureArrow = textureArrow;
     Main();

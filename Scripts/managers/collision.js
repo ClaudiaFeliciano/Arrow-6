@@ -24,11 +24,10 @@ var managers;
                             break;
                         case "brouncerock": //carmelita claro
                             if (object2.alpha != 0) {
-                                createjs.Sound.play("goldmeteor");
+                                createjs.Sound.play("extralive");
                                 managers.Game.scoreBoard.Score += 50;
                                 if (managers.Game.scoreBoard.Score % 1000 == 0) {
                                     managers.Game.scoreBoard.Lives += 1;
-                                    createjs.Sound.play("extralive");
                                 }
                                 if (managers.Game.highScore <= managers.Game.scoreBoard.Score) {
                                     managers.Game.scoreBoard.HighScore = managers.Game.scoreBoard.Score;
@@ -41,7 +40,7 @@ var managers;
                             createjs.Sound.play("laser");
                             if (object1.alpha != 0) {
                                 managers.Game.scoreBoard.Lives -= 1;
-                                var boomLaser = new objects.Boom();
+                                var boomLaser = new objects.Boom("boom");
                                 boomLaser.x = object2.x - object2.Width;
                                 boomLaser.y = object2.y - object2.Height;
                                 managers.Game.sceneObject.addChild(boomLaser);
@@ -50,12 +49,12 @@ var managers;
                             break;
                         case "smallmeteor":
                             createjs.Sound.play("laser");
+                            var smooked = new objects.Boom("explosionsmoke");
+                            smooked.x = object2.x;
+                            smooked.y = object2.y;
+                            managers.Game.sceneObject.addChild(smooked);
                             if (managers.Game.scoreBoard.Score >= 50) {
                                 managers.Game.scoreBoard.Score -= 50;
-                                var smooked = new objects.Boom();
-                                smooked.x = object2.x - object2.Width;
-                                smooked.y = object2.y - object2.Height;
-                                managers.Game.sceneObject.addChild(smooked);
                             }
                             if (managers.Game.highScore <= managers.Game.scoreBoard.Score) {
                                 managers.Game.scoreBoard.HighScore = managers.Game.scoreBoard.Score;
@@ -66,7 +65,7 @@ var managers;
                             if (object1.alpha != 0) {
                                 createjs.Sound.play("explosion");
                                 managers.Game.scoreBoard.Lives -= 2;
-                                var boom1 = new objects.Boom();
+                                var boom1 = new objects.Boom("boom");
                                 boom1.x = object2.x - object2.Width;
                                 boom1.y = object2.y - object2.Height;
                                 managers.Game.sceneObject.addChild(boom1);
@@ -83,7 +82,7 @@ var managers;
                             createjs.Sound.play("explosion");
                             if (object1.alpha != 0) {
                                 managers.Game.scoreBoard.Score += 200;
-                                var boom = new objects.Boom();
+                                var boom = new objects.Boom("boom");
                                 boom.x = object2.x - object2.Width;
                                 boom.y = object2.y - object2.Height;
                                 managers.Game.sceneObject.addChild(boom);

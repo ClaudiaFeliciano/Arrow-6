@@ -21,16 +21,12 @@ var scenes;
             _this.Start();
             return _this;
         }
-        // public methods
         Information.prototype.Start = function () {
             this._startbackground = new objects.StartBackground();
             this._boardinf = new objects.BoardInformation();
-            this._startButton = new objects.Button("start", 565.5, 500, true);
-            this._musicButton = new objects.Button("music", 980.5, 566, true);
+            this._startButton = new objects.Button("start", 575.5, 500, true);
+            // this._musicButton = new objects.Button("music", 980.5, 566, true);
             this._exitButton = new objects.Button("exit", 760.5, 500, true);
-            this._engineSound = createjs.Sound.play("startSound");
-            this._engineSound.loop = -1;
-            this._engineSound.volume = 0.8;
             this.Main();
         };
         Information.prototype.Update = function () {
@@ -55,14 +51,6 @@ var scenes;
             this._exitButton.on("click", function () {
                 managers.Game.currentState = config.Scene.START1;
                 _this._engineSound.stop();
-            });
-            this._musicButton.on("click", function () {
-                if (_this._engineSound.volume != 0.0) {
-                    _this._engineSound.volume -= 0.2;
-                }
-                else if (_this._engineSound.volume <= 0.0) {
-                    _this._engineSound.volume = 1.0;
-                }
             });
         };
         return Information;

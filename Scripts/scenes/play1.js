@@ -26,6 +26,7 @@ var scenes;
             this._numero = 3;
             this._bigmeteorNum = 3;
             this._space = new objects.Space();
+            this._scoreBoard = new managers.ScoreBoard;
             this._player = new objects.Player();
             managers.Game.player = this._player;
             this._enemy = new Array();
@@ -101,12 +102,10 @@ var scenes;
                 this._engineSound.stop();
                 managers.Game.currentState = config.Scene.OVER;
             }
-            /*if (this._scoreBoard.Score <= 0){
-              this._scoreBoard.Lives -= 1;
-            }*/
             if ((this._scoreBoard.Score >= 1000) && (this._scoreBoard.Lives >= 0)) {
                 this._engineSound.stop();
                 managers.Game.currentState = config.Scene.START2;
+                managers.Game.scoreBoard.Level += 1;
             }
             // right
             if (managers.Game.goingRigth) {
@@ -160,6 +159,7 @@ var scenes;
             //add scoreboard labels to the scene
             this.addChild(this._scoreBoard.LivesLabel);
             this.addChild(this._scoreBoard.ScoreLabel);
+            this.addChild(this._scoreBoard.LevelLabel);
         };
         return Play1;
     }(objects.Scene));

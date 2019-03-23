@@ -23,24 +23,36 @@ var scenes;
         }
         // public methods
         Play2.prototype.Start = function () {
+            this._numero = 3;
             this._bigmeteorNum = 3;
+            this._space = new objects.Space();
+            this._scoreBoard = new managers.ScoreBoard;
+            this._player = new objects.Player();
+            this._redenemy = new objects.RedEnemy();
+            managers.Game.player = this._player;
+            this._sonEnemy = new objects.SonEnemy();
+            this._enemy = new Array();
+            for (var count = 0; count < this._numero; count++) {
+                this._enemy[count] = new objects.Enemy();
+            }
             this._bigmeteor = new Array();
             for (var count = 0; count < this._bigmeteorNum; count++) {
                 this._bigmeteor[count] = new objects.BigMeteor();
             }
-            this._numero = 5;
             this._smallmeteor = new Array();
             for (var count = 0; count < this._numero; count++) {
                 this._smallmeteor[count] = new objects.SmallMeteor();
             }
-            // Instantiates a new Array container of Type objects.meteor
             this._meteor = new Array();
-            // Fill the meteor Array with meteors
             for (var count = 0; count < this._numero; count++) {
                 this._meteor[count] = new objects.Meteor();
             }
+            this._brouncerock = new Array();
+            for (var count = 0; count < this._numero; count++) {
+                this._brouncerock[count] = new objects.BrounceRock();
+            }
             this._engineSound = createjs.Sound.play("gameSound");
-            this._engineSound.loop = -1; //play forever
+            this._engineSound.loop = -1;
             this._engineSound.volume = 0.1;
             //create the score board UI for the scene
             this._scoreBoard = new managers.ScoreBoard();
@@ -49,42 +61,56 @@ var scenes;
             managers.Game.shootManager = this._shotManager;
             this.Main();
         };
-        //triggered every frame
         Play2.prototype.Update = function () {
+            var _this = this;
             this._space.Update();
             this._player.Update();
-            this._enemy.Update();
             this._shotManager.Update();
-            managers.Collision.Check(this._player, this._enemy);
-            for (var _i = 0, _a = this._bigmeteor; _i < _a.length; _i++) {
-                var bigmeteor = _a[_i];
+            this._redenemy.Update();
+            this._sonEnemy.Update();
+            managers.Collision.Check(this._player, this._sonEnemy);
+            for (var _i = 0, _a = this._enemy; _i < _a.length; _i++) {
+                var enemy = _a[_i];
+                enemy.Update();
+                managers.Collision.Check(this._player, enemy);
+            }
+            for (var _b = 0, _c = this._bigmeteor; _b < _c.length; _b++) {
+                var bigmeteor = _c[_b];
                 bigmeteor.Update();
                 managers.Collision.Check(this._player, bigmeteor);
             }
-            for (var _b = 0, _c = this._smallmeteor; _b < _c.length; _b++) {
-                var smallmeteor = _c[_b];
+            for (var _d = 0, _e = this._smallmeteor; _d < _e.length; _d++) {
+                var smallmeteor = _e[_d];
                 smallmeteor.Update();
-                //managers.Collision.Check(this._player, smallmeteor);
+                managers.Collision.Check(this._player, smallmeteor);
+            }
+            for (var _f = 0, _g = this._brouncerock; _f < _g.length; _f++) {
+                var brouncerock = _g[_f];
+                brouncerock.Update();
+                managers.Collision.Check(this._player, brouncerock);
             }
             // Update Each meteor in the Meteor Array
-            for (var _d = 0, _e = this._meteor; _d < _e.length; _d++) {
-                var meteor = _e[_d];
+            for (var _h = 0, _j = this._meteor; _h < _j.length; _h++) {
+                var meteor = _j[_h];
                 meteor.Update();
-                //check collision between arrow and meteor
                 managers.Collision.Check(this._player, meteor);
             }
-            for (var _f = 0, _g = this._shotManager.Shoots; _f < _g.length; _f++) {
-                var shoot = _g[_f];
-                //  shoot.Update();
-                managers.Collision.Check(this._enemy, shoot);
-            }
+            this._shotManager.Update();
+            this._shotManager.Shoots.forEach(function (bullet) {
+                _this._enemy.forEach(function (enemy) {
+                    managers.Collision.Check(bullet, enemy);
+                });
+            });
+            //////**********RULES -LEVEL1- RULES -LEVEL1- RULES -LEVEL1- RULES -LEVEL1- RULES***************////////
+            //if lives fall below zero switch scenes to the game over scene
             if (this._scoreBoard.Lives <= 0) {
                 this._engineSound.stop();
                 managers.Game.currentState = config.Scene.OVER;
             }
-            if (this._scoreBoard.Score >= 300 && this._scoreBoard.Lives >= 0) {
+            if ((this._scoreBoard.Score >= 2000) && (this._scoreBoard.Lives >= 0)) {
                 this._engineSound.stop();
                 managers.Game.currentState = config.Scene.START3;
+                managers.Game.scoreBoard.Level += 1;
             }
             // right
             if (managers.Game.goingRigth) {
@@ -109,32 +135,38 @@ var scenes;
         Play2.prototype.Reset = function () { };
         Play2.prototype.Main = function () {
             var _this = this;
-            // adds space to the scene
-            this._space = new objects.Space();
             this.addChild(this._space);
-            // adds enemy to the scene
-            this._enemy = new objects.Enemy();
-            this.addChild(this._enemy);
-            // adds player to the scene
-            this._player = new objects.Player();
             this.addChild(this._player);
+            this.addChild(this._redenemy);
+            this.addChild(this._sonEnemy);
             createjs.Tween.get(this._player, { loop: 0 }).to({ x: 800, y: 300 }, 1000);
+            this.addChild(this._player.planeflash);
+            for (var _i = 0, _a = this._enemy; _i < _a.length; _i++) {
+                var enemy = _a[_i];
+                this.addChild(enemy);
+            }
             this._shotManager.Shoots.forEach(function (shoot) {
                 _this.addChild(shoot);
             });
-            for (var _i = 0, _a = this._bigmeteor; _i < _a.length; _i++) {
-                var bigmeteor = _a[_i];
+            for (var _b = 0, _c = this._bigmeteor; _b < _c.length; _b++) {
+                var bigmeteor = _c[_b];
                 this.addChild(bigmeteor);
             }
-            for (var _b = 0, _c = this._smallmeteor; _b < _c.length; _b++) {
-                var smallmeteor = _c[_b];
+            for (var _d = 0, _e = this._smallmeteor; _d < _e.length; _d++) {
+                var smallmeteor = _e[_d];
                 this.addChild(smallmeteor);
+            }
+            for (var _f = 0, _g = this._brouncerock; _f < _g.length; _f++) {
+                var brouncerock = _g[_f];
+                this.addChild(brouncerock);
             }
             this._meteor.forEach(function (meteor) {
                 _this.addChild(meteor);
             });
+            //add scoreboard labels to the scene
             this.addChild(this._scoreBoard.LivesLabel);
             this.addChild(this._scoreBoard.ScoreLabel);
+            this.addChild(this._scoreBoard.LevelLabel);
         };
         return Play2;
     }(objects.Scene));

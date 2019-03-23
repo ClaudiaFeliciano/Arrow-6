@@ -1,7 +1,6 @@
 var managers;
 (function (managers) {
     var ScoreBoard = /** @class */ (function () {
-        //constructors
         function ScoreBoard() {
             this._initialize();
         }
@@ -13,6 +12,17 @@ var managers;
             set: function (newLives) {
                 this._lives = newLives;
                 this.LivesLabel.text = "Lives: " + this._lives;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(ScoreBoard.prototype, "Level", {
+            get: function () {
+                return this._level;
+            },
+            set: function (newLevel) {
+                this._level = newLevel;
+                this.LevelLabel.text = "Level: " + this._level;
             },
             enumerable: true,
             configurable: true
@@ -39,14 +49,15 @@ var managers;
             enumerable: true,
             configurable: true
         });
-        //private methods
         ScoreBoard.prototype._initialize = function () {
-            this.LivesLabel = new objects.Label("Lives: ", "20px", "Consolas", "#FFF000", 10, 10, false);
-            this.ScoreLabel = new objects.Label("Score: 99999 ", "20px", "Consolas", "#FFF000", 900, 10, false);
-            this.HighScoreLabel = new objects.Label("High Score: ", "30px", "Consolas", "#FFF000", 477.5, 260, true);
+            this.LivesLabel = new objects.Label("Lives: ", "20px", "Consolas", "#FFF000", 900, 10, false);
+            this.ScoreLabel = new objects.Label("Score: 99999 ", "20px", "Consolas", "#FFF000", 900, 25, false);
+            this.HighScoreLabel = new objects.Label("High Score: ", "30px", "Consolas", "#FFF000", 900, 40, true);
+            this.LevelLabel = new objects.Label("Level: ", "20px", "Consolas", "#FFF000", 900, 55, true);
             this.Lives = 5;
             this.Score = 0;
             this.HighScore = 0;
+            this.Level = 1;
         };
         return ScoreBoard;
     }());

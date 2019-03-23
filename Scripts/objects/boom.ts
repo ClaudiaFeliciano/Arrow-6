@@ -4,8 +4,8 @@ module objects {
         
 
         // constructor
-        constructor() {
-            super("boom");
+        constructor(spriteString: string) {
+            super(spriteString);
             this.Start();
         }
         private _animationEnded() {
@@ -15,7 +15,6 @@ module objects {
         }
          // public methods
          public  Reset(): void{
-
          }
 
          public  Start(): void{

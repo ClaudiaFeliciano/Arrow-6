@@ -11,7 +11,7 @@ module scenes {
     private _brouncerock: objects.BrounceRock[];
     private _bigmeteor: objects.BigMeteor[];
     private _scoreBoard: managers.ScoreBoard;
-    private _engineSound: createjs.AbstractSoundInstance; //keeeps track  of my sound as i make it if i want to stops it or to modify the volumen
+    private _engineSound: createjs.AbstractSoundInstance;
     private _shotManager: managers.Shoot;
 
     // constructor
@@ -26,7 +26,7 @@ module scenes {
       this._numero = 3;
       this._bigmeteorNum = 3;
       this._space = new objects.Space();
-
+      this._scoreBoard = new managers.ScoreBoard;
       this._player = new objects.Player();
       managers.Game.player = this._player;
 
@@ -70,11 +70,12 @@ module scenes {
       this._space.Update();
       this._player.Update();
       this._shotManager.Update();
+    
 
       for (const enemy of this._enemy) {
         enemy.Update();
         managers.Collision.Check(this._player, enemy);
-       
+
       }
       for (const bigmeteor of this._bigmeteor) {
         bigmeteor.Update();
@@ -93,31 +94,29 @@ module scenes {
       // Update Each meteor in the Meteor Array
       for (const meteor of this._meteor) {
         meteor.Update();
-        managers.Collision.Check(this._player, meteor); 
+        managers.Collision.Check(this._player, meteor);
       }
       this._shotManager.Update();
 
       this._shotManager.Shoots.forEach(bullet => {
         this._enemy.forEach(enemy => {
           managers.Collision.Check(bullet, enemy);
-            
+
         });
 
       });
- //////**********RULES -LEVEL1- RULES -LEVEL1- RULES -LEVEL1- RULES -LEVEL1- RULES***************////////
+      //////**********RULES -LEVEL1- RULES -LEVEL1- RULES -LEVEL1- RULES -LEVEL1- RULES***************////////
 
       //if lives fall below zero switch scenes to the game over scene
       if (this._scoreBoard.Lives <= 0) {
-        this._engineSound.stop(); 
+        this._engineSound.stop();      
         managers.Game.currentState = config.Scene.OVER;
       }
-      /*if (this._scoreBoard.Score <= 0){
-        this._scoreBoard.Lives -= 1;
-      }*/
-      
+   
       if ((this._scoreBoard.Score >= 1000) && (this._scoreBoard.Lives >= 0)) {
         this._engineSound.stop();
         managers.Game.currentState = config.Scene.START2;
+        managers.Game.scoreBoard.Level +=1;
       }
       // right
       if (managers.Game.goingRigth) {
@@ -178,6 +177,7 @@ module scenes {
       //add scoreboard labels to the scene
       this.addChild(this._scoreBoard.LivesLabel);
       this.addChild(this._scoreBoard.ScoreLabel);
+      this.addChild(this._scoreBoard.LevelLabel);
     }
   }
 }
