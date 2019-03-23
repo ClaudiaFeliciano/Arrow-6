@@ -4,13 +4,15 @@ module scenes {
     private _player: objects.Player;
     private _space: objects.Space;
     private _enemy: objects.Enemy;
-    private _numMeteors: number;
-    private _meteorArray: objects.Meteor[];
     private _scoreBoard: managers.ScoreBoard;
     private _engineSound: createjs.AbstractSoundInstance;
+    private _playerEngineSound: createjs.AbstractSoundInstance;
     private _shotManager: managers.Shoot;
     private _redenemy: objects.RedEnemy;
     private _sonEnemy: objects.SonEnemy;
+
+    private _meteorNum: number;
+    private _meteor: objects.Meteor[];
 
     // constructor
     constructor() {
@@ -21,17 +23,18 @@ module scenes {
     // public methods
 
     public Start(): void {
-      this._numMeteors = 0;
-      this._meteorArray = new Array<objects.Meteor>();
-      // Fill the meteor Array with meteors
-      for (let count = 0; count < this._numMeteors; count++) {
-        this._meteorArray[count] = new objects.Meteor();
-      }
-
-      this._engineSound = createjs.Sound.play("gameSound");
+      this._engineSound = createjs.Sound.play("play3Sound");
       this._engineSound.loop = -1;
-      this._engineSound.volume = 0.1;
+      this._engineSound.volume = 0.3;
 
+      this._playerEngineSound = createjs.Sound.play("playerEngine");
+      this._playerEngineSound.volume = 1;
+
+      this._meteorNum = 5;
+      this._meteor = new Array<objects.Meteor>();
+      for (let count = 0; count < this._meteorNum; count++) {
+        this._meteor[count] = new objects.Meteor();
+      }
       //create the score board UI for the scene
       this._scoreBoard = new managers.ScoreBoard();
       managers.Game.scoreBoard = this._scoreBoard;
@@ -52,16 +55,15 @@ module scenes {
 
       managers.Collision.Check(this._player, this._enemy);
 
+      for (const meteor of this._meteor) {
+        meteor.Update();
+        managers.Collision.Check(this._player, meteor);
+      }
+
       // Is not working
       managers.Collision.Check(this._player, this._redenemy);
 
       managers.Collision.Check(this._player, this._sonEnemy);
-
-      // Update Each meteor in the Meteor Array
-      for (let meteor of this._meteorArray) {
-        meteor.Update();
-        managers.Collision.Check(this._player, meteor);
-      }
 
       for (let shoot of this._shotManager.Shoots) {
         managers.Collision.Check(this._enemy, shoot);
@@ -69,11 +71,13 @@ module scenes {
 
       if (this._scoreBoard.Lives <= 0) {
         this._engineSound.stop();
+        this._playerEngineSound.stop();
         managers.Game.currentState = config.Scene.OVER;
       }
 
       if (this._scoreBoard.Score >= 300 && this._scoreBoard.Lives >= 0) {
         this._engineSound.stop();
+        this._playerEngineSound.stop();
         managers.Game.currentState = config.Scene.WIN;
       }
       // right
@@ -120,14 +124,14 @@ module scenes {
 
       createjs.Tween.get(this._player, { loop: 0 }).to(
         { x: 800, y: 300 },
-        1000
+        1300
       );
 
       this._shotManager.Shoots.forEach(shoot => {
         this.addChild(shoot);
       });
 
-      this._meteorArray.forEach(meteor => {
+      this._meteor.forEach(meteor => {
         this.addChild(meteor);
       });
 

@@ -1,6 +1,5 @@
 module managers {
   export class Collision {
-    private _boom: objects.Boom;
     public static Check(
       object1: objects.AbstractGameObject,
       object2: objects.AbstractGameObject

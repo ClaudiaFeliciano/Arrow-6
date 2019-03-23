@@ -5,6 +5,7 @@ module scenes {
     private _space: objects.Space;
     private _restartButton: objects.Button;
     private _scoreboard: managers.ScoreBoard;
+    private _engineSound: createjs.AbstractSoundInstance;
 
     // public properties
 
@@ -15,9 +16,6 @@ module scenes {
     }
 
     // private methods
-    private _restartButtonClick(): void {
-      managers.Game.currentState = config.Scene.PLAY1;
-    }
 
     // public methods
 
@@ -26,6 +24,11 @@ module scenes {
       this._gameOver = new objects.Button("gameOver", 497.5, 200, true);
       this._restartButton = new objects.Button("replay", 500.5, 445, true);
       this._scoreboard = new managers.ScoreBoard();
+
+      this._engineSound = createjs.Sound.play("overSound");
+      this._engineSound.loop = -1;
+      this._engineSound.volume = 0.3;
+
       this.Main();
     }
 
@@ -47,7 +50,10 @@ module scenes {
       this.addChild(this._scoreboard.HighScoreLabel);
       this._scoreboard.HighScore = managers.Game.highScore;
 
-      this._restartButton.on("click", this._restartButtonClick);
+      this._restartButton.on("click", () => {
+        managers.Game.currentState = config.Scene.PLAY1;
+        this._engineSound.stop();
+      });
     }
   }
 }

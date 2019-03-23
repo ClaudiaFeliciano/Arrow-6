@@ -23,15 +23,15 @@ var scenes;
             return _this;
         }
         // private methods
-        Over.prototype._restartButtonClick = function () {
-            managers.Game.currentState = config.Scene.PLAY1;
-        };
         // public methods
         Over.prototype.Start = function () {
             this._space = new objects.Space();
             this._gameOver = new objects.Button("gameOver", 497.5, 200, true);
             this._restartButton = new objects.Button("replay", 500.5, 445, true);
             this._scoreboard = new managers.ScoreBoard();
+            this._engineSound = createjs.Sound.play("overSound");
+            this._engineSound.loop = -1;
+            this._engineSound.volume = 0.3;
             this.Main();
         };
         Over.prototype.Update = function () {
@@ -42,12 +42,16 @@ var scenes;
         };
         Over.prototype.Reset = function () { };
         Over.prototype.Main = function () {
+            var _this = this;
             this.addChild(this._space);
             this.addChild(this._gameOver);
             this.addChild(this._restartButton);
             this.addChild(this._scoreboard.HighScoreLabel);
             this._scoreboard.HighScore = managers.Game.highScore;
-            this._restartButton.on("click", this._restartButtonClick);
+            this._restartButton.on("click", function () {
+                managers.Game.currentState = config.Scene.PLAY1;
+                _this._engineSound.stop();
+            });
         };
         return Over;
     }(objects.Scene));
