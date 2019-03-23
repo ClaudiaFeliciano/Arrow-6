@@ -13,16 +13,16 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var scenes;
 (function (scenes) {
-    var Start = /** @class */ (function (_super) {
-        __extends(Start, _super);
+    var Start1 = /** @class */ (function (_super) {
+        __extends(Start1, _super);
         // constructor
-        function Start() {
+        function Start1() {
             var _this = _super.call(this) || this;
             _this.Start();
             return _this;
         }
         // public methods
-        Start.prototype.Start = function () {
+        Start1.prototype.Start = function () {
             this._spacebackground = new objects.StartBackground();
             this._nameGame = new objects.Button("ArrowGame", 775.5, 100, true);
             this._startButton = new objects.Button("start", 765.5, 200, true);
@@ -34,15 +34,15 @@ var scenes;
             this._engineSound.volume = 0.0;
             this.Main();
         };
-        Start.prototype.Update = function () {
+        Start1.prototype.Update = function () {
             this._spacebackground.Update();
         };
-        Start.prototype.Destroy = function () {
+        Start1.prototype.Destroy = function () {
             this.removeAllChildren();
         };
-        Start.prototype.Reset = function () {
+        Start1.prototype.Reset = function () {
         };
-        Start.prototype.Main = function () {
+        Start1.prototype.Main = function () {
             var _this = this;
             this.addChild(this._spacebackground);
             //this.addChild(this._window);
@@ -67,8 +67,8 @@ var scenes;
                 }
             });
         };
-        return Start;
+        return Start1;
     }(objects.Scene));
-    scenes.Start = Start;
+    scenes.Start1 = Start1;
 })(scenes || (scenes = {}));
 //# sourceMappingURL=start1.js.map

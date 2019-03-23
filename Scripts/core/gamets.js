@@ -228,7 +228,10 @@
             [698, 1640, 37, 103, 0, 0, 0],
             [2, 1745, 315, 56, 0, 0, 0],
             [319, 1745, 313, 56, 0, 0, 0],
-            [2, 1803, 475, 74, 0, 0, 0]
+            [2, 1803, 475, 74, 0, 0, 0],
+            [479, 1803, 81, 64, 0, 0, 0],
+            [562, 1803, 81, 64, 0, 38.25, 0],
+            [645, 1803, 297, 39, 0, 0, 0],
         ],
         // prettier-ignore
         animations: {
@@ -253,22 +256,26 @@
             "a40013": { "frames": [45] },
             "a40014": { "frames": [46] },
             "a40015": { "frames": [47] },
-            "afterCollision": { "frames": [48, 49, 50, 51, 52] },
+            "afterCollision": {
+                "frames": [48, 49, 50, 51, 52],
+                "speed": 0.11
+            },
             "ArrowGame": { "frames": [53] },
             "asteroid": { "frames": [54, 55, 56, 57] },
             "boom": {
                 "frames": [58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68],
                 "speed": 0.2
             },
-            "Boss_Name_Table": { "frames": [69] },
-            "asteroideFare": { "frames": [70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85],
-                "speed": 0.2 },
+            "table": { "frames": [69] },
+            "asteroideFare": {
+                "frames": [70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85],
+                "speed": 0.2
+            },
             "enemy": { "frames": [86, 87] },
             "exit": { "frames": [88] },
             "expl": { "frames": [89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112] },
             "gameOver": { "frames": [113] },
-            "info": { "frames": [114] },
-            "infoActive": { "frames": [115] },
+            "info": { "frames": [114, 115] },
             "Live": { "frames": [116, 117, 118, 119, 120, 121, 122, 123, 124, 125] },
             "menu": { "frames": [126, 127] },
             "meteor1": { "frames": [128] },
@@ -288,14 +295,17 @@
             "sonenemy": { "frames": [212, 213] },
             "level2": { "frames": [214] },
             "level3": { "frames": [215] },
-            "youwon": { "frames": [216] }
+            "youwon": { "frames": [216] },
+            "enemySecond": { "frames": [217, 218] },
+            "information": { "frames": [219] }
         }
     };
     var assetManifest = [
         { id: "space", src: "/Assets/images/space.png" },
+        { id: "spaceX", src: "/Assets/images/space1.jpg" },
         { id: "menu", src: "/Assets/images/ArrowGame.png" },
         { id: "level2start", src: "/Assets/images/level2Start.png" },
-        { id: "gamearrow", src: "/Assets/images/Window.png" },
+        { id: "menuBar", src: "/Assets/images/Window.png" },
         { id: "explosion", src: "/Assets/audio/explosion.mp3" },
         { id: "bulletSound", src: "/Assets/audio/bullet.mp3" },
         { id: "meteorSound", src: "/Assets/audio/meteorSound.mp3" },

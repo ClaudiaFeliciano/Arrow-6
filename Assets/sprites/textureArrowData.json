@@ -222,7 +222,10 @@
     [698, 1640, 37, 103, 0, 17.47, 45.21],
     [2, 1745, 315, 56, 0, 148.75, 24.58],
     [319, 1745, 313, 56, 0, 147.81, 24.58],
-    [2, 1803, 475, 74, 0, 224.31, 32.48]
+    [2, 1803, 475, 74, 0, 224.31, 32.48],
+    [479, 1803, 81, 64, 0, 38.25, 28.09],
+    [562, 1803, 81, 64, 0, 38.25, 28.09],
+    [645, 1803, 297, 39, 0, 140.25, 17.12]
 ],
 
 "animations": {
@@ -370,11 +373,14 @@
     "zenemy1": { "frames": [213] },
     "zlevel2": { "frames": [214] },
     "zlevel3": { "frames": [215] },
-    "zwon": { "frames": [216] }
+    "zwon": { "frames": [216] },
+    "zww1": { "frames": [217] },
+    "zww2": { "frames": [218] },
+    "zwwInformation": { "frames": [219] }
 },
 
 "texturepacker": [
-        "SmartUpdateHash: $TexturePacker:SmartUpdate:2bfe5c6b8e03acba0c45324a71d5de88:5fc13f31fce0db06e9ea13026dcc8b8d:485610281ad15802e34ebd647821cb93$",
+        "SmartUpdateHash: $TexturePacker:SmartUpdate:aaff0b173bc1d4fb8d959251160d0a32:3533fc2f84abac2156f909b82a952a65:485610281ad15802e34ebd647821cb93$",
         "Created with TexturePacker (https://www.codeandweb.com/texturepacker) for EaselJS"
 ]
 

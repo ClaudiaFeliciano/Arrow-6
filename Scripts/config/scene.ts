@@ -8,6 +8,7 @@ module config {
     PLAY3,
     SCENE_COUNT,
     OVER,
+    INFORMATION,
     WIN
   }
 }
