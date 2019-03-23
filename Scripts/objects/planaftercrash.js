@@ -73,4 +73,4 @@ var objects;
     }(objects.AbstractGameObject));
     objects.PlaneAfterCrash = PlaneAfterCrash;
 })(objects || (objects = {}));
-//# sourceMappingURL=planeaftercrash.js.map
+//# sourceMappingURL=planaftercrash.js.map

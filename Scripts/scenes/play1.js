@@ -77,7 +77,6 @@ var scenes;
             }
             this._shotManager.Update();
             this._shotManager.Shoots.forEach(function (bullet) {
-                // managers.Collision.Check(this._player, bullet);
                 managers.Collision.Check(bullet, _this._enemy);
             });
             //if lives fall below zero switch scenes to the game over scene
