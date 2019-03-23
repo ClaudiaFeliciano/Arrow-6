@@ -25,13 +25,12 @@ var scenes;
         Information.prototype.Start = function () {
             this._startbackground = new objects.StartBackground();
             this._boardinf = new objects.BoardInformation();
-            this._informationLabel = new objects.Button("information", 505.5, 140, true);
-            this._startButton = new objects.Button("start", 555.5, 500, true);
+            this._startButton = new objects.Button("start", 565.5, 500, true);
             this._musicButton = new objects.Button("music", 980.5, 566, true);
             this._exitButton = new objects.Button("exit", 760.5, 500, true);
             this._engineSound = createjs.Sound.play("startSound");
             this._engineSound.loop = -1;
-            this._engineSound.volume = 0.0;
+            this._engineSound.volume = 0.8;
             this.Main();
         };
         Information.prototype.Update = function () {
@@ -46,7 +45,6 @@ var scenes;
             var _this = this;
             this.addChild(this._startbackground);
             this.addChild(this._boardinf);
-            this.addChild(this._informationLabel);
             this.addChild(this._startButton);
             this.addChild(this._exitButton);
             this.addChild(this._musicButton);
