@@ -38,34 +38,39 @@ var managers;
                                 object2.Reset();
                             }
                             break;
-                        case "asteroid":
+                        case "a10000":
                             if (object1.alpha != 0) {
                                 createjs.Sound.play("explosion");
                                 managers.Game.scoreBoard.Lives -= 2;
-                                var boomAsteroid = new objects.Boom();
-                                boomAsteroid.x = object2.x;
-                                boomAsteroid.y = object2.y;
-                                managers.Game.sceneObject.addChild(boomAsteroid);
-                                //object2.Reset();
+                                var boom1 = new objects.Boom();
+                                boom1.x = object2.x - object2.Width;
+                                boom1.y = object2.y - object2.Height;
+                                managers.Game.sceneObject.addChild(boom1);
+                                object1.alpha = 0; //1
+                                // managers.Game.player.alpha = 0;//1
+                                managers.Game.player.planeflash.alpha = 1; //1
+                                //managers.Game.planeafterCrash.x=  managers.Game.player.x;
+                                // managers.Game.planeafterCrash.y=  managers.Game.player.y;
+                                managers.Game.player.planeflash.gotoAndPlay("planeflash");
+                                object2.Reset();
                             }
                             break;
                         case "enemy":
-                            createjs.Sound.play("explosion");
-                            managers.Game.scoreBoard.Lives -= 1;
-                            var boomEnemy = new objects.Boom();
-                            boomEnemy.x = object2.x - object2.Width;
-                            boomEnemy.y = object2.y - object2.Height;
-                            managers.Game.sceneObject.addChild(boomEnemy);
-                            object2.Reset();
-                            break;
-                        case "redEnemy":
-                            createjs.Sound.play("explosion");
-                            managers.Game.scoreBoard.Lives -= 1;
-                            var boomRed = new objects.Boom();
-                            boomRed.x = object2.x - object2.Width;
-                            boomRed.y = object2.y - object2.Height;
-                            managers.Game.sceneObject.addChild(boomRed);
-                            object2.Reset();
+                            if (object1.alpha != 0) {
+                                createjs.Sound.play("explosion");
+                                managers.Game.scoreBoard.Score += 200;
+                                var boom = new objects.Boom();
+                                boom.x = object2.x - object2.Width;
+                                boom.y = object2.y - object2.Height;
+                                managers.Game.sceneObject.addChild(boom);
+                                object2.Reset();
+                                /* object1.alpha = 0;//1
+                                 // managers.Game.player.alpha = 0;//1
+                                 managers.Game.player.planeflash.alpha = 1;//1
+                                 //managers.Game.planeafterCrash.x=  managers.Game.player.x;
+                                 // managers.Game.planeafterCrash.y=  managers.Game.player.y;
+                                 managers.Game.player.planeflash.gotoAndPlay("planeflash");*/
+                            }
                             break;
                     }
                 }

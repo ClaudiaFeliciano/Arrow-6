@@ -23,8 +23,7 @@ module scenes {
 
             this._startbackground = new objects.StartBackground();
             this._boardinf = new objects.BoardInformation();
-            /*this._boardinf.x=0;
-            this._boardinf.y=0;*/
+        
             this._informationLabel = new objects.Button("information", 605.5, 150, true);
             this._startButton = new objects.Button("start", 555.5, 500, true);
             this._musicButton = new objects.Button("music", 980.5, 566, true);

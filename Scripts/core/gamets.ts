@@ -397,6 +397,9 @@
       case config.Scene.OVER:
         currentScene = new scenes.Over();
         break;
+      case config.Scene.INFORMATION:
+        currentScene = new scenes.Information();
+        break;
     }
     managers.Game.sceneObject = currentScene;
     //add the new scene object to stage
