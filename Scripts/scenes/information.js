@@ -13,49 +13,51 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var scenes;
 (function (scenes) {
-    var Start = /** @class */ (function (_super) {
-        __extends(Start, _super);
+    var Information = /** @class */ (function (_super) {
+        __extends(Information, _super);
         // constructor
-        function Start() {
+        function Information() {
             var _this = _super.call(this) || this;
             _this.Start();
             return _this;
         }
         // public methods
-        Start.prototype.Start = function () {
-            this._spacebackground = new objects.StartBackground();
-            this._nameGame = new objects.Button("ArrowGame", 775.5, 100, true);
-            this._startButton = new objects.Button("start", 765.5, 200, true);
-            this._informationButton = new objects.Button("info", 980.5, 496, true);
+        Information.prototype.Start = function () {
+            this._startbackground = new objects.StartBackground();
+            this._boardinf = new objects.BoardInformation();
+            /*this._boardinf.x=0;
+            this._boardinf.y=0;*/
+            this._informationLabel = new objects.Button("information", 605.5, 150, true);
+            this._startButton = new objects.Button("start", 555.5, 500, true);
             this._musicButton = new objects.Button("music", 980.5, 566, true);
-            // this._restartButton = new objects.Button("exit", 765.5, 300, true);
+            this._exitButton = new objects.Button("exit", 760.5, 500, true);
             this._engineSound = createjs.Sound.play("startSound");
             this._engineSound.loop = -1;
             this._engineSound.volume = 0.0;
             this.Main();
         };
-        Start.prototype.Update = function () {
-            this._spacebackground.Update();
+        Information.prototype.Update = function () {
+            this._startbackground.Update();
         };
-        Start.prototype.Destroy = function () {
+        Information.prototype.Destroy = function () {
             this.removeAllChildren();
         };
-        Start.prototype.Reset = function () {
+        Information.prototype.Reset = function () {
         };
-        Start.prototype.Main = function () {
+        Information.prototype.Main = function () {
             var _this = this;
-            this.addChild(this._spacebackground);
-            //this.addChild(this._window);
-            this.addChild(this._nameGame);
+            this.addChild(this._startbackground);
+            this.addChild(this._boardinf);
+            this.addChild(this._informationLabel);
             this.addChild(this._startButton);
-            this.addChild(this._informationButton);
-            this._informationButton.on("click", function () {
-                managers.Game.currentState = config.Scene.INFORMATION;
-                //this._engineSound.stop();
-            });
+            this.addChild(this._exitButton);
             this.addChild(this._musicButton);
             this._startButton.on("click", function () {
                 managers.Game.currentState = config.Scene.PLAY1;
+                _this._engineSound.stop();
+            });
+            this._exitButton.on("click", function () {
+                managers.Game.currentState = config.Scene.START1;
                 _this._engineSound.stop();
             });
             this._musicButton.on("click", function () {
@@ -67,8 +69,8 @@ var scenes;
                 }
             });
         };
-        return Start;
+        return Information;
     }(objects.Scene));
-    scenes.Start = Start;
+    scenes.Information = Information;
 })(scenes || (scenes = {}));
-//# sourceMappingURL=start1.js.map
+//# sourceMappingURL=information.js.map
