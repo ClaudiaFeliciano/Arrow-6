@@ -303,6 +303,10 @@
         { id: "shootSound", src: "/Assets/audio/bullet.mp3" },
         { id: "extralive", src: "/Assets/audio/extralive.mp3" },
         { id: "startSound", src: "/Assets/audio/startSound.mp3" },
+        { id: "playerEngine", src: "/Assets/audio/playerEngine.wav" },
+        { id: "overSound", src: "/Assets/audio/overSound.wav" },
+        { id: "winSound", src: "/Assets/audio/winSound.ogg" },
+        { id: "play3Sound", src: "/Assets/audio/play3Sound.ogg" },
         { id: "laser", src: "/Assets/audio/laser5.mp3" },
         { id: "pep", src: "/Assets/audio/pep.mp3" }
     ];

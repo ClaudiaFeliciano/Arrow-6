@@ -29,6 +29,9 @@ var scenes;
             this._youwon = new objects.Button("youwon", 497.5, 200, true);
             this._restartButton = new objects.Button("replay", 500.5, 445, true);
             this._scoreboard = new managers.ScoreBoard();
+            this._engineSound = createjs.Sound.play("winSound");
+            this._engineSound.loop = -1;
+            this._engineSound.volume = 0.3;
             this.Main();
         };
         Win.prototype.Update = function () {
@@ -39,6 +42,7 @@ var scenes;
         };
         Win.prototype.Reset = function () { };
         Win.prototype.Main = function () {
+            var _this = this;
             // adds ocean to the stage
             this.addChild(this._space);
             this.addChild(this._youwon);
@@ -48,6 +52,7 @@ var scenes;
             this._scoreboard.HighScore = managers.Game.highScore;
             this._restartButton.on("click", function () {
                 managers.Game.currentState = config.Scene.PLAY1;
+                _this._engineSound.stop();
             });
         };
         return Win;

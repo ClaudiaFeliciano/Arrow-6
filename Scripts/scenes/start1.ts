@@ -54,7 +54,7 @@ module scenes {
       this.addChild(this._settingButton);
 
       this._startButton.on("click", () => {
-        managers.Game.currentState = config.Scene.PLAY1;
+        managers.Game.currentState = config.Scene.PLAY3;
         this._engineSound.stop();
       });
       this._musicButton.on("click", () => {
