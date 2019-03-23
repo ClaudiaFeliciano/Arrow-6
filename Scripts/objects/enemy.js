@@ -33,7 +33,7 @@ var objects;
         };
         // public methods
         Enemy.prototype.Reset = function () {
-            this._horizontalSpeed = 5;
+            this._horizontalSpeed = 3;
             this.x = -this.Width; //esto me da desde donde el objeto saldra
             this.y = Math.floor((Math.random() * (1024 - this.Height)) + this.HalfHeight);
         };

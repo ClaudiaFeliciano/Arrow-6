@@ -13,43 +13,40 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var objects;
 (function (objects) {
-    var Meteor = /** @class */ (function (_super) {
-        __extends(Meteor, _super);
-        // public properties
-        // constructor
-        function Meteor() {
-            var _this = _super.call(this, "meteor") || this;
+    var BrounceRock = /** @class */ (function (_super) {
+        __extends(BrounceRock, _super);
+        function BrounceRock() {
+            var _this = _super.call(this, "brouncerock") || this;
             _this.Start();
             return _this;
         }
-        // private methods
-        Meteor.prototype._move = function () {
+        BrounceRock.prototype._move = function () {
             this.x += this._verticalSpeed; //i want my meteor to move not ony vertical but also horizontal
             this.y += this._horizontalSpeed;
         };
-        Meteor.prototype._checkBounds = function () {
+        BrounceRock.prototype._checkBounds = function () {
             if (this.x > 1024 + this.Width) {
                 this.Reset();
             }
         };
         // public methods
-        Meteor.prototype.Reset = function () {
-            this._verticalSpeed = Math.floor(Math.random() * 3 + 3); //randomizing my speed as well
-            this._horizontalSpeed = Math.floor(Math.random() * 3 - 2);
+        BrounceRock.prototype.Reset = function () {
+            this._verticalSpeed = Math.floor(Math.random() * 2 + 1);
+            this._horizontalSpeed = Math.floor(Math.random() * 2 - 1);
             this.x = -this.Width; //de donde kiero k comience
             this.y = Math.floor(Math.random() * (1024 - this.Height) + this.HalfHeight);
             this.alpha = 1;
         };
-        Meteor.prototype.Start = function () {
+        BrounceRock.prototype.Start = function () {
             this.Reset();
         };
-        Meteor.prototype.Update = function () {
+        BrounceRock.prototype.Update = function () {
             this._move();
             this._checkBounds();
         };
-        Meteor.prototype.Destroy = function () { };
-        return Meteor;
+        BrounceRock.prototype.Destroy = function () { };
+        return BrounceRock;
     }(objects.AbstractGameObject));
-    objects.Meteor = Meteor;
+    objects.BrounceRock = BrounceRock;
 })(objects || (objects = {}));
-//# sourceMappingURL=meteor.js.map
+//# sourceMappingURL=brouncerock.js.map

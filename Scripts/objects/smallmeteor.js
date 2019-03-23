@@ -15,16 +15,14 @@ var objects;
 (function (objects) {
     var SmallMeteor = /** @class */ (function (_super) {
         __extends(SmallMeteor, _super);
-        // public properties
         // constructor
         function SmallMeteor() {
-            var _this = _super.call(this, "a30000") || this;
+            var _this = _super.call(this, "smallmeteor") || this;
             _this.Start();
             return _this;
         }
         // private methods
         SmallMeteor.prototype._move = function () {
-            //this.x += this._verticalSpeed; //i want my meteor to move not ony vertical but also horizontal
             this.y += this._horizontalSpeed;
         };
         SmallMeteor.prototype._checkBounds = function () {
@@ -32,12 +30,10 @@ var objects;
                 this.Reset();
             }
         };
-        // public methods
         SmallMeteor.prototype.Reset = function () {
-            //this._verticalSpeed = 1; //randomizing my speed as well
-            this._horizontalSpeed = 1;
+            this._horizontalSpeed = 2;
             this.x = Math.floor(Math.random() * (1024 - this.Width) + this.HalfWidth); //de donde kiero k comience
-            this.y = Math.floor(Math.random() * (1024 - this.Height) + this.HalfHeight);
+            this.y = 0;
             this.alpha = 1;
         };
         SmallMeteor.prototype.Start = function () {
