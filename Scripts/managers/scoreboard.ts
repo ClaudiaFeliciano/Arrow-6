@@ -1,18 +1,17 @@
 module managers {
   export class ScoreBoard {
-    //private instance variables
+
     private _lives: number;
     private _score: number;
     private _highscores: number;
     private _level: number;
-
-    // public Instance variables
+   
     public LivesLabel: objects.Label;
     public ScoreLabel: objects.Label;
     public LevelLabel: objects.Label;
     public HighScoreLabel: objects.Label;
 
-    //public properties
+   
     get Lives(): number {
       return this._lives;
     }
