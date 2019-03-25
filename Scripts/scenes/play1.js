@@ -26,7 +26,8 @@ var scenes;
             this._numero = 3;
             this._bigmeteorNum = 3;
             this._space = new objects.Space();
-            this._scoreBoard = new managers.ScoreBoard;
+            this._scoreBoard = new managers.ScoreBoard();
+            this.board = new objects.BoardBar();
             this._player = new objects.Player();
             managers.Game.player = this._player;
             this._enemy = new Array();
@@ -57,9 +58,6 @@ var scenes;
             managers.Game.scoreBoard = this._scoreBoard;
             this._shotManager = new managers.Shoot();
             managers.Game.shootManager = this._shotManager;
-            this.board = new createjs.Bitmap("table");
-            this.board.x = 0;
-            this.board.y = 549;
             this.Main();
         };
         Play1.prototype.Update = function () {
@@ -67,6 +65,7 @@ var scenes;
             this._space.Update();
             this._player.Update();
             this._shotManager.Update();
+            this.board.Update();
             for (var _i = 0, _a = this._enemy; _i < _a.length; _i++) {
                 var enemy = _a[_i];
                 enemy.Update();

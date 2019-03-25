@@ -13,22 +13,25 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var objects;
 (function (objects) {
-    var StartBackground = /** @class */ (function (_super) {
-        __extends(StartBackground, _super);
-        function StartBackground() {
-            return _super.call(this, managers.Game.assetManager.getResult("spaceX")) || this;
+    var BoardBar = /** @class */ (function (_super) {
+        __extends(BoardBar, _super);
+        function BoardBar() {
+            var _this = _super.call(this, managers.Game.assetManager.getResult("table")) || this;
+            _this.Start();
+            return _this;
         }
-        StartBackground.prototype.Reset = function () {
+        BoardBar.prototype.Reset = function () {
         };
-        StartBackground.prototype.Start = function () {
-            this.Reset();
+        BoardBar.prototype.Start = function () {
+            this.x = 0;
+            this.y = 549;
         };
-        StartBackground.prototype.Update = function () {
+        BoardBar.prototype.Update = function () {
         };
-        StartBackground.prototype.Destroy = function () {
+        BoardBar.prototype.Destroy = function () {
         };
-        return StartBackground;
+        return BoardBar;
     }(createjs.Bitmap));
-    objects.StartBackground = StartBackground;
+    objects.BoardBar = BoardBar;
 })(objects || (objects = {}));
-//# sourceMappingURL=startbacground.js.map
+//# sourceMappingURL=boardBar.js.map

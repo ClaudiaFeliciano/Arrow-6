@@ -254,7 +254,7 @@
                 "frames": [58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68],
                 "speed": 0.4
             },
-            "table": { "frames": [69] },
+            "table1": { "frames": [69] },
             "asteroideFare": {
                 "frames": [70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85],
                 "speed": 0.2
@@ -293,6 +293,7 @@
         { id: "space", src: "/Assets/images/space.png" },
         { id: "spaceX", src: "/Assets/images/space1.jpg" },
         { id: "menu", src: "/Assets/images/ArrowGame.png" },
+        { id: "table", src: "/Assets/images/Table.png" },
         { id: "level2start", src: "/Assets/images/level2Start.png" },
         { id: "menuBar", src: "/Assets/images/Window.png" },
         { id: "explosion", src: "/Assets/audio/explosion.mp3" },

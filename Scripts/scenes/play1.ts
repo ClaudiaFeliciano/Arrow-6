@@ -13,7 +13,7 @@ module scenes {
     private _scoreBoard: managers.ScoreBoard;
     private _engineSound: createjs.AbstractSoundInstance;
     private _shotManager: managers.Shoot;
-    public board: createjs.Bitmap;
+    public board: objects.BoardBar;
 
     // constructor
     constructor() {
@@ -27,7 +27,8 @@ module scenes {
       this._numero = 3;
       this._bigmeteorNum = 3;
       this._space = new objects.Space();
-      this._scoreBoard = new managers.ScoreBoard;
+      this._scoreBoard = new managers.ScoreBoard();
+      this.board = new objects.BoardBar();
       this._player = new objects.Player();
       managers.Game.player = this._player;
 
@@ -65,9 +66,8 @@ module scenes {
       this._shotManager = new managers.Shoot();
       managers.Game.shootManager = this._shotManager;
 
-      this.board = new createjs.Bitmap("table");
-      this.board.x=0;
-      this.board.y = 549;
+     
+     
 
       this.Main();
     }
@@ -76,6 +76,7 @@ module scenes {
       this._space.Update();
       this._player.Update();
       this._shotManager.Update();
+      this.board.Update();
 
       for (const enemy of this._enemy) {
         enemy.Update();

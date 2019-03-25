@@ -1,16 +1,18 @@
 module objects {
-    export class StartBackground extends createjs.Bitmap{
+    export class BoardBar extends createjs.Bitmap{
         constructor() {
-            super(managers.Game.assetManager.getResult("spaceX"));
+            super(managers.Game.assetManager.getResult("table"));
+            this.Start();
         }
+     
 
         public Reset(): void {
-            
+      
         }        
         
-        public Start(): void { 
-            
-            this.Reset();
+        public Start(): void {     
+            this.x=0;
+            this.y = 549;
         }
 
         public Update(): void { 
