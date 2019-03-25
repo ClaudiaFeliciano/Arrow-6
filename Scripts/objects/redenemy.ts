@@ -5,6 +5,7 @@ module objects {
 
     // public properties
     public yRed: number = 0;
+    public xRed: number = 0;
 
     // constructor
     constructor() {
@@ -18,8 +19,6 @@ module objects {
     }
 
     private _checkBounds(): void {
-      this.yRed = this.y;
-      managers.Game.yRedEnemy = this.yRed;
       if (this.y > 560 - this.Height) {
         this._vSpeed = -2;
       }
@@ -29,18 +28,18 @@ module objects {
     }
 
     // public methods
-
     public Start(): void {
       this._vSpeed = 2;
-      this.x = -this.HalfWidth;
-      this.y = Math.floor(
-        Math.random() * (500 - this.Height) + this.HalfHeight
-      );
+      this.x = 500;
+      this.y = -200;
       this.yRed = this.y;
-      managers.Game.yRedEnemy = this.yRed;
     }
 
     public Update(): void {
+      this.yRed = this.y;
+      this.xRed = this.x;
+      managers.Game.yRedEnemy = this.yRed;
+      managers.Game.xRedEnemy = this.xRed;
       this._move();
       this._checkBounds();
     }

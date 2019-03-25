@@ -3,7 +3,6 @@ module objects {
     // private instance variables
     private _horizontalSpeed: number;
     private _GoReverse: boolean = false;
-    private _redenemy: objects.RedEnemy;
 
     // public properties
 
@@ -40,8 +39,8 @@ module objects {
 
     // public methods
     public Reset(): void {
-      this.x = this.Width;
-      this.y = managers.Game.yRedEnemy;
+      this.x = -100;
+      this.y = 250;
     }
 
     public Start(): void {

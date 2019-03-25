@@ -3,7 +3,6 @@ module scenes {
     // private instance variable
     private _player: objects.Player;
     private _space: objects.Space;
-    private _enemy: objects.Enemy;
     private _scoreBoard: managers.ScoreBoard;
     private _engineSound: createjs.AbstractSoundInstance;
     private _playerEngineSound: createjs.AbstractSoundInstance;
@@ -48,12 +47,9 @@ module scenes {
     public Update(): void {
       this._space.Update();
       this._player.Update();
-      this._enemy.Update();
       this._redenemy.Update();
       this._shotManager.Update();
       this._sonEnemy.Update();
-
-      managers.Collision.Check(this._player, this._enemy);
 
       for (const meteor of this._meteor) {
         meteor.Update();
@@ -64,10 +60,6 @@ module scenes {
       managers.Collision.Check(this._player, this._redenemy);
 
       managers.Collision.Check(this._player, this._sonEnemy);
-
-      for (let shoot of this._shotManager.Shoots) {
-        managers.Collision.Check(this._enemy, shoot);
-      }
 
       if (this._scoreBoard.Lives <= 0) {
         this._engineSound.stop();
@@ -109,30 +101,42 @@ module scenes {
       this._space = new objects.Space();
       this.addChild(this._space);
 
-      this._enemy = new objects.Enemy();
-      this.addChild(this._enemy);
-
       this._redenemy = new objects.RedEnemy();
       this.addChild(this._redenemy);
 
+      createjs.Tween.get(this._redenemy, { loop: 0 })
+        .wait(1500)
+        .to({ x: 500, y: 200 }, 2500)
+        .to({ x: -this._redenemy.HalfWidth, y: 200 }, 2000)
+        .wait(1000);
+
       this._sonEnemy = new objects.SonEnemy();
       this.addChild(this._sonEnemy);
+
+      createjs.Tween.get(this._sonEnemy, { loop: 0 })
+        .wait(7100)
+        .to({ x: 300, y: 270 }, 1000);
 
       // adds player to the scene
       this._player = new objects.Player();
       this.addChild(this._player);
 
-      createjs.Tween.get(this._player, { loop: 0 }).to(
-        { x: 800, y: 300 },
-        1300
-      );
-
-      this._shotManager.Shoots.forEach(shoot => {
-        this.addChild(shoot);
-      });
+      createjs.Tween.get(this._player, { loop: 0 })
+        .wait(6000)
+        .to({ x: 800, y: 300 }, 1500);
 
       this._meteor.forEach(meteor => {
         this.addChild(meteor);
+        createjs.Tween.get(meteor, { loop: 0 })
+          .wait(10000)
+          .to({
+            x: -meteor.Width,
+            y: Math.random() * (1024 - meteor.Height) + meteor.HalfHeight
+          });
+      });
+
+      this._shotManager.Shoots.forEach(shoot => {
+        this.addChild(shoot);
       });
 
       this.addChild(this._scoreBoard.LivesLabel);

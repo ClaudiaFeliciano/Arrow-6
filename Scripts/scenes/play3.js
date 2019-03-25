@@ -44,11 +44,9 @@ var scenes;
         Play3.prototype.Update = function () {
             this._space.Update();
             this._player.Update();
-            this._enemy.Update();
             this._redenemy.Update();
             this._shotManager.Update();
             this._sonEnemy.Update();
-            managers.Collision.Check(this._player, this._enemy);
             for (var _i = 0, _a = this._meteor; _i < _a.length; _i++) {
                 var meteor = _a[_i];
                 meteor.Update();
@@ -57,10 +55,6 @@ var scenes;
             // Is not working
             managers.Collision.Check(this._player, this._redenemy);
             managers.Collision.Check(this._player, this._sonEnemy);
-            for (var _b = 0, _c = this._shotManager.Shoots; _b < _c.length; _b++) {
-                var shoot = _c[_b];
-                managers.Collision.Check(this._enemy, shoot);
-            }
             if (this._scoreBoard.Lives <= 0) {
                 this._engineSound.stop();
                 this._playerEngineSound.stop();
@@ -97,21 +91,35 @@ var scenes;
             // adds space to the scene
             this._space = new objects.Space();
             this.addChild(this._space);
-            this._enemy = new objects.Enemy();
-            this.addChild(this._enemy);
             this._redenemy = new objects.RedEnemy();
             this.addChild(this._redenemy);
+            createjs.Tween.get(this._redenemy, { loop: 0 })
+                .wait(1500)
+                .to({ x: 500, y: 200 }, 2500)
+                .to({ x: -this._redenemy.HalfWidth, y: 200 }, 2000)
+                .wait(1000);
             this._sonEnemy = new objects.SonEnemy();
             this.addChild(this._sonEnemy);
+            createjs.Tween.get(this._sonEnemy, { loop: 0 })
+                .wait(7100)
+                .to({ x: 300, y: 270 }, 1000);
             // adds player to the scene
             this._player = new objects.Player();
             this.addChild(this._player);
-            createjs.Tween.get(this._player, { loop: 0 }).to({ x: 800, y: 300 }, 1300);
-            this._shotManager.Shoots.forEach(function (shoot) {
-                _this.addChild(shoot);
-            });
+            createjs.Tween.get(this._player, { loop: 0 })
+                .wait(6000)
+                .to({ x: 800, y: 300 }, 1500);
             this._meteor.forEach(function (meteor) {
                 _this.addChild(meteor);
+                createjs.Tween.get(meteor, { loop: 0 })
+                    .wait(10000)
+                    .to({
+                    x: -meteor.Width,
+                    y: Math.random() * (1024 - meteor.Height) + meteor.HalfHeight
+                });
+            });
+            this._shotManager.Shoots.forEach(function (shoot) {
+                _this.addChild(shoot);
             });
             this.addChild(this._scoreBoard.LivesLabel);
             this.addChild(this._scoreBoard.ScoreLabel);

@@ -20,6 +20,7 @@ var objects;
             var _this = _super.call(this, "redEnemy") || this;
             // public properties
             _this.yRed = 0;
+            _this.xRed = 0;
             _this.Start();
             return _this;
         }
@@ -28,8 +29,6 @@ var objects;
             this.y += this._vSpeed;
         };
         RedEnemy.prototype._checkBounds = function () {
-            this.yRed = this.y;
-            managers.Game.yRedEnemy = this.yRed;
             if (this.y > 560 - this.Height) {
                 this._vSpeed = -2;
             }
@@ -40,12 +39,15 @@ var objects;
         // public methods
         RedEnemy.prototype.Start = function () {
             this._vSpeed = 2;
-            this.x = -this.HalfWidth;
-            this.y = Math.floor(Math.random() * (500 - this.Height) + this.HalfHeight);
+            this.x = 500;
+            this.y = -200;
             this.yRed = this.y;
-            managers.Game.yRedEnemy = this.yRed;
         };
         RedEnemy.prototype.Update = function () {
+            this.yRed = this.y;
+            this.xRed = this.x;
+            managers.Game.yRedEnemy = this.yRed;
+            managers.Game.xRedEnemy = this.xRed;
             this._move();
             this._checkBounds();
         };
