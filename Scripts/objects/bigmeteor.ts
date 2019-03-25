@@ -3,12 +3,10 @@ module objects {
       // private instance variables
       private _verticalSpeed: number;
       private _horizontalSpeed: number;
-  
-      // public properties
-  
-      // constructor
+
+
       constructor() {
-        super("a10000");
+        super("rockSilver");
         this.Start();
       }
   

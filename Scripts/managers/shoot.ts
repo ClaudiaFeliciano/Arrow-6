@@ -15,8 +15,8 @@ module managers {
       }
     }
     public Start(): void {
-      this._shootCount = 50; //set the default shoot account
-      this.Shoots = new Array<objects.Shoot>(); // create the shoot container
+      this._shootCount = 50;
+      this.Shoots = new Array<objects.Shoot>(); 
       this._buildShootPool(); //build shoot array
       this.CurrentShoot = 0; //set the Current shoot to 0
     }

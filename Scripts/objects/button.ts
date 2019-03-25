@@ -1,48 +1,6 @@
 module objects {
     export class Button extends objects.AbstractGameObject {
-        // private instance variables
-       /* private _width:number;
-        private _height:number;
-        private _halfWidth:number;
-        private _halfHeight:number;
-
-        // public properties
-        get Width():number {
-            return this._width;
-        }
-
-        set Width(newValue:number) {
-            this._width = newValue;
-            this.HalfWidth = this._width * 0.5;
-        }
-
-        get Height():number {
-            return this._height;
-        }
-
-        set Height(newValue:number) {
-            this._height = newValue;
-            this.HalfHeight = this._height * 0.5;
-        }
-
-        get HalfHeight():number {
-            return this._halfHeight;
-        }
-
-        set HalfHeight(newValue:number) {
-            this._halfHeight = newValue;
-        }
-
-        get HalfWidth():number {
-            return this._halfWidth;
-        }
-
-        set HalfWidth(newValue:number) {
-            this._halfWidth = newValue;
-        }*/
-
-        // constructor
-
+     
         /**
          * Creates an instance of Button.
          * @param {string} imageString
@@ -71,7 +29,7 @@ module objects {
 
         // event handlers
         private _over(event:createjs.MouseEvent):void {
-            this.alpha = 0.7; // 70% opacity
+            this.alpha = 0.6; 
             createjs.Sound.play("pep");
         }
 
@@ -80,20 +38,12 @@ module objects {
         }
 
         // public methods
-        public Reset(): void {
+        public Reset(): void {}
 
-        }
+        public Start(): void { }
 
-        public Start(): void {
+        public Update(): void {}
 
-        }
-
-        public Update(): void {
-
-        }
-
-        public Destroy(): void {
-
-        }
+        public Destroy(): void {}
     }
 }

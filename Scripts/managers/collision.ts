@@ -26,7 +26,7 @@ module managers {
               }
               break;
 
-            case "brouncerock": //carmelita claro
+            case "brouncerock": 
               if (object2.alpha != 0) {
                 createjs.Sound.play("extralive");
                 managers.Game.scoreBoard.Score += 50;
@@ -74,7 +74,7 @@ module managers {
               break;
 
 
-            case "a10000": //silver
+            case "rockSilver": //silver
               if (object1.alpha != 0) {
 
                 createjs.Sound.play("explosion");
