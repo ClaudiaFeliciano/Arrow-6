@@ -15,10 +15,8 @@ var objects;
 (function (objects) {
     var BigMeteor = /** @class */ (function (_super) {
         __extends(BigMeteor, _super);
-        // public properties
-        // constructor
         function BigMeteor() {
-            var _this = _super.call(this, "a10000") || this;
+            var _this = _super.call(this, "rockSilver") || this;
             _this.Start();
             return _this;
         }

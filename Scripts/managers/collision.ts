@@ -86,10 +86,8 @@ module managers {
                 managers.Game.sceneObject.addChild(boom1);
                 object1.alpha = 0;//1
                 // managers.Game.player.alpha = 0;//1
-                managers.Game.player.planeflash.alpha = 1;//1
-                //managers.Game.planeafterCrash.x=  managers.Game.player.x;
-                // managers.Game.planeafterCrash.y=  managers.Game.player.y;
-                managers.Game.player.planeflash.gotoAndPlay("planeflash");
+                managers.Game.player.vulnerability.alpha = 1;//1
+                managers.Game.player.vulnerability.gotoAndPlay("vulnerability");
                 object2.Reset();
               }
               break;

@@ -57,6 +57,9 @@ var scenes;
             managers.Game.scoreBoard = this._scoreBoard;
             this._shotManager = new managers.Shoot();
             managers.Game.shootManager = this._shotManager;
+            this.board = new createjs.Bitmap("table");
+            this.board.x = 0;
+            this.board.y = 549;
             this.Main();
         };
         Play1.prototype.Update = function () {
@@ -133,7 +136,7 @@ var scenes;
             this.addChild(this._space);
             this.addChild(this._player);
             createjs.Tween.get(this._player, { loop: 0 }).to({ x: 800, y: 300 }, 1000);
-            this.addChild(this._player.planeflash);
+            this.addChild(this._player.vulnerability);
             for (var _i = 0, _a = this._enemy; _i < _a.length; _i++) {
                 var enemy = _a[_i];
                 this.addChild(enemy);
@@ -156,10 +159,10 @@ var scenes;
             this._meteor.forEach(function (meteor) {
                 _this.addChild(meteor);
             });
-            //add scoreboard labels to the scene
             this.addChild(this._scoreBoard.LivesLabel);
             this.addChild(this._scoreBoard.ScoreLabel);
             this.addChild(this._scoreBoard.LevelLabel);
+            this.addChild(this.board);
         };
         return Play1;
     }(objects.Scene));

@@ -1,6 +1,6 @@
 module objects {
   export class Player extends objects.AbstractGameObject {
-    public planeflash: objects.PlaneAfterCrash;//1
+    public vulnerability: objects.PlaneAfterCrash;//1
     private _shootOrigin: math.Vec2;
 
     // constructors
@@ -10,13 +10,13 @@ module objects {
     }
     private _animationEnd(): void {
          this.alpha = 1;
-         this.planeflash.alpha = 0;   
+         this.vulnerability.alpha = 0;   
      }
 
      public Start(): void {
-      this.planeflash = new objects.PlaneAfterCrash();//1
-      this.planeflash.alpha = 0;//1
-      this.planeflash.on("animationend", this._animationEnd.bind(this), false)//1
+      this.vulnerability = new objects.PlaneAfterCrash();//1
+      this.vulnerability.alpha = 0;//1
+      this.vulnerability.on("animationend", this._animationEnd.bind(this), false)//1
 
       this.regX = this.HalfWidth;
       this.regY = this.HalfHeight;
@@ -85,10 +85,10 @@ module objects {
         managers.Game.goingDown = false;
       }
       this.Gravity();
-      this.planeflash.x = this.x;
-      this.planeflash.y = this.y;
-      this.planeflash.regX = this.regX;
-      this.planeflash.regY = this.regY;
+      this.vulnerability.x = this.x;
+      this.vulnerability.y = this.y;
+      this.vulnerability.regX = this.regX;
+      this.vulnerability.regY = this.regY;
     }
 
     public Gravity(): void {

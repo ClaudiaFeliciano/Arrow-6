@@ -25,7 +25,6 @@ var scenes;
             this._startbackground = new objects.StartBackground();
             this._boardinf = new objects.BoardInformation();
             this._startButton = new objects.Button("start", 575.5, 500, true);
-            // this._musicButton = new objects.Button("music", 980.5, 566, true);
             this._exitButton = new objects.Button("exit", 760.5, 500, true);
             this.Main();
         };

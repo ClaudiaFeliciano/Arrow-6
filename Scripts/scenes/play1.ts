@@ -13,6 +13,7 @@ module scenes {
     private _scoreBoard: managers.ScoreBoard;
     private _engineSound: createjs.AbstractSoundInstance;
     private _shotManager: managers.Shoot;
+    public board: createjs.Bitmap;
 
     // constructor
     constructor() {
@@ -63,6 +64,11 @@ module scenes {
 
       this._shotManager = new managers.Shoot();
       managers.Game.shootManager = this._shotManager;
+
+      this.board = new createjs.Bitmap("table");
+      this.board.x=0;
+      this.board.y = 549;
+
       this.Main();
     }
 
@@ -70,7 +76,6 @@ module scenes {
       this._space.Update();
       this._player.Update();
       this._shotManager.Update();
-    
 
       for (const enemy of this._enemy) {
         enemy.Update();
@@ -151,7 +156,7 @@ module scenes {
         { x: 800, y: 300 },
         1000
       );
-      this.addChild(this._player.planeflash);
+      this.addChild(this._player.vulnerability);
       for (const enemy of this._enemy) {
         this.addChild(enemy);
       }
@@ -174,10 +179,11 @@ module scenes {
         this.addChild(meteor);
       });
 
-      //add scoreboard labels to the scene
+      
       this.addChild(this._scoreBoard.LivesLabel);
       this.addChild(this._scoreBoard.ScoreLabel);
       this.addChild(this._scoreBoard.LevelLabel);
+      this.addChild(this.board);
     }
   }
 }

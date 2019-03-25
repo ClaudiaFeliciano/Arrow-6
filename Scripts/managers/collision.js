@@ -22,7 +22,7 @@ var managers;
                                 managers.Game.highScore = managers.Game.scoreBoard.HighScore;
                             }
                             break;
-                        case "brouncerock": //carmelita claro
+                        case "brouncerock":
                             if (object2.alpha != 0) {
                                 createjs.Sound.play("extralive");
                                 managers.Game.scoreBoard.Score += 50;
@@ -61,7 +61,7 @@ var managers;
                                 managers.Game.highScore = managers.Game.scoreBoard.HighScore;
                             }
                             break;
-                        case "a10000": //silver
+                        case "rockSilver": //silver
                             if (object1.alpha != 0) {
                                 createjs.Sound.play("explosion");
                                 managers.Game.scoreBoard.Lives -= 2;
@@ -71,10 +71,8 @@ var managers;
                                 managers.Game.sceneObject.addChild(boom1);
                                 object1.alpha = 0; //1
                                 // managers.Game.player.alpha = 0;//1
-                                managers.Game.player.planeflash.alpha = 1; //1
-                                //managers.Game.planeafterCrash.x=  managers.Game.player.x;
-                                // managers.Game.planeafterCrash.y=  managers.Game.player.y;
-                                managers.Game.player.planeflash.gotoAndPlay("planeflash");
+                                managers.Game.player.vulnerability.alpha = 1; //1
+                                managers.Game.player.vulnerability.gotoAndPlay("vulnerability");
                                 object2.Reset();
                             }
                             break;

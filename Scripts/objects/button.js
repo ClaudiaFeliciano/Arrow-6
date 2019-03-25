@@ -15,47 +15,6 @@ var objects;
 (function (objects) {
     var Button = /** @class */ (function (_super) {
         __extends(Button, _super);
-        // private instance variables
-        /* private _width:number;
-         private _height:number;
-         private _halfWidth:number;
-         private _halfHeight:number;
- 
-         // public properties
-         get Width():number {
-             return this._width;
-         }
- 
-         set Width(newValue:number) {
-             this._width = newValue;
-             this.HalfWidth = this._width * 0.5;
-         }
- 
-         get Height():number {
-             return this._height;
-         }
- 
-         set Height(newValue:number) {
-             this._height = newValue;
-             this.HalfHeight = this._height * 0.5;
-         }
- 
-         get HalfHeight():number {
-             return this._halfHeight;
-         }
- 
-         set HalfHeight(newValue:number) {
-             this._halfHeight = newValue;
-         }
- 
-         get HalfWidth():number {
-             return this._halfWidth;
-         }
- 
-         set HalfWidth(newValue:number) {
-             this._halfWidth = newValue;
-         }*/
-        // constructor
         /**
          * Creates an instance of Button.
          * @param {string} imageString
@@ -82,21 +41,17 @@ var objects;
         // private methods
         // event handlers
         Button.prototype._over = function (event) {
-            this.alpha = 0.7; // 70% opacity
+            this.alpha = 0.6;
             createjs.Sound.play("pep");
         };
         Button.prototype._out = function (event) {
             this.alpha = 1.0; // 100% opacity
         };
         // public methods
-        Button.prototype.Reset = function () {
-        };
-        Button.prototype.Start = function () {
-        };
-        Button.prototype.Update = function () {
-        };
-        Button.prototype.Destroy = function () {
-        };
+        Button.prototype.Reset = function () { };
+        Button.prototype.Start = function () { };
+        Button.prototype.Update = function () { };
+        Button.prototype.Destroy = function () { };
         return Button;
     }(objects.AbstractGameObject));
     objects.Button = Button;
