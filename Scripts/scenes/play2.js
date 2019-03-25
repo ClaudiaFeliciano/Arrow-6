@@ -18,6 +18,7 @@ var scenes;
         // constructor
         function Play2() {
             var _this = _super.call(this) || this;
+            //this._getSleep(2000);
             _this.Start();
             return _this;
         }
@@ -55,8 +56,8 @@ var scenes;
             this._engineSound.loop = -1;
             this._engineSound.volume = 0.1;
             //create the score board UI for the scene
-            this._scoreBoard = new managers.ScoreBoard();
-            managers.Game.scoreBoard = this._scoreBoard;
+            /* this._scoreBoard = new managers.ScoreBoard();
+             managers.Game.scoreBoard = this._scoreBoard;*/
             this._shotManager = new managers.Shoot();
             managers.Game.shootManager = this._shotManager;
             this.Main();
@@ -167,6 +168,11 @@ var scenes;
             this.addChild(this._scoreBoard.LivesLabel);
             this.addChild(this._scoreBoard.ScoreLabel);
             this.addChild(this._scoreBoard.LevelLabel);
+        };
+        Play2.prototype._getSleep = function (delay) {
+            var start = new Date().getTime();
+            while (new Date().getTime() < start + delay)
+                ;
         };
         return Play2;
     }(objects.Scene));
