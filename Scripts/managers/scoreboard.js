@@ -53,7 +53,7 @@ var managers;
             this.ScoreLabel = new objects.Label("Score: 99999 ", "20px", "Consolas", "#0048BA", 900, 35, false);
             this.HighScoreLabel = new objects.Label("High Score: ", "30px", "Consolas", "#0048BA", 500, 255, true);
             this.LevelLabel = new objects.Label("Level: ", "20px", "Consolas", "#0048BA", 940, 85, true);
-            this.Lives = 5;
+            this.Lives = 3;
             this.Score = 0;
             this.HighScore = 0;
             this.Level = 1;

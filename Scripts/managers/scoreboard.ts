@@ -60,7 +60,7 @@ module managers {
       this.LevelLabel = new objects.Label("Level: ", "20px", "Consolas", "#0048BA", 940, 85, true);
      
 
-      this.Lives = 5;
+      this.Lives = 3;
       this.Score = 0;
       this.HighScore = 0;
       this.Level = 1;

@@ -79,7 +79,7 @@ var managers;
                         case "enemy":
                             createjs.Sound.play("explosion");
                             if (object1.alpha != 0) {
-                                managers.Game.scoreBoard.Score += 200;
+                                managers.Game.scoreBoard.Score += 100;
                                 var boom = new objects.Boom("boom");
                                 boom.x = object2.x - object2.Width;
                                 boom.y = object2.y - object2.Height;

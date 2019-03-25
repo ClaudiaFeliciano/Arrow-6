@@ -64,7 +64,7 @@ module scenes {
       this._engineSound.loop = -1;
       this._engineSound.volume = 0.1;
 
-      //create the score board UI for the scene
+     
      /* this._scoreBoard = new managers.ScoreBoard();
       managers.Game.scoreBoard = this._scoreBoard;*/
 
@@ -164,7 +164,7 @@ module scenes {
         { x: 800, y: 300 },
         1000
       );
-      this.addChild(this._player.vulnerability);
+      this.addChild(this._player.planeflash);
       for (const enemy of this._enemy) {
         this.addChild(enemy);
       }
@@ -187,7 +187,7 @@ module scenes {
         this.addChild(meteor);
       });
 
-      //add scoreboard labels to the scene
+     
       this.addChild(this._scoreBoard.LivesLabel);
       this.addChild(this._scoreBoard.ScoreLabel);
       this.addChild(this._scoreBoard.LevelLabel);

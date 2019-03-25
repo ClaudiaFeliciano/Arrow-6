@@ -157,7 +157,7 @@ module scenes {
         { x: 800, y: 300 },
         1000
       );
-      this.addChild(this._player.vulnerability);
+      this.addChild(this._player.planeflash);
       for (const enemy of this._enemy) {
         this.addChild(enemy);
       }

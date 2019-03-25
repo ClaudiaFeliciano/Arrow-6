@@ -26,13 +26,13 @@ var objects;
             this.planeflash.alpha = 0;
         };
         Player.prototype.Start = function () {
-            this.planeflash = new objects.PlaneAfterCrash(); //1
-            this.planeflash.alpha = 0; //1
-            this.planeflash.on("animationend", this._animationEnd.bind(this), false); //1
+            this.planeflash = new objects.PlaneAfterCrash();
+            this.planeflash.alpha = 0;
+            this.planeflash.on("animationend", this._animationEnd.bind(this), false);
             this.regX = this.HalfWidth;
             this.regY = this.HalfHeight;
-            this.x = 1024; //la posicion donde va a comenzar el avion como era de arriba hacia abajo 0 es arriba y 435 es pegado a abajo, menos la altura del avion
-            this.y = 250; //kiero k el avion comienze en el medio de mi eje y
+            this.x = 1024;
+            this.y = 250;
             this._shootOrigin = new math.Vec2();
         };
         Player.prototype.Update = function () {
@@ -111,7 +111,6 @@ var objects;
         };
         Player.prototype.ShootFire = function () {
             if ((this.alpha = 1)) {
-                //esto significa k estoy viva
                 var ticker = createjs.Ticker.getTicks();
                 if (managers.Game.keyboardManager.shoot && ticker % 10 == 0) {
                     //how many frames when i fire my ticker

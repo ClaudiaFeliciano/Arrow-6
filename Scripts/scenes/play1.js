@@ -135,7 +135,7 @@ var scenes;
             this.addChild(this._space);
             this.addChild(this._player);
             createjs.Tween.get(this._player, { loop: 0 }).to({ x: 800, y: 300 }, 1000);
-            this.addChild(this._player.vulnerability);
+            this.addChild(this._player.planeflash);
             for (var _i = 0, _a = this._enemy; _i < _a.length; _i++) {
                 var enemy = _a[_i];
                 this.addChild(enemy);

@@ -6,10 +6,8 @@ module managers {
     public static currentState: config.Scene; // wich current scene is
     public static scoreBoard: managers.ScoreBoard;
     public static currentScene: number;
-    //public static currentSceneObject: objects.Scene;
     public static keyboardManager: managers.Keyboard;
     public static highScore: number = 0;
-   
     public static textureArrow: createjs.SpriteSheet;
     public static sceneObject: objects.Scene;
     public static player: objects.Player;
