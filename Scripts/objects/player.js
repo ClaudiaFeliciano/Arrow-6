@@ -23,12 +23,12 @@ var objects;
         }
         Player.prototype._animationEnd = function () {
             this.alpha = 1;
-            this.vulnerability.alpha = 0;
+            this.planeflash.alpha = 0;
         };
         Player.prototype.Start = function () {
-            this.vulnerability = new objects.PlaneAfterCrash(); //1
-            this.vulnerability.alpha = 0; //1
-            this.vulnerability.on("animationend", this._animationEnd.bind(this), false); //1
+            this.planeflash = new objects.PlaneAfterCrash(); //1
+            this.planeflash.alpha = 0; //1
+            this.planeflash.on("animationend", this._animationEnd.bind(this), false); //1
             this.regX = this.HalfWidth;
             this.regY = this.HalfHeight;
             this.x = 1024; //la posicion donde va a comenzar el avion como era de arriba hacia abajo 0 es arriba y 435 es pegado a abajo, menos la altura del avion
@@ -87,10 +87,10 @@ var objects;
                 managers.Game.goingDown = false;
             }
             this.Gravity();
-            this.vulnerability.x = this.x;
-            this.vulnerability.y = this.y;
-            this.vulnerability.regX = this.regX;
-            this.vulnerability.regY = this.regY;
+            this.planeflash.x = this.x;
+            this.planeflash.y = this.y;
+            this.planeflash.regX = this.regX;
+            this.planeflash.regY = this.regY;
         };
         Player.prototype.Gravity = function () {
             if (managers.Game.goingLeft) {

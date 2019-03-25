@@ -71,8 +71,8 @@ var managers;
                                 managers.Game.sceneObject.addChild(boom1);
                                 object1.alpha = 0; //1
                                 // managers.Game.player.alpha = 0;//1
-                                managers.Game.player.vulnerability.alpha = 1; //1
-                                managers.Game.player.vulnerability.gotoAndPlay("vulnerability");
+                                managers.Game.player.planeflash.alpha = 1; //1
+                                managers.Game.player.planeflash.gotoAndPlay("planeflash");
                                 object2.Reset();
                             }
                             break;
