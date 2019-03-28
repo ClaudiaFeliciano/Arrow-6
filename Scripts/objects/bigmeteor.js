@@ -34,7 +34,7 @@ var objects;
         BigMeteor.prototype.Reset = function () {
             this._verticalSpeed = 1;
             this._horizontalSpeed = 1;
-            this.x = this.Width; //de donde kiero k comience
+            this.x = -this.Width;
             this.y = Math.floor(Math.random() * (1024 - this.Height) + this.HalfHeight);
             this.alpha = 1;
         };

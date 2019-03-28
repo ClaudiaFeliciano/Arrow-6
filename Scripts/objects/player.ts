@@ -21,15 +21,16 @@ module objects {
       this.regX = this.HalfWidth;
       this.regY = this.HalfHeight;
 
-      this.x = 1024;
-      this.y = 250;
+      this.x = 1000;
+      this.y = 300;
       this._shootOrigin = new math.Vec2();
     }
 
     public Update(): void {
       this.Move();
       // checking the bottom boundary
-      if (this.y >= 549 - this.HalfHeight) {//600 minus the high of the scorebar
+      if (this.y >= 549 - this.HalfHeight) {
+        //600 minus the high of the scorebar
         this.y = 549 - this.HalfHeight;
       }
 
@@ -38,7 +39,7 @@ module objects {
         this.y = this.HalfHeight;
       }
 
-      // Check right boundary 
+      // Check right boundary
       if (this.x >= 1024 - this.HalfWidth) {
         this.x = 1024 - this.HalfWidth;
       }
@@ -84,7 +85,7 @@ module objects {
         managers.Game.goingDown = false;
       }
       this.Gravity();
-     this.planeflash.x = this.x;
+      this.planeflash.x = this.x;
       this.planeflash.y = this.y;
       this.planeflash.regX = this.regX;
       this.planeflash.regY = this.regY;
@@ -94,33 +95,28 @@ module objects {
     public Gravity(): void {
       if (managers.Game.goingLeft) {
         this.x -= 2;
-
       }
       if (managers.Game.goingRigth) {
         this.x += 2;
-
       }
       if (managers.Game.goingUp) {
         this.y -= 2;
-
       }
       if (managers.Game.goingDown) {
         this.y += 2;
-
       }
     }
 
-    public Reset(): void { }
+    public Reset(): void {}
 
-    public Destroy(): void {
-    }
+    public Destroy(): void {}
 
     public ShootFire(): void {
       if ((this.alpha = 1)) {
         let ticker: number = createjs.Ticker.getTicks();
         if (managers.Game.keyboardManager.shoot && ticker % 10 == 0) {
           //how many frames when i fire my ticker
-          this._shootOrigin = new math.Vec2(this.x, this.y - this.HalfHeight)
+          this._shootOrigin = new math.Vec2(this.x, this.y - this.HalfHeight);
           let currentshot = managers.Game.shootManager.CurrentShoot;
           let shoot = managers.Game.shootManager.Shoots[currentshot];
           shoot.x = this._shootOrigin.x;
@@ -173,7 +169,6 @@ module objects {
             shoot.y = this.y - 10;
           }
           createjs.Sound.play("shootSound");
-
         }
       }
     }

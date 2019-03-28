@@ -33,9 +33,9 @@ var objects;
         };
         // public methods
         Enemy.prototype.Reset = function () {
-            this._horizontalSpeed = 3;
-            this.x = -this.Width; //esto me da desde donde el objeto saldra
-            this.y = Math.floor((Math.random() * (1024 - this.Height)) + this.HalfHeight);
+            this._horizontalSpeed = 4;
+            this.x = -this.Width;
+            this.y = Math.floor(Math.random() * (500 - this.Height)); // 500 bs there will be a panel at the botton
         };
         Enemy.prototype.Start = function () {
             this.Reset();
@@ -44,8 +44,7 @@ var objects;
             this._move();
             this._checkBounds();
         };
-        Enemy.prototype.Destroy = function () {
-        };
+        Enemy.prototype.Destroy = function () { };
         return Enemy;
     }(objects.AbstractGameObject));
     objects.Enemy = Enemy;

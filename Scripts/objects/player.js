@@ -31,21 +31,22 @@ var objects;
             this.planeflash.on("animationend", this._animationEnd.bind(this), false);
             this.regX = this.HalfWidth;
             this.regY = this.HalfHeight;
-            this.x = 1024;
-            this.y = 250;
+            this.x = 1000;
+            this.y = 300;
             this._shootOrigin = new math.Vec2();
         };
         Player.prototype.Update = function () {
             this.Move();
             // checking the bottom boundary
-            if (this.y >= 549 - this.HalfHeight) { //600 minus the high of the scorebar
+            if (this.y >= 549 - this.HalfHeight) {
+                //600 minus the high of the scorebar
                 this.y = 549 - this.HalfHeight;
             }
             // checking the top boundary
             if (this.y <= this.HalfHeight) {
                 this.y = this.HalfHeight;
             }
-            // Check right boundary 
+            // Check right boundary
             if (this.x >= 1024 - this.HalfWidth) {
                 this.x = 1024 - this.HalfWidth;
             }
@@ -108,8 +109,7 @@ var objects;
             }
         };
         Player.prototype.Reset = function () { };
-        Player.prototype.Destroy = function () {
-        };
+        Player.prototype.Destroy = function () { };
         Player.prototype.ShootFire = function () {
             if ((this.alpha = 1)) {
                 var ticker = createjs.Ticker.getTicks();

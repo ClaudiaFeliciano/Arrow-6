@@ -33,7 +33,7 @@ var objects;
         BrounceRock.prototype.Reset = function () {
             this._verticalSpeed = Math.floor(Math.random() * 2 + 1);
             this._horizontalSpeed = Math.floor(Math.random() * 2 - 1);
-            this.x = -this.Width; //de donde kiero k comience
+            this.x = -this.Width;
             this.y = Math.floor(Math.random() * (1024 - this.Height) + this.HalfHeight);
             this.alpha = 1;
         };

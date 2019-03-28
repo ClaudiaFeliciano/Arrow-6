@@ -26,14 +26,14 @@ var objects;
             this.y += this._horizontalSpeed;
         };
         SmallMeteor.prototype._checkBounds = function () {
-            if ((this.x > 1024 + this.Width) || (this.y > 600 + this.Height)) {
+            if (this.x > 1024 + this.Width || this.y > 600 + this.Height) {
                 this.Reset();
             }
         };
         SmallMeteor.prototype.Reset = function () {
             this._horizontalSpeed = 2;
-            this.x = Math.floor(Math.random() * (1024 - this.Width) + this.HalfWidth); //de donde kiero k comience
-            this.y = 0;
+            this.x = Math.floor(Math.random() * (1024 - this.Width) + this.HalfWidth);
+            this.y = -this.Height;
             this.alpha = 1;
         };
         SmallMeteor.prototype.Start = function () {

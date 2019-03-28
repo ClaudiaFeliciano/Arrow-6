@@ -13,16 +13,13 @@ module scenes {
     private _scoreBoard: managers.ScoreBoard;
     private _engineSound: createjs.AbstractSoundInstance;
     private _shotManager: managers.Shoot;
-    private _redenemy: objects.RedEnemy;
-    private _sonEnemy: objects.SonEnemy;
 
     // constructor
     constructor() {
       super();
       //this._getSleep(2000);
-    
+
       this.Start();
-     
     }
 
     // public methods
@@ -31,11 +28,9 @@ module scenes {
       this._numero = 3;
       this._bigmeteorNum = 3;
       this._space = new objects.Space();
-      this._scoreBoard = new managers.ScoreBoard;
+      this._scoreBoard = new managers.ScoreBoard();
       this._player = new objects.Player();
-      this._redenemy= new objects.RedEnemy();
       managers.Game.player = this._player;
-      this._sonEnemy= new objects.SonEnemy();
 
       this._enemy = new Array<objects.Enemy>();
       for (let count = 0; count < this._numero; count++) {
@@ -64,8 +59,7 @@ module scenes {
       this._engineSound.loop = -1;
       this._engineSound.volume = 0.1;
 
-     
-     /* this._scoreBoard = new managers.ScoreBoard();
+      /* this._scoreBoard = new managers.ScoreBoard();
       managers.Game.scoreBoard = this._scoreBoard;*/
 
       this._shotManager = new managers.Shoot();
@@ -77,15 +71,10 @@ module scenes {
       this._space.Update();
       this._player.Update();
       this._shotManager.Update();
-      this._redenemy.Update();
-      this._sonEnemy.Update();
-    
-      managers.Collision.Check(this._player, this._sonEnemy);
 
       for (const enemy of this._enemy) {
         enemy.Update();
         managers.Collision.Check(this._player, enemy);
-
       }
 
       for (const bigmeteor of this._bigmeteor) {
@@ -112,22 +101,20 @@ module scenes {
       this._shotManager.Shoots.forEach(bullet => {
         this._enemy.forEach(enemy => {
           managers.Collision.Check(bullet, enemy);
-
         });
-
       });
       //////**********RULES -LEVEL1- RULES -LEVEL1- RULES -LEVEL1- RULES -LEVEL1- RULES***************////////
 
       //if lives fall below zero switch scenes to the game over scene
       if (this._scoreBoard.Lives <= 0) {
-        this._engineSound.stop();      
+        this._engineSound.stop();
         managers.Game.currentState = config.Scene.OVER;
       }
-   
-      if ((this._scoreBoard.Score >= 2000) && (this._scoreBoard.Lives >= 0)) {
+
+      if (this._scoreBoard.Score >= 2000 && this._scoreBoard.Lives >= 0) {
         this._engineSound.stop();
         managers.Game.currentState = config.Scene.START3;
-        managers.Game.scoreBoard.Level +=1;
+        managers.Game.scoreBoard.Level += 1;
       }
       // right
       if (managers.Game.goingRigth) {
@@ -147,18 +134,15 @@ module scenes {
       }
     }
 
-
     public Destroy(): void {
       this.removeAllChildren();
     }
 
-    public Reset(): void { }
+    public Reset(): void {}
 
     public Main(): void {
       this.addChild(this._space);
       this.addChild(this._player);
-      this.addChild(this._redenemy);
-      this.addChild(this._sonEnemy);
 
       createjs.Tween.get(this._player, { loop: 0 }).to(
         { x: 800, y: 300 },
@@ -167,6 +151,15 @@ module scenes {
       this.addChild(this._player.planeflash);
       for (const enemy of this._enemy) {
         this.addChild(enemy);
+        createjs.Tween.get(enemy, { loop: 0 })
+          .wait(500)
+          .to(
+            {
+              x: -enemy.Width,
+              y: Math.floor(Math.random() * (500 - enemy.Height))
+            },
+            1000
+          );
       }
 
       this._shotManager.Shoots.forEach(shoot => {
@@ -175,28 +168,55 @@ module scenes {
 
       for (const bigmeteor of this._bigmeteor) {
         this.addChild(bigmeteor);
+        // Delay for the BigMetteor
+        createjs.Tween.get(bigmeteor, { loop: 0 })
+          .wait(3000)
+          .to(
+            {
+              x: -bigmeteor.Width,
+              y: Math.floor(
+                Math.random() * (1024 - bigmeteor.Height) + bigmeteor.HalfHeight
+              )
+            },
+            1000
+          );
       }
       for (const smallmeteor of this._smallmeteor) {
         this.addChild(smallmeteor);
+        createjs.Tween.get(smallmeteor, { loop: 0 })
+          .wait(5000)
+          .to({ x: smallmeteor.Height, y: -smallmeteor.Height }, 2000);
       }
 
       for (const brouncerock of this._brouncerock) {
         this.addChild(brouncerock);
+        createjs.Tween.get(brouncerock, { loop: 0 })
+          .wait(6000)
+          .to({ x: -brouncerock.Width, y: 200 }, 2000);
       }
       this._meteor.forEach(meteor => {
         this.addChild(meteor);
+        createjs.Tween.get(meteor, { loop: 0 })
+          .wait(5000)
+          .to(
+            {
+              x: -meteor.Width,
+              y: Math.floor(
+                Math.random() * (1024 - meteor.Height) + meteor.HalfHeight
+              )
+            },
+            5000
+          );
       });
 
-     
       this.addChild(this._scoreBoard.LivesLabel);
       this.addChild(this._scoreBoard.ScoreLabel);
       this.addChild(this._scoreBoard.LevelLabel);
     }
 
-    private _getSleep(delay):void {
-        var start = new Date().getTime();
-        while (new Date().getTime() < start + delay);
-      
+    private _getSleep(delay): void {
+      var start = new Date().getTime();
+      while (new Date().getTime() < start + delay);
     }
   }
 }
