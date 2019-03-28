@@ -13,6 +13,7 @@ module scenes {
     private _scoreBoard: managers.ScoreBoard;
     private _engineSound: createjs.AbstractSoundInstance;
     private _shotManager: managers.Shoot;
+    public board: objects.BoardBar;
 
     // constructor
     constructor() {
@@ -31,6 +32,7 @@ module scenes {
       this._scoreBoard = new managers.ScoreBoard();
       this._player = new objects.Player();
       managers.Game.player = this._player;
+      this.board = new objects.BoardBar();
 
       this._enemy = new Array<objects.Enemy>();
       for (let count = 0; count < this._numero; count++) {
@@ -71,6 +73,7 @@ module scenes {
       this._space.Update();
       this._player.Update();
       this._shotManager.Update();
+      this.board.Update();
 
       for (const enemy of this._enemy) {
         enemy.Update();
@@ -209,14 +212,10 @@ module scenes {
           );
       });
 
+      this.addChild(this.board);
       this.addChild(this._scoreBoard.LivesLabel);
       this.addChild(this._scoreBoard.ScoreLabel);
       this.addChild(this._scoreBoard.LevelLabel);
-    }
-
-    private _getSleep(delay): void {
-      var start = new Date().getTime();
-      while (new Date().getTime() < start + delay);
     }
   }
 }

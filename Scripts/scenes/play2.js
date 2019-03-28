@@ -30,6 +30,7 @@ var scenes;
             this._scoreBoard = new managers.ScoreBoard();
             this._player = new objects.Player();
             managers.Game.player = this._player;
+            this.board = new objects.BoardBar();
             this._enemy = new Array();
             for (var count = 0; count < this._numero; count++) {
                 this._enemy[count] = new objects.Enemy();
@@ -64,6 +65,7 @@ var scenes;
             this._space.Update();
             this._player.Update();
             this._shotManager.Update();
+            this.board.Update();
             for (var _i = 0, _a = this._enemy; _i < _a.length; _i++) {
                 var enemy = _a[_i];
                 enemy.Update();
@@ -181,14 +183,10 @@ var scenes;
                     y: Math.floor(Math.random() * (1024 - meteor.Height) + meteor.HalfHeight)
                 }, 5000);
             });
+            this.addChild(this.board);
             this.addChild(this._scoreBoard.LivesLabel);
             this.addChild(this._scoreBoard.ScoreLabel);
             this.addChild(this._scoreBoard.LevelLabel);
-        };
-        Play2.prototype._getSleep = function (delay) {
-            var start = new Date().getTime();
-            while (new Date().getTime() < start + delay)
-                ;
         };
         return Play2;
     }(objects.Scene));
