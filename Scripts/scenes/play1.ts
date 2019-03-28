@@ -28,6 +28,9 @@ module scenes {
       this._bigmeteorNum = 3;
       this._space = new objects.Space();
       this._scoreBoard = new managers.ScoreBoard();
+      this._scoreBoard = new managers.ScoreBoard();
+      managers.Game.scoreBoard = this._scoreBoard;
+
       this.board = new objects.BoardBar();
       this._player = new objects.Player();
       managers.Game.player = this._player;
@@ -65,8 +68,7 @@ module scenes {
       this._engineSound.volume = 0.1;
 
       //create the score board UI for the scene
-      this._scoreBoard = new managers.ScoreBoard();
-      managers.Game.scoreBoard = this._scoreBoard;
+      
 
       this._shotManager = new managers.Shoot();
       managers.Game.shootManager = this._shotManager;
@@ -129,10 +131,10 @@ module scenes {
         managers.Game.currentState = config.Scene.OVER;
       }
 
-      if ((this._scoreBoard.Score >= 1000) && (this._scoreBoard.Lives >= 0)) {
+      if ((this._scoreBoard.Score >= 100) && (this._scoreBoard.Lives >= 0)) {//kjihkvj
         this._engineSound.stop();
         managers.Game.currentState = config.Scene.START2;
-        managers.Game.scoreBoard.Level += 1;
+        managers.Game.scoreBoard.Level +=1;
       }
       // right
       if (managers.Game.goingRigth) {
@@ -194,10 +196,11 @@ module scenes {
         console.log(life.name);
         this.addChild(life);
       }
+    
+      this.addChild(this.board);
       this.addChild(this._scoreBoard.LivesLabel);
       this.addChild(this._scoreBoard.ScoreLabel);
       this.addChild(this._scoreBoard.LevelLabel);
-      this.addChild(this.board);
     }
   }
 }

@@ -9,6 +9,7 @@
   let keyboardManager: managers.Keyboard;
   let textureArrowData: any;
   let textureArrow: createjs.SpriteSheet;
+  let scoreBoard: managers.ScoreBoard;
 
   textureArrowData = {
     images: ["./Assets/sprites/textureArrowData.png"],
@@ -341,8 +342,8 @@
     keyboardManager = new managers.Keyboard();
     managers.Game.keyboardManager = keyboardManager;
 
-    /* scoreBoard = new managers.ScoreBoard();
-     managers.Game.scoreBoard = scoreBoard;*/
+     scoreBoard = new managers.ScoreBoard();
+     managers.Game.scoreBoard = scoreBoard;
 
     managers.Game.assetManager = assetManager;
     managers.Game.textureArrow = textureArrow;

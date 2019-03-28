@@ -9,6 +9,7 @@
     var keyboardManager;
     var textureArrowData;
     var textureArrow;
+    var scoreBoard;
     textureArrowData = {
         images: ["./Assets/sprites/textureArrowData.png"],
         frames: [
@@ -332,8 +333,8 @@
         managers.Game.currentState = currentState; //it makes a refrence to my stage and I hold it in my global object
         keyboardManager = new managers.Keyboard();
         managers.Game.keyboardManager = keyboardManager;
-        /* scoreBoard = new managers.ScoreBoard();
-         managers.Game.scoreBoard = scoreBoard;*/
+        scoreBoard = new managers.ScoreBoard();
+        managers.Game.scoreBoard = scoreBoard;
         managers.Game.assetManager = assetManager;
         managers.Game.textureArrow = textureArrow;
         Main();

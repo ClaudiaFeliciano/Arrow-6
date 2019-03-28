@@ -32,6 +32,7 @@ var scenes;
             this._redenemy = new objects.RedEnemy();
             managers.Game.player = this._player;
             this._sonEnemy = new objects.SonEnemy();
+            this.board = new objects.BoardBar();
             this._enemy = new Array();
             for (var count = 0; count < this._numero; count++) {
                 this._enemy[count] = new objects.Enemy();
@@ -68,6 +69,7 @@ var scenes;
             this._shotManager.Update();
             this._redenemy.Update();
             this._sonEnemy.Update();
+            this.board.Update();
             managers.Collision.Check(this._player, this._sonEnemy);
             for (var _i = 0, _a = this._enemy; _i < _a.length; _i++) {
                 var enemy = _a[_i];
@@ -163,14 +165,10 @@ var scenes;
             this._meteor.forEach(function (meteor) {
                 _this.addChild(meteor);
             });
+            this.addChild(this.board);
             this.addChild(this._scoreBoard.LivesLabel);
             this.addChild(this._scoreBoard.ScoreLabel);
             this.addChild(this._scoreBoard.LevelLabel);
-        };
-        Play2.prototype._getSleep = function (delay) {
-            var start = new Date().getTime();
-            while (new Date().getTime() < start + delay)
-                ;
         };
         return Play2;
     }(objects.Scene));

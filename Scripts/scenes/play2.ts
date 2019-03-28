@@ -15,6 +15,7 @@ module scenes {
     private _shotManager: managers.Shoot;
     private _redenemy: objects.RedEnemy;
     private _sonEnemy: objects.SonEnemy;
+    public board: objects.BoardBar;
 
     // constructor
     constructor() {
@@ -36,6 +37,7 @@ module scenes {
       this._redenemy= new objects.RedEnemy();
       managers.Game.player = this._player;
       this._sonEnemy= new objects.SonEnemy();
+      this.board = new objects.BoardBar();
 
       this._enemy = new Array<objects.Enemy>();
       for (let count = 0; count < this._numero; count++) {
@@ -79,6 +81,7 @@ module scenes {
       this._shotManager.Update();
       this._redenemy.Update();
       this._sonEnemy.Update();
+      this.board.Update();
     
       managers.Collision.Check(this._player, this._sonEnemy);
 
@@ -187,16 +190,12 @@ module scenes {
         this.addChild(meteor);
       });
 
-     
+      this.addChild(this.board);
       this.addChild(this._scoreBoard.LivesLabel);
       this.addChild(this._scoreBoard.ScoreLabel);
       this.addChild(this._scoreBoard.LevelLabel);
     }
 
-    private _getSleep(delay):void {
-        var start = new Date().getTime();
-        while (new Date().getTime() < start + delay);
-      
-    }
+    
   }
 }
