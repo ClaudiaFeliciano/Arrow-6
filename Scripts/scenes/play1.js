@@ -21,7 +21,6 @@ var scenes;
             _this.Start();
             return _this;
         }
-        // public methods
         Play1.prototype.Start = function () {
             this._numero = 3;
             this._bigmeteorNum = 3;
@@ -30,6 +29,10 @@ var scenes;
             this.board = new objects.BoardBar();
             this._player = new objects.Player();
             managers.Game.player = this._player;
+            this._planelife = new Array();
+            for (var count = 0; count < this._numero; count++) {
+                this._planelife[count] = new objects.LifeBox();
+            }
             this._enemy = new Array();
             for (var count = 0; count < this._numero; count++) {
                 this._enemy[count] = new objects.Enemy();
@@ -71,24 +74,34 @@ var scenes;
                 enemy.Update();
                 managers.Collision.Check(this._player, enemy);
             }
-            for (var _b = 0, _c = this._bigmeteor; _b < _c.length; _b++) {
-                var bigmeteor = _c[_b];
+            for (var _b = 0, _c = this._planelife; _b < _c.length; _b++) {
+                var lifes = _c[_b];
+                lifes.Update();
+            }
+            for (var _d = 0, _e = this._bigmeteor; _d < _e.length; _d++) {
+                var bigmeteor = _e[_d];
                 bigmeteor.Update();
                 managers.Collision.Check(this._player, bigmeteor);
             }
-            for (var _d = 0, _e = this._smallmeteor; _d < _e.length; _d++) {
-                var smallmeteor = _e[_d];
+            for (var _f = 0, _g = this._smallmeteor; _f < _g.length; _f++) {
+                var smallmeteor = _g[_f];
                 smallmeteor.Update();
                 managers.Collision.Check(this._player, smallmeteor);
             }
-            for (var _f = 0, _g = this._brouncerock; _f < _g.length; _f++) {
-                var brouncerock = _g[_f];
+            //si tengo 3 vidas se me muestran los 3, si tengo 2 vidas, solo 2 so on
+            for (var _h = 0, _j = this._smallmeteor; _h < _j.length; _h++) {
+                var smallmeteor = _j[_h];
+                smallmeteor.Update();
+                managers.Collision.Check(this._player, smallmeteor);
+            }
+            for (var _k = 0, _l = this._brouncerock; _k < _l.length; _k++) {
+                var brouncerock = _l[_k];
                 brouncerock.Update();
                 managers.Collision.Check(this._player, brouncerock);
             }
             // Update Each meteor in the Meteor Array
-            for (var _h = 0, _j = this._meteor; _h < _j.length; _h++) {
-                var meteor = _j[_h];
+            for (var _m = 0, _o = this._meteor; _m < _o.length; _m++) {
+                var meteor = _o[_m];
                 meteor.Update();
                 managers.Collision.Check(this._player, meteor);
             }
@@ -135,7 +148,7 @@ var scenes;
             this.addChild(this._space);
             this.addChild(this._player);
             createjs.Tween.get(this._player, { loop: 0 }).to({ x: 800, y: 300 }, 1000);
-            this.addChild(this._player.vulnerability);
+            this.addChild(this._player.planeflash);
             for (var _i = 0, _a = this._enemy; _i < _a.length; _i++) {
                 var enemy = _a[_i];
                 this.addChild(enemy);
@@ -158,6 +171,11 @@ var scenes;
             this._meteor.forEach(function (meteor) {
                 _this.addChild(meteor);
             });
+            for (var _h = 0, _j = this._planelife; _h < _j.length; _h++) {
+                var life = _j[_h];
+                console.log(life.name);
+                this.addChild(life);
+            }
             this.addChild(this._scoreBoard.LivesLabel);
             this.addChild(this._scoreBoard.ScoreLabel);
             this.addChild(this._scoreBoard.LevelLabel);

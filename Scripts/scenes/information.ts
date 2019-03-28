@@ -10,7 +10,6 @@ module scenes {
         private _engineSound: createjs.AbstractSoundInstance;
 
 
-        // constructor
         constructor() {
             super();
 
@@ -23,7 +22,7 @@ module scenes {
             this._startbackground = new objects.StartBackground();
             this._boardinf = new objects.BoardInformation();
          
-            this._startButton = new objects.Button("start", 575.5, 500, true);
+            this._startButton = new objects.Button("start", 565.5, 500, true);
             this._exitButton = new objects.Button("exit", 760.5, 500, true);
 
             this.Main();

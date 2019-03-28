@@ -14,15 +14,15 @@ module scenes {
     private _engineSound: createjs.AbstractSoundInstance;
     private _shotManager: managers.Shoot;
     public board: objects.BoardBar;
+    private _planelife: objects.LifeBox[];
 
     // constructor
     constructor() {
       super();
       this.Start();
     }
-
-    // public methods
-
+    
+  
     public Start(): void {
       this._numero = 3;
       this._bigmeteorNum = 3;
@@ -31,6 +31,11 @@ module scenes {
       this.board = new objects.BoardBar();
       this._player = new objects.Player();
       managers.Game.player = this._player;
+
+      this._planelife = new Array<objects.LifeBox>();
+      for (let count = 0; count < this._numero; count++) {
+        this._planelife[count] = new objects.LifeBox();
+      }
 
       this._enemy = new Array<objects.Enemy>();
       for (let count = 0; count < this._numero; count++) {
@@ -65,12 +70,10 @@ module scenes {
 
       this._shotManager = new managers.Shoot();
       managers.Game.shootManager = this._shotManager;
-
-     
-     
-
       this.Main();
     }
+
+   
 
     public Update(): void {
       this._space.Update();
@@ -81,12 +84,19 @@ module scenes {
       for (const enemy of this._enemy) {
         enemy.Update();
         managers.Collision.Check(this._player, enemy);
-
+      }
+      for (const lifes of this._planelife) {
+        lifes.Update();
       }
       for (const bigmeteor of this._bigmeteor) {
         bigmeteor.Update();
         managers.Collision.Check(this._player, bigmeteor);
       }
+      for (const smallmeteor of this._smallmeteor) {
+        smallmeteor.Update();
+        managers.Collision.Check(this._player, smallmeteor);
+      }
+      //si tengo 3 vidas se me muestran los 3, si tengo 2 vidas, solo 2 so on
       for (const smallmeteor of this._smallmeteor) {
         smallmeteor.Update();
         managers.Collision.Check(this._player, smallmeteor);
@@ -115,14 +125,14 @@ module scenes {
 
       //if lives fall below zero switch scenes to the game over scene
       if (this._scoreBoard.Lives <= 0) {
-        this._engineSound.stop();      
+        this._engineSound.stop();
         managers.Game.currentState = config.Scene.OVER;
       }
-   
+
       if ((this._scoreBoard.Score >= 1000) && (this._scoreBoard.Lives >= 0)) {
         this._engineSound.stop();
         managers.Game.currentState = config.Scene.START2;
-        managers.Game.scoreBoard.Level +=1;
+        managers.Game.scoreBoard.Level += 1;
       }
       // right
       if (managers.Game.goingRigth) {
@@ -157,7 +167,7 @@ module scenes {
         { x: 800, y: 300 },
         1000
       );
-      this.addChild(this._player.vulnerability);
+      this.addChild(this._player.planeflash);
       for (const enemy of this._enemy) {
         this.addChild(enemy);
       }
@@ -180,7 +190,10 @@ module scenes {
         this.addChild(meteor);
       });
 
-      
+      for (const life of this._planelife) {
+        console.log(life.name);
+        this.addChild(life);
+      }
       this.addChild(this._scoreBoard.LivesLabel);
       this.addChild(this._scoreBoard.ScoreLabel);
       this.addChild(this._scoreBoard.LevelLabel);

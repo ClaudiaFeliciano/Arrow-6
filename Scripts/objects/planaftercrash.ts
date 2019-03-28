@@ -7,10 +7,10 @@ module objects{
     
     public Reset(): void{}
     public Start(): void{
-        this.Move();
+       // this.Move();
     }
-    public Move(): void{
-        if ((managers.Game.keyboardManager.moveForward) && (this.alpha==1)) {
+   // public Move(): void{
+      /*  if ((managers.Game.keyboardManager.moveForward) && (this.alpha==1)) {
             this.y -= 4;
             
             managers.Game.goingLeft = false;
@@ -57,7 +57,7 @@ module objects{
         if (managers.Game.goingDown) {
           this.y += 2;
         }
-      }
+      }*/
   
     public Update(): void{}
     public Destroy(): void{}

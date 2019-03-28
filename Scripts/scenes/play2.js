@@ -55,7 +55,6 @@ var scenes;
             this._engineSound = createjs.Sound.play("gameSound");
             this._engineSound.loop = -1;
             this._engineSound.volume = 0.1;
-            //create the score board UI for the scene
             /* this._scoreBoard = new managers.ScoreBoard();
              managers.Game.scoreBoard = this._scoreBoard;*/
             this._shotManager = new managers.Shoot();
@@ -141,7 +140,7 @@ var scenes;
             this.addChild(this._redenemy);
             this.addChild(this._sonEnemy);
             createjs.Tween.get(this._player, { loop: 0 }).to({ x: 800, y: 300 }, 1000);
-            this.addChild(this._player.vulnerability);
+            this.addChild(this._player.planeflash);
             for (var _i = 0, _a = this._enemy; _i < _a.length; _i++) {
                 var enemy = _a[_i];
                 this.addChild(enemy);
@@ -164,7 +163,6 @@ var scenes;
             this._meteor.forEach(function (meteor) {
                 _this.addChild(meteor);
             });
-            //add scoreboard labels to the scene
             this.addChild(this._scoreBoard.LivesLabel);
             this.addChild(this._scoreBoard.ScoreLabel);
             this.addChild(this._scoreBoard.LevelLabel);
