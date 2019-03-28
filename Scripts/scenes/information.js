@@ -15,7 +15,6 @@ var scenes;
 (function (scenes) {
     var Information = /** @class */ (function (_super) {
         __extends(Information, _super);
-        // constructor
         function Information() {
             var _this = _super.call(this) || this;
             _this.Start();
@@ -24,7 +23,7 @@ var scenes;
         Information.prototype.Start = function () {
             this._startbackground = new objects.StartBackground();
             this._boardinf = new objects.BoardInformation();
-            this._startButton = new objects.Button("start", 575.5, 500, true);
+            this._startButton = new objects.Button("start", 565.5, 500, true);
             this._exitButton = new objects.Button("exit", 760.5, 500, true);
             this.Main();
         };

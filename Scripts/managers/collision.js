@@ -11,7 +11,7 @@ var managers;
                 if (!object2.isColliding) {
                     object2.isColliding = true;
                     switch (object2.name) {
-                        case "meteor": //negro
+                        case "meteor":
                             if (object2.alpha != 0) {
                                 createjs.Sound.play("meteorSound");
                                 managers.Game.scoreBoard.Lives -= 1;
@@ -84,6 +84,11 @@ var managers;
                                 boom.x = object2.x - object2.Width;
                                 boom.y = object2.y - object2.Height;
                                 managers.Game.sceneObject.addChild(boom);
+                                // object2.Reset();
+                                object1.alpha = 0; //1
+                                // managers.Game.player.alpha = 0;//1
+                                managers.Game.player.planeflash.alpha = 1; //1
+                                managers.Game.player.planeflash.gotoAndPlay("planeflash");
                                 object2.Reset();
                             }
                     }

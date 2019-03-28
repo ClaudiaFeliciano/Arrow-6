@@ -11,6 +11,7 @@ module managers {
     public static textureArrow: createjs.SpriteSheet;
     public static sceneObject: objects.Scene;
     public static player: objects.Player;
+    public static planelife: objects.LifeBox;
 
     public static shootManager: managers.Shoot;
 

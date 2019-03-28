@@ -38,14 +38,14 @@ var objects;
         Player.prototype.Update = function () {
             this.Move();
             // checking the bottom boundary
-            if (this.y >= 600 - this.HalfHeight) {
-                this.y = 600 - this.HalfHeight;
+            if (this.y >= 549 - this.HalfHeight) { //600 minus the high of the scorebar
+                this.y = 549 - this.HalfHeight;
             }
             // checking the top boundary
             if (this.y <= this.HalfHeight) {
                 this.y = this.HalfHeight;
             }
-            // Check right boundary
+            // Check right boundary 
             if (this.x >= 1024 - this.HalfWidth) {
                 this.x = 1024 - this.HalfWidth;
             }
@@ -91,6 +91,7 @@ var objects;
             this.planeflash.y = this.y;
             this.planeflash.regX = this.regX;
             this.planeflash.regY = this.regY;
+            this.planeflash.rotation = this.rotation;
         };
         Player.prototype.Gravity = function () {
             if (managers.Game.goingLeft) {
