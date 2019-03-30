@@ -1,10 +1,10 @@
 module objects {
-    export class LifeBox extends objects.AbstractGameObject {
-        public planeflash: objects.PlaneAfterCrash;
+    export class LifeBox extends createjs.Bitmap {
+      
 
         constructor() {
-            super("player");
-            this.Start();
+            super(managers.Game.assetManager.getResult("airplanelife"));
+            this.Start();           
         }
 
 
@@ -12,12 +12,10 @@ module objects {
         public Reset(): void { }
 
         public Start(): void {
-            this.y = 560;
-            this.x = 850;
-            this.Width = 40;
-            this.Height = 40;
-            this.rotation = 45;
-            this.planeflash = new objects.PlaneAfterCrash();
+            this.y = 20;
+            this.x = 20;
+           /* this.wWidth = 40;
+            this.Height = 40;*/
         }
 
         public Update(): void {}

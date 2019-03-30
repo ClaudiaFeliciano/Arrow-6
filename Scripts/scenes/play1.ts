@@ -35,7 +35,7 @@ module scenes {
       this._player = new objects.Player();
       managers.Game.player = this._player;
 
-      this._planelife = new Array<objects.LifeBox>();
+      this._planelife = new Array <objects.LifeBox>();
       for (let count = 0; count < this._numero; count++) {
         this._planelife[count] = new objects.LifeBox();
       }
@@ -87,9 +87,11 @@ module scenes {
         enemy.Update();
         managers.Collision.Check(this._player, enemy);
       }
+    
       for (const lifes of this._planelife) {
         lifes.Update();
       }
+
       for (const bigmeteor of this._bigmeteor) {
         bigmeteor.Update();
         managers.Collision.Check(this._player, bigmeteor);
@@ -191,16 +193,17 @@ module scenes {
       this._meteor.forEach(meteor => {
         this.addChild(meteor);
       });
-
-      for (const life of this._planelife) {
-        console.log(life.name);
-        this.addChild(life);
-      }
+     
     
       this.addChild(this.board);
       this.addChild(this._scoreBoard.LivesLabel);
       this.addChild(this._scoreBoard.ScoreLabel);
       this.addChild(this._scoreBoard.LevelLabel);
+      
+      for (const life of this._planelife) {
+        this.addChild(life);
+     
+      }
     }
   }
 }

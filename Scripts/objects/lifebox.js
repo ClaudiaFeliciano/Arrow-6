@@ -16,23 +16,21 @@ var objects;
     var LifeBox = /** @class */ (function (_super) {
         __extends(LifeBox, _super);
         function LifeBox() {
-            var _this = _super.call(this, "player") || this;
+            var _this = _super.call(this, managers.Game.assetManager.getResult("airplanelife")) || this;
             _this.Start();
             return _this;
         }
         LifeBox.prototype.Reset = function () { };
         LifeBox.prototype.Start = function () {
-            this.y = 560;
-            this.x = 850;
-            this.Width = 40;
-            this.Height = 40;
-            this.rotation = 45;
-            this.planeflash = new objects.PlaneAfterCrash();
+            this.y = 20;
+            this.x = 20;
+            /* this.wWidth = 40;
+             this.Height = 40;*/
         };
         LifeBox.prototype.Update = function () { };
         LifeBox.prototype.Destroy = function () { };
         return LifeBox;
-    }(objects.AbstractGameObject));
+    }(createjs.Bitmap));
     objects.LifeBox = LifeBox;
 })(objects || (objects = {}));
 //# sourceMappingURL=lifebox.js.map

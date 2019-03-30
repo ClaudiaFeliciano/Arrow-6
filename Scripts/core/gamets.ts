@@ -299,6 +299,7 @@
     { id: "space", src: "/Assets/images/space.png" },
     { id: "spaceX", src: "/Assets/images/space1.jpg" },
     { id: "menu", src: "/Assets/images/ArrowGame.png" },
+    { id: "airplanelife", src: "/Assets/images/airplaneicon.png" },
     { id: "table", src: "/Assets/images/Table.png" },
     { id: "level2start", src: "/Assets/images/level2Start.png" },
     { id: "menuBar", src: "/Assets/images/Window.png" },

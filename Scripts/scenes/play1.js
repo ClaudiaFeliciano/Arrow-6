@@ -171,15 +171,14 @@ var scenes;
             this._meteor.forEach(function (meteor) {
                 _this.addChild(meteor);
             });
-            for (var _h = 0, _j = this._planelife; _h < _j.length; _h++) {
-                var life = _j[_h];
-                console.log(life.name);
-                this.addChild(life);
-            }
             this.addChild(this.board);
             this.addChild(this._scoreBoard.LivesLabel);
             this.addChild(this._scoreBoard.ScoreLabel);
             this.addChild(this._scoreBoard.LevelLabel);
+            for (var _h = 0, _j = this._planelife; _h < _j.length; _h++) {
+                var life = _j[_h];
+                this.addChild(life);
+            }
         };
         return Play1;
     }(objects.Scene));
