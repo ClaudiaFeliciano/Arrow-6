@@ -21,8 +21,8 @@ module scenes {
       super();
       this.Start();
     }
-    
-  
+
+
     public Start(): void {
       this._numero = 3;
       this._bigmeteorNum = 3;
@@ -35,10 +35,23 @@ module scenes {
       this._player = new objects.Player();
       managers.Game.player = this._player;
 
-      this._planelife = new Array <objects.LifeBox>();
+      this._planelife = new Array<objects.LifeBox>();
       for (let count = 0; count < this._numero; count++) {
         this._planelife[count] = new objects.LifeBox();
+        if (count == 0) {
+          this._planelife[count].x=750;
+          this._planelife[count].y = 558;
+          }
+          if (count == 1){ 
+          this._planelife[count].x=800;
+          this._planelife[count].y = 558;
+        }
+          if (count == 2) {
+          this._planelife[count].x=850;
+          this._planelife[count].y = 558;
+          }
       }
+      
 
       this._enemy = new Array<objects.Enemy>();
       for (let count = 0; count < this._numero; count++) {
@@ -68,14 +81,14 @@ module scenes {
       this._engineSound.volume = 0.1;
 
       //create the score board UI for the scene
-      
+
 
       this._shotManager = new managers.Shoot();
       managers.Game.shootManager = this._shotManager;
       this.Main();
     }
 
-   
+
 
     public Update(): void {
       this._space.Update();
@@ -87,7 +100,7 @@ module scenes {
         enemy.Update();
         managers.Collision.Check(this._player, enemy);
       }
-    
+
       for (const lifes of this._planelife) {
         lifes.Update();
       }
@@ -136,7 +149,7 @@ module scenes {
       if ((this._scoreBoard.Score >= 100) && (this._scoreBoard.Lives >= 0)) {//kjihkvj
         this._engineSound.stop();
         managers.Game.currentState = config.Scene.START2;
-        managers.Game.scoreBoard.Level +=1;
+        managers.Game.scoreBoard.Level += 1;
       }
       // right
       if (managers.Game.goingRigth) {
@@ -193,16 +206,17 @@ module scenes {
       this._meteor.forEach(meteor => {
         this.addChild(meteor);
       });
-     
-    
+
+
       this.addChild(this.board);
       this.addChild(this._scoreBoard.LivesLabel);
       this.addChild(this._scoreBoard.ScoreLabel);
       this.addChild(this._scoreBoard.LevelLabel);
       
+
       for (const life of this._planelife) {
         this.addChild(life);
-     
+
       }
     }
   }

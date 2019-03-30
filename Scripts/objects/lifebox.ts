@@ -12,10 +12,8 @@ module objects {
         public Reset(): void { }
 
         public Start(): void {
-            this.y = 20;
-            this.x = 20;
-           /* this.wWidth = 40;
-            this.Height = 40;*/
+        
+           
         }
 
         public Update(): void {}

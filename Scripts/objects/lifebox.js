@@ -22,10 +22,6 @@ var objects;
         }
         LifeBox.prototype.Reset = function () { };
         LifeBox.prototype.Start = function () {
-            this.y = 20;
-            this.x = 20;
-            /* this.wWidth = 40;
-             this.Height = 40;*/
         };
         LifeBox.prototype.Update = function () { };
         LifeBox.prototype.Destroy = function () { };

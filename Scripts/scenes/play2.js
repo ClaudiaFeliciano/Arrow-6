@@ -18,7 +18,6 @@ var scenes;
         // constructor
         function Play2() {
             var _this = _super.call(this) || this;
-            //this._getSleep(2000);
             _this.Start();
             return _this;
         }
@@ -98,7 +97,7 @@ var scenes;
                     managers.Collision.Check(bullet, enemy);
                 });
             });
-            //////**********RULES -LEVEL1- RULES -LEVEL1- RULES -LEVEL1- RULES -LEVEL1- RULES***************////////
+            //////**********RULES -LEVEL2- RULES -LEVEL2- RULES -LEVEL2- RULES -LEVEL2- RULES***************////////
             //if lives fall below zero switch scenes to the game over scene
             if (this._scoreBoard.Lives <= 0) {
                 this._engineSound.stop();

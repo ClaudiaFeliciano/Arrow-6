@@ -18,8 +18,6 @@ module scenes {
     // constructor
     constructor() {
       super();
-      //this._getSleep(2000);
-
       this.Start();
     }
 
@@ -106,7 +104,7 @@ module scenes {
           managers.Collision.Check(bullet, enemy);
         });
       });
-      //////**********RULES -LEVEL1- RULES -LEVEL1- RULES -LEVEL1- RULES -LEVEL1- RULES***************////////
+      //////**********RULES -LEVEL2- RULES -LEVEL2- RULES -LEVEL2- RULES -LEVEL2- RULES***************////////
 
       //if lives fall below zero switch scenes to the game over scene
       if (this._scoreBoard.Lives <= 0) {

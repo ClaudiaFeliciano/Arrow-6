@@ -34,6 +34,18 @@ var scenes;
             this._planelife = new Array();
             for (var count = 0; count < this._numero; count++) {
                 this._planelife[count] = new objects.LifeBox();
+                if (count == 0) {
+                    this._planelife[count].x = 750;
+                    this._planelife[count].y = 558;
+                }
+                if (count == 1) {
+                    this._planelife[count].x = 800;
+                    this._planelife[count].y = 558;
+                }
+                if (count == 2) {
+                    this._planelife[count].x = 850;
+                    this._planelife[count].y = 558;
+                }
             }
             this._enemy = new Array();
             for (var count = 0; count < this._numero; count++) {
