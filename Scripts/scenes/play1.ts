@@ -36,22 +36,22 @@ module scenes {
       managers.Game.player = this._player;
 
       this._planelife = new Array<objects.LifeBox>();
-      for (let count = 0; count < this._numero; count++) {
+      for (let count = 0; count < this._scoreBoard.Lives; count++) {
         this._planelife[count] = new objects.LifeBox();
         if (count == 0) {
-          this._planelife[count].x=750;
-          this._planelife[count].y = 558;
-          }
-          if (count == 1){ 
-          this._planelife[count].x=800;
+          this._planelife[count].x = 750;
           this._planelife[count].y = 558;
         }
-          if (count == 2) {
-          this._planelife[count].x=850;
+        if (count == 1) {
+          this._planelife[count].x = 800;
           this._planelife[count].y = 558;
-          }
+        }
+        if (count == 2) {
+          this._planelife[count].x = 850;
+          this._planelife[count].y = 558;
+        }
       }
-      
+
 
       this._enemy = new Array<objects.Enemy>();
       for (let count = 0; count < this._numero; count++) {
@@ -82,7 +82,6 @@ module scenes {
 
       //create the score board UI for the scene
 
-
       this._shotManager = new managers.Shoot();
       managers.Game.shootManager = this._shotManager;
       this.Main();
@@ -102,8 +101,30 @@ module scenes {
       }
 
       for (const lifes of this._planelife) {
+        //  let airLife= this._scoreBoard.Lives;
         lifes.Update();
       }
+    /*  if (this._scoreBoard.Lives >= 0) {
+        for (let count = 0; count < this._scoreBoard.Lives; count++) {
+
+        }
+       }
+      /* this._planelife = new Array<objects.LifeBox>();
+      for (let count = 0; count < this._scoreBoard.Lives; count++) {
+        this._planelife[count] = new objects.LifeBox();
+        if (count == 0) {
+          this._planelife[count].x=750;
+          this._planelife[count].y = 558;
+          }
+          if (count == 1){ 
+          this._planelife[count].x=800;
+          this._planelife[count].y = 558;
+        }
+          if (count == 2) {
+          this._planelife[count].x=850;
+          this._planelife[count].y = 558;
+          }
+      }*/
 
       for (const bigmeteor of this._bigmeteor) {
         bigmeteor.Update();
@@ -212,7 +233,7 @@ module scenes {
       this.addChild(this._scoreBoard.LivesLabel);
       this.addChild(this._scoreBoard.ScoreLabel);
       this.addChild(this._scoreBoard.LevelLabel);
-      
+
 
       for (const life of this._planelife) {
         this.addChild(life);

@@ -16,9 +16,7 @@ var objects;
     var LifeBox = /** @class */ (function (_super) {
         __extends(LifeBox, _super);
         function LifeBox() {
-            var _this = _super.call(this, managers.Game.assetManager.getResult("airplanelife")) || this;
-            _this.Start();
-            return _this;
+            return _super.call(this, managers.Game.assetManager.getResult("airplanelife")) || this;
         }
         LifeBox.prototype.Reset = function () { };
         LifeBox.prototype.Start = function () {

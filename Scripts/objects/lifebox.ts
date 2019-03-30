@@ -4,7 +4,7 @@ module objects {
 
         constructor() {
             super(managers.Game.assetManager.getResult("airplanelife"));
-            this.Start();           
+                     
         }
 
 
@@ -12,7 +12,6 @@ module objects {
         public Reset(): void { }
 
         public Start(): void {
-        
            
         }
 

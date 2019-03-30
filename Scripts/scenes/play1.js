@@ -32,7 +32,7 @@ var scenes;
             this._player = new objects.Player();
             managers.Game.player = this._player;
             this._planelife = new Array();
-            for (var count = 0; count < this._numero; count++) {
+            for (var count = 0; count < this._scoreBoard.Lives; count++) {
                 this._planelife[count] = new objects.LifeBox();
                 if (count == 0) {
                     this._planelife[count].x = 750;
@@ -88,8 +88,30 @@ var scenes;
             }
             for (var _b = 0, _c = this._planelife; _b < _c.length; _b++) {
                 var lifes = _c[_b];
+                //  let airLife= this._scoreBoard.Lives;
                 lifes.Update();
             }
+            /*  if (this._scoreBoard.Lives >= 0) {
+                for (let count = 0; count < this._scoreBoard.Lives; count++) {
+        
+                }
+               }
+              /* this._planelife = new Array<objects.LifeBox>();
+              for (let count = 0; count < this._scoreBoard.Lives; count++) {
+                this._planelife[count] = new objects.LifeBox();
+                if (count == 0) {
+                  this._planelife[count].x=750;
+                  this._planelife[count].y = 558;
+                  }
+                  if (count == 1){
+                  this._planelife[count].x=800;
+                  this._planelife[count].y = 558;
+                }
+                  if (count == 2) {
+                  this._planelife[count].x=850;
+                  this._planelife[count].y = 558;
+                  }
+              }*/
             for (var _d = 0, _e = this._bigmeteor; _d < _e.length; _d++) {
                 var bigmeteor = _e[_d];
                 bigmeteor.Update();
