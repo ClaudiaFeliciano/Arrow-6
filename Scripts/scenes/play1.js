@@ -19,10 +19,27 @@ var scenes;
         function Play1() {
             var _this = _super.call(this) || this;
             _this.xposition = 750;
-            _this.xpos = 100;
             _this.Start();
             return _this;
         }
+        Play1.prototype.refreshLifes = function () {
+            for (var count = 0; count < this._scoreBoard.Lives; count++) {
+                var life = new objects.LifeBox();
+                if (count == 0) {
+                    life.x = this.xposition;
+                    life.y = 558;
+                    this.addChild(life);
+                    this.xposition += 50;
+                }
+                else {
+                    life.x = this.xposition;
+                    life.y = 558;
+                    this.addChild(life);
+                    this.xposition += 50;
+                }
+                console.log(life);
+            }
+        };
         Play1.prototype.Start = function () {
             this._numero = 3;
             this._bigmeteorNum = 3;
@@ -34,21 +51,6 @@ var scenes;
             this._player = new objects.Player();
             managers.Game.player = this._player;
             this._planelife = new Array();
-            /*  for (let count = 0; count < this._scoreBoard.Lives; count++) {
-                this._planelife[count] = new objects.LifeBox();
-                if (count == 0) {
-                  this._planelife[count].x = 750;
-                  this._planelife[count].y = 558;
-                }
-                if (count == 1) {
-                  this._planelife[count].x = 800;
-                  this._planelife[count].y = 558;
-                }
-                if (count == 2) {
-                  this._planelife[count].x = 850;
-                  this._planelife[count].y = 558;
-                }
-              }*/
             this._enemy = new Array();
             for (var count = 0; count < this._numero; count++) {
                 this._enemy[count] = new objects.Enemy();
@@ -72,7 +74,6 @@ var scenes;
             this._engineSound = createjs.Sound.play("gameSound");
             this._engineSound.loop = -1;
             this._engineSound.volume = 0.1;
-            //create the score board UI for the scene
             this._shotManager = new managers.Shoot();
             managers.Game.shootManager = this._shotManager;
             this.Main();
@@ -102,7 +103,6 @@ var scenes;
                 smallmeteor.Update();
                 managers.Collision.Check(this._player, smallmeteor);
             }
-            //si tengo 3 vidas se me muestran los 3, si tengo 2 vidas, solo 2 so on
             for (var _h = 0, _j = this._smallmeteor; _h < _j.length; _h++) {
                 var smallmeteor = _j[_h];
                 smallmeteor.Update();
@@ -156,7 +156,8 @@ var scenes;
         Play1.prototype.Destroy = function () {
             this.removeAllChildren();
         };
-        Play1.prototype.Reset = function () { };
+        Play1.prototype.Reset = function () {
+        };
         Play1.prototype.Main = function () {
             var _this = this;
             this.addChild(this._space);
@@ -189,25 +190,7 @@ var scenes;
             this.addChild(this._scoreBoard.LivesLabel);
             this.addChild(this._scoreBoard.ScoreLabel);
             this.addChild(this._scoreBoard.LevelLabel);
-            // for (const life of this._planelife) {
-            // this._planelife = new Array<objects.LifeBox>();
-            for (var count = 0; count < this._scoreBoard.Lives; count++) {
-                var life = new objects.LifeBox();
-                if (count == 0) {
-                    life.x = this.xposition;
-                    life.y = 558;
-                    this.addChild(life);
-                    this.xposition += 100;
-                }
-                else {
-                    life.x = this.xposition;
-                    life.y = 558;
-                    this.addChild(life);
-                    this.xposition += 100;
-                }
-                console.log(life);
-            }
-            // }
+            this.refreshLifes();
         };
         return Play1;
     }(objects.Scene));

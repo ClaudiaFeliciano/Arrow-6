@@ -14,6 +14,9 @@ module scenes {
     private _engineSound: createjs.AbstractSoundInstance;
     private _shotManager: managers.Shoot;
     public board: objects.BoardBar;
+    private _planelife: objects.LifeBox[];
+    private xposition: number = 750;
+
 
     // constructor
     constructor() {

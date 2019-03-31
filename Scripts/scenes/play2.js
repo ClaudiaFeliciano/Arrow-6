@@ -18,6 +18,7 @@ var scenes;
         // constructor
         function Play2() {
             var _this = _super.call(this) || this;
+            _this.xposition = 750;
             _this.Start();
             return _this;
         }
