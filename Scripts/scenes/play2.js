@@ -22,6 +22,24 @@ var scenes;
             _this.Start();
             return _this;
         }
+        Play2.prototype.refreshLifes = function () {
+            for (var count = 0; count < this._scoreBoard.Lives; count++) {
+                var life = new objects.LifeBox();
+                if (count == 0) {
+                    life.x = this.xposition;
+                    life.y = 558;
+                    this.addChild(life);
+                    this.xposition += 50;
+                }
+                else {
+                    life.x = this.xposition;
+                    life.y = 558;
+                    this.addChild(life);
+                    this.xposition += 50;
+                }
+                console.log(life);
+            }
+        };
         // public methods
         Play2.prototype.Start = function () {
             this._numero = 3;
@@ -30,6 +48,7 @@ var scenes;
             this._scoreBoard = new managers.ScoreBoard();
             this._player = new objects.Player();
             managers.Game.player = this._player;
+            this._planelife = new Array();
             this.board = new objects.BoardBar();
             this._enemy = new Array();
             for (var count = 0; count < this._numero; count++) {
@@ -187,6 +206,7 @@ var scenes;
             this.addChild(this._scoreBoard.LivesLabel);
             this.addChild(this._scoreBoard.ScoreLabel);
             this.addChild(this._scoreBoard.LevelLabel);
+            this.refreshLifes();
         };
         return Play2;
     }(objects.Scene));

@@ -78,8 +78,23 @@ var managers;
                             break;
                         case "enemy":
                             createjs.Sound.play("explosion");
-                            if (object1.alpha != 0) {
-                                managers.Game.scoreBoard.Score += 100;
+                            if (object1.name == "shot") {
+                                if (object1.alpha != 0) {
+                                    managers.Game.scoreBoard.Score += 100;
+                                    var boom = new objects.Boom("boom");
+                                    boom.x = object2.x - object2.Width;
+                                    boom.y = object2.y - object2.Height;
+                                    managers.Game.sceneObject.addChild(boom);
+                                    // object2.Reset();
+                                    object1.alpha = 0; //1
+                                    // managers.Game.player.alpha = 0;//1
+                                    managers.Game.player.planeflash.alpha = 1; //1
+                                    managers.Game.player.planeflash.gotoAndPlay("planeflash");
+                                    object2.Reset();
+                                }
+                            }
+                            if (object1.name == "player") {
+                                managers.Game.scoreBoard.Lives -= 1;
                                 var boom = new objects.Boom("boom");
                                 boom.x = object2.x - object2.Width;
                                 boom.y = object2.y - object2.Height;
@@ -91,6 +106,7 @@ var managers;
                                 managers.Game.player.planeflash.gotoAndPlay("planeflash");
                                 object2.Reset();
                             }
+                            break;
                     }
                 }
             }
