@@ -146,7 +146,7 @@ module scenes {
         managers.Game.currentState = config.Scene.OVER;
       }
 
-      if ((this._scoreBoard.Score >= 100) && (this._scoreBoard.Lives >= 0)) {//kjihkvj
+      if ((this._scoreBoard.Score >= 1000) && (this._scoreBoard.Lives >= 0)) {//kjihkvj
         this._engineSound.stop();
         managers.Game.currentState = config.Scene.START2;
         managers.Game.scoreBoard.Level += 1;
@@ -190,6 +190,15 @@ module scenes {
       this.addChild(this._player.planeflash);
       for (const enemy of this._enemy) {
         this.addChild(enemy);
+        createjs.Tween.get(enemy, { loop: 0 })
+          .wait(500)
+          .to(
+            {
+              x: -enemy.Width,
+              y: Math.floor(Math.random() * (500 - enemy.Height))
+            },
+            1000
+          );
       }
 
       this._shotManager.Shoots.forEach(shoot => {
@@ -198,16 +207,44 @@ module scenes {
 
       for (const bigmeteor of this._bigmeteor) {
         this.addChild(bigmeteor);
+        createjs.Tween.get(bigmeteor, { loop: 0 })
+        .wait(3000)
+        .to(
+          {
+            x: -bigmeteor.Width,
+            y: Math.floor(
+              Math.random() * (1024 - bigmeteor.Height) + bigmeteor.HalfHeight
+            )
+          },
+          1000
+        );
       }
       for (const smallmeteor of this._smallmeteor) {
         this.addChild(smallmeteor);
+        createjs.Tween.get(smallmeteor, { loop: 0 })
+        .wait(5000)
+        .to({ x: smallmeteor.Height, y: -smallmeteor.Height }, 2000);
       }
 
       for (const brouncerock of this._brouncerock) {
         this.addChild(brouncerock);
+        createjs.Tween.get(brouncerock, { loop: 0 })
+          .wait(6000)
+          .to({ x: -brouncerock.Width, y: 200 }, 2000);
       }
       this._meteor.forEach(meteor => {
         this.addChild(meteor);
+        createjs.Tween.get(meteor, { loop: 0 })
+          .wait(5000)
+          .to(
+            {
+              x: -meteor.Width,
+              y: Math.floor(
+                Math.random() * (1024 - meteor.Height) + meteor.HalfHeight
+              )
+            },
+            5000
+          );
       });
 
 

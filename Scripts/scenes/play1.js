@@ -131,7 +131,7 @@ var scenes;
                 this._engineSound.stop();
                 managers.Game.currentState = config.Scene.OVER;
             }
-            if ((this._scoreBoard.Score >= 100) && (this._scoreBoard.Lives >= 0)) { //kjihkvj
+            if ((this._scoreBoard.Score >= 1000) && (this._scoreBoard.Lives >= 0)) { //kjihkvj
                 this._engineSound.stop();
                 managers.Game.currentState = config.Scene.START2;
                 managers.Game.scoreBoard.Level += 1;
@@ -167,6 +167,12 @@ var scenes;
             for (var _i = 0, _a = this._enemy; _i < _a.length; _i++) {
                 var enemy = _a[_i];
                 this.addChild(enemy);
+                createjs.Tween.get(enemy, { loop: 0 })
+                    .wait(500)
+                    .to({
+                    x: -enemy.Width,
+                    y: Math.floor(Math.random() * (500 - enemy.Height))
+                }, 1000);
             }
             this._shotManager.Shoots.forEach(function (shoot) {
                 _this.addChild(shoot);
@@ -174,17 +180,35 @@ var scenes;
             for (var _b = 0, _c = this._bigmeteor; _b < _c.length; _b++) {
                 var bigmeteor = _c[_b];
                 this.addChild(bigmeteor);
+                createjs.Tween.get(bigmeteor, { loop: 0 })
+                    .wait(3000)
+                    .to({
+                    x: -bigmeteor.Width,
+                    y: Math.floor(Math.random() * (1024 - bigmeteor.Height) + bigmeteor.HalfHeight)
+                }, 1000);
             }
             for (var _d = 0, _e = this._smallmeteor; _d < _e.length; _d++) {
                 var smallmeteor = _e[_d];
                 this.addChild(smallmeteor);
+                createjs.Tween.get(smallmeteor, { loop: 0 })
+                    .wait(5000)
+                    .to({ x: smallmeteor.Height, y: -smallmeteor.Height }, 2000);
             }
             for (var _f = 0, _g = this._brouncerock; _f < _g.length; _f++) {
                 var brouncerock = _g[_f];
                 this.addChild(brouncerock);
+                createjs.Tween.get(brouncerock, { loop: 0 })
+                    .wait(6000)
+                    .to({ x: -brouncerock.Width, y: 200 }, 2000);
             }
             this._meteor.forEach(function (meteor) {
                 _this.addChild(meteor);
+                createjs.Tween.get(meteor, { loop: 0 })
+                    .wait(5000)
+                    .to({
+                    x: -meteor.Width,
+                    y: Math.floor(Math.random() * (1024 - meteor.Height) + meteor.HalfHeight)
+                }, 5000);
             });
             this.addChild(this.board);
             this.addChild(this._scoreBoard.LivesLabel);

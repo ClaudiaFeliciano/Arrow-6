@@ -16,7 +16,6 @@ module scenes {
     }
 
     // public methods
-
     public Start(): void {
       this._space = new objects.Space();
       this._level2 = new objects.Button("level2", 497.5, 200, true);
@@ -46,6 +45,11 @@ module scenes {
 
       this._startButton.on("click", () => {
         managers.Game.currentState = config.Scene.PLAY2;
+        this._engineSound.stop();
+      });
+
+      this._restartButton.on("click", () => {
+        managers.Game.currentState = config.Scene.PLAY1;
         this._engineSound.stop();
       });
     }

@@ -49,6 +49,10 @@ var scenes;
                 managers.Game.currentState = config.Scene.PLAY2;
                 _this._engineSound.stop();
             });
+            this._restartButton.on("click", function () {
+                managers.Game.currentState = config.Scene.PLAY1;
+                _this._engineSound.stop();
+            });
         };
         return Start2;
     }(objects.Scene));
