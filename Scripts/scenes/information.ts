@@ -4,10 +4,10 @@ module scenes {
        
         private _startbackground: objects.StartBackground;
         private _startButton: objects.Button;
-        private _musicButton: objects.Button;
+       
         private _exitButton: objects.Button;
         private _boardinf: objects.BoardInformation;  
-        private _engineSound: createjs.AbstractSoundInstance;
+      
 
 
         constructor() {
@@ -47,15 +47,15 @@ module scenes {
             this.addChild( this._boardinf);
             this.addChild(this._startButton);
             this.addChild(this._exitButton);
-            this.addChild(this._musicButton);
+          
     
             this._startButton.on("click", () => {
                 managers.Game.currentState = config.Scene.PLAY1;
-               this._engineSound.stop();
+             
             });
             this._exitButton.on("click", () => {
                 managers.Game.currentState = config.Scene.START1;
-               this._engineSound.stop();
+              
             });
         
 

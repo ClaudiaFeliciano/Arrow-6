@@ -6,8 +6,7 @@ var managers;
         Collision.Check = function (object1, object2) {
             var P1 = new math.Vec2(object1.x, object1.y);
             var P2 = new math.Vec2(object2.x, object2.y);
-            if (math.Vec2.Distance(P1, P2) <
-                object1.HalfHeight + object2.HalfHeight) {
+            if (math.Vec2.Distance(P1, P2) < object1.HalfHeight + object2.HalfHeight) {
                 if (!object2.isColliding) {
                     object2.isColliding = true;
                     switch (object2.name) {
@@ -69,9 +68,8 @@ var managers;
                                 boom1.x = object2.x - object2.Width;
                                 boom1.y = object2.y - object2.Height;
                                 managers.Game.sceneObject.addChild(boom1);
-                                object1.alpha = 0; //1
-                                // managers.Game.player.alpha = 0;//1
-                                managers.Game.player.planeflash.alpha = 1; //1
+                                object1.alpha = 0;
+                                managers.Game.player.planeflash.alpha = 1;
                                 managers.Game.player.planeflash.gotoAndPlay("planeflash");
                                 object2.Reset();
                             }
@@ -85,11 +83,10 @@ var managers;
                                     boom.x = object2.x - object2.Width;
                                     boom.y = object2.y - object2.Height;
                                     managers.Game.sceneObject.addChild(boom);
-                                    // object2.Reset();
-                                    object1.alpha = 0; //1
-                                    // managers.Game.player.alpha = 0;//1
-                                    managers.Game.player.planeflash.alpha = 1; //1
-                                    managers.Game.player.planeflash.gotoAndPlay("planeflash");
+                                    /*   object1.alpha = 0;//1
+                                       // managers.Game.player.alpha = 0;//1
+                                       managers.Game.player.planeflash.alpha = 1;//1
+                                       managers.Game.player.planeflash.gotoAndPlay("planeflash");*/
                                     object2.Reset();
                                 }
                             }
@@ -99,10 +96,9 @@ var managers;
                                 boom.x = object2.x - object2.Width;
                                 boom.y = object2.y - object2.Height;
                                 managers.Game.sceneObject.addChild(boom);
-                                // object2.Reset();
-                                object1.alpha = 0; //1
+                                object1.alpha = 0;
                                 // managers.Game.player.alpha = 0;//1
-                                managers.Game.player.planeflash.alpha = 1; //1
+                                managers.Game.player.planeflash.alpha = 1;
                                 managers.Game.player.planeflash.gotoAndPlay("planeflash");
                                 object2.Reset();
                             }

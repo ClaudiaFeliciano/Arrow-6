@@ -36,19 +36,15 @@ var scenes;
         Information.prototype.Reset = function () {
         };
         Information.prototype.Main = function () {
-            var _this = this;
             this.addChild(this._startbackground);
             this.addChild(this._boardinf);
             this.addChild(this._startButton);
             this.addChild(this._exitButton);
-            this.addChild(this._musicButton);
             this._startButton.on("click", function () {
                 managers.Game.currentState = config.Scene.PLAY1;
-                _this._engineSound.stop();
             });
             this._exitButton.on("click", function () {
                 managers.Game.currentState = config.Scene.START1;
-                _this._engineSound.stop();
             });
         };
         return Information;
