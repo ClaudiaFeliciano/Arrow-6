@@ -23,7 +23,7 @@ module scenes {
       super();
       this.Start();
     }
-    
+
     private refreshLifes(){
       for (let count = 0; count < this._scoreBoard.Lives; count++) {
         let life = new objects.LifeBox();
@@ -49,6 +49,8 @@ module scenes {
       this._bigmeteorNum = 3;
       this._space = new objects.Space();
       this._scoreBoard = new managers.ScoreBoard();
+      managers.Game.scoreBoard = this._scoreBoard;
+      
       this._player = new objects.Player();
       managers.Game.player = this._player;
 
@@ -135,7 +137,7 @@ module scenes {
         managers.Game.currentState = config.Scene.OVER;
       }
 
-      if (this._scoreBoard.Score >= 2000 && this._scoreBoard.Lives >= 0) {
+      if (this._scoreBoard.Score >= 200 && this._scoreBoard.Lives >= 0) {
         this._engineSound.stop();
         managers.Game.currentState = config.Scene.START3;
         managers.Game.scoreBoard.Level += 1;

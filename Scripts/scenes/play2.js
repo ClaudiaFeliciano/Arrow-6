@@ -46,6 +46,7 @@ var scenes;
             this._bigmeteorNum = 3;
             this._space = new objects.Space();
             this._scoreBoard = new managers.ScoreBoard();
+            managers.Game.scoreBoard = this._scoreBoard;
             this._player = new objects.Player();
             managers.Game.player = this._player;
             this._planelife = new Array();
@@ -123,7 +124,7 @@ var scenes;
                 this._engineSound.stop();
                 managers.Game.currentState = config.Scene.OVER;
             }
-            if (this._scoreBoard.Score >= 2000 && this._scoreBoard.Lives >= 0) {
+            if (this._scoreBoard.Score >= 200 && this._scoreBoard.Lives >= 0) {
                 this._engineSound.stop();
                 managers.Game.currentState = config.Scene.START3;
                 managers.Game.scoreBoard.Level += 1;

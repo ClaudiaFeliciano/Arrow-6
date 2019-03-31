@@ -100,11 +100,7 @@ module managers {
                 boom.x = object2.x - object2.Width;
                 boom.y = object2.y - object2.Height;
                 managers.Game.sceneObject.addChild(boom);
-              
-            /*   object1.alpha = 0;//1
-               // managers.Game.player.alpha = 0;//1
-               managers.Game.player.planeflash.alpha = 1;//1
-               managers.Game.player.planeflash.gotoAndPlay("planeflash");*/
+        
                object2.Reset();
               
               }
