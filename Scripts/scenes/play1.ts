@@ -145,7 +145,7 @@ module scenes {
         managers.Game.currentState = config.Scene.OVER;
       }
 
-      if ((this._scoreBoard.Score >= 100) && (this._scoreBoard.Lives >= 0)) {//kjihkvj
+      if ((this._scoreBoard.Score >= 100) && (this._scoreBoard.Lives >= 0)) {
         this._engineSound.stop();
         managers.Game.currentState = config.Scene.START2;
         managers.Game.scoreBoard.Level += 1;

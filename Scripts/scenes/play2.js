@@ -74,8 +74,8 @@ var scenes;
             this._engineSound = createjs.Sound.play("gameSound");
             this._engineSound.loop = -1;
             this._engineSound.volume = 0.1;
-            /* this._scoreBoard = new managers.ScoreBoard();
-            managers.Game.scoreBoard = this._scoreBoard;*/
+            this._scoreBoard = new managers.ScoreBoard();
+            managers.Game.scoreBoard = this._scoreBoard;
             this._shotManager = new managers.Shoot();
             managers.Game.shootManager = this._shotManager;
             this.Main();
