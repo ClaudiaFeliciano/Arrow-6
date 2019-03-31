@@ -15,31 +15,31 @@ var scenes;
 (function (scenes) {
     var Play2 = /** @class */ (function (_super) {
         __extends(Play2, _super);
+        /* private _planelife: objects.LifeBox[];
+         private xposition: number = 750;*/
         // constructor
         function Play2() {
             var _this = _super.call(this) || this;
-            _this.xposition = 750;
             _this.Start();
             return _this;
         }
-        Play2.prototype.refreshLifes = function () {
-            for (var count = 0; count < this._scoreBoard.Lives; count++) {
-                var life = new objects.LifeBox();
-                if (count == 0) {
-                    life.x = this.xposition;
-                    life.y = 558;
-                    this.addChild(life);
-                    this.xposition += 50;
-                }
-                else {
-                    life.x = this.xposition;
-                    life.y = 558;
-                    this.addChild(life);
-                    this.xposition += 50;
-                }
-                console.log(life);
+        /*private refreshLifes(){
+          for (let count = 0; count < this._scoreBoard.Lives; count++) {
+            let life = new objects.LifeBox();
+            if (count == 0) {
+              life.x = this.xposition;
+              life.y = 558;
+              this.addChild(life);
+              this.xposition +=50;
             }
-        };
+            else {
+              life.x = this.xposition;
+              life.y = 558;
+              this.addChild(life);
+              this.xposition += 50;
+            } console.log(life);
+          }
+        }*/
         // public methods
         Play2.prototype.Start = function () {
             this._numero = 3;
@@ -49,7 +49,7 @@ var scenes;
             managers.Game.scoreBoard = this._scoreBoard;
             this._player = new objects.Player();
             managers.Game.player = this._player;
-            this._planelife = new Array();
+            //this._planelife = new Array<objects.LifeBox>();
             this.board = new objects.BoardBar();
             this._enemy = new Array();
             for (var count = 0; count < this._numero; count++) {
@@ -124,7 +124,7 @@ var scenes;
                 this._engineSound.stop();
                 managers.Game.currentState = config.Scene.OVER;
             }
-            if (this._scoreBoard.Score >= 200 && this._scoreBoard.Lives >= 0) {
+            if (this._scoreBoard.Score >= 2000) {
                 this._engineSound.stop();
                 managers.Game.currentState = config.Scene.START3;
                 managers.Game.scoreBoard.Level += 1;
@@ -207,7 +207,7 @@ var scenes;
             this.addChild(this._scoreBoard.LivesLabel);
             this.addChild(this._scoreBoard.ScoreLabel);
             this.addChild(this._scoreBoard.LevelLabel);
-            this.refreshLifes();
+            //this.refreshLifes();
         };
         return Play2;
     }(objects.Scene));

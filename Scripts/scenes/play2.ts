@@ -14,8 +14,8 @@ module scenes {
     private _engineSound: createjs.AbstractSoundInstance;
     private _shotManager: managers.Shoot;
     public board: objects.BoardBar;
-    private _planelife: objects.LifeBox[];
-    private xposition: number = 750;
+   /* private _planelife: objects.LifeBox[];
+    private xposition: number = 750;*/
 
 
     // constructor
@@ -24,7 +24,7 @@ module scenes {
       this.Start();
     }
 
-    private refreshLifes(){
+    /*private refreshLifes(){
       for (let count = 0; count < this._scoreBoard.Lives; count++) {
         let life = new objects.LifeBox();
         if (count == 0) {
@@ -40,7 +40,7 @@ module scenes {
           this.xposition += 50;
         } console.log(life);
       }
-    }
+    }*/
 
     // public methods
 
@@ -54,7 +54,7 @@ module scenes {
       this._player = new objects.Player();
       managers.Game.player = this._player;
 
-      this._planelife = new Array<objects.LifeBox>();
+      //this._planelife = new Array<objects.LifeBox>();
       this.board = new objects.BoardBar();
 
       this._enemy = new Array<objects.Enemy>();
@@ -137,7 +137,7 @@ module scenes {
         managers.Game.currentState = config.Scene.OVER;
       }
 
-      if (this._scoreBoard.Score >= 200 && this._scoreBoard.Lives >= 0) {
+      if (this._scoreBoard.Score >= 2000) {
         this._engineSound.stop();
         managers.Game.currentState = config.Scene.START3;
         managers.Game.scoreBoard.Level += 1;
@@ -239,7 +239,7 @@ module scenes {
       this.addChild(this._scoreBoard.LivesLabel);
       this.addChild(this._scoreBoard.ScoreLabel);
       this.addChild(this._scoreBoard.LevelLabel);
-      this.refreshLifes();
+      //this.refreshLifes();
     }
   }
 }
