@@ -15,6 +15,8 @@ module scenes {
     private _shotManager: managers.Shoot;
     public board: objects.BoardBar;
     private _planelife: objects.LifeBox[];
+    private xposition: number = 750;
+    private xpos: number = 100;
 
     // constructor
     constructor() {
@@ -36,21 +38,21 @@ module scenes {
       managers.Game.player = this._player;
 
       this._planelife = new Array<objects.LifeBox>();
-      for (let count = 0; count < this._scoreBoard.Lives; count++) {
-        this._planelife[count] = new objects.LifeBox();
-        if (count == 0) {
-          this._planelife[count].x = 750;
-          this._planelife[count].y = 558;
-        }
-        if (count == 1) {
-          this._planelife[count].x = 800;
-          this._planelife[count].y = 558;
-        }
-        if (count == 2) {
-          this._planelife[count].x = 850;
-          this._planelife[count].y = 558;
-        }
-      }
+      /*  for (let count = 0; count < this._scoreBoard.Lives; count++) {
+          this._planelife[count] = new objects.LifeBox();
+          if (count == 0) {
+            this._planelife[count].x = 750;
+            this._planelife[count].y = 558;
+          }
+          if (count == 1) {
+            this._planelife[count].x = 800;
+            this._planelife[count].y = 558;
+          }
+          if (count == 2) {
+            this._planelife[count].x = 850;
+            this._planelife[count].y = 558;
+          }
+        }*/
 
 
       this._enemy = new Array<objects.Enemy>();
@@ -101,30 +103,11 @@ module scenes {
       }
 
       for (const lifes of this._planelife) {
-        //  let airLife= this._scoreBoard.Lives;
+
         lifes.Update();
       }
-    /*  if (this._scoreBoard.Lives >= 0) {
-        for (let count = 0; count < this._scoreBoard.Lives; count++) {
 
-        }
-       }
-      /* this._planelife = new Array<objects.LifeBox>();
-      for (let count = 0; count < this._scoreBoard.Lives; count++) {
-        this._planelife[count] = new objects.LifeBox();
-        if (count == 0) {
-          this._planelife[count].x=750;
-          this._planelife[count].y = 558;
-          }
-          if (count == 1){ 
-          this._planelife[count].x=800;
-          this._planelife[count].y = 558;
-        }
-          if (count == 2) {
-          this._planelife[count].x=850;
-          this._planelife[count].y = 558;
-          }
-      }*/
+
 
       for (const bigmeteor of this._bigmeteor) {
         bigmeteor.Update();
@@ -235,10 +218,25 @@ module scenes {
       this.addChild(this._scoreBoard.LevelLabel);
 
 
-      for (const life of this._planelife) {
-        this.addChild(life);
-
+      // for (const life of this._planelife) {
+      // this._planelife = new Array<objects.LifeBox>();
+      for (let count = 0; count < this._scoreBoard.Lives; count++) {
+        let life = new objects.LifeBox();
+        if (count == 0) {
+          life.x = this.xposition;
+          life.y = 558;
+          this.addChild(life);
+          this.xposition +=100;
+        }
+        else {
+          life.x = this.xposition;
+          life.y = 558;
+          this.addChild(life);
+          this.xposition += 100;
+        } console.log(life);
       }
+
+      // }
     }
   }
 }

@@ -18,6 +18,8 @@ var scenes;
         // constructor
         function Play1() {
             var _this = _super.call(this) || this;
+            _this.xposition = 750;
+            _this.xpos = 100;
             _this.Start();
             return _this;
         }
@@ -32,21 +34,21 @@ var scenes;
             this._player = new objects.Player();
             managers.Game.player = this._player;
             this._planelife = new Array();
-            for (var count = 0; count < this._scoreBoard.Lives; count++) {
+            /*  for (let count = 0; count < this._scoreBoard.Lives; count++) {
                 this._planelife[count] = new objects.LifeBox();
                 if (count == 0) {
-                    this._planelife[count].x = 750;
-                    this._planelife[count].y = 558;
+                  this._planelife[count].x = 750;
+                  this._planelife[count].y = 558;
                 }
                 if (count == 1) {
-                    this._planelife[count].x = 800;
-                    this._planelife[count].y = 558;
+                  this._planelife[count].x = 800;
+                  this._planelife[count].y = 558;
                 }
                 if (count == 2) {
-                    this._planelife[count].x = 850;
-                    this._planelife[count].y = 558;
+                  this._planelife[count].x = 850;
+                  this._planelife[count].y = 558;
                 }
-            }
+              }*/
             this._enemy = new Array();
             for (var count = 0; count < this._numero; count++) {
                 this._enemy[count] = new objects.Enemy();
@@ -88,30 +90,8 @@ var scenes;
             }
             for (var _b = 0, _c = this._planelife; _b < _c.length; _b++) {
                 var lifes = _c[_b];
-                //  let airLife= this._scoreBoard.Lives;
                 lifes.Update();
             }
-            /*  if (this._scoreBoard.Lives >= 0) {
-                for (let count = 0; count < this._scoreBoard.Lives; count++) {
-        
-                }
-               }
-              /* this._planelife = new Array<objects.LifeBox>();
-              for (let count = 0; count < this._scoreBoard.Lives; count++) {
-                this._planelife[count] = new objects.LifeBox();
-                if (count == 0) {
-                  this._planelife[count].x=750;
-                  this._planelife[count].y = 558;
-                  }
-                  if (count == 1){
-                  this._planelife[count].x=800;
-                  this._planelife[count].y = 558;
-                }
-                  if (count == 2) {
-                  this._planelife[count].x=850;
-                  this._planelife[count].y = 558;
-                  }
-              }*/
             for (var _d = 0, _e = this._bigmeteor; _d < _e.length; _d++) {
                 var bigmeteor = _e[_d];
                 bigmeteor.Update();
@@ -209,10 +189,25 @@ var scenes;
             this.addChild(this._scoreBoard.LivesLabel);
             this.addChild(this._scoreBoard.ScoreLabel);
             this.addChild(this._scoreBoard.LevelLabel);
-            for (var _h = 0, _j = this._planelife; _h < _j.length; _h++) {
-                var life = _j[_h];
-                this.addChild(life);
+            // for (const life of this._planelife) {
+            // this._planelife = new Array<objects.LifeBox>();
+            for (var count = 0; count < this._scoreBoard.Lives; count++) {
+                var life = new objects.LifeBox();
+                if (count == 0) {
+                    life.x = this.xposition;
+                    life.y = 558;
+                    this.addChild(life);
+                    this.xposition += 100;
+                }
+                else {
+                    life.x = this.xposition;
+                    life.y = 558;
+                    this.addChild(life);
+                    this.xposition += 100;
+                }
+                console.log(life);
             }
+            // }
         };
         return Play1;
     }(objects.Scene));
