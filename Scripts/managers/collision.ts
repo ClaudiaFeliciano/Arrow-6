@@ -1,7 +1,7 @@
 module managers {
   export class Collision {
     public static Check(object1: objects.AbstractGameObject, object2: objects.AbstractGameObject) {
-      
+
       let P1: math.Vec2 = new math.Vec2(object1.x, object1.y);
       let P2: math.Vec2 = new math.Vec2(object2.x, object2.y);
 
@@ -47,6 +47,10 @@ module managers {
                 boomLaser.x = object2.x - object2.Width;
                 boomLaser.y = object2.y - object2.Height;
                 managers.Game.sceneObject.addChild(boomLaser);
+                object1.alpha = 0;//1
+               // managers.Game.player.alpha = 0;//1
+               managers.Game.player.planeflash.alpha = 1;//1
+               managers.Game.player.planeflash.gotoAndPlay("planeflash");
                 object2.Reset();
               }
               break;
