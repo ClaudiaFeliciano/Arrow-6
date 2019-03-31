@@ -26,6 +26,7 @@ var scenes;
             this._engineSound = createjs.Sound.play("play3Sound");
             this._engineSound.loop = -1;
             this._engineSound.volume = 0.3;
+            this.board = new objects.BoardBar();
             this._playerEngineSound = createjs.Sound.play("playerEngine");
             this._playerEngineSound.volume = 1;
             this._meteorNum = 5;
@@ -47,6 +48,7 @@ var scenes;
             this._redenemy.Update();
             this._shotManager.Update();
             this._sonEnemy.Update();
+            this.board.Update();
             for (var _i = 0, _a = this._meteor; _i < _a.length; _i++) {
                 var meteor = _a[_i];
                 meteor.Update();
@@ -121,6 +123,7 @@ var scenes;
             this._shotManager.Shoots.forEach(function (shoot) {
                 _this.addChild(shoot);
             });
+            this.addChild(this.board);
             this.addChild(this._scoreBoard.LivesLabel);
             this.addChild(this._scoreBoard.ScoreLabel);
         };

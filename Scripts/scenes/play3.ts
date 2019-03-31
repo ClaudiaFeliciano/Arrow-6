@@ -9,6 +9,7 @@ module scenes {
     private _shotManager: managers.Shoot;
     private _redenemy: objects.RedEnemy;
     private _sonEnemy: objects.SonEnemy;
+    public board: objects.BoardBar;
 
     private _meteorNum: number;
     private _meteor: objects.Meteor[];
@@ -25,7 +26,7 @@ module scenes {
       this._engineSound = createjs.Sound.play("play3Sound");
       this._engineSound.loop = -1;
       this._engineSound.volume = 0.3;
-
+      this.board = new objects.BoardBar();
       this._playerEngineSound = createjs.Sound.play("playerEngine");
       this._playerEngineSound.volume = 1;
 
@@ -50,6 +51,7 @@ module scenes {
       this._redenemy.Update();
       this._shotManager.Update();
       this._sonEnemy.Update();
+      this.board.Update();
 
       for (const meteor of this._meteor) {
         meteor.Update();
@@ -138,7 +140,7 @@ module scenes {
       this._shotManager.Shoots.forEach(shoot => {
         this.addChild(shoot);
       });
-
+      this.addChild(this.board);
       this.addChild(this._scoreBoard.LivesLabel);
       this.addChild(this._scoreBoard.ScoreLabel);
     }
