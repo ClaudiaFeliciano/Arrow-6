@@ -6,7 +6,8 @@ var managers;
         Collision.Check = function (object1, object2) {
             var P1 = new math.Vec2(object1.x, object1.y);
             var P2 = new math.Vec2(object2.x, object2.y);
-            if (math.Vec2.Distance(P1, P2) < object1.HalfHeight + object2.HalfHeight) {
+            if (math.Vec2.Distance(P1, P2) <
+                object1.HalfHeight + object2.HalfHeight) {
                 if (!object2.isColliding) {
                     object2.isColliding = true;
                     switch (object2.name) {
@@ -17,7 +18,8 @@ var managers;
                                 createjs.Sound.play("laser");
                             }
                             if (managers.Game.highScore <= managers.Game.scoreBoard.Score) {
-                                managers.Game.scoreBoard.HighScore = managers.Game.scoreBoard.Score;
+                                managers.Game.scoreBoard.HighScore =
+                                    managers.Game.scoreBoard.Score;
                                 managers.Game.highScore = managers.Game.scoreBoard.HighScore;
                             }
                             break;
@@ -29,26 +31,38 @@ var managers;
                                     managers.Game.scoreBoard.Lives += 1;
                                 }
                                 if (managers.Game.highScore <= managers.Game.scoreBoard.Score) {
-                                    managers.Game.scoreBoard.HighScore = managers.Game.scoreBoard.Score;
+                                    managers.Game.scoreBoard.HighScore =
+                                        managers.Game.scoreBoard.Score;
                                     managers.Game.highScore = managers.Game.scoreBoard.HighScore;
                                     object2.alpha = 0;
                                 }
                             }
                             break;
                         case "sonenemy":
-                            createjs.Sound.play("laser");
-                            if (object1.alpha != 0) {
-                                managers.Game.scoreBoard.Lives -= 1;
-                                var boomLaser = new objects.Boom("boom");
-                                boomLaser.x = object2.x - object2.Width;
-                                boomLaser.y = object2.y - object2.Height;
-                                managers.Game.sceneObject.addChild(boomLaser);
-                                object1.alpha = 0; //1
-                                // managers.Game.player.alpha = 0;//1
-                                managers.Game.player.planeflash.alpha = 1; //1
-                                managers.Game.player.planeflash.gotoAndPlay("planeflash");
-                                object2.Reset();
+                            createjs.Sound.play("explosion");
+                            if (object1.name == "shot") {
+                                console.log("TCL: Collision -> object1.name ", object1.name);
+                                if (object1.alpha != 0) {
+                                    managers.Game.scoreBoard.Score += 100;
+                                    var boom = new objects.Boom("boom");
+                                    boom.x = object2.x - object2.Width;
+                                    boom.y = object2.y - object2.Height;
+                                    managers.Game.sceneObject.addChild(boom);
+                                    object2.Reset();
+                                }
                             }
+                            // if (object1.name == "player") {
+                            //   managers.Game.scoreBoard.Lives -= 1;
+                            //   let boom = new objects.Boom("boom");
+                            //   boom.x = object2.x - object2.Width;
+                            //   boom.y = object2.y - object2.Height;
+                            //   managers.Game.sceneObject.addChild(boom);
+                            //   object1.alpha = 0;
+                            //   // managers.Game.player.alpha = 0;//1
+                            //   managers.Game.player.planeflash.alpha = 1;
+                            //   managers.Game.player.planeflash.gotoAndPlay("planeflash");
+                            //   object2.Reset();
+                            // }
                             break;
                         case "smallmeteor":
                             createjs.Sound.play("laser");
@@ -60,7 +74,8 @@ var managers;
                                 managers.Game.scoreBoard.Score -= 50;
                             }
                             if (managers.Game.highScore <= managers.Game.scoreBoard.Score) {
-                                managers.Game.scoreBoard.HighScore = managers.Game.scoreBoard.Score;
+                                managers.Game.scoreBoard.HighScore =
+                                    managers.Game.scoreBoard.Score;
                                 managers.Game.highScore = managers.Game.scoreBoard.HighScore;
                             }
                             break;
