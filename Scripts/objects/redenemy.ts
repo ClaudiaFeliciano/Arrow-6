@@ -14,6 +14,7 @@ module objects {
     // private methods
     private _move(): void {
       this.y += this._vSpeed;
+      managers.Game.yRedEnemy = this.y;
     }
 
     private _checkBounds(): void {
@@ -27,21 +28,20 @@ module objects {
 
     // public methods
     public Start(): void {
+      this.Reset();
+    }
+
+    public Reset(): void {
       this._vSpeed = 2;
-      this.x = 500;
-      this.y = -200;
+      this.x = this.Width;
+      this.y = Math.floor(Math.random() * (500 - this.Height));
     }
 
     public Update(): void {
-      managers.Game.yRedEnemy = this.y;
-      managers.Game.xRedEnemy = this.x;
-      console.log("TCL: RedEnemy -> this.x", this.x);
-      console.log("TCL: RedEnemy -> this.getBounds", this.getBounds().width);
       this._move();
       this._checkBounds();
     }
 
     public Destroy(): void {}
-    public Reset(): void {}
   }
 }

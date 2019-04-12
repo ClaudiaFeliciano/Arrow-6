@@ -25,6 +25,7 @@ var objects;
         // private methods
         RedEnemy.prototype._move = function () {
             this.y += this._vSpeed;
+            managers.Game.yRedEnemy = this.y;
         };
         RedEnemy.prototype._checkBounds = function () {
             if (this.y > 560 - this.Height) {
@@ -36,20 +37,18 @@ var objects;
         };
         // public methods
         RedEnemy.prototype.Start = function () {
+            this.Reset();
+        };
+        RedEnemy.prototype.Reset = function () {
             this._vSpeed = 2;
-            this.x = 500;
-            this.y = -200;
+            this.x = this.Width;
+            this.y = Math.floor(Math.random() * (500 - this.Height));
         };
         RedEnemy.prototype.Update = function () {
-            managers.Game.yRedEnemy = this.y;
-            managers.Game.xRedEnemy = this.x;
-            console.log("TCL: RedEnemy -> this.x", this.x);
-            console.log("TCL: RedEnemy -> this.getBounds", this.getBounds().width);
             this._move();
             this._checkBounds();
         };
         RedEnemy.prototype.Destroy = function () { };
-        RedEnemy.prototype.Reset = function () { };
         return RedEnemy;
     }(objects.AbstractGameObject));
     objects.RedEnemy = RedEnemy;

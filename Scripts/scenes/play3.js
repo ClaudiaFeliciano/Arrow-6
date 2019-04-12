@@ -28,6 +28,8 @@ var scenes;
             this._engineSound.volume = 0.3;
             this.board = new objects.BoardBar();
             this._player = new objects.Player();
+            this._redenemy = new objects.RedEnemy();
+            this._boss = new objects.Boss();
             managers.Game.player = this._player;
             this._playerEngineSound = createjs.Sound.play("playerEngine");
             this._playerEngineSound.volume = 1;
@@ -45,17 +47,18 @@ var scenes;
         };
         //Triggered every frame
         Play3.prototype.Update = function () {
-            var _this = this;
             this._space.Update();
             this._player.Update();
             this.board.Update();
             this._shotManager.Update();
-            this._redenemy.Update();
             this._shotManager.Shoots.forEach(function (bullet) {
                 // managers.Collision.Check(bullet, this._sonEnemy);
-                managers.Collision.Check(bullet, _this._redenemy);
+                // managers.Collision.Check(bullet, this._redenemy);
             });
-            // managers.Collision.Check(this._player, this._redenemy);
+            this._redenemy.Update();
+            managers.Collision.Check(this._player, this._redenemy);
+            this._boss.Update();
+            managers.Collision.Check(this._player, this._boss);
             this._sonEnemy.Update();
             // managers.Collision.Check(this._player, this._sonEnemy);
             for (var _i = 0, _a = this._meteor; _i < _a.length; _i++) {
@@ -101,13 +104,8 @@ var scenes;
             this.addChild(this._space);
             this.addChild(this._player);
             this.addChild(this._player.planeflash);
-            this._redenemy = new objects.RedEnemy();
             this.addChild(this._redenemy);
-            createjs.Tween.get(this._redenemy, { loop: 0 })
-                .wait(1500)
-                .to({ x: 500, y: 200 }, 2500)
-                .to({ x: this._redenemy.HalfWidth, y: 200 }, 1000)
-                .wait(1000);
+            this.addChild(this._boss);
             this._sonEnemy = new objects.SonEnemy();
             this.addChild(this._sonEnemy);
             createjs.Tween.get(this._sonEnemy, { loop: 0 })

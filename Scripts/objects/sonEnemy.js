@@ -51,8 +51,8 @@ var objects;
         };
         // public methods
         SonEnemy.prototype.Reset = function () {
-            this.x = -100;
-            this.y = 250;
+            this.x = -this.Width;
+            this.y = managers.Game.yRedEnemy;
         };
         SonEnemy.prototype.Start = function () {
             this._horizontalSpeed = 4;

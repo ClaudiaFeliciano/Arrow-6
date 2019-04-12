@@ -21,7 +21,6 @@ module managers {
     public static goingUp: boolean = false;
     public static goingDown: boolean = false;
 
-    public static xRedEnemy: number;
     public static yRedEnemy: number;
 
     public static xPlayer: number = 0;

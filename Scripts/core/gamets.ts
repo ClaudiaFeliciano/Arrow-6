@@ -1,5 +1,5 @@
 //IIFE - Immediately Invoked Function Expression
-(function () {
+(function() {
   // game variables
   let canvas: HTMLCanvasElement;
   let stage: createjs.Stage;
@@ -234,9 +234,9 @@
       [2, 1803, 475, 74, 0, 0, 0],
       [479, 1803, 81, 64, 0, 0, 0],
       [562, 1803, 81, 64, 0, 0, 0],
-      [645, 1803, 297, 39, 0, 0, 0],
+      [645, 1803, 297, 39, 0, 0, 0]
     ],
-
+    // prettier-ignore
     animations: {
       "rockSilver": { "frames": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] },
       "smallmeteor": {
@@ -277,7 +277,8 @@
         "frames": [154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185],
         "speed": 0.3
       },
-      "redEnemy": { "frames": [186, 187] },
+			"redEnemy": { "frames": [186, 187] },
+			"boss": { "frames": [187] },
       "replay": { "frames": [188] },
       "replayActive": { "frames": [189] },
       "rocket": { "frames": [190] },
@@ -343,8 +344,8 @@
     keyboardManager = new managers.Keyboard();
     managers.Game.keyboardManager = keyboardManager;
 
-     scoreBoard = new managers.ScoreBoard();
-     managers.Game.scoreBoard = scoreBoard;
+    scoreBoard = new managers.ScoreBoard();
+    managers.Game.scoreBoard = scoreBoard;
 
     managers.Game.assetManager = assetManager;
     managers.Game.textureArrow = textureArrow;

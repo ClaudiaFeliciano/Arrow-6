@@ -13,29 +13,19 @@ module managers {
         if (!object2.isColliding) {
           object2.isColliding = true;
           switch (object2.name) {
-            case "redEnemy":
+            case "boss":
               createjs.Sound.play("explosion");
               if (object1.name == "shot") {
                 if (object1.alpha != 0) {
-                  managers.Game.scoreBoard.Score += 10;
-                  managers.Game._redEnemyLife -= 1;
+                  managers.Game.scoreBoard.Score += 100;
                   let boom = new objects.Boom("boom");
-                  boom.x = 20;
-                  boom.y =
-                    object2.y -
-                    object2.HalfHeight +
-                    Math.floor(Math.random() * 100);
-                  console.log(
-                    "TCL: Collision -> object2.HalfHeight",
-                    object2.HalfHeight
-                  );
-                  console.log("TCL: Collision -> object2.y", object2.y);
-                  console.log("TCL: Collision -> boom.y", boom.y);
+                  boom.x = object2.x - object2.Width;
+                  boom.y = object2.y - object2.Height;
                   managers.Game.sceneObject.addChild(boom);
-                  object1.Reset(); // Remove the shot
+
+                  object2.Reset();
                 }
               }
-
               if (object1.name == "player") {
                 managers.Game.scoreBoard.Lives -= 1;
                 let boom = new objects.Boom("boom");
@@ -49,7 +39,37 @@ module managers {
               }
               break;
 
-            case "meteor":
+            case "redEnemy":
+              createjs.Sound.play("explosion");
+              if (object1.name == "shota") {
+                if (object1.alpha != 0) {
+                  managers.Game.scoreBoard.Score += 10;
+                  managers.Game._redEnemyLife -= 1;
+                  let boom = new objects.Boom("boom");
+                  boom.x = 20;
+                  boom.y =
+                    object2.y -
+                    object2.HalfHeight +
+                    Math.floor(Math.random() * 100);
+                  managers.Game.sceneObject.addChild(boom);
+                  object1.Reset(); // Remove the shot
+                }
+              }
+
+              if (object1.name == "player") {
+                console.log("TCL: Collision -> object1.name", object1.name);
+                // managers.Game.scoreBoard.Lives -= 1;
+                let boom = new objects.Boom("boom");
+                boom.x = object2.x - object2.Width;
+                boom.y = object2.y - object2.Height;
+                managers.Game.sceneObject.addChild(boom);
+                object1.alpha = 0;
+                managers.Game.player.planeflash.alpha = 1;
+                managers.Game.player.planeflash.gotoAndPlay("planeflash");
+              }
+              break;
+
+            case "meteorXXX":
               if (object2.alpha != 0) {
                 createjs.Sound.play("meteorSound");
                 managers.Game.scoreBoard.Lives -= 1;
