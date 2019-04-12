@@ -6,7 +6,6 @@ module managers {
     ) {
       let P1: math.Vec2 = new math.Vec2(object1.x, object1.y);
       let P2: math.Vec2 = new math.Vec2(object2.x, object2.y);
-
       if (
         math.Vec2.Distance(P1, P2) <
         object1.HalfHeight + object2.HalfHeight
@@ -14,6 +13,42 @@ module managers {
         if (!object2.isColliding) {
           object2.isColliding = true;
           switch (object2.name) {
+            case "redEnemy":
+              createjs.Sound.play("explosion");
+              if (object1.name == "shot") {
+                if (object1.alpha != 0) {
+                  managers.Game.scoreBoard.Score += 10;
+                  managers.Game._redEnemyLife -= 1;
+                  let boom = new objects.Boom("boom");
+                  boom.x = 20;
+                  boom.y =
+                    object2.y -
+                    object2.HalfHeight +
+                    Math.floor(Math.random() * 100);
+                  console.log(
+                    "TCL: Collision -> object2.HalfHeight",
+                    object2.HalfHeight
+                  );
+                  console.log("TCL: Collision -> object2.y", object2.y);
+                  console.log("TCL: Collision -> boom.y", boom.y);
+                  managers.Game.sceneObject.addChild(boom);
+                  object1.Reset(); // Remove the shot
+                }
+              }
+
+              if (object1.name == "player") {
+                managers.Game.scoreBoard.Lives -= 1;
+                let boom = new objects.Boom("boom");
+                boom.x = object2.x - object2.Width;
+                boom.y = object2.y - object2.Height;
+                managers.Game.sceneObject.addChild(boom);
+                object1.alpha = 0;
+                managers.Game.player.planeflash.alpha = 1;
+                managers.Game.player.planeflash.gotoAndPlay("planeflash");
+                object2.Reset();
+              }
+              break;
+
             case "meteor":
               if (object2.alpha != 0) {
                 createjs.Sound.play("meteorSound");

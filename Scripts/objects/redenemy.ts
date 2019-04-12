@@ -4,8 +4,6 @@ module objects {
     private _vSpeed: number;
 
     // public properties
-    public yRed: number = 0;
-    public xRed: number = 0;
 
     // constructor
     constructor() {
@@ -22,7 +20,7 @@ module objects {
       if (this.y > 560 - this.Height) {
         this._vSpeed = -2;
       }
-      if (this.y < 180 - this.Height) {
+      if (this.y < 186 - this.Height) {
         this._vSpeed = 2;
       }
     }
@@ -32,14 +30,13 @@ module objects {
       this._vSpeed = 2;
       this.x = 500;
       this.y = -200;
-      this.yRed = this.y;
     }
 
     public Update(): void {
-      this.yRed = this.y;
-      this.xRed = this.x;
-      managers.Game.yRedEnemy = this.yRed;
-      managers.Game.xRedEnemy = this.xRed;
+      managers.Game.yRedEnemy = this.y;
+      managers.Game.xRedEnemy = this.x;
+      console.log("TCL: RedEnemy -> this.x", this.x);
+      console.log("TCL: RedEnemy -> this.getBounds", this.getBounds().width);
       this._move();
       this._checkBounds();
     }

@@ -50,13 +50,14 @@ var scenes;
             this._player.Update();
             this.board.Update();
             this._shotManager.Update();
-            this._shotManager.Shoots.forEach(function (bullet) {
-                managers.Collision.Check(bullet, _this._sonEnemy);
-            });
             this._redenemy.Update();
-            managers.Collision.Check(this._player, this._redenemy);
+            this._shotManager.Shoots.forEach(function (bullet) {
+                // managers.Collision.Check(bullet, this._sonEnemy);
+                managers.Collision.Check(bullet, _this._redenemy);
+            });
+            // managers.Collision.Check(this._player, this._redenemy);
             this._sonEnemy.Update();
-            managers.Collision.Check(this._player, this._sonEnemy);
+            // managers.Collision.Check(this._player, this._sonEnemy);
             for (var _i = 0, _a = this._meteor; _i < _a.length; _i++) {
                 var meteor = _a[_i];
                 meteor.Update();
@@ -105,18 +106,18 @@ var scenes;
             createjs.Tween.get(this._redenemy, { loop: 0 })
                 .wait(1500)
                 .to({ x: 500, y: 200 }, 2500)
-                .to({ x: -this._redenemy.HalfWidth, y: 200 }, 2000)
+                .to({ x: this._redenemy.HalfWidth, y: 200 }, 1000)
                 .wait(1000);
             this._sonEnemy = new objects.SonEnemy();
             this.addChild(this._sonEnemy);
             createjs.Tween.get(this._sonEnemy, { loop: 0 })
-                .wait(7100)
-                // .wait(100)
+                // .wait(7100)
+                .wait(100)
                 .to({ x: 300, y: 270 }, 1000);
-            createjs.Tween.get(this._player, { loop: 0 })
-                .wait(6000)
-                // .wait(100)
-                .to({ x: 800, y: 300 }, 1500);
+            // createjs.Tween.get(this._player, { loop: 0 })
+            //   // .wait(6000)
+            //   // .wait(100)
+            //   .to({ x: 800, y: 300 }, 1500);
             this._meteor.forEach(function (meteor) {
                 _this.addChild(meteor);
                 createjs.Tween.get(meteor, { loop: 0 })

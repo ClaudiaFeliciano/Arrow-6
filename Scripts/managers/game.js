@@ -11,6 +11,7 @@ var managers;
         Game.goingDown = false;
         Game.xPlayer = 0;
         Game.yPlayer = 0;
+        Game._redEnemyLife = 10;
         return Game;
     }());
     managers.Game = Game;

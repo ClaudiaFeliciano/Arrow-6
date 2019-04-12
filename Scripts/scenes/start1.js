@@ -40,8 +40,7 @@ var scenes;
         Start1.prototype.Destroy = function () {
             this.removeAllChildren();
         };
-        Start1.prototype.Reset = function () {
-        };
+        Start1.prototype.Reset = function () { };
         Start1.prototype.Main = function () {
             var _this = this;
             this.addChild(this._spacebackground);
@@ -54,7 +53,7 @@ var scenes;
             });
             this.addChild(this._musicButton);
             this._startButton.on("click", function () {
-                managers.Game.currentState = config.Scene.PLAY1;
+                managers.Game.currentState = config.Scene.PLAY3;
                 _this._engineSound.stop();
             });
             this._musicButton.on("click", function () {

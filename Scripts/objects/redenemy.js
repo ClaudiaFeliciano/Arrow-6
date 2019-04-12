@@ -15,12 +15,10 @@ var objects;
 (function (objects) {
     var RedEnemy = /** @class */ (function (_super) {
         __extends(RedEnemy, _super);
+        // public properties
         // constructor
         function RedEnemy() {
             var _this = _super.call(this, "redEnemy") || this;
-            // public properties
-            _this.yRed = 0;
-            _this.xRed = 0;
             _this.Start();
             return _this;
         }
@@ -32,7 +30,7 @@ var objects;
             if (this.y > 560 - this.Height) {
                 this._vSpeed = -2;
             }
-            if (this.y < 180 - this.Height) {
+            if (this.y < 186 - this.Height) {
                 this._vSpeed = 2;
             }
         };
@@ -41,13 +39,12 @@ var objects;
             this._vSpeed = 2;
             this.x = 500;
             this.y = -200;
-            this.yRed = this.y;
         };
         RedEnemy.prototype.Update = function () {
-            this.yRed = this.y;
-            this.xRed = this.x;
-            managers.Game.yRedEnemy = this.yRed;
-            managers.Game.xRedEnemy = this.xRed;
+            managers.Game.yRedEnemy = this.y;
+            managers.Game.xRedEnemy = this.x;
+            console.log("TCL: RedEnemy -> this.x", this.x);
+            console.log("TCL: RedEnemy -> this.getBounds", this.getBounds().width);
             this._move();
             this._checkBounds();
         };

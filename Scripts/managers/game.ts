@@ -26,5 +26,7 @@ module managers {
 
     public static xPlayer: number = 0;
     public static yPlayer: number = 0;
+
+    public static _redEnemyLife: number = 10;
   }
 }
