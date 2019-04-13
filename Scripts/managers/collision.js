@@ -106,8 +106,8 @@ var managers;
                             if (object1.name == "player") {
                                 managers.Game.scoreBoard.Lives -= 1;
                                 var boom = new objects.Boom("boom");
-                                boom.x = object2.x - object2.Width;
-                                boom.y = object2.y - object2.Height;
+                                boom.x = object1.x - object1.Width;
+                                boom.y = object1.y - object1.Height;
                                 managers.Game.sceneObject.addChild(boom);
                                 object1.alpha = 0;
                                 managers.Game.player.planeflash.alpha = 1;
