@@ -1,5 +1,5 @@
 //IIFE - Immediately Invoked Function Expression
-(function () {
+(function() {
   // game variables
   let canvas: HTMLCanvasElement;
   let stage: createjs.Stage;
@@ -234,64 +234,221 @@
       [2, 1803, 475, 74, 0, 0, 0],
       [479, 1803, 81, 64, 0, 0, 0],
       [562, 1803, 81, 64, 0, 0, 0],
-      [645, 1803, 297, 39, 0, 0, 0],
+      [645, 1803, 297, 39, 0, 0, 0]
     ],
 
     animations: {
-      "rockSilver": { "frames": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] },
-      "smallmeteor": {
-        "frames": [16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
-        "speed": 0.2
+      rockSilver: {
+        frames: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
       },
-      "brouncerock": {
-        "frames": [32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47],
-        "speed": 0.8
+      smallmeteor: {
+        frames: [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31
+        ],
+        speed: 0.2
       },
-      "afterCollision": {
-        "frames": [48, 49, 50, 51, 52, 49, 50, 51, 52],
-        "speed": 0.1
+      brouncerock: {
+        frames: [
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        speed: 0.8
       },
-      "ArrowGame": { "frames": [53] },
-      "asteroid": { "frames": [54, 55, 56, 57] },
-      "boom": {
-        "frames": [58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68],
-        "speed": 0.4
+      afterCollision: {
+        frames: [48, 49, 50, 51, 52, 49, 50, 51, 52],
+        speed: 0.1
       },
-      "table1": { "frames": [69] },
-      "asteroideFare": {
-        "frames": [70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85],
-        "speed": 0.2
+      ArrowGame: { frames: [53] },
+      asteroid: { frames: [54, 55, 56, 57] },
+      boom: {
+        frames: [58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68],
+        speed: 0.4
       },
-      "enemy": { "frames": [86, 87] },
-      "exit": { "frames": [88] },
-      "expl": { "frames": [89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112] },
-      "gameOver": { "frames": [113] },
-      "info": { "frames": [114, 115] },
-      "Live": { "frames": [116, 117, 118, 119, 120, 121, 122, 123, 124, 125] },
-      "menu": { "frames": [126, 127] },
-      "meteor1": { "frames": [128] },
-      "meteor": { "frames": [129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149] },
-      "music": { "frames": [150, 151] },
-      "player": { "frames": [152, 153] },
-      "explosionsmoke": {
-        "frames": [154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185],
-        "speed": 0.3
+      table1: { frames: [69] },
+      asteroideFare: {
+        frames: [
+          70,
+          71,
+          72,
+          73,
+          74,
+          75,
+          76,
+          77,
+          78,
+          79,
+          80,
+          81,
+          82,
+          83,
+          84,
+          85
+        ],
+        speed: 0.2
       },
-      "redEnemy": { "frames": [186, 187] },
-      "replay": { "frames": [188] },
-      "replayActive": { "frames": [189] },
-      "rocket": { "frames": [190] },
-      "rocket_1": { "frames": [191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206] },
-      "settings": { "frames": [207, 208] },
-      "shot": { "frames": [209] },
-      "shot2": { "frames": [210] },
-      "start": { "frames": [211] },
-      "sonenemy": { "frames": [212, 213] },
-      "level2": { "frames": [214] },
-      "level3": { "frames": [215] },
-      "youwon": { "frames": [216] },
-      "enemySecond": { "frames": [217, 218] },
-      "information": { "frames": [219] }
+      enemy: { frames: [86, 87] },
+      exit: { frames: [88] },
+      expl: {
+        frames: [
+          89,
+          90,
+          91,
+          92,
+          93,
+          94,
+          95,
+          96,
+          97,
+          98,
+          99,
+          100,
+          101,
+          102,
+          103,
+          104,
+          105,
+          106,
+          107,
+          108,
+          109,
+          110,
+          111,
+          112
+        ]
+      },
+      gameOver: { frames: [113] },
+      info: { frames: [114, 115] },
+      Live: { frames: [116, 117, 118, 119, 120, 121, 122, 123, 124, 125] },
+      menu: { frames: [126, 127] },
+      meteor1: { frames: [128] },
+      meteor: {
+        frames: [
+          129,
+          130,
+          131,
+          132,
+          133,
+          134,
+          135,
+          136,
+          137,
+          138,
+          139,
+          140,
+          141,
+          142,
+          143,
+          144,
+          145,
+          146,
+          147,
+          148,
+          149
+        ]
+      },
+      music: { frames: [150, 151] },
+      player: { frames: [152, 153] },
+      explosionsmoke: {
+        frames: [
+          154,
+          155,
+          156,
+          157,
+          158,
+          159,
+          160,
+          161,
+          162,
+          163,
+          164,
+          165,
+          166,
+          167,
+          168,
+          169,
+          170,
+          171,
+          172,
+          173,
+          174,
+          175,
+          176,
+          177,
+          178,
+          179,
+          180,
+          181,
+          182,
+          183,
+          184,
+          185
+        ],
+        speed: 0.3
+      },
+      redEnemy: { frames: [186, 187] },
+      boss: { frames: [187] },
+      replay: { frames: [188] },
+      replayActive: { frames: [189] },
+      rocket: { frames: [190] },
+      rocket_1: {
+        frames: [
+          191,
+          192,
+          193,
+          194,
+          195,
+          196,
+          197,
+          198,
+          199,
+          200,
+          201,
+          202,
+          203,
+          204,
+          205,
+          206
+        ]
+      },
+      settings: { frames: [207, 208] },
+      shot: { frames: [209] },
+      shot2: { frames: [210] },
+      start: { frames: [211] },
+      sonenemy: { frames: [212, 213] },
+      level2: { frames: [214] },
+      level3: { frames: [215] },
+      youwon: { frames: [216] },
+      enemySecond: { frames: [217, 218] },
+      information: { frames: [219] }
     }
   };
 
@@ -343,8 +500,8 @@
     keyboardManager = new managers.Keyboard();
     managers.Game.keyboardManager = keyboardManager;
 
-     scoreBoard = new managers.ScoreBoard();
-     managers.Game.scoreBoard = scoreBoard;
+    scoreBoard = new managers.ScoreBoard();
+    managers.Game.scoreBoard = scoreBoard;
 
     managers.Game.assetManager = assetManager;
     managers.Game.textureArrow = textureArrow;
