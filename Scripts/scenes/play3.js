@@ -27,6 +27,8 @@ var scenes;
             this._engineSound.loop = -1;
             this._engineSound.volume = 0.3;
             this.board = new objects.BoardBar();
+            this._player = new objects.Player();
+            managers.Game.player = this._player;
             this._playerEngineSound = createjs.Sound.play("playerEngine");
             this._playerEngineSound.volume = 1;
             this._meteorNum = 5;
@@ -41,22 +43,25 @@ var scenes;
             managers.Game.shootManager = this._shotManager;
             this.Main();
         };
-        //triggered every frame
+        //Triggered every frame
         Play3.prototype.Update = function () {
+            var _this = this;
             this._space.Update();
             this._player.Update();
-            this._redenemy.Update();
-            this._shotManager.Update();
-            this._sonEnemy.Update();
             this.board.Update();
+            this._shotManager.Update();
+            this._shotManager.Shoots.forEach(function (bullet) {
+                managers.Collision.Check(bullet, _this._sonEnemy);
+            });
+            this._redenemy.Update();
+            managers.Collision.Check(this._player, this._redenemy);
+            this._sonEnemy.Update();
+            managers.Collision.Check(this._player, this._sonEnemy);
             for (var _i = 0, _a = this._meteor; _i < _a.length; _i++) {
                 var meteor = _a[_i];
                 meteor.Update();
                 managers.Collision.Check(this._player, meteor);
             }
-            // Is not working
-            managers.Collision.Check(this._player, this._redenemy);
-            managers.Collision.Check(this._player, this._sonEnemy);
             if (this._scoreBoard.Lives <= 0) {
                 this._engineSound.stop();
                 this._playerEngineSound.stop();
@@ -93,6 +98,8 @@ var scenes;
             // adds space to the scene
             this._space = new objects.Space();
             this.addChild(this._space);
+            this.addChild(this._player);
+            this.addChild(this._player.planeflash);
             this._redenemy = new objects.RedEnemy();
             this.addChild(this._redenemy);
             createjs.Tween.get(this._redenemy, { loop: 0 })
@@ -104,12 +111,11 @@ var scenes;
             this.addChild(this._sonEnemy);
             createjs.Tween.get(this._sonEnemy, { loop: 0 })
                 .wait(7100)
+                // .wait(100)
                 .to({ x: 300, y: 270 }, 1000);
-            // adds player to the scene
-            this._player = new objects.Player();
-            this.addChild(this._player);
             createjs.Tween.get(this._player, { loop: 0 })
                 .wait(6000)
+                // .wait(100)
                 .to({ x: 800, y: 300 }, 1500);
             this._meteor.forEach(function (meteor) {
                 _this.addChild(meteor);
