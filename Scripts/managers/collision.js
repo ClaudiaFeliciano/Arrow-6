@@ -91,7 +91,7 @@ var managers;
                                 object2.Reset();
                             }
                             break;
-                        case "enemy":
+                        case "boss":
                             createjs.Sound.play("explosion");
                             if (object1.name == "shot") {
                                 if (object1.alpha != 0) {
