@@ -31,6 +31,7 @@ module scenes {
       this._space = new objects.Space();
       this._scoreBoard = new managers.ScoreBoard();
       managers.Game.scoreBoard = this._scoreBoard;
+      
 
       this._player = new objects.Player();
       managers.Game.player = this._player;
@@ -65,8 +66,6 @@ module scenes {
       this._engineSound.loop = -1;
       this._engineSound.volume = 0.1;
 
-       this._scoreBoard = new managers.ScoreBoard();
-      managers.Game.scoreBoard = this._scoreBoard;
 
       this._shotManager = new managers.Shoot();
       managers.Game.shootManager = this._shotManager;

@@ -25,8 +25,8 @@ var scenes;
             this._numero = 3;
             this._bigmeteorNum = 3;
             this._space = new objects.Space();
-            this._scoreBoard = new managers.ScoreBoard();
-            managers.Game.scoreBoard = this._scoreBoard;
+            this.scoreBoard = new managers.ScoreBoard();
+            managers.Game.scoreBoard = this.scoreBoard;
             this.board = new objects.BoardBar();
             this._player = new objects.Player();
             managers.Game.player = this._player;
@@ -107,14 +107,16 @@ var scenes;
             });
             //////**********RULES -LEVEL1- RULES -LEVEL1- RULES -LEVEL1- RULES -LEVEL1- RULES***************////////
             //if lives fall below zero switch scenes to the game over scene
-            if (this._scoreBoard.Lives <= 0) {
+            if (this.scoreBoard.Lives <= 0) {
                 this._engineSound.stop();
                 managers.Game.currentState = config.Scene.OVER;
             }
-            if (this._scoreBoard.Score >= 200) {
+            if (this.scoreBoard.Score >= 200) {
                 this._engineSound.stop();
                 managers.Game.currentState = config.Scene.START2;
+                console.log(this.scoreBoard.Score);
                 managers.Game.scoreBoard.Level += 1;
+                console.log(" Mi nuevo nivel" + managers.Game.scoreBoard.Level);
                 managers.Game.scoreBoard.Lives += 1;
             }
             // right

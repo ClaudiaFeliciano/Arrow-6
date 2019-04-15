@@ -10,7 +10,7 @@ module scenes {
     private _smallmeteor: objects.SmallMeteor[];
     private _brouncerock: objects.BrounceRock[];
     private _bigmeteor: objects.BigMeteor[];
-    private _scoreBoard: managers.ScoreBoard;
+    public scoreBoard: managers.ScoreBoard;
     private _engineSound: createjs.AbstractSoundInstance;
     private _shotManager: managers.Shoot;
     public board: objects.BoardBar;
@@ -27,8 +27,8 @@ module scenes {
       this._numero = 3;
       this._bigmeteorNum = 3;
       this._space = new objects.Space();
-      this._scoreBoard = new managers.ScoreBoard();
-      managers.Game.scoreBoard = this._scoreBoard;
+      this.scoreBoard = new managers.ScoreBoard();
+      managers.Game.scoreBoard = this.scoreBoard;
 
       this.board = new objects.BoardBar();
       this._player = new objects.Player();
@@ -74,7 +74,6 @@ module scenes {
       let ticker: number = createjs.Ticker.getTicks();
       if (managers.Game.keyboardManager.shoot && ticker % 10 == 0) {
       managers.Game.shootManager.FireBullet(managers.Game.player.BulletSpawn, math.Vec2.up());
-
   
       }
 
@@ -122,15 +121,17 @@ module scenes {
       //////**********RULES -LEVEL1- RULES -LEVEL1- RULES -LEVEL1- RULES -LEVEL1- RULES***************////////
 
       //if lives fall below zero switch scenes to the game over scene
-      if (this._scoreBoard.Lives <= 0) {
+      if (this.scoreBoard.Lives <= 0) {
         this._engineSound.stop();
         managers.Game.currentState = config.Scene.OVER;
       }
 
-      if (this._scoreBoard.Score >= 200) { 
+      if (this.scoreBoard.Score >= 200) { 
         this._engineSound.stop();
         managers.Game.currentState = config.Scene.START2;
+        console.log(this.scoreBoard.Score);
         managers.Game.scoreBoard.Level += 1;
+        console.log(" Mi nuevo nivel" + managers.Game.scoreBoard.Level);
         managers.Game.scoreBoard.Lives += 1;
       }
       // right

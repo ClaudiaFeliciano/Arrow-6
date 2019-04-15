@@ -27,15 +27,12 @@ var objects;
             managers.Game.sceneObject.removeChild(this); //para k no se me kede enganachado en mermoria
         };
         // public methods
-        Boom.prototype.Reset = function () {
-        };
+        Boom.prototype.Reset = function () { };
         Boom.prototype.Start = function () {
             this.on("animationend", this._animationEnded.bind(this), false);
         };
-        Boom.prototype.Update = function () {
-        };
-        Boom.prototype.Destroy = function () {
-        };
+        Boom.prototype.Update = function () { };
+        Boom.prototype.Destroy = function () { };
         return Boom;
     }(objects.AbstractGameObject));
     objects.Boom = Boom;
