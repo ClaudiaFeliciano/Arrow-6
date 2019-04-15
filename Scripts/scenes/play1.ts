@@ -71,6 +71,7 @@ module scenes {
 
    
     public Update(): void {    
+
       let ticker: number = createjs.Ticker.getTicks();
       if (managers.Game.keyboardManager.shoot && ticker % 10 == 0) {
       managers.Game.shootManager.FireBullet(managers.Game.player.BulletSpawn, math.Vec2.up());

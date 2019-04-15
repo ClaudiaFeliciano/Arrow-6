@@ -46,6 +46,10 @@ var scenes;
         //Triggered every frame
         Play3.prototype.Update = function () {
             var _this = this;
+            var ticker = createjs.Ticker.getTicks();
+            if (managers.Game.keyboardManager.shoot && ticker % 10 == 0) {
+                managers.Game.shootManager.FireBullet(managers.Game.player.BulletSpawn, math.Vec2.up());
+            }
             this._space.Update();
             this._player.Update();
             this.board.Update();
