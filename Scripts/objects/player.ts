@@ -120,7 +120,7 @@ module objects {
       }
     }
 
-    public Reset(): void {}
+    /*public Reset(): void {}
 
     public Destroy(): void {
       

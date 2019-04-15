@@ -122,9 +122,6 @@ var objects;
                 this.y += 2;
             }
         };
-        Player.prototype.Reset = function () { };
-        Player.prototype.Destroy = function () {
-        };
         return Player;
     }(objects.AbstractGameObject));
     objects.Player = Player;
