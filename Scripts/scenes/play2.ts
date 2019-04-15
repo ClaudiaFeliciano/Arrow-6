@@ -10,7 +10,7 @@ module scenes {
     private _smallmeteor: objects.SmallMeteor[];
     private _brouncerock: objects.BrounceRock[];
     private _bigmeteor: objects.BigMeteor[];
-    private _scoreBoard: managers.ScoreBoard;
+    public _scoreBoard: managers.ScoreBoard;
     private _engineSound: createjs.AbstractSoundInstance;
     private _shotManager: managers.Shoot;
     public board: objects.BoardBar;
@@ -73,8 +73,13 @@ module scenes {
     }
 
     public Update(): void {
+      let ticker: number = createjs.Ticker.getTicks();
+      if (managers.Game.keyboardManager.shoot && ticker % 10 == 0) {
+      managers.Game.shootManager.FireBullet(managers.Game.player.BulletSpawn, math.Vec2.up());
+      }
+      
       this._space.Update();
-      this._player.Update();
+      this._player.Update();  
       this._shotManager.Update();
       this.board.Update();
 

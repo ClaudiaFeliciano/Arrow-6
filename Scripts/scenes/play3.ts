@@ -49,6 +49,10 @@ module scenes {
 
     //Triggered every frame
     public Update(): void {
+      let ticker: number = createjs.Ticker.getTicks();
+      if (managers.Game.keyboardManager.shoot && ticker % 10 == 0) {
+      managers.Game.shootManager.FireBullet(managers.Game.player.BulletSpawn, math.Vec2.up());
+      }
       this._space.Update();
       this._player.Update();
       this.board.Update();

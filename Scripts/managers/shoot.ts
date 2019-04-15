@@ -42,7 +42,6 @@ module managers {
     // constructor
     constructor(bulletNum: number = 100) {
       this.BulletNum = bulletNum;
-
       this.Start();
     }
 
