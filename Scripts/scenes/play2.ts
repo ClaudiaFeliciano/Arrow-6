@@ -14,8 +14,7 @@ module scenes {
     private _engineSound: createjs.AbstractSoundInstance;
     private _shotManager: managers.Shoot;
     public board: objects.BoardBar;
-   /* private _planelife: objects.LifeBox[];
-    private xposition: number = 750;*/
+
 
 
     // constructor
@@ -23,24 +22,6 @@ module scenes {
       super();
       this.Start();
     }
-
-    /*private refreshLifes(){
-      for (let count = 0; count < this._scoreBoard.Lives; count++) {
-        let life = new objects.LifeBox();
-        if (count == 0) {
-          life.x = this.xposition;
-          life.y = 558;
-          this.addChild(life);
-          this.xposition +=50;
-        }
-        else {
-          life.x = this.xposition;
-          life.y = 558;
-          this.addChild(life);
-          this.xposition += 50;
-        } console.log(life);
-      }
-    }*/
 
     // public methods
 
@@ -54,7 +35,7 @@ module scenes {
       this._player = new objects.Player();
       managers.Game.player = this._player;
 
-      //this._planelife = new Array<objects.LifeBox>();
+
       this.board = new objects.BoardBar();
 
       this._enemy = new Array<objects.Enemy>();
@@ -236,10 +217,8 @@ module scenes {
       });
 
       this.addChild(this.board);
-      this.addChild(this._scoreBoard.LivesLabel);
-      this.addChild(this._scoreBoard.ScoreLabel);
-      this.addChild(this._scoreBoard.LevelLabel);
-      //this.refreshLifes();
+      managers.Game.scoreBoard.AddGameUI(this);
+     
     }
   }
 }

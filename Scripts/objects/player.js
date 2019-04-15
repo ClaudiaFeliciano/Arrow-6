@@ -106,7 +106,6 @@ var objects;
             this.planeflash.regX = this.regX;
             this.planeflash.regY = this.regY;
             this.planeflash.rotation = this.rotation;
-            //this.planeflash.rotation = this.rotation;
         };
         Player.prototype.Gravity = function () {
             if (managers.Game.goingLeft) {

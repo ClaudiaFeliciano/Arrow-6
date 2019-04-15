@@ -49,23 +49,19 @@ var objects;
         Shoot.prototype.Reset = function () {
             this.x = -2000;
             this.y = -2000;
-            /* if (managers.Game.goingDown)
-             {
-               this.Direction = math.Vec2.down();
-             }
-             if (managers.Game.goingUp)
-             {
-               this.Direction = math.Vec2.up();
-             }
-             if (managers.Game.goingLeft)
-             {
-               this.Direction = math.Vec2.left();
-               this.y = this.y - 40;
-             }
-             if (managers.Game.goingRigth)
-             {
-               this.Direction = math.Vec2.right();
-             }*/
+            if (managers.Game.goingDown) {
+                this.Direction = math.Vec2.down();
+            }
+            if (managers.Game.goingUp) {
+                this.Direction = math.Vec2.up();
+            }
+            if (managers.Game.goingLeft) {
+                this.Direction = math.Vec2.left();
+                this.y = this.y - 40;
+            }
+            if (managers.Game.goingRigth) {
+                this.Direction = math.Vec2.right();
+            }
             this._updatePosition();
             // this.Direction = math.Vec2.zero();
         };

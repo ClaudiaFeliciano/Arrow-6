@@ -52,6 +52,7 @@ module scenes {
 
       this._restartButton.on("click", () => {
         managers.Game.currentState = config.Scene.PLAY1;
+        managers.Game.scoreBoard.Reset();
         this._engineSound.stop();
       });
     }

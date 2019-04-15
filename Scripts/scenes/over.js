@@ -50,6 +50,7 @@ var scenes;
             this._scoreboard.HighScore = managers.Game.highScore;
             this._restartButton.on("click", function () {
                 managers.Game.currentState = config.Scene.PLAY1;
+                managers.Game.scoreBoard.Reset();
                 _this._engineSound.stop();
             });
         };

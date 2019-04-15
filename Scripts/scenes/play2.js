@@ -15,31 +15,12 @@ var scenes;
 (function (scenes) {
     var Play2 = /** @class */ (function (_super) {
         __extends(Play2, _super);
-        /* private _planelife: objects.LifeBox[];
-         private xposition: number = 750;*/
         // constructor
         function Play2() {
             var _this = _super.call(this) || this;
             _this.Start();
             return _this;
         }
-        /*private refreshLifes(){
-          for (let count = 0; count < this._scoreBoard.Lives; count++) {
-            let life = new objects.LifeBox();
-            if (count == 0) {
-              life.x = this.xposition;
-              life.y = 558;
-              this.addChild(life);
-              this.xposition +=50;
-            }
-            else {
-              life.x = this.xposition;
-              life.y = 558;
-              this.addChild(life);
-              this.xposition += 50;
-            } console.log(life);
-          }
-        }*/
         // public methods
         Play2.prototype.Start = function () {
             this._numero = 3;
@@ -49,7 +30,6 @@ var scenes;
             managers.Game.scoreBoard = this._scoreBoard;
             this._player = new objects.Player();
             managers.Game.player = this._player;
-            //this._planelife = new Array<objects.LifeBox>();
             this.board = new objects.BoardBar();
             this._enemy = new Array();
             for (var count = 0; count < this._numero; count++) {
@@ -204,10 +184,7 @@ var scenes;
                 }, 5000);
             });
             this.addChild(this.board);
-            this.addChild(this._scoreBoard.LivesLabel);
-            this.addChild(this._scoreBoard.ScoreLabel);
-            this.addChild(this._scoreBoard.LevelLabel);
-            //this.refreshLifes();
+            managers.Game.scoreBoard.AddGameUI(this);
         };
         return Play2;
     }(objects.Scene));

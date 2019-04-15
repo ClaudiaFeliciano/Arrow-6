@@ -15,31 +15,12 @@ var scenes;
 (function (scenes) {
     var Play1 = /** @class */ (function (_super) {
         __extends(Play1, _super);
-        /* private _planelife: objects.LifeBox[];
-         private xposition: number = 750;*/
         // constructor
         function Play1() {
             var _this = _super.call(this) || this;
             _this.Start();
             return _this;
         }
-        /* private refreshLifes(){
-           for (let count = 0; count < this._scoreBoard.Lives; count++) {
-             let life = new objects.LifeBox();
-             if (count == 0) {
-               life.x = this.xposition;
-               life.y = 558;
-               this.addChild(life);
-               this.xposition +=50;
-             }
-             else {
-               life.x = this.xposition;
-               life.y = 558;
-               this.addChild(life);
-               this.xposition += 50;
-             } console.log(life);
-           }
-         }*/
         Play1.prototype.Start = function () {
             this._numero = 3;
             this._bigmeteorNum = 3;
@@ -82,11 +63,6 @@ var scenes;
             var ticker = createjs.Ticker.getTicks();
             if (managers.Game.keyboardManager.shoot && ticker % 10 == 0) {
                 managers.Game.shootManager.FireBullet(managers.Game.player.BulletSpawn, math.Vec2.up());
-                /*
-                  shoot.x = this._shootOrigin.x;
-                  shoot.y = this._shootOrigin.y;
-                  shoot.rotation = this.rotation;
-                  managers.Game.shootManager.CurrentShoot++;*/
             }
             this._space.Update();
             this._player.Update();
@@ -139,6 +115,7 @@ var scenes;
                 this._engineSound.stop();
                 managers.Game.currentState = config.Scene.START2;
                 managers.Game.scoreBoard.Level += 1;
+                managers.Game.scoreBoard.Lives += 1;
             }
             // right
             if (managers.Game.goingRigth) {
@@ -215,10 +192,7 @@ var scenes;
                 }, 5000);
             });
             this.addChild(this.board);
-            this.addChild(this._scoreBoard.LivesLabel);
-            this.addChild(this._scoreBoard.ScoreLabel);
-            this.addChild(this._scoreBoard.LevelLabel);
-            //this.refreshLifes();
+            managers.Game.scoreBoard.AddGameUI(this);
         };
         return Play1;
     }(objects.Scene));

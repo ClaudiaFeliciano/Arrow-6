@@ -38,7 +38,7 @@ module objects {
       this.x = -2000;
       this.y = -2000;
     
-     /* if (managers.Game.goingDown)
+      if (managers.Game.goingDown)
       {
         this.Direction = math.Vec2.down();
       }
@@ -54,7 +54,7 @@ module objects {
       if (managers.Game.goingRigth)
       {
         this.Direction = math.Vec2.right();
-      }*/
+      }
       this._updatePosition();
      // this.Direction = math.Vec2.zero();
     }

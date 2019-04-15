@@ -1,6 +1,6 @@
 module objects {
   export abstract class AbstractGameObject extends createjs.Sprite {
-    //clase abstracta
+ 
     // private instance variables
     private _width: number;
     private _height: number;
@@ -10,8 +10,7 @@ module objects {
     private _position: math.Vec2;
 
     // public properties
-   
-
+  
     get Width(): number {
       return this._width;
     }

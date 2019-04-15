@@ -14,9 +14,7 @@ module scenes {
     private _engineSound: createjs.AbstractSoundInstance;
     private _shotManager: managers.Shoot;
     public board: objects.BoardBar;
-   /* private _planelife: objects.LifeBox[];
-    private xposition: number = 750;*/
-    
+      
 
     // constructor
     constructor() {
@@ -24,23 +22,6 @@ module scenes {
       this.Start();
     }
 
-   /* private refreshLifes(){
-      for (let count = 0; count < this._scoreBoard.Lives; count++) {
-        let life = new objects.LifeBox();
-        if (count == 0) {
-          life.x = this.xposition;
-          life.y = 558;
-          this.addChild(life);
-          this.xposition +=50;
-        }
-        else {
-          life.x = this.xposition;
-          life.y = 558;
-          this.addChild(life);
-          this.xposition += 50;
-        } console.log(life);
-      }
-    }*/
 
     public Start(): void {
       this._numero = 3;
@@ -94,11 +75,7 @@ module scenes {
       if (managers.Game.keyboardManager.shoot && ticker % 10 == 0) {
       managers.Game.shootManager.FireBullet(managers.Game.player.BulletSpawn, math.Vec2.up());
 
-    /* 
-      shoot.x = this._shootOrigin.x;
-      shoot.y = this._shootOrigin.y;
-      shoot.rotation = this.rotation;
-      managers.Game.shootManager.CurrentShoot++;*/
+  
       }
 
       this._space.Update();
@@ -150,10 +127,11 @@ module scenes {
         managers.Game.currentState = config.Scene.OVER;
       }
 
-      if (this._scoreBoard.Score >= 1000) {
+      if (this._scoreBoard.Score >= 1000) { 
         this._engineSound.stop();
         managers.Game.currentState = config.Scene.START2;
         managers.Game.scoreBoard.Level += 1;
+        managers.Game.scoreBoard.Lives += 1;
       }
       // right
       if (managers.Game.goingRigth) {
@@ -253,11 +231,7 @@ module scenes {
 
 
       this.addChild(this.board);
-      this.addChild(this._scoreBoard.LivesLabel);
-      this.addChild(this._scoreBoard.ScoreLabel);
-      this.addChild(this._scoreBoard.LevelLabel);
-      //this.refreshLifes();
-
+      managers.Game.scoreBoard.AddGameUI(this);
     }
   }
 }
