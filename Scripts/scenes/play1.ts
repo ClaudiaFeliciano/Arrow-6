@@ -126,7 +126,7 @@ module scenes {
         managers.Game.currentState = config.Scene.OVER;
       }
 
-      if (this.scoreBoard.Score >= 200) { 
+      if (this.scoreBoard.Score >= 1000) { 
         this._engineSound.stop();
         managers.Game.currentState = config.Scene.START2;
         console.log(this.scoreBoard.Score);

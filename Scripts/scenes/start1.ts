@@ -31,7 +31,7 @@ module scenes {
         
           this._engineSound = createjs.Sound.play("startSound");
           this._engineSound.loop = -1; 
-          this._engineSound.volume = 0.0;
+          this._engineSound.volume = 0.8;
           this.Main();
       }
 
