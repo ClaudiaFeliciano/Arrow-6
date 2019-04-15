@@ -79,6 +79,15 @@ var scenes;
         };
         Play1.prototype.Update = function () {
             var _this = this;
+            var ticker = createjs.Ticker.getTicks();
+            if (managers.Game.keyboardManager.shoot && ticker % 10 == 0) {
+                managers.Game.shootManager.FireBullet(managers.Game.player.BulletSpawn, math.Vec2.up());
+                /*
+                  shoot.x = this._shootOrigin.x;
+                  shoot.y = this._shootOrigin.y;
+                  shoot.rotation = this.rotation;
+                  managers.Game.shootManager.CurrentShoot++;*/
+            }
             this._space.Update();
             this._player.Update();
             this._shotManager.Update();
@@ -88,9 +97,6 @@ var scenes;
                 enemy.Update();
                 managers.Collision.Check(this._player, enemy);
             }
-            /* for (const lifes of this._planelife) {
-               lifes.Update();
-             }*/
             for (var _b = 0, _c = this._bigmeteor; _b < _c.length; _b++) {
                 var bigmeteor = _c[_b];
                 bigmeteor.Update();

@@ -21,6 +21,17 @@ var objects;
             _this.Start();
             return _this;
         }
+        Object.defineProperty(Player.prototype, "BulletSpawn", {
+            // public properties
+            get: function () {
+                return this._bulletSpawn;
+            },
+            set: function (newSpawnPoint) {
+                this._bulletSpawn = newSpawnPoint;
+            },
+            enumerable: true,
+            configurable: true
+        });
         Player.prototype._animationEnd = function () {
             this.alpha = 1;
             this.planeflash.alpha = 0;
@@ -33,10 +44,12 @@ var objects;
             this.regY = this.HalfHeight;
             this.x = 1000;
             this.y = 300;
-            this._shootOrigin = new math.Vec2();
+            // this._shootOrigin = new math.Vec2();
         };
         Player.prototype.Update = function () {
             this.Move();
+            this._updatePosition();
+            this.BulletSpawn = new math.Vec2(this.x - 6, this.y - this.HalfHeight - 2);
             // checking the bottom boundary
             if (this.y >= 549 - this.HalfHeight) {
                 //600 minus the high of the scorebar
@@ -56,7 +69,7 @@ var objects;
             }
             managers.Game.xPlayer = this.x;
             managers.Game.yPlayer = this.y;
-            this.ShootFire();
+            //  this.ShootFire();
         };
         Player.prototype.Move = function () {
             if (managers.Game.keyboardManager.moveForward) {
@@ -93,6 +106,7 @@ var objects;
             this.planeflash.regX = this.regX;
             this.planeflash.regY = this.regY;
             this.planeflash.rotation = this.rotation;
+            //this.planeflash.rotation = this.rotation;
         };
         Player.prototype.Gravity = function () {
             if (managers.Game.goingLeft) {
@@ -109,68 +123,7 @@ var objects;
             }
         };
         Player.prototype.Reset = function () { };
-        Player.prototype.Destroy = function () { };
-        Player.prototype.ShootFire = function () {
-            if ((this.alpha = 1)) {
-                var ticker = createjs.Ticker.getTicks();
-                if (managers.Game.keyboardManager.shoot && ticker % 10 == 0) {
-                    //how many frames when i fire my ticker
-                    this._shootOrigin = new math.Vec2(this.x, this.y - this.HalfHeight);
-                    var currentshot = managers.Game.shootManager.CurrentShoot;
-                    var shoot = managers.Game.shootManager.Shoots[currentshot];
-                    shoot.x = this._shootOrigin.x;
-                    shoot.y = this._shootOrigin.y;
-                    managers.Game.shootManager.CurrentShoot++;
-                    if (managers.Game.shootManager.CurrentShoot > 29) {
-                        managers.Game.shootManager.CurrentShoot = 0;
-                    }
-                    if (managers.Game.goingLeft) {
-                        if (managers.Game.shootManager.swi == 0) {
-                            shoot.y = this.y - 40;
-                            managers.Game.shootManager.swi = 1;
-                        }
-                        else {
-                            shoot.y = this.y + 35;
-                            managers.Game.shootManager.swi = 0;
-                        }
-                        shoot.x = this.x - 10;
-                    }
-                    if (managers.Game.goingRigth) {
-                        if (managers.Game.shootManager.swi == 0) {
-                            shoot.y = this.y - 40;
-                            managers.Game.shootManager.swi = 1;
-                        }
-                        else {
-                            shoot.y = this.y + 35;
-                            managers.Game.shootManager.swi = 0;
-                        }
-                        shoot.x = this.x + 10;
-                    }
-                    if (managers.Game.goingDown) {
-                        if (managers.Game.shootManager.swi == 0) {
-                            shoot.x = this.x - 35;
-                            managers.Game.shootManager.swi = 1;
-                        }
-                        else {
-                            shoot.x = this.x + 35;
-                            managers.Game.shootManager.swi = 0;
-                        }
-                        shoot.y = this.y - 10;
-                    }
-                    if (managers.Game.goingUp) {
-                        if (managers.Game.shootManager.swi == 0) {
-                            shoot.x = this.x - 35;
-                            managers.Game.shootManager.swi = 1;
-                        }
-                        else {
-                            shoot.x = this.x + 35;
-                            managers.Game.shootManager.swi = 0;
-                        }
-                        shoot.y = this.y - 10;
-                    }
-                    createjs.Sound.play("shootSound");
-                }
-            }
+        Player.prototype.Destroy = function () {
         };
         return Player;
     }(objects.AbstractGameObject));

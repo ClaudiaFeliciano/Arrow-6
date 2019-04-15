@@ -21,25 +21,68 @@ var objects;
             _this.Start();
             return _this;
         }
+        Object.defineProperty(Shoot.prototype, "Direction", {
+            get: function () {
+                return this._direction;
+            },
+            set: function (newDirection) {
+                this._direction = newDirection;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(Shoot.prototype, "IsInPlay", {
+            get: function () {
+                return this._isInPlay;
+            },
+            set: function (newState) {
+                this._isInPlay = newState;
+                if (!this._isInPlay) {
+                    this.Reset();
+                }
+                this._velocity = math.Vec2.Mulitply(this.Direction, this._speed);
+            },
+            enumerable: true,
+            configurable: true
+        });
         // public methods
         Shoot.prototype.Reset = function () {
             this.x = -2000;
             this.y = -2000;
+            /* if (managers.Game.goingDown)
+             {
+               this.Direction = math.Vec2.down();
+             }
+             if (managers.Game.goingUp)
+             {
+               this.Direction = math.Vec2.up();
+             }
+             if (managers.Game.goingLeft)
+             {
+               this.Direction = math.Vec2.left();
+               this.y = this.y - 40;
+             }
+             if (managers.Game.goingRigth)
+             {
+               this.Direction = math.Vec2.right();
+             }*/
+            this._updatePosition();
+            // this.Direction = math.Vec2.zero();
         };
         Shoot.prototype._animationEnded = function () {
             this.alpha = 1;
             this.off("animationend", this._animationEnded.bind(this), false); //remove my event listener
         };
         Shoot.prototype.Start = function () {
-            this.alpha = 1;
-            this.HalfWidth = 0; // duda
-            this.HalfHeight = -10; // duda
-            this.on("animationend", this._animationEnded.bind(this), false);
-            this.Reset();
+            this._speed = 15;
+            this.IsInPlay = false;
+            // this.Reset();
         };
         Shoot.prototype.Update = function () {
-            this.Move();
-            this.CheckBounds();
+            if (this.IsInPlay) {
+                this.Move();
+                this.CheckBounds();
+            }
         };
         Shoot.prototype.Destroy = function () { };
         Shoot.prototype.Move = function () {
@@ -55,14 +98,20 @@ var objects;
             if (managers.Game.goingDown) {
                 this.y -= this.HalfHeight;
             }
+            this._updatePosition();
+            this.Position = math.Vec2.Add(this.Position, this._velocity);
+            this.x = this.Position.x;
+            this.y = this.Position.y;
         };
         Shoot.prototype.CheckBounds = function () {
             /*  if (this.x <= -this.Height) {
                 this.Reset();*/
             if (this.y <= -this.Height) {
+                this.IsInPlay = false;
                 this.Reset();
             }
             if (this.x <= -this.Width) {
+                this.IsInPlay = false;
                 this.Reset();
             }
         };

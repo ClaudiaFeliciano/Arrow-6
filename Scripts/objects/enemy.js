@@ -18,7 +18,7 @@ var objects;
         // public properties
         // constructor
         function Enemy() {
-            var _this = _super.call(this, "boss") || this;
+            var _this = _super.call(this, "enemy") || this;
             _this.Start();
             return _this;
         }

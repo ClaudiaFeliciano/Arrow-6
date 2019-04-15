@@ -1,7 +1,17 @@
 module objects {
   export class Player extends objects.AbstractGameObject {
     public planeflash: objects.PlaneAfterCrash;
-    private _shootOrigin: math.Vec2;
+    //private _shootOrigin: math.Vec2;
+    _bulletSpawn:math.Vec2;
+
+    // public properties
+    get BulletSpawn():math.Vec2 {
+        return this._bulletSpawn;
+    }
+
+    set BulletSpawn(newSpawnPoint:math.Vec2) {
+        this._bulletSpawn = newSpawnPoint;
+    }
 
     // constructors
     constructor() {
@@ -23,11 +33,13 @@ module objects {
 
       this.x = 1000;
       this.y = 300;
-      this._shootOrigin = new math.Vec2();
+     // this._shootOrigin = new math.Vec2();
     }
 
     public Update(): void {
       this.Move();
+      this._updatePosition();
+      this.BulletSpawn = new math.Vec2(this.x - 6, this.y - this.HalfHeight - 2);
       // checking the bottom boundary
       if (this.y >= 549 - this.HalfHeight) {
         //600 minus the high of the scorebar
@@ -50,7 +62,7 @@ module objects {
       }
       managers.Game.xPlayer = this.x;
       managers.Game.yPlayer = this.y;
-      this.ShootFire();
+    //  this.ShootFire();
     }
     public Move(): void {
       if (managers.Game.keyboardManager.moveForward) {
@@ -90,6 +102,7 @@ module objects {
       this.planeflash.regX = this.regX;
       this.planeflash.regY = this.regY;
       this.planeflash.rotation = this.rotation;
+      //this.planeflash.rotation = this.rotation;
     }
 
     public Gravity(): void {
@@ -109,9 +122,11 @@ module objects {
 
     public Reset(): void {}
 
-    public Destroy(): void {}
+    public Destroy(): void {
+      
+    }
 
-    public ShootFire(): void {
+   /* public ShootFire(): void {
       if ((this.alpha = 1)) {
         let ticker: number = createjs.Ticker.getTicks();
         if (managers.Game.keyboardManager.shoot && ticker % 10 == 0) {
@@ -121,10 +136,12 @@ module objects {
           let shoot = managers.Game.shootManager.Shoots[currentshot];
           shoot.x = this._shootOrigin.x;
           shoot.y = this._shootOrigin.y;
+          shoot.rotation = this.rotation;
           managers.Game.shootManager.CurrentShoot++;
 
           if (managers.Game.shootManager.CurrentShoot > 29) {
             managers.Game.shootManager.CurrentShoot = 0;
+           
           }
 
           if (managers.Game.goingLeft) {
@@ -171,6 +188,7 @@ module objects {
           createjs.Sound.play("shootSound");
         }
       }
-    }
+      
+  }*/
   }
 }

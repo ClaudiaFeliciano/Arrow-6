@@ -19,6 +19,7 @@ var objects;
         function AbstractGameObject(imageString) {
             var _this = _super.call(this, managers.Game.textureArrow, imageString) || this;
             _this.name = imageString; //name come from the superclass Bitmap
+            _this.Position = new math.Vec2(_this.x, _this.y);
             _this._initialize();
             return _this;
         }
@@ -65,11 +66,25 @@ var objects;
             enumerable: true,
             configurable: true
         });
+        Object.defineProperty(AbstractGameObject.prototype, "Position", {
+            get: function () {
+                return this._position;
+            },
+            set: function (newPosition) {
+                this._position = newPosition;
+            },
+            enumerable: true,
+            configurable: true
+        });
         // private methods
         AbstractGameObject.prototype._initialize = function () {
             this.Width = this.getBounds().width;
             this.Height = this.getBounds().height;
             this.isColliding = false;
+        };
+        AbstractGameObject.prototype._updatePosition = function () {
+            this.Position.x = this.x;
+            this.Position.y = this.y;
         };
         return AbstractGameObject;
     }(createjs.Sprite));

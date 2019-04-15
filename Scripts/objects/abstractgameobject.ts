@@ -6,9 +6,12 @@ module objects {
     private _height: number;
     private _halfWidth: number;
     private _halfHeight: number;
-    public isColliding: boolean; 
+    public isColliding: boolean;
+    private _position: math.Vec2;
 
     // public properties
+   
+
     get Width(): number {
       return this._width;
     }
@@ -42,11 +45,18 @@ module objects {
     set HalfWidth(newValue: number) {
       this._halfWidth = newValue;
     }
+    get Position(): math.Vec2 {
+      return this._position;
+    }
+    set Position(newPosition: math.Vec2) {
+      this._position = newPosition;
+    }
 
     // constructors
     constructor(imageString: string) {
       super(managers.Game.textureArrow, imageString);
       this.name = imageString; //name come from the superclass Bitmap
+      this.Position = new math.Vec2(this.x, this.y);
       this._initialize();
     }
 
@@ -56,6 +66,10 @@ module objects {
       this.Height = this.getBounds().height;
       this.isColliding = false;
     }
+    protected _updatePosition():void {
+      this.Position.x = this.x;
+      this.Position.y = this.y;
+  }
 
     // public methods
     public abstract Reset(): void;

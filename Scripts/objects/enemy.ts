@@ -7,7 +7,7 @@ module objects {
 
     // constructor
     constructor() {
-      super("boss");
+      super("enemy");
 
       this.Start();
     }

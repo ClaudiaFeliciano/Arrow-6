@@ -20,9 +20,81 @@ var math;
             if (y === void 0) { y = 0; }
             return _super.call(this, x, y) || this;
         }
-        //public methods
-        Vec2.Distance = function (P1, P2) {
-            return Math.floor(Math.sqrt(Math.pow(P2.x - P1.x, 2) + Math.pow(P2.y - P1.y, 2)));
+        /**
+         * This method returns the Euclidean Distance between vec1 and vec2
+         *
+         * @static
+         * @param {math.Vec2} vec1
+         * @param {math.Vec2} vec2
+         * @returns {number}
+         */
+        Vec2.Distance = function (vec1, vec2) {
+            return Math.floor(Math.sqrt(Math.pow(vec2.x - vec1.x, 2) + Math.pow(vec2.y - vec1.y, 2)));
+        };
+        /**
+         * This method returns the resultant vector when adding vec1 and vec2
+         *
+         * @static
+         * @param {math.Vec2} vec1
+         * @param {math.Vec2} vec2
+         * @returns {math.Vec2}
+         */
+        Vec2.Add = function (vec1, vec2) {
+            var result = new math.Vec2(vec1.x + vec2.x, vec1.y + vec2.y);
+            return result;
+        };
+        /**
+         * This method subtracts vec2 from vec1 and returns a Vec2 result
+         *
+         * @static
+         * @param {math.Vec2} vec1
+         * @param {math.Vec2} vec2
+         * @returns {math.Vec2}
+         */
+        Vec2.Subtract = function (vec1, vec2) {
+            var result = new math.Vec2(vec1.x - vec2.x, vec1.y - vec2.y);
+            return result;
+        };
+        /**
+         * This method multiplies a Vec2 object by a scalar and returns the result
+         * as a new Vec2 object
+         *
+         * @static
+         * @param {math.Vec2} vec1
+         * @param {number} scalar
+         * @returns {math.Vec2}
+         */
+        Vec2.Mulitply = function (vec1, scalar) {
+            return new math.Vec2(vec1.x * scalar, vec1.y * scalar);
+        };
+        /**
+         * This method Divides a Vec2 object by a scalar and returns the result
+         * as a new Vec2 object
+         *
+         * @static
+         * @param {math.Vec2} vec1
+         * @param {number} scalar
+         * @returns {math.Vec2}
+         * @memberof Vec2
+         */
+        Vec2.Divide = function (vec1, scalar) {
+            return new math.Vec2(vec1.x / scalar, vec1.y / scalar);
+        };
+        // Convenience Methods
+        Vec2.up = function () {
+            return new math.Vec2(0, -1);
+        };
+        Vec2.down = function () {
+            return new math.Vec2(0, 1);
+        };
+        Vec2.right = function () {
+            return new math.Vec2(1, 0);
+        };
+        Vec2.left = function () {
+            return new math.Vec2(-1, 0);
+        };
+        Vec2.zero = function () {
+            return new math.Vec2(0, 0);
         };
         return Vec2;
     }(createjs.Point));

@@ -84,25 +84,31 @@ module scenes {
 
       this._shotManager = new managers.Shoot();
       managers.Game.shootManager = this._shotManager;
+
       this.Main();
     }
 
+   
+    public Update(): void {    
+      let ticker: number = createjs.Ticker.getTicks();
+      if (managers.Game.keyboardManager.shoot && ticker % 10 == 0) {
+      managers.Game.shootManager.FireBullet(managers.Game.player.BulletSpawn, math.Vec2.up());
 
+    /* 
+      shoot.x = this._shootOrigin.x;
+      shoot.y = this._shootOrigin.y;
+      shoot.rotation = this.rotation;
+      managers.Game.shootManager.CurrentShoot++;*/
+      }
 
-    public Update(): void {
       this._space.Update();
       this._player.Update();
       this._shotManager.Update();
       this.board.Update();
-
       for (const enemy of this._enemy) {
         enemy.Update();
         managers.Collision.Check(this._player, enemy);
       }
-
-     /* for (const lifes of this._planelife) {
-        lifes.Update();
-      }*/
 
       for (const bigmeteor of this._bigmeteor) {
         bigmeteor.Update();
