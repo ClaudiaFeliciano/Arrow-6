@@ -31,7 +31,7 @@ var scenes;
             // this._restartButton = new objects.Button("exit", 765.5, 300, true);
             this._engineSound = createjs.Sound.play("startSound");
             this._engineSound.loop = -1;
-            this._engineSound.volume = 0.8;
+            this._engineSound.volume = 1.0;
             this.Main();
         };
         Start1.prototype.Update = function () {
@@ -40,8 +40,7 @@ var scenes;
         Start1.prototype.Destroy = function () {
             this.removeAllChildren();
         };
-        Start1.prototype.Reset = function () {
-        };
+        Start1.prototype.Reset = function () { };
         Start1.prototype.Main = function () {
             var _this = this;
             this.addChild(this._spacebackground);
@@ -55,13 +54,15 @@ var scenes;
             this.addChild(this._musicButton);
             this._startButton.on("click", function () {
                 managers.Game.currentState = config.Scene.PLAY1;
+                3;
                 _this._engineSound.stop();
             });
+            console.log("TCL: Start1 -> this._engineSound.volume", this._engineSound.volume);
             this._musicButton.on("click", function () {
-                if (_this._engineSound.volume != 0.0) {
-                    _this._engineSound.volume -= 0.2;
+                if (_this._engineSound.volume == 1.0) {
+                    _this._engineSound.volume = 0.0;
                 }
-                else if (_this._engineSound.volume <= 0.0) {
+                else {
                     _this._engineSound.volume = 1.0;
                 }
             });

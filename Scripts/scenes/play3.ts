@@ -42,7 +42,7 @@ module scenes {
       this._scoreBoard = new managers.ScoreBoard();
       managers.Game.scoreBoard = this._scoreBoard;
       managers.Game.scoreBoard.Level += 1;
-      this._scoreBoard.Score += 2000 ;
+      this._scoreBoard.Score += 2000;
 
       this._shotManager = new managers.Shoot();
       managers.Game.shootManager = this._shotManager;
@@ -53,7 +53,10 @@ module scenes {
     public Update(): void {
       let ticker: number = createjs.Ticker.getTicks();
       if (managers.Game.keyboardManager.shoot && ticker % 10 == 0) {
-      managers.Game.shootManager.FireBullet(managers.Game.player.BulletSpawn, math.Vec2.up());
+        managers.Game.shootManager.FireBullet(
+          managers.Game.player.BulletSpawn,
+          math.Vec2.up()
+        );
       }
       this._space.Update();
       this._player.Update();
@@ -81,7 +84,7 @@ module scenes {
         managers.Game.currentState = config.Scene.OVER;
       }
 
-      if (this._scoreBoard.Score >= 300 && this._scoreBoard.Lives >= 0) {
+      if (this._scoreBoard.Score >= 2500 && this._scoreBoard.Lives >= 0) {
         this._engineSound.stop();
         this._playerEngineSound.stop();
         managers.Game.currentState = config.Scene.WIN;
@@ -155,7 +158,7 @@ module scenes {
         this.addChild(shoot);
       });
       this.addChild(this.board);
-     managers.Game.scoreBoard.AddGameUI(this);
+      managers.Game.scoreBoard.AddGameUI(this);
     }
   }
 }

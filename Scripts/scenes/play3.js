@@ -73,7 +73,7 @@ var scenes;
                 this._playerEngineSound.stop();
                 managers.Game.currentState = config.Scene.OVER;
             }
-            if (this._scoreBoard.Score >= 300 && this._scoreBoard.Lives >= 0) {
+            if (this._scoreBoard.Score >= 2500 && this._scoreBoard.Lives >= 0) {
                 this._engineSound.stop();
                 this._playerEngineSound.stop();
                 managers.Game.currentState = config.Scene.WIN;
