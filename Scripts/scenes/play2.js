@@ -28,6 +28,8 @@ var scenes;
             this._space = new objects.Space();
             this._scoreBoard = new managers.ScoreBoard();
             managers.Game.scoreBoard = this._scoreBoard;
+            managers.Game.scoreBoard.Level += 1;
+            this._scoreBoard.Score += 1000;
             this._player = new objects.Player();
             managers.Game.player = this._player;
             this.board = new objects.BoardBar();

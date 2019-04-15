@@ -29,7 +29,7 @@ module scenes {
       this._space = new objects.Space();
       this.scoreBoard = new managers.ScoreBoard();
       managers.Game.scoreBoard = this.scoreBoard;
-
+    
       this.board = new objects.BoardBar();
       this._player = new objects.Player();
       managers.Game.player = this._player;

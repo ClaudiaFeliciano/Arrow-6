@@ -39,6 +39,8 @@ var scenes;
             //create the score board UI for the scene
             this._scoreBoard = new managers.ScoreBoard();
             managers.Game.scoreBoard = this._scoreBoard;
+            managers.Game.scoreBoard.Level += 1;
+            this._scoreBoard.Score += 2000;
             this._shotManager = new managers.Shoot();
             managers.Game.shootManager = this._shotManager;
             this.Main();
@@ -134,8 +136,7 @@ var scenes;
                 _this.addChild(shoot);
             });
             this.addChild(this.board);
-            this.addChild(this._scoreBoard.LivesLabel);
-            this.addChild(this._scoreBoard.ScoreLabel);
+            managers.Game.scoreBoard.AddGameUI(this);
         };
         return Play3;
     }(objects.Scene));

@@ -31,8 +31,8 @@ module scenes {
       this._space = new objects.Space();
       this._scoreBoard = new managers.ScoreBoard();
       managers.Game.scoreBoard = this._scoreBoard;
-      
-
+      managers.Game.scoreBoard.Level += 1;
+      this._scoreBoard.Score += 1000 ;
       this._player = new objects.Player();
       managers.Game.player = this._player;
 
@@ -77,7 +77,7 @@ module scenes {
       if (managers.Game.keyboardManager.shoot && ticker % 10 == 0) {
       managers.Game.shootManager.FireBullet(managers.Game.player.BulletSpawn, math.Vec2.up());
       }
-      
+
       this._space.Update();
       this._player.Update();  
       this._shotManager.Update();
